@@ -1,0 +1,21 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# 메모리 캡처 파일
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# 크래시 덤프 및 기타
+sysinfo.txt
+*.mdmp
+export.log
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
