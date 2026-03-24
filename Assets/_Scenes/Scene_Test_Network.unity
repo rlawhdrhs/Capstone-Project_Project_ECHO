@@ -443,6 +443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8026b725cf039d04ea0ace1ef083dfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConnectionManager
+  chaserPrefab:
+    RawGuidValue: 5f99cf0beec2f0942a886b63a8d24c0d
+  infiltratorPrefab:
+    RawGuidValue: ced4c2003a5d26e44b9b388238795bc1
 --- !u!1 &1953781360
 GameObject:
   m_ObjectHideFlags: 0
