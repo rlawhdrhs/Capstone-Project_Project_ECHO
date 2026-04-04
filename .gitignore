@@ -19,3 +19,28 @@ export.log
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+
+# VSCode
+.vscode/
+.vsconfig
+*.slnx
+
+# Auto-generated project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+
+# Unity cache
+MemoryCaptures/
+Recordings/
+
+# Crash logs
+sysinfo.txt
