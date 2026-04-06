@@ -2,45 +2,47 @@ using UnityEngine;
 
 public class SoundEmitter : MonoBehaviour
 {
-    public float emitInterval = 0.5f;
-    public float soundIntensity = 1f;
+    public float stepDistance = 1.5f;
+    public float baseSoundIntensity = 1f;
+    public float soundLifetime = 0.3f;
     public GameObject soundWavePrefab;
 
     private Vector3 lastPosition;
-    private float timer;
+    private float accumulatedDistance;
 
     void Start()
     {
         lastPosition = transform.position;
+        accumulatedDistance = 0f;
     }
 
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, lastPosition);
+        Vector3 currentPosition = transform.position;
+        float movedDistance = Vector3.Distance(currentPosition, lastPosition);
 
-        if (distance > 0.001f)
+        if (movedDistance > 0.001f)
         {
-            timer += Time.deltaTime;
+            accumulatedDistance += movedDistance;
 
-            if (timer >= emitInterval)
+            while (accumulatedDistance >= stepDistance)
             {
-                EmitSound();
-                timer = 0f;
+                EmitSound(currentPosition, movedDistance);
+                accumulatedDistance -= stepDistance;
             }
         }
-        else
-        {
-            timer = 0f;
-        }
 
-        lastPosition = transform.position;
+        lastPosition = currentPosition;
     }
 
-    void EmitSound()
+    void EmitSound(Vector3 currentPosition, float movedDistance)
     {
-        Vector3 soundPos = transform.position + Vector3.down * 1f;
+        Vector3 soundPos = currentPosition + Vector3.down * 1f;
 
-        Debug.Log("Sound emitted at: " + soundPos + " | Intensity: " + soundIntensity);
+        float speed = movedDistance / Time.deltaTime;
+        float soundIntensity = baseSoundIntensity + speed * 0.1f;
+
+        Debug.Log("소리 생성됨: " + soundPos + " | 강도: " + soundIntensity);
 
         if (soundWavePrefab != null)
         {
@@ -49,7 +51,7 @@ public class SoundEmitter : MonoBehaviour
 
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.RegisterSound(soundPos, soundIntensity);
+            SoundManager.Instance.RegisterSound(soundPos, soundIntensity, soundLifetime, SoundType.Footstep);
         }
         else
         {

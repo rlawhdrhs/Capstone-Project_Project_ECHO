@@ -5,44 +5,36 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    public List<SoundEventData> soundEvents = new List<SoundEventData>();
-    public float soundLifeTime = 0.3f;
+    public List<SoundData> soundEvents = new List<SoundData>();
+
+    private int nextSoundId = 0;
 
     void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            Debug.Log("SoundManager Awake 성공");
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     void Update()
     {
-        soundEvents.RemoveAll(sound => Time.time - sound.timeCreated > soundLifeTime);
+        for (int i = soundEvents.Count - 1; i >= 0; i--)
+        {
+            soundEvents[i].lifetime -= Time.deltaTime;
+
+            if (soundEvents[i].lifetime <= 0f)
+            {
+                soundEvents.RemoveAt(i);
+            }
+        }
     }
 
-    public void RegisterSound(Vector3 position, float intensity)
+    public void RegisterSound(Vector3 position, float intensity, float lifetime, SoundType soundType)
     {
-        soundEvents.Add(new SoundEventData(position, intensity, Time.time));
-        Debug.Log("SoundManager에 소리 등록됨: " + position);
-    }
-}
+        SoundData newSound = new SoundData(nextSoundId, position, intensity, lifetime, soundType);
+        nextSoundId++;
 
-public struct SoundEventData
-{
-    public Vector3 position;
-    public float intensity;
-    public float timeCreated;
-
-    public SoundEventData(Vector3 position, float intensity, float timeCreated)
-    {
-        this.position = position;
-        this.intensity = intensity;
-        this.timeCreated = timeCreated;
+        soundEvents.Add(newSound);
     }
 }
