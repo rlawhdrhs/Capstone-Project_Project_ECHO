@@ -2,60 +2,83 @@ using UnityEngine;
 
 public class LaserDetector : MonoBehaviour
 {
-    public float laserDistance = 10f;
-    public LineRenderer lineRenderer;
-    public PlayerDetectable player;
-    public LayerMask hitMask;
+    [Header("Detection Settings")]
+    public float detectDistance = 10f;
+    public float detectAngle = 25f;
 
-    public KeyCode toggleKey  = KeyCode.Space;
+    [Header("References")]
+    public PlayerDetectable player;
+    public VisionConeMesh visionCone;
+
+    [Header("Layer Mask")]
+    public LayerMask obstacleLayer;
+
+    [Header("Input")]
+    public KeyCode toggleKey = KeyCode.R;
+
     private bool isLaserOn = false;
+
     void Start()
     {
-        if (lineRenderer != null)
+        if (visionCone != null)
         {
-            lineRenderer.enabled = true;
-            lineRenderer.positionCount = 2;
-            lineRenderer.useWorldSpace = true;
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
+            visionCone.gameObject.SetActive(false);
+            visionCone.SetCone(detectAngle, detectDistance);
         }
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(toggleKey))
+        if (Input.GetKeyDown(toggleKey))
         {
             isLaserOn = !isLaserOn;
 
-            if(lineRenderer != null)
+            if (visionCone != null)
             {
-                lineRenderer.enabled = isLaserOn;
+                visionCone.gameObject.SetActive(isLaserOn);
             }
         }
+
         if (!isLaserOn)
         {
-            if(player != null)
+            if (player != null)
             {
                 player.SetDetected(false);
                 player.UpdateGauge(false);
             }
             return;
         }
+
+        if (visionCone != null)
+        {
+            visionCone.SetCone(detectAngle, detectDistance);
+        }
+
         Vector3 origin = transform.position + Vector3.up * 0.5f;
-        Vector3 direction = -transform.right;
-        Vector3 endPoint = origin + direction * laserDistance;
+        Vector3 forwardDir = transform.forward;
 
         bool isDetected = false;
 
-        RaycastHit hit;
-        if (Physics.Raycast(origin, direction, out hit, laserDistance, hitMask))
+        if (player != null && !player.isRemoved)
         {
-            endPoint = hit.point;
-            
-            PlayerDetectable detectedPlayer = hit.collider.GetComponent<PlayerDetectable>();
-            if (detectedPlayer != null)
+            Vector3 targetPos = player.transform.position;
+            Vector3 toTarget = targetPos - origin;
+            float distanceToTarget = toTarget.magnitude;
+
+            if (distanceToTarget <= detectDistance)
             {
-                isDetected = true;
+                Vector3 dirToTarget = toTarget.normalized;
+                float angle = Vector3.Angle(forwardDir, dirToTarget);
+
+                if (angle <= detectAngle * 0.5f)
+                {
+                    RaycastHit hit;
+
+                    if (!Physics.Raycast(origin, dirToTarget, out hit, distanceToTarget, obstacleLayer))
+                    {
+                        isDetected = true;
+                    }
+                }
             }
         }
 
@@ -63,12 +86,6 @@ public class LaserDetector : MonoBehaviour
         {
             player.SetDetected(isDetected);
             player.UpdateGauge(isDetected);
-        }
-
-        if (lineRenderer != null)
-        {
-            lineRenderer.SetPosition(0, origin);
-            lineRenderer.SetPosition(1, endPoint);
         }
     }
 }
