@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChaserMovement : MonoBehaviour
+public class SimpleMovement : MonoBehaviour
 {
     public float moveSpeed = 3f;
     public float rotateSpeed = 100f;

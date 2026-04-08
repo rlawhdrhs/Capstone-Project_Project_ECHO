@@ -21,7 +21,7 @@ public class SoundListener : MonoBehaviour
             float distance = Vector3.Distance(transform.position, sound.position);
 
             // 거리 감쇠
-            float distanceFactor = 1f / (1f + distance * 0.3f);
+            float distanceFactor = 1f / (1f + distance * 0.5f);
 
             // 차폐 감쇠
             float occlusionFactor = 1f;

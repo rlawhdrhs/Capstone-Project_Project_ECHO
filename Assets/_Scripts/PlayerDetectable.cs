@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerDetectable : MonoBehaviour
 {
@@ -27,9 +26,6 @@ public class PlayerDetectable : MonoBehaviour
     // 제거 가능 상태 재진입 방지용
     private bool canEnterRemovable = true;
 
-    [Header("UI")]
-    public Slider detectionSlider;
-
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
@@ -38,13 +34,6 @@ public class PlayerDetectable : MonoBehaviour
         {
             instanceMaterial = objectRenderer.material;
             instanceMaterial.color = normalColor;
-        }
-
-        if (detectionSlider != null)
-        {
-            detectionSlider.minValue = 0f;
-            detectionSlider.maxValue = maxGauge;
-            detectionSlider.value = detectionGauge;
         }
     }
 
@@ -78,7 +67,6 @@ public class PlayerDetectable : MonoBehaviour
                 }
             }
 
-            UpdateSlider();
             return;
         }
 
@@ -99,7 +87,6 @@ public class PlayerDetectable : MonoBehaviour
         }
 
         detectionGauge = Mathf.Clamp(detectionGauge, 0f, maxGauge);
-        UpdateSlider();
 
         // 제거 가능 상태 재진입 조건
         if (detectionGauge >= maxGauge && canEnterRemovable)
@@ -130,15 +117,6 @@ public class PlayerDetectable : MonoBehaviour
 
         // 바로 다시 꽉 차지 않게 약간 깎아줌
         detectionGauge = maxGauge * 0.7f;
-        UpdateSlider();
-    }
-
-    void UpdateSlider()
-    {
-        if (detectionSlider != null)
-        {
-            detectionSlider.value = detectionGauge;
-        }
     }
 
     public void TryRemove()

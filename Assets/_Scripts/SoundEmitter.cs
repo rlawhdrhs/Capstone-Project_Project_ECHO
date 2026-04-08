@@ -5,7 +5,6 @@ public class SoundEmitter : MonoBehaviour
     public float stepDistance = 1.5f;
     public float baseSoundIntensity = 1f;
     public float soundLifetime = 0.3f;
-    public GameObject soundWavePrefab;
 
     private Vector3 lastPosition;
     private float accumulatedDistance;
@@ -43,11 +42,6 @@ public class SoundEmitter : MonoBehaviour
         float soundIntensity = baseSoundIntensity + speed * 0.1f;
 
         Debug.Log("소리 생성됨: " + soundPos + " | 강도: " + soundIntensity);
-
-        if (soundWavePrefab != null)
-        {
-            Instantiate(soundWavePrefab, soundPos, Quaternion.identity);
-        }
 
         if (SoundManager.Instance != null)
         {
