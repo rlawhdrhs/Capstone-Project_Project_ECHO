@@ -10,6 +10,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+<<<<<<< HEAD
 *.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
@@ -97,3 +98,19 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+=======
+
+# 메모리 캡처 파일
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# 크래시 덤프 및 기타
+sysinfo.txt
+*.mdmp
+export.log
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+>>>>>>> main
