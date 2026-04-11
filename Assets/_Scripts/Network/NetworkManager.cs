@@ -37,11 +37,17 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         _runner.AddCallbacks(this);
 
+        var sceneManager = gameObject.GetComponent<NetworkSceneManagerDefault>();
+        if (sceneManager == null)
+        {
+            sceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>();
+        }
+
         var startGameArgs = new StartGameArgs()
         {
             GameMode = mode,
             SessionName = "ProjectECHO_Room",
-            SceneManager = gameObject.GetComponent<NetworkSceneManagerDefault>() ?? gameObject.AddComponent<NetworkSceneManagerDefault>()
+            SceneManager = sceneManager
         };
 
         var result = await _runner.StartGame(startGameArgs);
@@ -60,12 +66,12 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             if (player == runner.LocalPlayer)
             {
                 Debug.Log("호스트 스폰: 잠입자 프리팹 생성");
-                runner.Spawn(infiltratorPrefab, Vector3.zero, Quaternion.identity, player);
+                runner.Spawn(infiltratorPrefab, new Vector3(-1, -1, 3), Quaternion.identity, player);
             }
             else
             {
                 Debug.Log("클라이언트 접속: 추격자 프리팹 생성 및 권한 부여");
-                runner.Spawn(chaserPrefab, new Vector3(2, 0, 0), Quaternion.identity, player);
+                runner.Spawn(chaserPrefab, new Vector3(-8, -1, 4), Quaternion.identity, player);
             }
         }
     }
