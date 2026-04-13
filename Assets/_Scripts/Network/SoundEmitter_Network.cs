@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-public class SoundEmitter : NetworkBehaviour
+public class SoundEmitter_Network : NetworkBehaviour
 {
     public float stepDistance = 1.5f;
     public float baseSoundIntensity = 1f;

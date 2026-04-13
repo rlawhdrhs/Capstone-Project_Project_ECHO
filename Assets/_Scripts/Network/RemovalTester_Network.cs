@@ -1,9 +1,9 @@
 using UnityEngine;
 using Fusion;
 
-public class RemovalTester : NetworkBehaviour
+public class RemovalTester_Network : NetworkBehaviour
 {
-    private PlayerDetectable targetPlayer;
+    private PlayerDetectable_Network targetPlayer;
     private bool _spacePressed;
 
     void Update()
@@ -23,7 +23,7 @@ public class RemovalTester : NetworkBehaviour
         {
             if (NetworkManager.Instance.InfiltratorObject != null)
             {
-                targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable>();
+                targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable_Network>();
             }
             else
             {

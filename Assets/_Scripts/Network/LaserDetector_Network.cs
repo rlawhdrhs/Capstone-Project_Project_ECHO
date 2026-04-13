@@ -1,14 +1,14 @@
 using Fusion;
 using UnityEngine;
 
-public class LaserDetector : NetworkBehaviour
+public class LaserDetector_Network : NetworkBehaviour
 {
     [Header("Detection Settings")]
     public float detectDistance = 10f;
     public float detectAngle = 25f;
 
     [Header("References")]
-    public PlayerDetectable targetPlayer;
+    public PlayerDetectable_Network targetPlayer;
     public VisionConeMesh visionCone;
 
     [Header("Layer Mask")]
@@ -51,7 +51,7 @@ public class LaserDetector : NetworkBehaviour
         if (targetPlayer == null)
         {
             if (NetworkManager.Instance.InfiltratorObject != null)
-                targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable>();
+                targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable_Network>();
             return;
         }
 
