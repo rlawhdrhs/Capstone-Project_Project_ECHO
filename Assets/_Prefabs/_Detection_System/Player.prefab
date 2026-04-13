@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5341875526948139776}
   - component: {fileID: 3650080708739234679}
   - component: {fileID: 1597287447781016846}
+  - component: {fileID: -8192729221680482107}
+  - component: {fileID: -2476257941207389703}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -192,3 +194,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChaserMovement
   moveSpeed: 3
   rotateSpeed: 100
+--- !u!114 &-8192729221680482107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283165795197429342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 1219291459
+  ObjectInterest: 1
+  Flags: 1
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 7738157873730028623}
+  - {fileID: 5341875526948139776}
+  - {fileID: -2476257941207389703}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &-2476257941207389703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283165795197429342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkTransform
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
