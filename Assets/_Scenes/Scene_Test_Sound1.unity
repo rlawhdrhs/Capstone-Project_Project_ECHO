@@ -320,8 +320,8 @@ GameObject:
   - component: {fileID: 47261279}
   - component: {fileID: 47261278}
   - component: {fileID: 47261277}
-  m_Layer: 7
-  m_Name: Cube
+  m_Layer: 6
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 335039596}
   - component: {fileID: 335039597}
   - component: {fileID: 335039598}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -775,11 +775,11 @@ GameObject:
   - component: {fileID: 1745939173}
   - component: {fileID: 1745939172}
   - component: {fileID: 1745939171}
-  - component: {fileID: 1745939175}
   - component: {fileID: 1745939176}
   - component: {fileID: 1745939177}
   - component: {fileID: 1745939178}
   - component: {fileID: 1745939179}
+  - component: {fileID: 1745939180}
   m_Layer: 0
   m_Name: Chaser
   m_TagString: Untagged
@@ -883,23 +883,6 @@ Transform:
   - {fileID: 1564091565}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1745939175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745939170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3426c598b55f7ef47a8a7ad6d3ba2ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundListener
-  hearingThreshold: 0.2
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
-  occlusionMultiplier: 0.6
 --- !u!114 &1745939176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,7 +901,7 @@ MonoBehaviour:
   visionCone: {fileID: 1564091562}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   toggleKey: 114
 --- !u!120 &1745939177
 LineRenderer:
@@ -1057,6 +1040,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleMovement
   moveSpeed: 3
   rotateSpeed: 100
+--- !u!114 &1745939180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745939170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66d2f67b56efd645a3b43ac45eef4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundListener
+  hearingThreshold: 0.2
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
+  occlusionMultiplier: 0.6
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
