@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SoundEventNetworkManager : NetworkBehaviour
 {
-    // 어디서든 SoundEventManager.Instance 로 부를 수 있게 명찰 달기
     public static SoundEventNetworkManager Instance;
 
     [Header("사운드 세팅")]
