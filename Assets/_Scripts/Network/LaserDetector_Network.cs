@@ -35,7 +35,7 @@ public class LaserDetector_Network : NetworkBehaviour
         if (visionCone != null)
         {
             visionCone.gameObject.SetActive(isLaserOn);
-            if (isLaserOn) visionCone.SetCone(detectAngle, detectDistance);
+            if (isLaserOn) visionCone.SetCone(detectAngle, detectDistance, 0f, 1f);
         }
     }
 

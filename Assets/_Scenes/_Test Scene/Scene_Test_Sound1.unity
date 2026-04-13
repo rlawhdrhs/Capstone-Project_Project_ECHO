@@ -972,9 +972,9 @@ GameObject:
   - component: {fileID: 1745939171}
   - component: {fileID: 1745939176}
   - component: {fileID: 1745939177}
-  - component: {fileID: 1745939178}
   - component: {fileID: 1745939179}
   - component: {fileID: 1745939180}
+  - component: {fileID: 1745939181}
   m_Layer: 0
   m_Name: Chaser
   m_TagString: Untagged
@@ -1207,19 +1207,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &1745939178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745939170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616390efd32433c489345ecea404723d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RemovalTester
-  targetPlayer: {fileID: 335039596}
 --- !u!114 &1745939179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,6 +1238,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   occlusionMultiplier: 0.6
+--- !u!114 &1745939181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745939170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2897d65e2d4eb47bfe5e15b3f97699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RemovalTester
+  targetPlayer: {fileID: 335039596}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
