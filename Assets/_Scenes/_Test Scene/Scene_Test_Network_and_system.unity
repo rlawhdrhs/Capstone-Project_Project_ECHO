@@ -1024,102 +1024,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 331469055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1280373552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1280373554}
-  - component: {fileID: 1280373553}
-  - component: {fileID: 1280373555}
-  - component: {fileID: 1280373556}
-  - component: {fileID: 1280373557}
-  m_Layer: 0
-  m_Name: NetworkManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1280373553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280373552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1199893898, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkRunner
---- !u!4 &1280373554
+--- !u!4 &1280373554 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+  m_PrefabInstance: {fileID: 2918574020985027443}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280373552}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.45992, y: -2.04149, z: 4.33461}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 331469055}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1280373555
+--- !u!114 &1280373555 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+  m_PrefabInstance: {fileID: 2918574020985027443}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280373552}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8026b725cf039d04ea0ace1ef083dfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConnectionManager
-  infiltratorPrefab:
-    RawGuidValue: ced4c2003a5d26e44b9b388238795bc1
-  chaserPrefab:
-    RawGuidValue: 5f99cf0beec2f0942a886b63a8d24c0d
---- !u!114 &1280373556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280373552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439a7b2294cdaf647bd087e6c9ed6556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundEventNetworkManager
-  soundEmitterPrefab: {fileID: 0}
-  audioClips: []
---- !u!114 &1280373557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280373552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
-  SortKey: 926033623
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 1280373556}
-  ForceRemoteRenderTimeframe: 0
 --- !u!1 &1827789078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1321,67 @@ MonoBehaviour:
   Components:
   - {fileID: 1953781361}
   _guid: 8d489bb7-e03e-4de7-
+--- !u!1001 &2918574020985027443
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 331469055}
+    m_Modifications:
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.45992
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.04149
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.33461
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238581312646387474, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508800665587960872, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: SortKey
+      value: 363945013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786264867454982980, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: m_Name
+      value: NetworkManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

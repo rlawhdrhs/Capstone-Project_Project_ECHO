@@ -259,12 +259,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector
   detectDistance: 10
   detectAngle: 25
-  player: {fileID: 0}
+  targetPlayer: {fileID: 0}
   visionCone: {fileID: 6202191987204188078}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   toggleKey: 114
+  _isLaserOn:
+    _value: 0
 --- !u!120 &2551822232395145850
 LineRenderer:
   serializedVersion: 3
@@ -387,7 +389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616390efd32433c489345ecea404723d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RemovalTester
-  targetPlayer: {fileID: 0}
 --- !u!114 &1923502682358271713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +420,8 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 607616356284664978}
+  - {fileID: 2753421954698605285}
   - {fileID: -3678920499654001567}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &-3678920499654001567

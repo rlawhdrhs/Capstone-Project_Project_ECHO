@@ -1,6 +1,7 @@
+using Fusion;
 using UnityEngine;
 
-public class SoundEmitter : MonoBehaviour
+public class SoundEmitter : NetworkBehaviour
 {
     public float stepDistance = 1.5f;
     public float baseSoundIntensity = 1f;
@@ -9,47 +10,47 @@ public class SoundEmitter : MonoBehaviour
     private Vector3 lastPosition;
     private float accumulatedDistance;
 
-    void Start()
+    public override void Spawned()
     {
         lastPosition = transform.position;
         accumulatedDistance = 0f;
     }
 
-    void Update()
+    public override void FixedUpdateNetwork()
     {
-        Vector3 currentPosition = transform.position;
-        float movedDistance = Vector3.Distance(currentPosition, lastPosition);
-
-        if (movedDistance > 0.001f)
+        if (Object.HasInputAuthority)
         {
-            accumulatedDistance += movedDistance;
+            Vector3 currentPosition = transform.position;
+            float movedDistance = Vector3.Distance(currentPosition, lastPosition);
 
-            while (accumulatedDistance >= stepDistance)
+            if (movedDistance > 0.001f)
             {
-                EmitSound(currentPosition, movedDistance);
-                accumulatedDistance -= stepDistance;
+                accumulatedDistance += movedDistance;
+                while (accumulatedDistance >= stepDistance)
+                {
+                    EmitSound(currentPosition, movedDistance);
+                    accumulatedDistance -= stepDistance;
+                }
             }
+            lastPosition = currentPosition;
         }
-
-        lastPosition = currentPosition;
     }
 
     void EmitSound(Vector3 currentPosition, float movedDistance)
     {
         Vector3 soundPos = currentPosition + Vector3.down * 1f;
-
-        float speed = movedDistance / Time.deltaTime;
+        float speed = movedDistance / Runner.DeltaTime;
         float soundIntensity = baseSoundIntensity + speed * 0.1f;
 
-        Debug.Log("소리 생성됨: " + soundPos + " | 강도: " + soundIntensity);
+        RPC_PlaySound(soundPos, soundIntensity, soundLifetime, (int)SoundType.Footstep);
+    }
 
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_PlaySound(Vector3 pos, float intensity, float lifetime, SoundType type)
+    {
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.RegisterSound(soundPos, soundIntensity, soundLifetime, SoundType.Footstep);
-        }
-        else
-        {
-            Debug.LogWarning("SoundManager.Instance가 null임");
+            SoundManager.Instance.RegisterSound(pos, intensity, lifetime, type);
         }
     }
 }

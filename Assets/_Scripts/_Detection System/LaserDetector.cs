@@ -1,13 +1,14 @@
+using Fusion;
 using UnityEngine;
 
-public class LaserDetector : MonoBehaviour
+public class LaserDetector : NetworkBehaviour
 {
     [Header("Detection Settings")]
     public float detectDistance = 10f;
     public float detectAngle = 25f;
 
     [Header("References")]
-    public PlayerDetectable player;
+    public PlayerDetectable targetPlayer;
     public VisionConeMesh visionCone;
 
     [Header("Layer Mask")]
@@ -16,76 +17,73 @@ public class LaserDetector : MonoBehaviour
     [Header("Input")]
     public KeyCode toggleKey = KeyCode.R;
 
-    private bool isLaserOn = false;
+    [Networked] public NetworkBool isLaserOn { get; set; }
+    private bool lastDetectedState = false;
 
-    void Start()
+    public override void Spawned()
     {
-        if (visionCone != null)
-        {
-            visionCone.gameObject.SetActive(false);
-            visionCone.SetCone(detectAngle, detectDistance);
-        }
+        visionCone = GetComponentInChildren<VisionConeMesh>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(toggleKey))
+        if (Object.HasInputAuthority && Input.GetKeyDown(toggleKey))
         {
-            isLaserOn = !isLaserOn;
-
-            if (visionCone != null)
-            {
-                visionCone.gameObject.SetActive(isLaserOn);
-            }
-        }
-
-        if (!isLaserOn)
-        {
-            if (player != null)
-            {
-                player.SetDetected(false);
-                player.UpdateGauge(false);
-            }
-            return;
+            RPC_ToggleLaser();
         }
 
         if (visionCone != null)
         {
-            visionCone.SetCone(detectAngle, detectDistance);
+            visionCone.gameObject.SetActive(isLaserOn);
+            if (isLaserOn) visionCone.SetCone(detectAngle, detectDistance);
+        }
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_ToggleLaser()
+    {
+        isLaserOn = !isLaserOn;
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+
+        if (targetPlayer == null)
+        {
+            if (NetworkManager.Instance.InfiltratorObject != null)
+                targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable>();
+            return;
         }
 
-        Vector3 origin = transform.position + Vector3.up * 0.5f;
-        Vector3 forwardDir = transform.forward;
+        bool currentlyDetected = false;
 
-        bool isDetected = false;
-
-        if (player != null && !player.isRemoved)
+        if (isLaserOn)
         {
-            Vector3 targetPos = player.transform.position;
-            Vector3 toTarget = targetPos - origin;
-            float distanceToTarget = toTarget.magnitude;
+            Vector3 origin = transform.position + Vector3.up * 1.2f + transform.forward * 0.5f;
+            Vector3 targetPos = targetPlayer.transform.position + Vector3.up * 0.8f;
+            Vector3 dir = targetPos - origin;
+            float distance = dir.magnitude;
 
-            if (distanceToTarget <= detectDistance)
+            // 각도/거리 체크
+            if (distance <= detectDistance && Vector3.Angle(transform.forward, dir.normalized) <= detectAngle * 0.5f)
             {
-                Vector3 dirToTarget = toTarget.normalized;
-                float angle = Vector3.Angle(forwardDir, dirToTarget);
-
-                if (angle <= detectAngle * 0.5f)
+                // 장애물 체크 (로그 추가)
+                if (Physics.Raycast(origin, dir.normalized, out RaycastHit hit, distance, obstacleLayer))
                 {
-                    RaycastHit hit;
-
-                    if (!Physics.Raycast(origin, dirToTarget, out hit, distanceToTarget, obstacleLayer))
-                    {
-                        isDetected = true;
-                    }
+                    // 장애물 이름 확인용 로그
+                    Debug.Log($"[감지 실패] {hit.collider.name}가 가로막음");
+                }
+                else
+                {
+                    currentlyDetected = true;
+                    Debug.Log("[감지 성공] 잠입자가 레이저에 닿음!");
                 }
             }
         }
 
-        if (player != null)
+        if (Object.HasStateAuthority)
         {
-            player.SetDetected(isDetected);
-            player.UpdateGauge(isDetected);
+            targetPlayer.isDetected = currentlyDetected;
         }
     }
 }
