@@ -58,7 +58,8 @@ public class PlayerDetectable : MonoBehaviour
         // 제거 가능 상태일 때는 타이머만 동작
         if (isRemovable)
         {
-            if(!detected){
+            if (!detected)
+            {
                 removableTimer -= Time.deltaTime;
 
                 if (removableTimer <= 0f)
