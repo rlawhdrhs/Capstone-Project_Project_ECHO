@@ -211,8 +211,6 @@ MonoBehaviour:
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 7738157873730028623}
-  - {fileID: 5341875526948139776}
   - {fileID: -2476257941207389703}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &-2476257941207389703
