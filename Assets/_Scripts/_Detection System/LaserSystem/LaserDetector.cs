@@ -6,12 +6,13 @@ public class LaserDetector : MonoBehaviour
     public float detectDistance = 10f;
     public float detectAngle = 25f;
 
+    [Header("Laser Height")]
+    public float originHeight = 0.3f;
+    public float heightRange = 0.15f;
+
     [Header("References")]
     public PlayerDetectable player;
     public VisionConeMesh visionCone;
-
-    [Header("Layer Mask")]
-    public LayerMask obstacleLayer;
 
     [Header("Input")]
     public KeyCode toggleKey = KeyCode.R;
@@ -20,10 +21,15 @@ public class LaserDetector : MonoBehaviour
 
     void Start()
     {
+        if (player == null)
+        {
+            player = FindAnyObjectByType<PlayerDetectable>();
+        }
+
         if (visionCone != null)
         {
             visionCone.gameObject.SetActive(false);
-            visionCone.SetCone(detectAngle, detectDistance);
+            visionCone.SetCone(detectAngle, detectDistance, originHeight, heightRange * 2f);
         }
     }
 
@@ -38,7 +44,17 @@ public class LaserDetector : MonoBehaviour
                 visionCone.gameObject.SetActive(isLaserOn);
             }
         }
+        float moveSpeed = 1.0f;
 
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            originHeight += moveSpeed * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            originHeight -= moveSpeed * Time.deltaTime;
+        }
         if (!isLaserOn)
         {
             if (player != null)
@@ -51,41 +67,59 @@ public class LaserDetector : MonoBehaviour
 
         if (visionCone != null)
         {
-            visionCone.SetCone(detectAngle, detectDistance);
+            visionCone.SetCone(detectAngle, detectDistance, originHeight, heightRange * 2f);
         }
 
-        Vector3 origin = transform.position + Vector3.up * 0.5f;
-        Vector3 forwardDir = transform.forward;
-
-        bool isDetected = false;
-
-        if (player != null && !player.isRemoved)
-        {
-            Vector3 targetPos = player.transform.position;
-            Vector3 toTarget = targetPos - origin;
-            float distanceToTarget = toTarget.magnitude;
-
-            if (distanceToTarget <= detectDistance)
-            {
-                Vector3 dirToTarget = toTarget.normalized;
-                float angle = Vector3.Angle(forwardDir, dirToTarget);
-
-                if (angle <= detectAngle * 0.5f)
-                {
-                    RaycastHit hit;
-
-                    if (!Physics.Raycast(origin, dirToTarget, out hit, distanceToTarget, obstacleLayer))
-                    {
-                        isDetected = true;
-                    }
-                }
-            }
-        }
+        bool isDetected = CheckPlayerDetected();
 
         if (player != null)
         {
             player.SetDetected(isDetected);
             player.UpdateGauge(isDetected);
         }
+    }
+
+    bool CheckPlayerDetected()
+    {
+        if (player == null || player.isRemoved) return false;
+
+        Transform[] detectPoints = player.DetectPoints;
+        if (detectPoints == null || detectPoints.Length == 0) return false;
+
+        Vector3 origin = transform.position + Vector3.up * originHeight;
+        Vector3 forwardDir = transform.forward;
+
+        foreach (Transform point in detectPoints)
+        {
+            if (point == null) continue;
+
+            float heightDifference = Mathf.Abs(point.position.y - origin.y);
+            if (heightDifference > heightRange)
+                continue;
+
+            Vector3 toTarget = point.position - origin;
+            float distanceToTarget = toTarget.magnitude;
+
+            if (distanceToTarget > detectDistance)
+                continue;
+
+            Vector3 dirToTarget = toTarget.normalized;
+            float angle = Vector3.Angle(forwardDir, dirToTarget);
+
+            if (angle > detectAngle * 0.5f)
+                continue;
+
+            RaycastHit hit;
+            if (Physics.Raycast(origin, dirToTarget, out hit, distanceToTarget))
+            {
+                if (hit.transform == point || hit.transform.IsChildOf(player.transform))
+                {
+                    Debug.Log($"[LaserDetector] 감지됨! Player: {player.gameObject.name}, Point: {point.name}");
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
