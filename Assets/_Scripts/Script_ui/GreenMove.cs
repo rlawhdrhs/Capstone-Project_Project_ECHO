@@ -1,15 +1,14 @@
-
-
 using UnityEngine;
 
 public class GreenMove : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float turnSpeed = 220f;
+
+    [Header("Turn Setting")]
+    public float turnAngle = 30f;
 
     private Rigidbody rb;
     private float moveZ;
-    private float turnY;
 
     public float jumpForce = 5f;
     private bool isGrounded;
@@ -20,26 +19,31 @@ public class GreenMove : MonoBehaviour
 
     private float verticalRotation = 0f;
 
+    private float targetYaw;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;
+
+        targetYaw = transform.eulerAngles.y;
     }
 
     void Update()
     {
         moveZ = 0f;
-        turnY = 0f;
 
         if (Input.GetKey(KeyCode.W))
             moveZ = 1f;
         if (Input.GetKey(KeyCode.S))
             moveZ = -1f;
 
-        if (Input.GetKey(KeyCode.A))
-            turnY = -1f;
-        if (Input.GetKey(KeyCode.D))
-            turnY = 1f;
+        // A, D를 누른 순간에만 30도 회전 목표값 변경
+        if (Input.GetKeyDown(KeyCode.A))
+            targetYaw -= turnAngle;
+
+        if (Input.GetKeyDown(KeyCode.D))
+            targetYaw += turnAngle;
 
         float lookX = 0f;
 
@@ -64,8 +68,8 @@ public class GreenMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 회전
-        Quaternion targetRotation = rb.rotation * Quaternion.Euler(0f, turnY * turnSpeed * Time.fixedDeltaTime, 0f);
+        // 회전: 목표 각도로 즉시 맞춤
+        Quaternion targetRotation = Quaternion.Euler(0f, targetYaw, 0f);
         rb.MoveRotation(targetRotation);
 
         // 이동

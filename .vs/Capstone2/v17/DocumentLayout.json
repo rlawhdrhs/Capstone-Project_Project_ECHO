@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\unityproject\\Capstone2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Chaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Chaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\GreenMove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\GreenMove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Infiltrator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Infiltrator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +30,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GreenMove.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\GreenMove.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\GreenMove.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\GreenMove.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\GreenMove.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAqwEIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T08:00:30.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Chaser.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Chaser.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Chaser.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Chaser.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Chaser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T07:25:39.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Infiltrator.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAJkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T07:25:35.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "InfiltratorMove.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs",
@@ -30,21 +80,19 @@
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-15T06:35:21.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-15T06:35:21.618Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "InfiltratorHide.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs",
               "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs",
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAqwJQAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-15T06:27:21.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-15T06:27:21.147Z"
             }
           ]
         }

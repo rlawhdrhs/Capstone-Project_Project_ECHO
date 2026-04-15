@@ -34,16 +34,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - NoEffectPlayer
+  - 
   - Water
   - UI
   - Obstacle
   - 
   - 
+  - HiddenPlayer
+  - DetectedPlayer
   - 
-  - 
-  - 
-  - 
+  - OutlineTarget
   - 
   - 
   - 
