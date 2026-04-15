@@ -1064,6 +1064,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChaserVision
   chaserCamera: {fileID: 1186465237}
   viewDistance: 50
+  chaserGlobalVolume: {fileID: 1107263106}
+  normalColor: {r: 0.07734423, g: 0.07734423, b: 0.8037735, a: 1}
+  alertColor: {r: 0.82641506, g: 0.116945416, b: 0.116945416, a: 1}
+  colorChangeSpeed: 5
 --- !u!1 &357753607 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3794954169302928909, guid: fc5a676d2c90b3d4f8a22e369c35950d, type: 3}
@@ -1810,6 +1814,14 @@ PrefabInstance:
     - target: {fileID: 2434627788217387021, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905828551497289878, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
+      propertyPath: detectedColor.b
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905828551497289878, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
+      propertyPath: detectedColor.g
+      value: 0.3137255
       objectReference: {fileID: 0}
     - target: {fileID: 6143452850811186034, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
       propertyPath: m_Layer
