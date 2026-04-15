@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\unityproject\\Capstone2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Chaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Chaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ChaserVision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ChaserVision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Infiltrator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,8 +30,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChaserVision.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ChaserVision.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ChaserVision.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ChaserVision.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ChaserVision.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAqwEwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T09:07:04.553Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -46,26 +59,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Chaser.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Chaser.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Chaser.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Chaser.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Chaser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-15T07:25:39.174Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Infiltrator.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
               "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-15T07:25:35.239Z",
               "EditorCaption": ""
