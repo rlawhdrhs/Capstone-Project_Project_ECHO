@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10651, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d11d338e6a849d84f85a289f91b3fa00, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -286,7 +286,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 1
-  m_Color: {r: 0.1547263, g: 0.15398358, b: 0.3056603, a: 1}
+  m_Color: {r: 0.02915624, g: 0.02915624, b: 0.3962264, a: 1}
   m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
@@ -1207,7 +1207,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: c446831d02a1bc641b7bdecbedce79af, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -1823,12 +1823,12 @@ GameObject:
   - component: {fileID: 1199126880}
   - component: {fileID: 1199126879}
   m_Layer: 0
-  m_Name: fog
+  m_Name: UpperFog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1199126878
 Transform:
   m_ObjectHideFlags: 0
@@ -1838,11 +1838,11 @@ Transform:
   m_GameObject: {fileID: 1199126877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -474.16467, y: 40, z: -779.943}
+  m_LocalPosition: {x: -107.52938, y: 20, z: -103.39977}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1414298242}
+  m_Father: {fileID: 2095103145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1199126879
 ParticleSystemRenderer:
@@ -2231,7 +2231,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2284,7 +2284,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2497,7 +2497,7 @@ ParticleSystem:
     gravitySource: 0
     maxNumParticles: 2000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
-    size3D: 0
+    size3D: 1
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -6857,8 +6857,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 984202060}
   - {fileID: 662320940}
+  - {fileID: 984202060}
   - {fileID: 580576466}
   - {fileID: 1740767424}
   m_Father: {fileID: 0}
@@ -6873,7 +6873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1414298242}
   m_Layer: 0
-  m_Name: Rain
+  m_Name: Rain&Thunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6897,8 +6897,6 @@ Transform:
   - {fileID: 48191328}
   - {fileID: 571344407}
   - {fileID: 1535740956}
-  - {fileID: 1520667179}
-  - {fileID: 1199126878}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1442191230
@@ -11800,11 +11798,11 @@ Transform:
   m_GameObject: {fileID: 1520667176}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -476.8034, y: 1, z: -780.66644}
+  m_LocalPosition: {x: -110.16811, y: 0.99999, z: -104.12322}
   m_LocalScale: {x: 50, y: 0, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1414298242}
+  m_Father: {fileID: 2095103145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535740955
 GameObject:
@@ -12128,6 +12126,39 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 362936488}
   m_SourcePrefab: {fileID: 100100000, guid: 46e2e6997fe29de4e9c73953a10f38e8, type: 3}
+--- !u!1 &2095103144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095103145}
+  m_Layer: 0
+  m_Name: Fog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095103145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095103144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 110.16811, y: 0, z: 104.12322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1520667179}
+  - {fileID: 1199126878}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -12137,3 +12168,4 @@ SceneRoots:
   - {fileID: 732553900}
   - {fileID: 1383432597}
   - {fileID: 1414298242}
+  - {fileID: 2095103145}
