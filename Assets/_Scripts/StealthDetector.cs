@@ -1,48 +1,57 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
-public class StealthDetector : MonoBehaviour
+public class StealthDetector_XRI : MonoBehaviour
 {
     [Header("참조 설정")]
-    public Transform mainCamera; // Main Camera를 여기에 넣으세요.
-    public CharacterController characterController; // XR Origin을 여기에 넣으세요.
+    public Transform mainCamera; // XR Origin의 Main Camera
+    public CharacterController characterController; // XR Origin 본체에 추가하세요
+    public ContinuousMoveProvider moveProvider; // Locomotion/Move 오브젝트 연결
 
     [Header("설정값")]
-    public float stealthThreshold = 1.2f; // 조용히 걷기 기준 높이
-    
-    [Header("상태 (확인용)")]
+    public float stealthThreshold = 1.2f; // 은신 기준 높이
+    public float speedRatio = 0.7f; // 70% 감속
+
+    private float _initialSpeed;
     public bool isStealthMode = false;
+
+    void Start()
+    {
+        if (moveProvider != null)
+        {
+            _initialSpeed = moveProvider.moveSpeed; // XRI 기본 이동 속도 저장
+        }
+    }
 
     void Update()
     {
-        if (mainCamera == null || characterController == null) return;
+        if (mainCamera == null || characterController == null || moveProvider == null) return;
 
-        // 1. 카메라의 '로컬' Y 높이를 읽습니다 (바닥으로부터의 높이)
-        float currentEyeHeight = mainCamera.localPosition.y;
+        float currentHeight = mainCamera.localPosition.y;
 
-        // 2. 높이가 1.2m 이하인지 체크
-        if (currentEyeHeight <= stealthThreshold)
+        if (currentHeight <= stealthThreshold)
         {
-            if (!isStealthMode) // 상태가 바뀔 때 한 번만 출력하고 싶다면
+            if (!isStealthMode)
             {
-                Debug.Log("<color=green>👣 조용히 걷기 중 (은신 활성화)</color>");
                 isStealthMode = true;
+                moveProvider.moveSpeed = _initialSpeed * speedRatio;
+                Debug.Log("<color=green>👣 XRI 은신 모드: 70% 감속</color>");
             }
-            
-            // [추가 서비스!] 물리적 몸(Capsule)의 높이도 눈높이에 맞춰줍니다.
-            characterController.height = currentEyeHeight;
-            characterController.center = new Vector3(0, currentEyeHeight / 2f, 0);
+            // 물리 콜라이더 조절
+            characterController.height = currentHeight;
+            characterController.center = new Vector3(0, currentHeight / 2f, 0);
         }
         else
         {
             if (isStealthMode)
             {
-                Debug.Log("<color=white>🏃 일반 보행 중</color>");
                 isStealthMode = false;
+                moveProvider.moveSpeed = _initialSpeed;
+                Debug.Log("<color=white>🏃 XRI 일반 모드: 속도 복구</color>");
             }
-
-            // 서 있을 때의 기본 높이로 복구 (예: 1.7m)
-            characterController.height = 1.7f;
-            characterController.center = new Vector3(0, 1.7f / 2f, 0);
+            characterController.height = 1.7f; // 기본값
+            characterController.center = new Vector3(0, 0.85f, 0);
         }
     }
 }
