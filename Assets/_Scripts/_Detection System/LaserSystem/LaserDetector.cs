@@ -18,6 +18,8 @@ public class LaserDetector : MonoBehaviour
     public KeyCode toggleKey = KeyCode.R;
 
     private bool isLaserOn = false;
+    private bool wasDetectedLastFrame = false;
+
 
     void Start()
     {
@@ -38,12 +40,14 @@ public class LaserDetector : MonoBehaviour
         if (Input.GetKeyDown(toggleKey))
         {
             isLaserOn = !isLaserOn;
-
+            Debug.Log($"{name} Laser Toggle: {isLaserOn}");
+            
             if (visionCone != null)
             {
                 visionCone.gameObject.SetActive(isLaserOn);
             }
         }
+
         float moveSpeed = 1.0f;
 
         if (Input.GetKey(KeyCode.UpArrow))
@@ -55,6 +59,7 @@ public class LaserDetector : MonoBehaviour
         {
             originHeight -= moveSpeed * Time.deltaTime;
         }
+
         if (!isLaserOn)
         {
             if (player != null)
@@ -62,6 +67,8 @@ public class LaserDetector : MonoBehaviour
                 player.SetDetected(false);
                 player.UpdateGauge(false);
             }
+
+            wasDetectedLastFrame = false;
             return;
         }
 
@@ -70,7 +77,20 @@ public class LaserDetector : MonoBehaviour
             visionCone.SetCone(detectAngle, detectDistance, originHeight, heightRange * 2f);
         }
 
-        bool isDetected = CheckPlayerDetected();
+        Transform detectedPoint;
+        bool isDetected = CheckPlayerDetected(out detectedPoint);
+
+        if (isDetected && !wasDetectedLastFrame)
+        {
+            Debug.Log($"[LaserDetector] 감지 시작! Player: {player.gameObject.name}, Point: {detectedPoint.name}");
+        }
+        
+        if (!isDetected && wasDetectedLastFrame)
+        {
+            Debug.Log("[LaserDetector] 감지 해제!");
+        }
+
+        wasDetectedLastFrame = isDetected;
 
         if (player != null)
         {
@@ -79,15 +99,17 @@ public class LaserDetector : MonoBehaviour
         }
     }
 
-    bool CheckPlayerDetected()
+    bool CheckPlayerDetected(out Transform detectedPoint)
     {
+        detectedPoint = null;
+
         if (player == null || player.isRemoved) return false;
 
         Transform[] detectPoints = player.DetectPoints;
         if (detectPoints == null || detectPoints.Length == 0) return false;
 
         Vector3 origin = transform.position + Vector3.up * originHeight;
-        Vector3 forwardDir = transform.forward;
+        Vector3 forwardDir = Camera.main.transform.forward;
 
         foreach (Transform point in detectPoints)
         {
@@ -114,12 +136,29 @@ public class LaserDetector : MonoBehaviour
             {
                 if (hit.transform == point || hit.transform.IsChildOf(player.transform))
                 {
-                    Debug.Log($"[LaserDetector] 감지됨! Player: {player.gameObject.name}, Point: {point.name}");
+                    detectedPoint = point;
                     return true;
                 }
             }
         }
 
         return false;
+    }
+
+    public void SetLaserActiveByControl(bool value)
+    {
+        isLaserOn = false;
+        wasDetectedLastFrame = false;
+
+        if (visionCone != null)
+            visionCone.gameObject.SetActive(false);
+
+        if (player != null)
+        {
+            player.SetDetected(false);
+            player.UpdateGauge(false);
+        }
+
+        enabled = value;
     }
 }
