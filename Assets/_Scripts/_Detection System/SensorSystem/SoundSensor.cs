@@ -4,6 +4,7 @@ public class SoundSensor : MonoBehaviour
 {
     private SoundListener listener;
 
+    public int sensorId;
     public SimpleMovement movement;
     public Transform cameraPoint;
 

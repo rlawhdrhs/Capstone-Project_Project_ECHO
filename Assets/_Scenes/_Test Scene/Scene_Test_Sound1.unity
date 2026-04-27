@@ -1191,6 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cc3850eca0ec94cb15770b11222cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundSensor
+  sensorId: 3
   movement: {fileID: 900838757}
   cameraPoint: {fileID: 210081579}
   laserDetector: {fileID: 900838759}
@@ -1710,6 +1711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cc3850eca0ec94cb15770b11222cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundSensor
+  sensorId: 2
   movement: {fileID: 1461131770}
   cameraPoint: {fileID: 1433524169}
   laserDetector: {fileID: 1461131772}
@@ -2323,6 +2325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cc3850eca0ec94cb15770b11222cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundSensor
+  sensorId: 1
   movement: {fileID: 1817621239}
   cameraPoint: {fileID: 314083628}
   laserDetector: {fileID: 1817621241}

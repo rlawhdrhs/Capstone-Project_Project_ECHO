@@ -6,17 +6,17 @@ public class SensorControlInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SensorManager.Instance.SwitchToSensorByIndex(0);
+            SensorManager.Instance.SwitchToSensorById(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SensorManager.Instance.SwitchToSensorByIndex(1);
+            SensorManager.Instance.SwitchToSensorById(2);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SensorManager.Instance.SwitchToSensorByIndex(2);
+            SensorManager.Instance.SwitchToSensorById(3);
         }
     }
 }

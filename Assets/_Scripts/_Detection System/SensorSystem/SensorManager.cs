@@ -61,14 +61,17 @@ public class SensorManager : MonoBehaviour
         Debug.Log($"{targetSensor.name} 조종 시작");
     }
 
-    public void SwitchToSensorByIndex(int index)
+    public void SwitchToSensorById(int id)
     {
-        if (index < 0 || index >= sensors.Count)
+        foreach (var sensor in sensors)
         {
-            Debug.Log("해당 번호의 센서 없음");
-            return;
+            if (sensor.sensorId == id)
+            {
+                SwitchControlToSensor(sensor);
+                return;
+            }
         }
 
-        SwitchControlToSensor(sensors[index]);
+        Debug.Log($"sensorId {id} 없음");
     }
 }
