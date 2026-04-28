@@ -5,9 +5,19 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    public List<SoundData> soundEvents = new List<SoundData>();
+    [System.Serializable]
+    public class SoundIntensityEntry
+    {
+        public SoundType soundType;
+        public float intensity = 1f;
+    }
+
+    [Header("Sound Intensity Settings")]
+    [SerializeField] private List<SoundIntensityEntry> intensityTable;
 
     private int nextSoundId = 0;
+    public List<SoundData> soundEvents = new List<SoundData>();
+
 
     void Awake()
     {
@@ -30,11 +40,29 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void RegisterSound(Vector3 position, float intensity, float lifetime, SoundType soundType)
+    public float GetBaseIntensity(SoundType type)
     {
-        SoundData newSound = new SoundData(nextSoundId, position, intensity, lifetime, soundType);
-        nextSoundId++;
+        foreach (var entry in intensityTable)
+        {
+            if (entry.soundType == type)
+                return entry.intensity;
+        }
 
-        soundEvents.Add(newSound);
+        return 0.5f;
+    }
+
+    public void RegisterSound(Vector3 position, float lifetime, SoundType soundType)
+    {
+        float intensity = GetBaseIntensity(soundType);
+
+        SoundData data = new SoundData(
+            nextSoundId++,
+            position,
+            intensity,
+            lifetime,
+            soundType
+        );
+        
+        soundEvents.Add(data);
     }
 }

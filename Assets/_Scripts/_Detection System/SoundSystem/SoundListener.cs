@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundListener : MonoBehaviour
 {
-    public float hearingThreshold = 0.2f;
+    public float hearingThreshold = 0.05f;
     public LayerMask obstacleMask;
     public float occlusionMultiplier = 0.6f;
 

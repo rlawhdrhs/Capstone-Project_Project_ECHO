@@ -1,6 +1,9 @@
 public enum SoundType
 {
     Footstep,
+    WalkFootstep,
+    RunFootstep,
     Collision,
-    Action
+    Action,
+    ObjectThrow
 }
