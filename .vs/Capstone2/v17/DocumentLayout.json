@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\unityproject\\Capstone2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\NextSceneButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ButtonUi\\NextSceneButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -75,19 +79,30 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StartSceneNextButton.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
+              "Title": "NextSceneButton.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\NextSceneButton.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\NextSceneButton.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\NextSceneButton.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\NextSceneButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T05:28:51.055Z",
+              "WhenOpened": "2026-04-30T07:39:56.459Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "StartSceneNextButton.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneNextButton.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T05:28:51.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "StartSceneTransition.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs",
@@ -95,12 +110,11 @@
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAAADoAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T05:08:05.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-30T05:08:05.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "NectSceneButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\NectSceneButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\NectSceneButton.cs",
@@ -111,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "StartSceneTransition.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\StartSceneTransition.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\StartSceneTransition.cs",
@@ -123,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "CubeButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\CubeButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\CubeButton.cs",
@@ -135,7 +149,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "SceneButtonManager.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\SceneButtonManager.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\SceneButtonManager.cs",
@@ -147,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Rain Forest SFX by Kedfa.txt",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\DownAssets\\Rainy VFX\\Rain Forest SFX\\Rain Forest SFX by Kedfa.txt",
               "RelativeDocumentMoniker": "Assets\\DownAssets\\Rainy VFX\\Rain Forest SFX\\Rain Forest SFX by Kedfa.txt",
@@ -159,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "OutlineHullURP.shader",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\Shader\\Shader_ui\\OutlineHullURP.shader",
               "RelativeDocumentMoniker": "Assets\\Shader\\Shader_ui\\OutlineHullURP.shader",
@@ -171,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "OutlineLayerApplier.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\OutlineLayerApplier.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\OutlineLayerApplier.cs",
@@ -183,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "OutlineHullURP.shader",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\Shader\\OutlineHullURP.shader",
               "RelativeDocumentMoniker": "Assets\\Shader\\OutlineHullURP.shader",
@@ -195,7 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ChaserVision.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ChaserVision.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ChaserVision.cs",
@@ -207,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "GreenMove.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\GreenMove.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\GreenMove.cs",
@@ -219,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Infiltrator.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Infiltrator.cs",
@@ -231,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "InfiltratorMove.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\InfiltratorMove.cs",
@@ -243,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "InfiltratorHide.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\InfiltratorHide.cs",

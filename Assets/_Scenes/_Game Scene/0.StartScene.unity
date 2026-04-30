@@ -15836,7 +15836,7 @@ MonoBehaviour:
   doorClip: {fileID: 8300000, guid: 4bc8bf7bbdaa7324ca7bd109bbd241b3, type: 3}
   xrOrigin: {fileID: 732553900}
   moveTarget: {fileID: 1481405417}
-  nextSceneName: 1.Tutorial
+  nextSceneName: 1.ButtonChoose
 --- !u!4 &438366113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4071390273635838, guid: 78f6b68ad931a824c920d7b953612370, type: 3}
@@ -20490,7 +20490,7 @@ Transform:
   m_GameObject: {fileID: 732553895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.16635, y: 2, z: -0.33058}
+  m_LocalPosition: {x: 0, y: 2, z: -0.33058}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
