@@ -22,8 +22,8 @@ public class Infiltrator : MonoBehaviour
 
     void Start()
     {
-        hiddenLayer = LayerMask.NameToLayer("HiddenPlayer");
-        detectedLayer = LayerMask.NameToLayer("DetectedPlayer");
+        hiddenLayer = LayerMask.NameToLayer("Hidden");
+        detectedLayer = LayerMask.NameToLayer("Detected");
 
         rend = GetComponent<Renderer>();
 

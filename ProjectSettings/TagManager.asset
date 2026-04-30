@@ -40,8 +40,8 @@ TagManager:
   - Obstacle
   - 
   - 
-  - HiddenPlayer
-  - DetectedPlayer
+  - Hidden
+  - Detected
   - 
   - Outline
   - 
