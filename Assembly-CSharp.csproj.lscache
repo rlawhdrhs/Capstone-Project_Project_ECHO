@@ -72,6 +72,8 @@ Assets/VRTemplateAssets/Scripts/
  XRKnob.cs
  XRPokeFollowAffordanceFill.cs
 Assets/_Scripts/
+ CoverAssistSystem.cs
+ CoverHighlightSystem.cs
  DataMissionInteractor.cs
  StealthDetector.cs
  StickyBomb.cs
