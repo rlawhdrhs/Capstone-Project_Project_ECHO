@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GreenMove : MonoBehaviour
+public class GreenMove2 : MonoBehaviour
 {
     public float moveSpeed = 5f;
 
@@ -18,45 +18,27 @@ public class GreenMove : MonoBehaviour
     public float lookSpeed = 100f;
 
     private float verticalRotation = 0f;
+
     private float targetYaw;
 
     void Start()
     {
-        Init();
-    }
-
-    void OnEnable()
-    {
-        Init();
-    }
-
-    void Init()
-    {
         rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
 
-        if (rb != null)
-        {
-            rb.interpolation = RigidbodyInterpolation.Interpolate;
-            targetYaw = transform.eulerAngles.y;
-        }
-        else
-        {
-            Debug.LogError(gameObject.name + "에 Rigidbody가 없음");
-        }
+        targetYaw = transform.eulerAngles.y;
     }
 
     void Update()
     {
-        if (rb == null) return;
-
         moveZ = 0f;
 
         if (Input.GetKey(KeyCode.W))
             moveZ = 1f;
-
         if (Input.GetKey(KeyCode.S))
             moveZ = -1f;
 
+        // A, D를 누른 순간에만 30도 회전 목표값 변경
         if (Input.GetKeyDown(KeyCode.A))
             targetYaw -= turnAngle;
 
@@ -67,7 +49,6 @@ public class GreenMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
             lookX = -1f;
-
         if (Input.GetKey(KeyCode.DownArrow))
             lookX = 1f;
 
@@ -87,11 +68,11 @@ public class GreenMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rb == null) return;
-
+        // 회전: 목표 각도로 즉시 맞춤
         Quaternion targetRotation = Quaternion.Euler(0f, targetYaw, 0f);
         rb.MoveRotation(targetRotation);
 
+        // 이동
         Vector3 move = transform.forward * moveZ * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
     }

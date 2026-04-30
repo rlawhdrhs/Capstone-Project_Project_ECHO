@@ -134,6 +134,7 @@ public class MapButton : MonoBehaviour
                 + cameraTarget.up * mapUp;
 
             mapPanel.transform.LookAt(cameraTarget);
+            mapPanel.transform.Rotate(0f, 180f, 0f);
 
             // 지도가 뒤집혀 보이면 이 줄 주석 해제
             // mapPanel.transform.Rotate(0f, 180f, 0f);
