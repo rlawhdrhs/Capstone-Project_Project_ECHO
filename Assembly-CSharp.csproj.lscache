@@ -74,6 +74,7 @@ Assets/VRTemplateAssets/Scripts/
 Assets/_Scripts/
  DataMissionInteractor.cs
  StealthDetector.cs
+ StickyBomb.cs
 Temp/obj/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]
