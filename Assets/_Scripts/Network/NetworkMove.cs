@@ -1,0 +1,76 @@
+using UnityEngine;
+using Fusion;
+
+// 네트워크로 주고받을 입력 데이터 상자
+public struct NetworkInputData : INetworkInput
+{
+    public float moveZ;
+    public float turnY;
+    public NetworkBool jump;
+}
+
+public class NetworkMove : NetworkBehaviour
+{
+    public float moveSpeed = 5f;
+    public float turnSpeed = 220f;
+    public float jumpForce = 5f;
+
+    [Header("Camera Setting")]
+    public Transform cameraPivot;
+    public float lookSpeed = 100f;
+
+    private Rigidbody rb;
+    private float verticalRotation = 0f;
+    private bool isGrounded;
+
+    public override void Spawned()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public override void Render()
+    {
+        if (HasInputAuthority && cameraPivot != null)
+        {
+            float lookX = 0f;
+            if (Input.GetKey(KeyCode.UpArrow)) lookX = -1f;
+            if (Input.GetKey(KeyCode.DownArrow)) lookX = 1f;
+
+            verticalRotation += lookX * lookSpeed * Time.deltaTime;
+            verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f);
+            cameraPivot.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        }
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        if (GetInput(out NetworkInputData data))
+        {
+            // 좌우 회전 (A, D)
+            Quaternion targetRotation = rb.rotation * Quaternion.Euler(0f, data.turnY * turnSpeed * Runner.DeltaTime, 0f);
+            rb.MoveRotation(targetRotation);
+
+            // 앞뒤 이동 (W, S)
+            Vector3 move = transform.forward * data.moveZ * moveSpeed * Runner.DeltaTime;
+            rb.MovePosition(rb.position + move);
+
+            // 점프 (Space)
+            if (data.jump && isGrounded)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isGrounded = false;
+            }
+        }
+    }
+
+    // 바닥 체크 로직 (기존과 동일)
+    private void OnCollisionStay(Collision collision)
+    {
+        isGrounded = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
+}
