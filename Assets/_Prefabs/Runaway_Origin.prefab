@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactors.XRDirectInteractor
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 6
   m_Handedness: 0
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
@@ -225,8 +225,8 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_InputActionReferencePerformed: {fileID: 0}
-    m_InputActionReferenceValue: {fileID: 0}
+    m_InputActionReferencePerformed: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_InputActionReferenceValue: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualPerformed: 0
     m_ManualValue: 0
@@ -255,8 +255,8 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_InputActionReferencePerformed: {fileID: 0}
-    m_InputActionReferenceValue: {fileID: 0}
+    m_InputActionReferencePerformed: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_InputActionReferenceValue: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualPerformed: 0
     m_ManualValue: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactors.XRDirectInteractor
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 6
   m_Handedness: 0
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
@@ -634,8 +634,9 @@ GameObject:
   - component: {fileID: 8353916880151409538}
   - component: {fileID: 9102737067035192405}
   - component: {fileID: 6887309841223112668}
+  - component: {fileID: 4129924989466341174}
   m_Layer: 0
-  m_Name: Player_Origin
+  m_Name: Runaway_Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -727,8 +728,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StealthDetector
   mainCamera: {fileID: 192946383885204910}
   characterController: {fileID: 9102737067035192405}
+  moveProvider: {fileID: 7420346638643939947}
   stealthThreshold: 1.2
+  speedRatio: 0.7
   isStealthMode: 0
+--- !u!114 &4129924989466341174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601686537568609618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbe60de73152894ca4f2ba80eafd2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoverAssistSystem
+  coverDetectRadius: 1
+  desiredCoverOffset: 0.3
+  assistSpeed: 0.2
+  maxAssistDistance: 1.5
+  coverLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  minCoverHeight: 1
+  rayWidthOffset: 0.3
+  moveInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 9bcbc3b1-ab66-4757-9965-feaa208de05c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  exitInputThreshold: 0.6
 --- !u!1 &8805571871746293668
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +779,7 @@ GameObject:
   - component: {fileID: 3610797027723508260}
   - component: {fileID: 5716519762312424084}
   - component: {fileID: 7739690307819769799}
+  - component: {fileID: 8698241302699208588}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -976,6 +1014,25 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &8698241302699208588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8805571871746293668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565c04184ea94174e8d853f38a0be728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoverHighlightSystem
+  headCamera: {fileID: 2855050447507787977}
+  gazeDistance: 5
+  gazeRadius: 0.3
+  coverLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  highlightColor: {r: 0.78616345, g: 0.6160233, b: 0.3288041, a: 1}
 --- !u!1001 &1177151739752338684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1161,6 +1218,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
+--- !u!114 &7420346638643939947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4028013268159778686, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
+  m_PrefabInstance: {fileID: 5844613821059794197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1e8c997df241c1a67045eeac79b41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8889403370758978685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3044921571507714408, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
