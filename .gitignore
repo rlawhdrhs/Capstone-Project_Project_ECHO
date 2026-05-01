@@ -6,6 +6,17 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# 빌드 시 생성되는 임시 DLL 및 로그
+*.dll
+*.log
+*.htm
+*.html
+
+# Visual Studio 캐시 및 솔루션 관련
+.vs/
+*.slnx
+*.sln.피드백
+
 # 메모리 캡처 파일
 *.apk
 *.aab

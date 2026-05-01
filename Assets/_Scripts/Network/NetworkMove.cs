@@ -4,9 +4,18 @@ using Fusion;
 // 네트워크로 주고받을 입력 데이터 상자
 public struct NetworkInputData : INetworkInput
 {
+    public float moveX;
     public float moveZ;
     public float turnY;
     public NetworkBool jump;
+
+    public Vector3 headPosition;
+    public Quaternion headRotation;
+    public Vector3 leftHandPosition;
+    public Quaternion leftHandRotation;
+    public Vector3 rightHandPosition;
+    public Quaternion rightHandRotation;
+    public float crouch;
 }
 
 public class NetworkMove : NetworkBehaviour

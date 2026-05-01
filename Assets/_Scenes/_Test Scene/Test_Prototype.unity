@@ -389,19 +389,19 @@ PrefabInstance:
       objectReference: {fileID: 1284673971}
     - target: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
       propertyPath: 'chaserPrefab.RawGuidValue.Array.data[0]'
-      value: -7732521764292357083
+      value: 8424892035628158525
       objectReference: {fileID: 0}
     - target: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
       propertyPath: 'chaserPrefab.RawGuidValue.Array.data[1]'
-      value: 1666350833504518347
+      value: 131393714862492856
       objectReference: {fileID: 0}
     - target: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
       propertyPath: 'infiltratorPrefab.RawGuidValue.Array.data[0]'
-      value: -6564374894049372270
+      value: 8424892035628158525
       objectReference: {fileID: 0}
     - target: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
       propertyPath: 'infiltratorPrefab.RawGuidValue.Array.data[1]'
-      value: -5279828619929503382
+      value: 131393714862492856
       objectReference: {fileID: 0}
     - target: {fileID: 7508800665587960872, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
       propertyPath: SortKey
