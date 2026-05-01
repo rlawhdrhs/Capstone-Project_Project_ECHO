@@ -43,8 +43,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
-=======
     "com.meta.xr.simulator": {
       "version": "81.0.0",
       "depth": 0,
@@ -52,7 +50,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
->>>>>>> af8ba183c012b8175f1da89488efa17085688e58
     "com.unity.burst": {
       "version": "1.8.28",
       "depth": 2,
