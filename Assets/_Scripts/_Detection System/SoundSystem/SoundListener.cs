@@ -1,11 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundListener : MonoBehaviour
 {
-    public float hearingThreshold = 0.2f;
+    public float hearingThreshold = 0.05f;
     public LayerMask obstacleMask;
     public float occlusionMultiplier = 0.6f;
+
+    public Action<SoundData, float> OnSoundDetected;
 
     private HashSet<int> processedSoundIds = new HashSet<int>();
 
@@ -20,29 +23,21 @@ public class SoundListener : MonoBehaviour
 
             float distance = Vector3.Distance(transform.position, sound.position);
 
-            // 거리 감쇠
             float distanceFactor = 1f / (1f + distance * 0.5f);
 
-            // 차폐 감쇠
             float occlusionFactor = 1f;
             if (Physics.Linecast(sound.position, transform.position, obstacleMask))
             {
                 occlusionFactor = occlusionMultiplier;
             }
 
-            // 최종 들리는 강도
             float perceivedIntensity = sound.intensity * distanceFactor * occlusionFactor;
 
             if (perceivedIntensity >= hearingThreshold)
             {
-                if (sound.soundType == SoundType.Footstep)
-                {
-                    Debug.Log(gameObject.name + " 발소리 감지됨: " + sound.position + " | Sound ID: " + sound.id);
-                }
-                else if (sound.soundType == SoundType.Collision)
-                {
-                    Debug.Log("충돌음 감지");
-                }
+                Debug.Log($"{gameObject.name} 소리 감지: {sound.soundType} / 위치: {sound.position} / 강도: {perceivedIntensity}");
+
+                OnSoundDetected?.Invoke(sound, perceivedIntensity);
 
                 processedSoundIds.Add(sound.id);
             }

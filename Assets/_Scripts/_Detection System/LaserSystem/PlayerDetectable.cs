@@ -23,8 +23,37 @@ public class PlayerDetectable : MonoBehaviour
     public float removableDuration = 0.5f;
     private float removableTimer = 0f;
 
-    // 제거 가능 상태 재진입 방지용
     private bool canEnterRemovable = true;
+
+    [Header("Detect Points")]
+    [SerializeField] private Transform detectPointsRoot;
+
+    private Transform[] detectPoints;
+    public Transform[] DetectPoints => detectPoints;
+
+    void Awake()
+    {
+        if (detectPointsRoot == null)
+        {
+            Transform found = transform.Find("DetectPoints");
+            if (found != null)
+                detectPointsRoot = found;
+        }
+
+        if (detectPointsRoot != null)
+        {
+            detectPoints = new Transform[detectPointsRoot.childCount];
+            for (int i = 0; i < detectPointsRoot.childCount; i++)
+            {
+                detectPoints[i] = detectPointsRoot.GetChild(i);
+            }
+        }
+        else
+        {
+            detectPoints = new Transform[0];
+            Debug.LogWarning($"{gameObject.name}: DetectPoints 오브젝트를 찾지 못함");
+        }
+    }
 
     void Start()
     {
@@ -42,20 +71,15 @@ public class PlayerDetectable : MonoBehaviour
         if (instanceMaterial == null || isRemoved) return;
 
         if (isRemovable)
-        {
             instanceMaterial.color = removableColor;
-        }
         else
-        {
             instanceMaterial.color = detected ? detectedColor : normalColor;
-        }
     }
 
     public void UpdateGauge(bool detected)
     {
         if (isRemoved) return;
 
-        // 제거 가능 상태일 때는 타이머만 동작
         if (isRemovable)
         {
             if (!detected)
@@ -63,37 +87,23 @@ public class PlayerDetectable : MonoBehaviour
                 removableTimer -= Time.deltaTime;
 
                 if (removableTimer <= 0f)
-                {
                     ExitRemovableState();
-                }
             }
-
             return;
         }
 
-        // 레이저에서 완전히 벗어나야 다시 제거 가능 상태 진입 허용
         if (!detected)
-        {
             canEnterRemovable = true;
-        }
 
-        // 일반 상태에서 게이지 증가/감소
         if (detected)
-        {
             detectionGauge += increaseSpeed * Time.deltaTime;
-        }
         else
-        {
             detectionGauge -= decreaseSpeed * Time.deltaTime;
-        }
 
         detectionGauge = Mathf.Clamp(detectionGauge, 0f, maxGauge);
 
-        // 제거 가능 상태 재진입 조건
         if (detectionGauge >= maxGauge && canEnterRemovable)
-        {
             EnterRemovableState();
-        }
     }
 
     void EnterRemovableState()
@@ -102,32 +112,27 @@ public class PlayerDetectable : MonoBehaviour
         canEnterRemovable = false;
         removableTimer = removableDuration;
 
-        Debug.Log(gameObject.name + " 제거 가능 상태!");
+        Debug.Log($"{gameObject.name} 제거 가능 상태!");
 
         if (instanceMaterial != null)
-        {
             instanceMaterial.color = removableColor;
-        }
     }
 
     void ExitRemovableState()
     {
         isRemovable = false;
-
-        Debug.Log(gameObject.name + " 제거 실패 → 다시 감소 시작");
-
-        // 바로 다시 꽉 차지 않게 약간 깎아줌
+        Debug.Log($"{gameObject.name} 제거 실패 → 다시 감소 시작");
         detectionGauge = maxGauge * 0.7f;
     }
 
     public void TryRemove()
     {
-        Debug.Log("TryRemove 호출됨 | isRemovable: " + isRemovable + " | isRemoved: " + isRemoved);
+        Debug.Log($"TryRemove 호출됨 | isRemovable: {isRemovable} | isRemoved: {isRemoved}");
 
         if (!isRemovable || isRemoved) return;
 
         isRemoved = true;
-        Debug.Log(gameObject.name + " 제거됨!");
+        Debug.Log($"{gameObject.name} 제거됨!");
         gameObject.SetActive(false);
     }
 }
