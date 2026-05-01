@@ -3,24 +3,20 @@ using UnityEngine;
 
 public class WakeUpTransition : MonoBehaviour
 {
-   // public WakeUpTransition wakeUpTransition;
-
     public RectTransform topLid;
     public RectTransform bottomLid;
 
-    public float holdTime = 0.4f;
-    public float openTime = 1.5f;
+    public float holdTime = 0.6f;
+    public float openTime = 2.0f;
     public float openOffset = 1000f;
+    public float closedY = 300f;
 
     private bool isPlaying = false;
 
-    void Start()
-    {
-        CloseEyes();
-    }
-
     public void PlayWakeUp(System.Action middleAction)
     {
+        Debug.Log("WakeUpTransition ½ÇÇàµÊ");
+
         if (!isPlaying)
         {
             StartCoroutine(WakeUpRoutine(middleAction));
@@ -31,42 +27,45 @@ public class WakeUpTransition : MonoBehaviour
     {
         isPlaying = true;
 
-        CloseEyes();
+        topLid.gameObject.SetActive(true);
+        bottomLid.gameObject.SetActive(true);
 
-        middleAction?.Invoke();
+        topLid.anchoredPosition = new Vector2(0f, closedY);
+        bottomLid.anchoredPosition = new Vector2(0f, -closedY);
+
+        Debug.Log("´« °¨±è À§Ä¡ ¼¼ÆÃ ¿Ï·á");
 
         yield return new WaitForSeconds(holdTime);
 
-        yield return OpenEyes();
+        middleAction?.Invoke();
 
-        isPlaying = false;
-    }
-
-    void CloseEyes()
-    {
-        topLid.anchoredPosition = Vector2.zero;
-        bottomLid.anchoredPosition = Vector2.zero;
-    }
-
-    IEnumerator OpenEyes()
-    {
         float t = 0f;
+
+        Vector2 topStart = new Vector2(0f, closedY);
+        Vector2 bottomStart = new Vector2(0f, -closedY);
+
+        Vector2 topEnd = new Vector2(0f, closedY + openOffset);
+        Vector2 bottomEnd = new Vector2(0f, -closedY - openOffset);
 
         while (t < openTime)
         {
-            float progress = t / openTime;
-            progress = Mathf.SmoothStep(0f, 1f, progress);
+            float progress = Mathf.SmoothStep(0f, 1f, t / openTime);
 
-            float offset = Mathf.Lerp(0f, openOffset, progress);
-
-            topLid.anchoredPosition = new Vector2(0f, offset);
-            bottomLid.anchoredPosition = new Vector2(0f, -offset);
+            topLid.anchoredPosition = Vector2.Lerp(topStart, topEnd, progress);
+            bottomLid.anchoredPosition = Vector2.Lerp(bottomStart, bottomEnd, progress);
 
             t += Time.deltaTime;
             yield return null;
         }
 
-        topLid.anchoredPosition = new Vector2(0f, openOffset);
-        bottomLid.anchoredPosition = new Vector2(0f, -openOffset);
+        topLid.anchoredPosition = topEnd;
+        bottomLid.anchoredPosition = bottomEnd;
+
+        Debug.Log("´« ¶ß±â ¿Ï·á");
+
+        topLid.gameObject.SetActive(false);
+        bottomLid.gameObject.SetActive(false);
+
+        isPlaying = false;
     }
 }
