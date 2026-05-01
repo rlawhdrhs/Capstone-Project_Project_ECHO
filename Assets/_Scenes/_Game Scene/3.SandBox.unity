@@ -1189,6 +1189,7 @@ GameObject:
   - component: {fileID: 270191505}
   - component: {fileID: 270191504}
   - component: {fileID: 270191503}
+  - component: {fileID: 270191507}
   - component: {fileID: 270191502}
   - component: {fileID: 270191501}
   m_Layer: 0
@@ -1358,6 +1359,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270191499}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &270191507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270191499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2b083e8e676374fbb11c4e7c8fd74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleLookTurn
+  turnAngle: 30
+  cameraPivot: {fileID: 1186465234}
+  lookSpeed: 100
 --- !u!4 &280783641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2434627788217387021, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
@@ -2166,6 +2182,7 @@ GameObject:
   - component: {fileID: 411117494}
   - component: {fileID: 411117493}
   - component: {fileID: 411117492}
+  - component: {fileID: 411117496}
   - component: {fileID: 411117491}
   - component: {fileID: 411117490}
   m_Layer: 0
@@ -2335,6 +2352,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411117488}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &411117496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411117488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2b083e8e676374fbb11c4e7c8fd74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleLookTurn
+  turnAngle: 30
+  cameraPivot: {fileID: 1186465234}
+  lookSpeed: 100
 --- !u!1 &446439092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,6 +2665,7 @@ GameObject:
   - component: {fileID: 529926204}
   - component: {fileID: 529926203}
   - component: {fileID: 529926202}
+  - component: {fileID: 529926206}
   - component: {fileID: 529926201}
   - component: {fileID: 529926200}
   m_Layer: 0
@@ -2802,6 +2835,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529926198}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &529926206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529926198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2b083e8e676374fbb11c4e7c8fd74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleLookTurn
+  turnAngle: 30
+  cameraPivot: {fileID: 1186465234}
+  lookSpeed: 100
 --- !u!1 &536639634
 GameObject:
   m_ObjectHideFlags: 0
@@ -5516,6 +5564,7 @@ GameObject:
   - component: {fileID: 881297113}
   - component: {fileID: 881297112}
   - component: {fileID: 881297111}
+  - component: {fileID: 881297115}
   - component: {fileID: 881297110}
   - component: {fileID: 881297109}
   m_Layer: 0
@@ -5685,6 +5734,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881297107}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &881297115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881297107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2b083e8e676374fbb11c4e7c8fd74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleLookTurn
+  turnAngle: 30
+  cameraPivot: {fileID: 1186465234}
+  lookSpeed: 100
 --- !u!1 &887320832
 GameObject:
   m_ObjectHideFlags: 0
@@ -13365,6 +13429,7 @@ GameObject:
   - component: {fileID: 2137588708}
   - component: {fileID: 2137588707}
   - component: {fileID: 2137588706}
+  - component: {fileID: 2137588710}
   - component: {fileID: 2137588705}
   - component: {fileID: 2137588704}
   m_Layer: 0
@@ -13534,6 +13599,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137588702}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2137588710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137588702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2b083e8e676374fbb11c4e7c8fd74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleLookTurn
+  turnAngle: 30
+  cameraPivot: {fileID: 1186465234}
+  lookSpeed: 100
 --- !u!1001 &7026013177176401737
 PrefabInstance:
   m_ObjectHideFlags: 0

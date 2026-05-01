@@ -146,15 +146,23 @@ public class RobotSelectButton : MonoBehaviour
         //playerBody.localPosition = Vector3.zero;
         //playerBody.localRotation = Quaternion.identity;
 
-        Transform chaserBody = targetGreenMove.transform;
 
-        playerBody.SetParent(chaserBody, false);
-        playerBody.localPosition = targetViewPoint.localPosition;
-        playerBody.localRotation = targetViewPoint.localRotation;
+        //veiwpoint자리차지코드
+        //Transform chaserBody = targetGreenMove.transform;
 
-        Vector3 bodyEuler = chaserBody.eulerAngles;
-        bodyEuler.y = targetViewPoint.eulerAngles.y;
-        chaserBody.eulerAngles = bodyEuler;
+        //playerBody.SetParent(chaserBody, false);
+        //playerBody.localPosition = targetViewPoint.localPosition;
+        //playerBody.localRotation = targetViewPoint.localRotation;
+
+        //Vector3 bodyEuler = chaserBody.eulerAngles;
+        //bodyEuler.y = targetViewPoint.eulerAngles.y;
+        //chaserBody.eulerAngles = bodyEuler;
+
+        playerBody.SetParent(targetViewPoint, false);
+
+        playerBody.localPosition = Vector3.zero;
+        playerBody.localRotation = Quaternion.identity;
+
 
         Debug.Log("현재 움직이는 Chaser: " + targetGreenMove.gameObject.name);
     }
