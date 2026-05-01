@@ -61,7 +61,7 @@ public class VRRigSynchronizer : NetworkBehaviour
                 transform.rotation = Quaternion.LookRotation(headForward);
             }
 
-            // 3. IK 타겟 동기화 (기존 코드)
+            // 3. IK 타겟 동기화
             if (avatarLeftHand != null) avatarLeftHand.position = data.leftHandPosition;
             if (avatarRightHand != null) avatarRightHand.position = data.rightHandPosition;
         }
