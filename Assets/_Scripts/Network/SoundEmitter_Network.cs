@@ -50,7 +50,10 @@ public class SoundEmitter_Network : NetworkBehaviour
     {
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.RegisterSound(pos, intensity, lifetime, type);
+            //SoundManager.Instance.RegisterSound(pos, intensity, lifetime, type);
+            //SoundManager.Instance.RegisterSound(pos, intensity, lifetime);
+            SoundManager.Instance.RegisterSound(pos, intensity, type);
         }
     }
+
 }
