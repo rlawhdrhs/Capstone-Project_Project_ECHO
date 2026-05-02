@@ -854,7 +854,15 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+    'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+    'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
+    'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'Crouching Idle'\n\tFrom
+    animation clip 'Crouched Walking'\n\tFrom animation clip 'Crouched Walking'\n\tFrom
+    animation clip 'Crouched Walking'\n\tFrom animation clip 'Crouched Walking'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -2199,10 +2207,14 @@ MonoBehaviour:
   avatarHead: {fileID: 5691629291865991006}
   avatarLeftHand: {fileID: 5005428090650409845}
   avatarRightHand: {fileID: 6749245529286255077}
+  heightOffset: 0.9
+  floorY: 0
   animator: {fileID: 7702765635475142460}
-  headMesh: {fileID: 1668809249797193881}
   _netMoveX: 0
   _netMoveZ: 0
+  _netCrouch: 0
+  _PrevLeftClick:
+    _value: 0
 --- !u!1 &7622729119995212620
 GameObject:
   m_ObjectHideFlags: 0

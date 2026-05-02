@@ -9,10 +9,19 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
     public static NetworkManager Instance;
 
+    [Header("Scene Settings")]
+    public int mainSceneBuildIndex = 1;
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public GameObject lobbyUI;
@@ -63,7 +72,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             GameMode = mode,
             SessionName = "ProjectECHO_Room",
             SceneManager = sceneManager,
-            Scene = SceneRef.FromIndex(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex)
+            Scene = SceneRef.FromIndex(mainSceneBuildIndex)
         };
 
         var result = await _networkRunner.StartGame(startGameArgs);
@@ -107,7 +116,8 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         // 좌/우 회전 (A/D)
         if (Input.GetKey(KeyCode.A)) data.turnY = -1f;
         if (Input.GetKey(KeyCode.D)) data.turnY = 1f;
-
+        // 마우스 좌클릭
+        data.leftClick = Input.GetMouseButton(0);
         // 점프 (Space)
         data.jump = Input.GetKey(KeyCode.Space);
 
@@ -121,6 +131,9 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
             data.rightHandPosition = LocalVRRig.Instance.hardwareRightHand.position;
             data.rightHandRotation = LocalVRRig.Instance.hardwareRightHand.rotation;
+
+            data.rootPosition = LocalVRRig.Instance.transform.position;
+            data.rootRotation = LocalVRRig.Instance.transform.rotation;
 
             // 애니메이션용 데이터 (기존 로직 활용)
             data.moveX = Input.GetAxis("Horizontal");

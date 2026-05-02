@@ -32,6 +32,9 @@ public class LocalVRRig : MonoBehaviour
     private float currentMoveX;
     private float currentMoveZ;
 
+    //네트워크 진입 여부
+    public bool isOnlineMode = false;
+
     void Start()
     {
         if (avatarRoot != null) previousPosition = avatarRoot.position;
@@ -41,8 +44,44 @@ public class LocalVRRig : MonoBehaviour
     {
         if (hardwareHead == null || avatarRoot == null || avatarHead == null) return;
         if (hardwareHead.position == Vector3.zero) return;
+
+        if (!isOnlineMode)
+        {
+            if (avatarRoot == null || avatarHead == null) return;
+            SynchronizeTransforms();
+        }
         // 애니메이션 파라미터 업데이트
         UpdateAnimation();
+    }
+
+    void SynchronizeTransforms()
+    {
+        // === 1. 몸통 위치 및 회전 ===
+        Vector3 finalBodyPosition = hardwareHead.position;
+
+        finalBodyPosition.y = transform.position.y;
+        avatarRoot.position = finalBodyPosition + centerPositionOffset;
+
+        // === 2. 몸통 회전 ===
+        Vector3 headForward = hardwareHead.forward;
+        headForward.y = 0f; 
+
+        if (headForward != Vector3.zero)
+        {
+            avatarRoot.rotation = Quaternion.LookRotation(headForward);
+        }
+
+        // === 3. 손 위치 동기화  ===
+        if (avatarLeftHand != null && hardwareLeftHand != null)
+        {
+            avatarLeftHand.position = hardwareLeftHand.position;
+            avatarLeftHand.rotation = hardwareLeftHand.rotation;
+        }
+        if (avatarRightHand != null && hardwareRightHand != null)
+        {
+            avatarRightHand.position = hardwareRightHand.position;
+            avatarRightHand.rotation = hardwareRightHand.rotation;
+        }
     }
 
     void UpdateAnimation()

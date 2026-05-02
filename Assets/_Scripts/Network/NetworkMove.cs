@@ -8,7 +8,9 @@ public struct NetworkInputData : INetworkInput
     public float moveZ;
     public float turnY;
     public NetworkBool jump;
-
+    public bool leftClick;
+    public Vector3 rootPosition;
+    public Quaternion rootRotation;
     public Vector3 headPosition;
     public Quaternion headRotation;
     public Vector3 leftHandPosition;
