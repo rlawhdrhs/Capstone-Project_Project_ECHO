@@ -106,7 +106,7 @@ QualitySettings:
     terrainPixelError: 1
     terrainDetailDensityScale: 1
     terrainBasemapDistance: 1000
-    terrainDetailDistance: 80
+    terrainDetailDistance: 86
     terrainTreeDistance: 5000
     terrainBillboardStart: 50
     terrainFadeLength: 5

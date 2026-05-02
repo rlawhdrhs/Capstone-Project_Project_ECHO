@@ -44,4 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687c0a25a1f2a8d4b948135cdaa84e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  intensityTable:
+  - soundType: 1
+    intensity: 1
+  - soundType: 2
+    intensity: 0.8
+  - soundType: 3
+    intensity: 1.2
+  - soundType: 4
+    intensity: 1
+  - soundType: 5
+    intensity: 1.5
   soundEvents: []
