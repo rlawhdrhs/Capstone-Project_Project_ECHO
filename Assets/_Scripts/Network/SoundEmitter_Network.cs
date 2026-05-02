@@ -52,4 +52,5 @@ public class SoundEmitter_Network : NetworkBehaviour
             SoundManager.Instance.RegisterSound(pos, lifetime, soundType);
         }
     }
+
 }
