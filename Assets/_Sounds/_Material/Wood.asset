@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77105025efd2ed947be2b97983c2b7c2, type: 3}
+  m_Name: Wood
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticMaterialProperties
+  data:
+    absorption:
+      selection: 2147483647
+      points:
+      - frequency: 125
+        data: 0.42
+      - frequency: 250
+        data: 0.21
+      - frequency: 500
+        data: 0.1
+      - frequency: 1000
+        data: 0.08
+      - frequency: 2000
+        data: 0.06
+      - frequency: 4000
+        data: 0.06
+    transmission:
+      selection: 4
+      points:
+      - frequency: 30.209934
+        data: 0
+      - frequency: 305.8183
+        data: 0
+      - frequency: 589.59326
+        data: 0
+      - frequency: 1447.685
+        data: 0
+      - frequency: 4081.4521
+        data: 0
+      - frequency: 8728.058
+        data: 0
+    scattering:
+      selection: 2147483647
+      points:
+      - frequency: 125
+        data: 0.1
+      - frequency: 250
+        data: 0.1
+      - frequency: 500
+        data: 0.1
+      - frequency: 1000
+        data: 0.1
+      - frequency: 2000
+        data: 0.1
+      - frequency: 4000
+        data: 0.15
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  preset: 0

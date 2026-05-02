@@ -15,8 +15,12 @@ MonoBehaviour:
   Keys: 0700000001000000
   Values:
   - featureSets:
-    - com.unity.openxr.featureset.android
     - com.meta.openxr.featureset.metaxr
+    - com.unity.openxr.featureset.android
+<<<<<<< HEAD
+=======
+    - com.meta.openxr.featureset.metaxr
+>>>>>>> af8ba183c012b8175f1da89488efa17085688e58
   - featureSets:
     - com.meta.openxr.featureset.metaxr
   m_vulkanAdditionalGraphicsQueue: 0
