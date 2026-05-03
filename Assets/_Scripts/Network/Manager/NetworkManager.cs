@@ -116,10 +116,14 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         // 좌/우 회전 (A/D)
         if (Input.GetKey(KeyCode.A)) data.turnY = -1f;
         if (Input.GetKey(KeyCode.D)) data.turnY = 1f;
+
+        float rightTrigger = Input.GetAxis("XRI_Right_Trigger");
+        data.rightTrigger = Input.GetKey(KeyCode.R) || rightTrigger > 0.1f;
+
         // 마우스 좌클릭
         data.leftClick = Input.GetMouseButton(0);
         // 점프 (Space)
-        data.jump = Input.GetKey(KeyCode.Space);
+        data.jump = Input.GetKey(KeyCode.Space) || Input.GetButton("XRI_Left_GripButton");
 
         if (LocalVRRig.Instance != null)
         {

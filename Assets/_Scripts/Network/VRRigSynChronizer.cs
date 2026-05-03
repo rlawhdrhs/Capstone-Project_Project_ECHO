@@ -16,6 +16,15 @@ public class VRRigSynchronizer : NetworkBehaviour
     [Networked] public float netMoveZ { get; set; }
     [Networked] public float netCrouch { get; set; }
     [Networked] public NetworkBool PrevLeftClick { get; set; }
+    [Networked] public NetworkBool IsFrozen { get; set; }
+    public bool localFreeze = false;
+
+    [Header("센서 로봇 여부")]
+    public bool isSensorRobot = false;
+    [Header("중력 관련")]
+    [Networked] private float _velocityY { get; set; }
+    public float gravity = -9.81f;
+    public float jumpForce = 5f;
 
     public override void Spawned()
     {
@@ -24,7 +33,7 @@ public class VRRigSynchronizer : NetworkBehaviour
         {
             _cc = GetComponent<CharacterController>();
 
-            if (LocalVRRig.Instance != null)
+            if (LocalVRRig.Instance != null && !isSensorRobot)
             {
                 LocalVRRig.Instance.isOnlineMode = true;
 
@@ -51,52 +60,71 @@ public class VRRigSynchronizer : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        if (IsFrozen || localFreeze) return;
+
         if (GetInput(out NetworkInputData data))
         {
-            Vector3 bodyPosition = data.headPosition;
-            bodyPosition.y -= heightOffset;
-            transform.position = bodyPosition;
+            // --- A. 물리 이동 연산 ---
+            if (_cc != null)
+            {
+                Vector3 currentPos = transform.position;
+                Vector3 targetPos = data.headPosition;
+                Vector3 moveDelta = new Vector3(targetPos.x - currentPos.x, 0, targetPos.z - currentPos.z);
 
-            // 1. 머리 및 양손 위치 동기화
+                if (_cc.isGrounded)
+                {
+                    _velocityY = -2f;
+                    if (data.jump) _velocityY = jumpForce;
+                }
+
+                _velocityY += gravity * Runner.DeltaTime;
+                moveDelta.y = _velocityY * Runner.DeltaTime;
+
+                _cc.Move(moveDelta);
+            }
+            else
+            {
+                Vector3 fallbackPos = data.headPosition;
+                fallbackPos.y = transform.position.y;
+                transform.position = fallbackPos;
+            }
+
+            // --- B. IK 동기화 (머리 및 양손) ---
             if (avatarHead != null)
             {
                 avatarHead.position = data.headPosition;
                 avatarHead.rotation = data.headRotation;
             }
-
-            // 2. 몸통 회전 동기화
-            Vector3 headForward = data.headRotation * Vector3.forward;
-            headForward.y = 0f;
-
-            if (headForward.sqrMagnitude > 0.01f)
-            {
-                transform.rotation = Quaternion.LookRotation(headForward);
-            }
-
-            // 3. IK 타겟 동기화
             if (avatarLeftHand != null) avatarLeftHand.position = data.leftHandPosition;
             if (avatarRightHand != null) avatarRightHand.position = data.rightHandPosition;
 
-            bool isClickedThisFrame = data.leftClick && !PrevLeftClick;
-            PrevLeftClick = data.leftClick; // 상태 업데이트
+            // --- C. 몸통 회전 (센서 로봇이 아닐 때만 몸통이 내 시야를 따라 돎) ---
+            if (!isSensorRobot)
+            {
+                Vector3 headForward = data.headRotation * Vector3.forward;
+                headForward.y = 0f;
+                if (headForward.sqrMagnitude > 0.01f)
+                {
+                    transform.rotation = Quaternion.LookRotation(headForward);
+                }
+            }
 
-            //버튼 클릭 이벤트
+            // --- D. 버튼 클릭 이벤트 ---
+            bool isClickedThisFrame = data.leftClick && !PrevLeftClick;
+            PrevLeftClick = data.leftClick;
+
             if (isClickedThisFrame)
             {
                 Ray ray = new Ray(data.headPosition, data.headRotation * Vector3.forward);
-
                 if (Physics.Raycast(ray, out RaycastHit hit, 5f))
                 {
                     VRButton targetButton = hit.collider.GetComponent<VRButton>();
-
-                    if (targetButton != null)
-                    {
-                        targetButton.PressButton();
-                    }
+                    if (targetButton != null) targetButton.PressButton();
                 }
             }
         }
-        // 내 캐릭터일 때
+
+        // --- E. 애니메이션 동기화 ---
         if (HasInputAuthority && animator != null)
         {
             netMoveX = animator.GetFloat("MoveX");
@@ -114,5 +142,30 @@ public class VRRigSynchronizer : NetworkBehaviour
             animator.SetFloat("MoveZ", netMoveZ);
             animator.SetFloat("Crouch", netCrouch);
         }
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_SetFrozenState(NetworkBool freezeState)
+    {
+        IsFrozen = freezeState;
+
+        // 얼어붙을 때 물리 연산(CC)도 끄기
+        CharacterController cc = GetComponent<CharacterController>();
+        if (cc != null) cc.enabled = !freezeState;
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_SetFrozenState(NetworkBool freezeState, Vector3 freezePos)
+    {
+        IsFrozen = freezeState;
+
+        if (freezeState)
+        {
+            // 🌟 픽스 1: 서버 지연 시간 동안 아바타가 로봇 위치로 따라온 것을 강제로 원래 자리에 되돌려 박제함
+            transform.position = freezePos;
+        }
+
+        CharacterController cc = GetComponent<CharacterController>();
+        if (cc != null) cc.enabled = !freezeState;
     }
 }
