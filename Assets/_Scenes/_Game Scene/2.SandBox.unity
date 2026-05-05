@@ -920,8 +920,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 180173196}
+  - component: {fileID: 180173198}
+  - component: {fileID: 180173197}
   m_Layer: 0
-  m_Name: SandBox
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,7 +943,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1565442425}
-  - {fileID: 357753610}
   - {fileID: 280783641}
   - {fileID: 308676632}
   - {fileID: 529926199}
@@ -951,6 +952,39 @@ Transform:
   - {fileID: 2137588703}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180173197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180173195}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 2803843830
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects:
+  - {fileID: 922183044}
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &180173198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180173195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11fab170818b4e4da890fe9b9bfdf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraSelector
+  intruderCamera: {fileID: 922183043}
+  chaserCamera: {fileID: 1186465233}
 --- !u!1 &220959129
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,6 +6003,22 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1979119194}
   m_SourcePrefab: {fileID: 100100000, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
+--- !u!1 &922183043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6143452850811186034, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
+  m_PrefabInstance: {fileID: 922183042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &922183044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3792253171789172590, guid: 92d7b13bd0a7e6a46a39290ad847bab6, type: 3}
+  m_PrefabInstance: {fileID: 922183042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979119170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
 --- !u!1 &998896248
 GameObject:
   m_ObjectHideFlags: 0
@@ -6892,7 +6942,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 180173196}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1985006640211199331, guid: fc5a676d2c90b3d4f8a22e369c35950d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -6916,7 +6966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4603156116648498359, guid: fc5a676d2c90b3d4f8a22e369c35950d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.9506001
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4603156116648498359, guid: fc5a676d2c90b3d4f8a22e369c35950d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6924,7 +6974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4603156116648498359, guid: fc5a676d2c90b3d4f8a22e369c35950d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.2345963
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4603156116648498359, guid: fc5a676d2c90b3d4f8a22e369c35950d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13716,6 +13766,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1837077140}
   - {fileID: 98736825}
+  - {fileID: 1133199710}
   - {fileID: 180173196}
   - {fileID: 1107263107}
   - {fileID: 7433722}
