@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\unityproject\\Capstone2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\BoxClickSubtitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ButtonUi\\BoxClickSubtitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -43,10 +47,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\ButtonHoverScale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\ButtonUi\\ButtonHoverScale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -82,11 +82,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RobotSelectButton.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T15:40:03.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MapButton.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T14:12:07.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CameraSelector.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T12:50:52.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WakeUpTransition.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAFAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T11:43:11.505Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TooltipTrigger.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:31:08.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PressButton.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T17:31:27.388Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "BoxClickSubtitle.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\BoxClickSubtitle.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\BoxClickSubtitle.cs",
@@ -99,68 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PressButton.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T17:31:27.388Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RobotSelectButton.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABgAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T15:40:03.147Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MapButton.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T14:12:07.79Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CameraSelector.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T12:50:52.867Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WakeUpTransition.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\EffectUI\\WakeUpTransition.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAFAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T11:43:11.505Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ChooseSceneAndCharacter.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneAndCharacter.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneAndCharacter.cs",
@@ -172,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "StartSceneButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneButton.cs",
@@ -184,7 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ChooseSceneButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneButton.cs",
@@ -196,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "StartSceneTransition.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs",
@@ -217,18 +229,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-05T11:52:04.173Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "TooltipTrigger.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\ButtonUi\\TooltipTrigger.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:31:08.509Z"
             },
             {
               "$type": "Document",

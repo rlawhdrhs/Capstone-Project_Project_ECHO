@@ -1,4 +1,5 @@
 using UnityEngine;
+//using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour
 {
@@ -21,4 +22,5 @@ public class TooltipTrigger : MonoBehaviour
         if (tooltip != null)
             tooltip.SetActive(false);
     }
+
 }
