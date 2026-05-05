@@ -5,20 +5,18 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class MapButton : MonoBehaviour
 {
-    [Header("Map UI")]
-    public GameObject mapPanel;
-
-    [Header("Camera Target")]
+    [Header("Player / Camera Target")]
     public Transform cameraTarget;
 
-    [Header("Cube Position")]
+    [Header("Teleport Target")]
+    public Transform CCTVRoomViewPoint;
+    public Transform playerRoot;
+    // 보통 XR Origin 또는 Player 루트 넣기
+
+    [Header("Button Follow Position")]
     public float cubeForward = 1.2f;
     public float cubeRight = 0.7f;
     public float cubeUp = -0.1f;
-
-    [Header("Map Position")]
-    public float mapForward = 1.5f;
-    public float mapUp = 0f;
 
     [Header("Button Effect")]
     public float pressedScale = 0.8f;
@@ -28,8 +26,16 @@ public class MapButton : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip clickSound;
 
+
+    [Header("Global Volume")]
+    public GameObject globalVolume;
+    public bool turnOffGlobalVolumeOnClick = true;
+
+
     private Vector3 originalScale;
     private bool isAnimating = false;
+
+
 
     void Start()
     {
@@ -40,41 +46,31 @@ public class MapButton : MonoBehaviour
         if (interactable != null)
         {
             interactable.selectEntered.AddListener(OnXRPressed);
-            Debug.Log("XR 이벤트 연결됨: " + gameObject.name);
         }
-        else
-        {
-            Debug.LogWarning("XR Simple Interactable 없음: " + gameObject.name);
-        }
-
-        if (mapPanel == null)
-            Debug.LogError("Map Panel이 Inspector에 연결되지 않았음!");
 
         if (cameraTarget == null)
-            Debug.LogError("Camera Target이 Inspector에 연결되지 않았음!");
+            Debug.LogError("Camera Target이 연결되지 않았습니다.");
+
+        if (CCTVRoomViewPoint == null)
+            Debug.LogError("CCTVRoomViewPoint가 연결되지 않았습니다.");
+
+        if (playerRoot == null)
+            Debug.LogError("Player Root가 연결되지 않았습니다.");
     }
 
     void OnMouseDown()
     {
-        Debug.Log("마우스로 Map 버튼 클릭됨");
         PressButton();
     }
 
     void OnXRPressed(SelectEnterEventArgs args)
     {
-        Debug.Log("XR로 Map 버튼 클릭됨");
         PressButton();
     }
 
     void PressButton()
     {
-        if (isAnimating)
-        {
-            Debug.Log("이미 애니메이션 중이라 무시됨");
-            return;
-        }
-
-        ToggleMap();
+        if (isAnimating) return;
 
         if (audioSource != null && clickSound != null)
             audioSource.PlayOneShot(clickSound);
@@ -110,35 +106,29 @@ public class MapButton : MonoBehaviour
 
         transform.localScale = originalScale;
 
+        if(turnOffGlobalVolumeOnClick && globalVolume != null)
+        {
+            globalVolume.SetActive(false);
+        }
+
+
+        TeleportToCCTVRoom();
+
         isAnimating = false;
     }
 
-    void ToggleMap()
+    void TeleportToCCTVRoom()
     {
-        if (mapPanel == null)
+        if (playerRoot == null || CCTVRoomViewPoint == null)
         {
-            Debug.LogError("Map Panel이 null이라 지도 토글 불가");
+            Debug.LogError("텔레포트 실패: Player Root 또는 CCTVRoomViewPoint가 없습니다.");
             return;
         }
 
-        bool nextState = !mapPanel.activeSelf;
-        mapPanel.SetActive(nextState);
+        playerRoot.position = CCTVRoomViewPoint.position;
+        playerRoot.rotation = CCTVRoomViewPoint.rotation;
 
-        Debug.Log("지도 상태 변경됨: " + nextState);
-
-        if (nextState && cameraTarget != null)
-        {
-            mapPanel.transform.position =
-                cameraTarget.position
-                + cameraTarget.forward * mapForward
-                + cameraTarget.up * mapUp;
-
-            mapPanel.transform.LookAt(cameraTarget);
-            mapPanel.transform.Rotate(0f, 180f, 0f);
-
-            // 지도가 뒤집혀 보이면 이 줄 주석 해제
-            // mapPanel.transform.Rotate(0f, 180f, 0f);
-        }
+        Debug.Log("CCTVRoomViewPoint로 이동 완료");
     }
 
     void LateUpdate()
@@ -152,8 +142,6 @@ public class MapButton : MonoBehaviour
             + cameraTarget.up * cubeUp;
 
         transform.LookAt(cameraTarget);
-
-        // 큐브 앞면이 반대로 보이면 이 줄 주석 해제
-        // transform.Rotate(0f, 180f, 0f);
+        transform.Rotate(0f, 180f, 0f);
     }
 }
