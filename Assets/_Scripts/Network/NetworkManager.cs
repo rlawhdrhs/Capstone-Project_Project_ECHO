@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
     public static NetworkManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
     public GameObject lobbyUI;
-    private NetworkRunner _runner;
+    private NetworkRunner _networkRunner;
 
     [Header("비대칭 플레이어 프리팹")]
     public NetworkPrefabRef infiltratorPrefab; // 잠입자 (Host 전용)
@@ -25,7 +32,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public async void StartAsInfiltrator()
     {
         if (lobbyUI != null) lobbyUI.SetActive(false);
-        Debug.Log("잠입자(Host)로 서버 시작 중...");
         await StartGame(GameMode.Host);
     }
 
@@ -33,22 +39,18 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public async void StartAsChaser()
     {
         if (lobbyUI != null) lobbyUI.SetActive(false);
-        Debug.Log("추격자(Client)로 서버 접속 중...");
         await StartGame(GameMode.Client);
     }
 
     //게임 시작 함수
     private async Task StartGame(GameMode mode)
     {
-        if (Instance == null)
-            Instance = this;
+        _networkRunner = gameObject.GetComponent<NetworkRunner>();
+        if (_networkRunner == null) _networkRunner = gameObject.AddComponent<NetworkRunner>();
 
-        _runner = gameObject.GetComponent<NetworkRunner>();
-        if (_runner == null) _runner = gameObject.AddComponent<NetworkRunner>();
+        _networkRunner.ProvideInput = true;
 
-        _runner.ProvideInput = true;
-
-        _runner.AddCallbacks(this);
+        _networkRunner.AddCallbacks(this);
 
         var sceneManager = gameObject.GetComponent<NetworkSceneManagerDefault>();
         if (sceneManager == null)
@@ -60,13 +62,16 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         {
             GameMode = mode,
             SessionName = "ProjectECHO_Room",
-            SceneManager = sceneManager
+            SceneManager = sceneManager,
+            Scene = SceneRef.FromIndex(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex)
         };
 
-        var result = await _runner.StartGame(startGameArgs);
+        var result = await _networkRunner.StartGame(startGameArgs);
         if (result.Ok == false) // 접속에 실패했다면
         {
-            Debug.LogError($"접속 실패 원인: {result.ShutdownReason}");
+            //Debug.LogError($"접속 실패 원인: {result.ShutdownReason}");
+            Debug.LogError($"접속 실패 원인: {result.ShutdownReason} / 상세 에러: {result.ErrorMessage}");
+            Debug.Log($"현재 씬 인덱스: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex}");
         }
     }
 
@@ -78,14 +83,12 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             if (player == runner.LocalPlayer)
             {
                 Debug.Log("호스트 스폰: 잠입자 프리팹 생성");
-                var obj = runner.Spawn(infiltratorPrefab, SpawnPoint_intruder, Quaternion.identity, player);
-                InfiltratorObject = obj;
+                InfiltratorObject = runner.Spawn(infiltratorPrefab, SpawnPoint_intruder, Quaternion.identity, player);
             }
             else
             {
                 Debug.Log("클라이언트 접속: 추격자 프리팹 생성 및 권한 부여");
-                var obj = runner.Spawn(chaserPrefab, SpawnPoint_chaser, Quaternion.identity, player);
-                ChaserObject = obj;
+                ChaserObject = runner.Spawn(chaserPrefab, SpawnPoint_chaser, Quaternion.identity, player);
             }
         }
     }
@@ -107,6 +110,24 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         // 점프 (Space)
         data.jump = Input.GetKey(KeyCode.Space);
+
+        if (LocalVRRig.Instance != null)
+        {
+            data.headPosition = LocalVRRig.Instance.hardwareHead.position;
+            data.headRotation = LocalVRRig.Instance.hardwareHead.rotation;
+
+            data.leftHandPosition = LocalVRRig.Instance.hardwareLeftHand.position;
+            data.leftHandRotation = LocalVRRig.Instance.hardwareLeftHand.rotation;
+
+            data.rightHandPosition = LocalVRRig.Instance.hardwareRightHand.position;
+            data.rightHandRotation = LocalVRRig.Instance.hardwareRightHand.rotation;
+
+            // 애니메이션용 데이터 (기존 로직 활용)
+            data.moveX = Input.GetAxis("Horizontal");
+            data.moveZ = Input.GetAxis("Vertical");
+            data.crouch = LocalVRRig.Instance.currentCrouch;
+        }
+
         input.Set(data);
     }
 
