@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     {
         public SoundType soundType;
         public float intensity = 1f;
+        public float detectionRadius = 8f;
     }
 
     [System.Serializable]
@@ -81,14 +82,28 @@ public class SoundManager : MonoBehaviour
         return 0.5f;
     }
 
+    public SoundIntensityEntry GetIntensityEntry(SoundType type)
+    {
+        foreach (var entry in intensityTable)
+        {
+            if (entry.soundType == type)
+                return entry;
+        }
+
+        return null;
+    }
     public void RegisterSound(Vector3 position, float lifetime, SoundType soundType)
     {
-        float intensity = GetBaseIntensity(soundType);
+        SoundIntensityEntry entry = GetIntensityEntry(soundType);
+
+        float intensity = entry != null ? entry.intensity : 0.5f;
+        float detectionRadius = entry != null ? entry.detectionRadius : 6f;
 
         SoundData data = new SoundData(
             nextSoundId++,
             position,
             intensity,
+            detectionRadius,
             lifetime,
             soundType
         );
