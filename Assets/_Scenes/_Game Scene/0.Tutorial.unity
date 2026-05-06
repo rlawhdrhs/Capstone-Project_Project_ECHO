@@ -2849,7 +2849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3d6320cda221d45a5a2abfb9a7db9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextSceneButton
-  targetSceneName: 1.ButtonChoose
+  targetSceneName: 1.ModeSelectScene
   pressedScale: 0.8
   speed: 0.08
   audioSource: {fileID: 1993566037}
