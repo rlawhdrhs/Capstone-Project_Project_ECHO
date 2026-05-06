@@ -88,6 +88,8 @@ public class RobotSelectButton : MonoBehaviour
         if (playerRoot != null && viewPoint != null)
         {
             playerRoot.position = viewPoint.position;
+            Debug.Log($"이동 목표: {viewPoint.position} / 실제 이동후 위치: {playerRoot.position}");
+
             playerRoot.rotation = viewPoint.rotation;
         }
 
@@ -98,4 +100,5 @@ public class RobotSelectButton : MonoBehaviour
 
         isAnimating = false;
     }
+
 }
