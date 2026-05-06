@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 5193674707732900613}
   - component: {fileID: 2025291069784351195}
   - component: {fileID: 585414599020530940}
+  - component: {fileID: 4411846311942145395}
   m_Layer: 0
   m_Name: LefthandController
   m_TagString: Untagged
@@ -621,6 +622,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4411846311942145395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733182336335084264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2760df29c57e19438ecc186582db179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSprint
+  sprintButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Sprint Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 5e277755-c689-4097-a926-a6b1e3754b86
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -8227620849196907262, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  moveProvider: {fileID: 7420346638643939947}
+  walkSpeed: 2
+  sprintSpeed: 5
 --- !u!1 &8601686537568609618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,6 +1237,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4028013268159778686, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028013268159778686, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
+      propertyPath: m_HeadTransform
+      value: 
+      objectReference: {fileID: 192946383885204910}
+    - target: {fileID: 4028013268159778686, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
+      propertyPath: m_LeftControllerTransform
+      value: 
+      objectReference: {fileID: 8101400038417306132}
+    - target: {fileID: 4028013268159778686, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
+      propertyPath: m_RightControllerTransform
+      value: 
+      objectReference: {fileID: 6142288619979001717}
     - target: {fileID: 5788436523849277742, guid: d1b69329191fb474c82c93e9904b04cc, type: 3}
       propertyPath: m_Name
       value: Locomotion
