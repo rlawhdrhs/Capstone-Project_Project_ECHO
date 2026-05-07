@@ -16,6 +16,7 @@ public class LaserDetector_Network : NetworkBehaviour
     // 퓨전 네트워크 동기화 변수
     [Networked] public NetworkBool isLaserOn { get; set; }
     [Networked] public NetworkBool prevRightTrigger { get; set; }
+    [Networked] public NetworkBool prevSpace { get; set; }
 
     // 현재 빙의된 로봇인지 확인 (매니저에서 조작)
     public bool isControlledByMe = false;
@@ -29,20 +30,35 @@ public class LaserDetector_Network : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        // 1. 트리거 입력 처리 (서버/클라이언트 동기화)
+        // 1. 입력 처리 (누군가 이 로봇에 빙의해 있다면 실행됨)
         if (GetInput(out NetworkInputData data))
         {
-            // '이번 틱에 눌렸고, 이전 틱에는 안 눌렸을 때'만 작동
+            // --- R키 / Right Trigger (레이저 On/Off) ---
+            // (NetworkManager에서 R키가 rightTrigger로 매핑되어 있습니다)
             bool isTriggerPressedThisFrame = data.rightTrigger && !prevRightTrigger;
-            prevRightTrigger = data.rightTrigger;
 
-            if (isControlledByMe && isTriggerPressedThisFrame)
+            if (isTriggerPressedThisFrame)
             {
+                // 입력이 들어왔을 때, 상태를 바꾸는 건 서버가 담당합니다.
                 if (Object.HasStateAuthority)
                 {
                     isLaserOn = !isLaserOn;
                 }
             }
+            prevRightTrigger = data.rightTrigger;
+
+            // --- Space키 (잠입자 제거) ---
+            bool isSpacePressedThisFrame = data.keySpace && !prevSpace;
+            if (isSpacePressedThisFrame)
+            {
+                // 제거 명령도 서버에서만 실행합니다.
+                if (Object.HasStateAuthority && targetPlayer != null && targetPlayer.isRemovable)
+                {
+                    targetPlayer.RequestRemove();
+                    Debug.Log("잠입자 파괴 명령 전달!");
+                }
+            }
+            prevSpace = data.keySpace;
         }
 
         // 2. 잠입자 타겟 캐싱
@@ -51,16 +67,14 @@ public class LaserDetector_Network : NetworkBehaviour
             targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable_Network>();
         }
 
-        // 3. 비전 콘 메쉬 껐다 켜기 (동기화)
+        // 3. 비전 콘 메쉬 껐다 켜기 (모두에게 동기화)
         if (visionCone != null && visionCone.gameObject.activeSelf != isLaserOn)
         {
             visionCone.gameObject.SetActive(isLaserOn);
             if (isLaserOn) visionCone.SetCone(detectAngle, detectDistance, originHeight, heightRange * 2f);
         }
 
-        // =========================================================
         // 4. 레이저 판정 로직 (오직 서버만 연산)
-        // =========================================================
         if (!Object.HasStateAuthority) return;
 
         if (isLaserOn)
@@ -77,11 +91,10 @@ public class LaserDetector_Network : NetworkBehaviour
                     PlayerDetectable_Network target = hit.GetComponentInParent<PlayerDetectable_Network>();
                     if (target != null)
                     {
-                        // 🌟 [핵심] 찾았으면 찌릅니다. (기존 CheckPlayerDetected와 덮어쓰기 로직은 삭제!)
                         target.NotifyDetected();
                     }
                 }
             }
         }
-    } // 🌟 FixedUpdateNetwork를 닫는 중괄호 추가 완료
+    }
 }

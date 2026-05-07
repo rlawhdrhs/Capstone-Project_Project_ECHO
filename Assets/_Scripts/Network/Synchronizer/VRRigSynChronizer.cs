@@ -98,15 +98,11 @@ public class VRRigSynchronizer : NetworkBehaviour
             if (avatarLeftHand != null) avatarLeftHand.position = data.leftHandPosition;
             if (avatarRightHand != null) avatarRightHand.position = data.rightHandPosition;
 
-            // --- C. 몸통 회전 (센서 로봇이 아닐 때만 몸통이 내 시야를 따라 돎) ---
-            if (!isSensorRobot)
+            Vector3 headForward = data.headRotation * Vector3.forward;
+            headForward.y = 0f;
+            if (headForward.sqrMagnitude > 0.01f)
             {
-                Vector3 headForward = data.headRotation * Vector3.forward;
-                headForward.y = 0f;
-                if (headForward.sqrMagnitude > 0.01f)
-                {
-                    transform.rotation = Quaternion.LookRotation(headForward);
-                }
+                transform.rotation = Quaternion.LookRotation(headForward);
             }
 
             // --- D. 버튼 클릭 이벤트 ---
@@ -161,7 +157,6 @@ public class VRRigSynchronizer : NetworkBehaviour
 
         if (freezeState)
         {
-            // 🌟 픽스 1: 서버 지연 시간 동안 아바타가 로봇 위치로 따라온 것을 강제로 원래 자리에 되돌려 박제함
             transform.position = freezePos;
         }
 

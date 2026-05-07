@@ -120,10 +120,19 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         float rightTrigger = Input.GetAxis("XRI_Right_Trigger");
         data.rightTrigger = Input.GetKey(KeyCode.R) || rightTrigger > 0.1f;
 
+        bool isLeftAPressed = false;
+        try { isLeftAPressed = Input.GetButton("XRI_Left_PrimaryButton"); }
+        catch { /* Input Manager에 세팅 안 되어있을 때 에러 방지 */ }
+
+        // 키보드 X키나 왼쪽 A버튼을 누르면 true
+        data.leftButtonA = Input.GetKey(KeyCode.X) || isLeftAPressed;
+
         // 마우스 좌클릭
         data.leftClick = Input.GetMouseButton(0);
         // 점프 (Space)
-        data.jump = Input.GetKey(KeyCode.Space) || Input.GetButton("XRI_Left_GripButton");
+        data.jump = Input.GetButton("XRI_Left_GripButton");
+        data.keyR = Input.GetKey(KeyCode.R);
+        data.keySpace = Input.GetKey(KeyCode.Space);
 
         if (LocalVRRig.Instance != null)
         {

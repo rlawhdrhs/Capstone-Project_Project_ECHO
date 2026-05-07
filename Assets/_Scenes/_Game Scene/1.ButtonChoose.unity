@@ -911,6 +911,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: SpawnPoint_chaser.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
       propertyPath: mainSceneBuildIndex
       value: 4
       objectReference: {fileID: 0}

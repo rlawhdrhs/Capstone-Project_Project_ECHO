@@ -15202,7 +15202,8 @@ GameObject:
   - component: {fileID: 123543756}
   - component: {fileID: 123543755}
   - component: {fileID: 123543754}
-  - component: {fileID: 123543759}
+  - component: {fileID: 123543760}
+  - component: {fileID: 123543761}
   m_Layer: 0
   m_Name: SensorButton_1
   m_TagString: Untagged
@@ -15475,7 +15476,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123543751}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &123543759
+--- !u!114 &123543760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15484,16 +15485,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 123543751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d266f9d124e70419c651062d41b505, type: 3}
+  m_Script: {fileID: 11500000, guid: 9605c5b92fcb2cc46bb5673c368eb09c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NetworkRobotSelectButton
-  targetSensorId: 1
+  m_EditorClassIdentifier: Assembly-CSharp::SensorRobotButtonLink
+  targetDrone: {fileID: 1757905997}
+--- !u!114 &123543761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123543751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caef5fdd73ff174d9e818086c0b7f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRButton
   pressedScale: 0.8
   speed: 0.08
   audioSource: {fileID: 123543754}
   clickSound: {fileID: 8300000, guid: 8ec4e4cdcc7ca514b93a78d1158d24c1, type: 3}
-  blinkTransition: {fileID: 0}
-  wakeUpTransition: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123543760}
+        m_TargetAssemblyTypeName: SensorRobotButtonLink, Assembly-CSharp
+        m_MethodName: TryPossessRobot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &123583656
 GameObject:
   m_ObjectHideFlags: 0
@@ -206290,7 +206316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1851709124}
+  - {fileID: 1757905995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1748118820
@@ -207267,6 +207293,102 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1574705904253709394, guid: 2cdeea8104787144aa1911daab01fb00, type: 3}
   m_PrefabInstance: {fileID: 1757123011}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1757905994
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1748031031}
+    m_Modifications:
+    - target: {fileID: 1129913900726152689, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_Name
+      value: SensorRobot_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070284551462509686, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353925396180105206, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955600838653663416, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: SortKey
+      value: 4106462392
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+--- !u!4 &1757905995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+  m_PrefabInstance: {fileID: 1757905994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1757905996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2242734241507275410, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+  m_PrefabInstance: {fileID: 1757905994}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aacdb5e4c1264845ae6717973a2bb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkSoundSensor
+--- !u!114 &1757905997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8300422882704459551, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
+  m_PrefabInstance: {fileID: 1757905994}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f87c9d4b3b2a2c45828ffc621ba2006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SensorSynchronizer
 --- !u!1001 &1760929781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218844,95 +218966,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7091304720660626564, guid: 8a7cde4cc1258f14ab5d11a5b4086c0e, type: 3}
   m_PrefabInstance: {fileID: 1850983690}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1851709123
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1748031031}
-    m_Modifications:
-    - target: {fileID: -59790944558569233, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 376543314700011937, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: _IsFrozen._value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 547002380457317446, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1129913900726152689, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_Name
-      value: SensorBase_Network_Ver2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955600838653663416, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: SortKey
-      value: 1293453504
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
---- !u!4 &1851709124 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8460399042890013394, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-  m_PrefabInstance: {fileID: 1851709123}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1851709129 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2242734241507275410, guid: 1cf74bb4977ffe04f81fbc8de21bcae9, type: 3}
-  m_PrefabInstance: {fileID: 1851709123}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aacdb5e4c1264845ae6717973a2bb67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NetworkSoundSensor
 --- !u!1001 &1852510052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251459,6 +251492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SensorManager
       objectReference: {fileID: 0}
+    - target: {fileID: 815875088217568396, guid: d411c198ae11998478827f614ab54853, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1361073566004879942, guid: d411c198ae11998478827f614ab54853, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -251506,7 +251543,7 @@ PrefabInstance:
     - target: {fileID: 8194571726237799742, guid: d411c198ae11998478827f614ab54853, type: 3}
       propertyPath: 'sensors.Array.data[0]'
       value: 
-      objectReference: {fileID: 1851709129}
+      objectReference: {fileID: 1757905996}
     - target: {fileID: 8230857760536332949, guid: d411c198ae11998478827f614ab54853, type: 3}
       propertyPath: SortKey
       value: 3420119048

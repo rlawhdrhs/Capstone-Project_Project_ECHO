@@ -66,9 +66,9 @@ MonoBehaviour:
   infiltratorPrefab:
     RawGuidValue: 3d4ea25eab3aeb74b80c1934e3cdd201
   chaserPrefab:
-    RawGuidValue: 82bb11039f372ec418916e6726897a12
+    RawGuidValue: 66842846585a64f4eb92b56d9963a021
   SpawnPoint_intruder: {x: 0, y: 5, z: 0}
-  SpawnPoint_chaser: {x: 0, y: 5, z: 0}
+  SpawnPoint_chaser: {x: 4, y: 4.7, z: -1}
 --- !u!114 &7508800665587960872
 MonoBehaviour:
   m_ObjectHideFlags: 0
