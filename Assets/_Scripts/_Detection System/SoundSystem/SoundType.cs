@@ -5,5 +5,6 @@ public enum SoundType
     RunFootstep,
     Collision,
     Action,
-    ObjectThrow
+    ObjectThrow,
+    Explosion
 }

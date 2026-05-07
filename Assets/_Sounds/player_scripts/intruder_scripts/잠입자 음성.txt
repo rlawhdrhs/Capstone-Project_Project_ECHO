@@ -1,0 +1,42 @@
+1. 초반 음성 (튜토리얼) - 시작 씬에서
+This facility holds critical data.
+Restore the power, collect them, and get out.
+
+2.  초반 안내
+(메인 씬 들어가자마자)
+Find the generator.
+We need power.
+
+(전력 복구 장치 발견하면)
+It's too dark.
+Restore it.
+
+(전력 복구 장치 동작하면)
+Careful.
+This will make noise.
+
+
+3. 전력 복구 완료 (이후에는, 전력을 다시 차단할때까지 음성 없음)
+Wait—
+Something's wrong...
+
+4. 전력 차단 후 복귀
+... You’re back. I lost you for a second.... 
+You got the data?
+...Now get out of there
+
+Find the exit.
+
+5. 출구에 거의 다가갔을때
+You're almost out.
+
+6. 성공
+You made it.
+Good work.
+
+
+**소리를 내는 장비를 만졌을때 (초반 전력복구 전)
+careful!
+keep it down
+watch your noise
+

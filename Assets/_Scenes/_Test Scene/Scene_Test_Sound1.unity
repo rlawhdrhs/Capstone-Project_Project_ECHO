@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 11409890}
   - component: {fileID: 11409889}
   - component: {fileID: 11409888}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Obstacle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9514022e904b22a4a8cac23ef9554abc, type: 2}
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -507,7 +507,8 @@ GameObject:
   - component: {fileID: 47261279}
   - component: {fileID: 47261278}
   - component: {fileID: 47261277}
-  m_Layer: 6
+  - component: {fileID: 47261281}
+  m_Layer: 8
   m_Name: Obstacle(wall)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +561,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9514022e904b22a4a8cac23ef9554abc, type: 2}
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -611,8 +612,47 @@ Transform:
   - {fileID: 1660424511}
   - {fileID: 1858247885}
   - {fileID: 11409891}
+  - {fileID: 524622814}
+  - {fileID: 1876791564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &47261281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47261276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc5ac24d7ec0348bb607bf4ed1f00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticGeometry
+  relativeFilePath: StreamingAssets/Acoustics/Scene_Test_Sound1/Obstacle(wall).xrageo
+  FileEnabled: 1
+  IncludeChildMeshes: 1
+  Flags: 1
+  maxSimplifyError: 0.01
+  minDiffractionEdgeAngle: 1
+  minDiffractionEdgeLength: 0.01
+  flagLength: 1
+  lodSelection: 0
+  useColliders: 0
+  overrideExcludeTagsEnabled: 0
+  overrideExcludeTags: []
+  materialColors:
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  HierarchyHash:
+    serializedVersion: 2
+    Hash: 90ba7ff6f687086eeb027fabea19db98
 --- !u!1 &95185938
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +684,191 @@ Transform:
   m_Children: []
   m_Father: {fileID: 646794880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &140530987
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.578
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.424
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.677
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544486751295596402, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400242789496192382, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_Name
+      value: StickyBomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400242789496192382, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8400242789496192382, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140530990}
+    - targetCorrespondingSourceObject: {fileID: 8400242789496192382, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140530989}
+  m_SourcePrefab: {fileID: 100100000, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+--- !u!1 &140530988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8400242789496192382, guid: 4d52e2c81a17cdf4b9146a73e6bbe693, type: 3}
+  m_PrefabInstance: {fileID: 140530987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &140530989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140530988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07f270ac36c49789466c75ceb88424c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAudioSource
+  enableSpatialization: 1
+  gainBoostDb: 0
+  enableAcoustics: 0
+  reverbSendDb: 6
+--- !u!82 &140530990
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140530988}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 50
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &210081578
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +917,7 @@ GameObject:
   - component: {fileID: 335039597}
   - component: {fileID: 335039598}
   - component: {fileID: 335039599}
+  - component: {fileID: 335039600}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -713,8 +939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundEmitter
   stepDistance: 1.5
   soundLifetime: 0.3
-  walkClip: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
-  runClip: {fileID: 0}
+  footstepYOffset: -1
   isRunning: 0
 --- !u!136 &335039592
 CapsuleCollider:
@@ -879,11 +1104,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335039589}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 23e555c54e8ff234798c880b3f36ae36, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -893,7 +1118,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 1
+  MinDistance: 3
   MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
@@ -969,6 +1194,1955 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &335039600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335039589}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07f270ac36c49789466c75ceb88424c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAudioSource
+  enableSpatialization: 1
+  gainBoostDb: 2
+  enableAcoustics: 1
+  reverbSendDb: 0
+--- !u!1 &524622813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524622814}
+  - component: {fileID: 524622817}
+  - component: {fileID: 524622816}
+  - component: {fileID: 524622815}
+  m_Layer: 8
+  m_Name: Obstacle (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524622814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524622813}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 47261280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &524622815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524622813}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &524622816
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524622813}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &524622817
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524622813}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &555034894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555034896}
+  - component: {fileID: 555034895}
+  m_Layer: 0
+  m_Name: Acoustic map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &555034895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555034894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b764f28a53ab488bd80d19c0c167a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticMap
+  SceneGroup: {fileID: 0}
+  customPointsEnabled: 0
+  Flags: 10
+  ReflectionCount: 6
+  MinSpacing: 1
+  MaxSpacing: 10
+  HeadHeight: 1.5
+  MaxHeight: 3
+  gravityVector: {x: 0, y: -1, z: 0}
+  relativeFilePath: StreamingAssets/Acoustics/Scene_Test_Sound1.xramap
+  hash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  pointCount: 587
+  cachedPoints:
+  - -30.9375
+  - -1.25
+  - -116.5625
+  - -30.9375
+  - -1.25
+  - -110
+  - -30.9375
+  - -1.25
+  - -100
+  - -25
+  - -1.25
+  - -114.0625
+  - -25
+  - -1.4999998
+  - -105
+  - -25
+  - -1.25
+  - -90
+  - -30.9375
+  - -1.25
+  - -80
+  - -30.9375
+  - -1.25
+  - -70
+  - -30.9375
+  - -1.25
+  - -60
+  - -25
+  - -1.25
+  - -70
+  - -17.5
+  - -1.25
+  - -114.0625
+  - -15
+  - -1.4999998
+  - -105
+  - -10
+  - -1.25
+  - -114.0625
+  - -10
+  - -1.25
+  - -90
+  - -10
+  - -1.25
+  - -60
+  - -31.25
+  - 1.25
+  - -115
+  - -31.25
+  - 1.25
+  - -105
+  - -31.25
+  - 1.25
+  - -95
+  - -25
+  - 1.25
+  - -115
+  - -25
+  - 1.4999999
+  - -105
+  - -25
+  - 1.4999999
+  - -95
+  - -31.25
+  - 1.25
+  - -85
+  - -31.25
+  - 1.25
+  - -75
+  - -31.25
+  - 1.25
+  - -65
+  - -28.75
+  - 1.4999999
+  - -55
+  - -25
+  - 1.4999999
+  - -85
+  - -25
+  - 1.4999999
+  - -75
+  - -25
+  - 1.4999999
+  - -65
+  - -20
+  - 1.4999999
+  - -55
+  - -15
+  - 1.25
+  - -115
+  - -15
+  - 1.4999999
+  - -105
+  - -15
+  - 1.4999999
+  - -95
+  - -7.5
+  - 1.25
+  - -115
+  - -7.5
+  - 1.4999999
+  - -105
+  - -7.5
+  - 1.4999999
+  - -95
+  - -15
+  - 1.4999999
+  - -85
+  - -15
+  - 1.4999999
+  - -75
+  - -15
+  - 1.4999999
+  - -65
+  - -7.5
+  - 1.4999999
+  - -75
+  - -10
+  - 1.4999999
+  - -55
+  - -30.9375
+  - -1.25
+  - -45
+  - -30.9375
+  - -1.25
+  - -35
+  - -30.9375
+  - -1.25
+  - -25
+  - -25
+  - -1.25
+  - -50
+  - -25
+  - -1.25
+  - -30
+  - -30.9375
+  - -1.25
+  - -15
+  - -30.9375
+  - -1.25
+  - -5
+  - -30.9375
+  - -1.25
+  - 5
+  - -25
+  - -1.25
+  - -10
+  - -10
+  - -1.25
+  - -20
+  - -28.75
+  - 1.4999999
+  - -45
+  - -31.25
+  - 1.25
+  - -35
+  - -31.25
+  - 1.25
+  - -25
+  - -20
+  - 1.4999999
+  - -45
+  - -25
+  - 1.4999999
+  - -35
+  - -25
+  - 1.4999999
+  - -25
+  - -29.6875
+  - 1.25
+  - -15
+  - -29.6875
+  - 1.25
+  - -5
+  - -29.6875
+  - 1.25
+  - 5
+  - -25
+  - 1.25
+  - -15.625
+  - -22.8125
+  - 1.4999999
+  - -5
+  - -22.8125
+  - 1.4999999
+  - 5
+  - -15
+  - 1.4999999
+  - -35
+  - -15
+  - 1.4999999
+  - -25
+  - -10
+  - 1.4999999
+  - -45
+  - -15
+  - 1.25
+  - -15.625
+  - -15
+  - 1.4999999
+  - -5
+  - -15
+  - 1.4999999
+  - 5
+  - -6.875
+  - 1.25
+  - 1.875
+  - -7.1875
+  - 1.25
+  - 6.875
+  - -5
+  - -1.4999998
+  - -105
+  - 0
+  - -1.25
+  - -114.0625
+  - 5
+  - -1.4999998
+  - -105
+  - 5
+  - -1.25
+  - -90
+  - 5
+  - -1.25
+  - -70
+  - 10
+  - -1.25
+  - -114.0625
+  - 13.75
+  - -1.4999998
+  - -105
+  - 16.25
+  - -1.25
+  - -114.0625
+  - 13.75
+  - -1.4999998
+  - -95
+  - 13.75
+  - -1.4999998
+  - -85
+  - 13.75
+  - -1.4999998
+  - -75
+  - 13.75
+  - -1.4999998
+  - -65
+  - 13.75
+  - -1.4999998
+  - -55
+  - 0
+  - 1.25
+  - -115
+  - 0
+  - 1.4999999
+  - -105
+  - 0
+  - 1.4999999
+  - -95
+  - -5
+  - 1.4999999
+  - -85
+  - -5
+  - 1.4999999
+  - -65
+  - 0
+  - 1.4999999
+  - -75
+  - 5
+  - 1.4999999
+  - -85
+  - 0
+  - 1.4999999
+  - -55
+  - 5
+  - 1.4999999
+  - -65
+  - 7.5
+  - 1.4999999
+  - -105
+  - 10
+  - 1.25
+  - -115
+  - 10
+  - 1.4999999
+  - -95
+  - 17.5
+  - 1.25
+  - -115
+  - 15
+  - 1.4999999
+  - -105
+  - 17.5
+  - 1.25
+  - -95
+  - 10
+  - 1.4999999
+  - -75
+  - 7.5
+  - 1.4999999
+  - -55
+  - 15
+  - 1.4999999
+  - -85
+  - 17.5
+  - 1.25
+  - -75
+  - 15
+  - 1.4999999
+  - -65
+  - 15
+  - 1.4999999
+  - -55
+  - 5
+  - -1.25
+  - -50
+  - 5
+  - -1.25
+  - -30
+  - 5
+  - -1.25
+  - -10
+  - 13.75
+  - -1.4999998
+  - -45
+  - 13.75
+  - -1.4999998
+  - -35
+  - 13.75
+  - -1.4999998
+  - -25
+  - 13.75
+  - -1.4999998
+  - -15
+  - 13.75
+  - -1.4999998
+  - -5
+  - 13.75
+  - -1.4999998
+  - 5
+  - -5
+  - 1.4999999
+  - -35
+  - -5
+  - 1.4999999
+  - -25
+  - 0
+  - 1.4999999
+  - -45
+  - 5
+  - 1.4999999
+  - -35
+  - 2.5
+  - 1.4999999
+  - -25
+  - -5
+  - 1.25
+  - -15.625
+  - -5.9375
+  - 1.4999999
+  - -5
+  - -4.0625
+  - 1.25
+  - 5
+  - -1.25
+  - 1.25
+  - -8.125
+  - 5
+  - 1.25
+  - -15.625
+  - 3.125
+  - 1.4999999
+  - -5
+  - 3.125
+  - 1.4999999
+  - 5
+  - 10
+  - 1.4999999
+  - -45
+  - 10
+  - 1.4999999
+  - -25
+  - 17.5
+  - 1.25
+  - -45
+  - 15
+  - 1.4999999
+  - -35
+  - 17.5
+  - 1.25
+  - -25
+  - 9.375
+  - 1.25
+  - -12.5
+  - 7.8125
+  - 1.25
+  - -5
+  - 7.8125
+  - 1.25
+  - 5
+  - 15
+  - 1.4999999
+  - -15
+  - 15
+  - 1.4999999
+  - -5
+  - 15
+  - 1.4999999
+  - 5
+  - -30.9375
+  - 4.375
+  - -114.0625
+  - -30.9375
+  - 4.375
+  - -105
+  - -30.9375
+  - 4.375
+  - -95
+  - -25
+  - 4.375
+  - -114.0625
+  - -25
+  - 4.4999995
+  - -105
+  - -25
+  - 4.4999995
+  - -95
+  - -28.4375
+  - 4.4999995
+  - -75
+  - -25
+  - 4.4999995
+  - -85
+  - -20
+  - 4.4999995
+  - -75
+  - -25
+  - 4.4999995
+  - -65
+  - -25
+  - 4.4999995
+  - -55
+  - -17.5
+  - 4.4999995
+  - -105
+  - -15
+  - 4.375
+  - -114.0625
+  - -15
+  - 4.4999995
+  - -95
+  - -10
+  - 4.4999995
+  - -105
+  - -7.5
+  - 4.375
+  - -114.0625
+  - -7.5
+  - 4.4999995
+  - -95
+  - -15
+  - 4.4999995
+  - -85
+  - -17.5
+  - 4.4999995
+  - -65
+  - -15
+  - 4.4999995
+  - -55
+  - -10
+  - 4.4999995
+  - -75
+  - -10
+  - 4.4999995
+  - -65
+  - -31.25
+  - 8.125
+  - -115
+  - -31.25
+  - 8.125
+  - -105
+  - -31.25
+  - 8.125
+  - -95
+  - -25
+  - 8.125
+  - -115
+  - -25
+  - 8
+  - -105
+  - -25
+  - 8
+  - -95
+  - -31.25
+  - 8.125
+  - -85
+  - -28.75
+  - 8
+  - -75
+  - -31.25
+  - 8.125
+  - -65
+  - -31.25
+  - 8.125
+  - -55
+  - -25
+  - 8
+  - -85
+  - -20
+  - 8
+  - -75
+  - -25
+  - 8
+  - -65
+  - -25
+  - 8
+  - -55
+  - -15
+  - 8.125
+  - -115
+  - -15
+  - 8
+  - -105
+  - -15
+  - 8
+  - -95
+  - -7.5
+  - 8.125
+  - -115
+  - -15
+  - 8
+  - -85
+  - -15
+  - 8
+  - -65
+  - -15
+  - 8
+  - -55
+  - -10
+  - 8
+  - -75
+  - -28.4375
+  - 4.4999995
+  - -45
+  - -28.4375
+  - 4.4999995
+  - -25
+  - -20
+  - 4.4999995
+  - -45
+  - -25
+  - 4.4999995
+  - -35
+  - -20
+  - 4.4999995
+  - -25
+  - -30.9375
+  - 4.375
+  - 5
+  - -25
+  - 4.4999995
+  - 5
+  - -20
+  - 4.4999995
+  - -5
+  - -28.4375
+  - 4.5625
+  - -5
+  - -25
+  - 4.5625
+  - -15
+  - -15
+  - 4.4999995
+  - -35
+  - -10
+  - 4.4999995
+  - -45
+  - -10
+  - 4.4999995
+  - -25
+  - -7.5
+  - 4.4999995
+  - -35
+  - -15
+  - 4.4999995
+  - 5
+  - -12.5
+  - 4.4999995
+  - -5
+  - -15
+  - 4.5625
+  - -15
+  - -28.75
+  - 8
+  - -45
+  - -31.25
+  - 8.125
+  - -35
+  - -28.75
+  - 8
+  - -25
+  - -20
+  - 8
+  - -45
+  - -25
+  - 8
+  - -35
+  - -20
+  - 8
+  - -25
+  - -31.25
+  - 8.125
+  - -15
+  - -31.25
+  - 8.125
+  - -5
+  - -31.25
+  - 8.125
+  - 5
+  - -25
+  - 8
+  - -15
+  - -25
+  - 8
+  - -5
+  - -25
+  - 8
+  - 5
+  - -15
+  - 8
+  - -35
+  - -10
+  - 8
+  - -45
+  - -10
+  - 8
+  - -25
+  - -15
+  - 8
+  - -15
+  - -15
+  - 8
+  - -5
+  - -15
+  - 8
+  - 5
+  - -7.5
+  - 8
+  - -15
+  - 0
+  - 4.375
+  - -114.0625
+  - 0
+  - 4.4999995
+  - -105
+  - 0
+  - 4.4999995
+  - -95
+  - -5
+  - 4.4999995
+  - -85
+  - -5
+  - 4.4999995
+  - -55
+  - 0
+  - 4.4999995
+  - -75
+  - 2.5
+  - 4.4999995
+  - -85
+  - 0
+  - 4.4999995
+  - -65
+  - 5
+  - 4.4999995
+  - -55
+  - 10
+  - 4.375
+  - -114.0625
+  - 10
+  - 4.4999995
+  - -105
+  - 10
+  - 4.4999995
+  - -95
+  - 16.25
+  - 4.375
+  - -116.5625
+  - 16.25
+  - 4.375
+  - -110
+  - 16.25
+  - 4.375
+  - -102.5
+  - 16.25
+  - 4.375
+  - -95
+  - 10
+  - 4.4999995
+  - -85
+  - 10
+  - 4.4999995
+  - -75
+  - 10
+  - 4.4999995
+  - -65
+  - 16.25
+  - 4.375
+  - -85
+  - 16.25
+  - 4.375
+  - -75
+  - 13.75
+  - 4.4999995
+  - -55
+  - 16.25
+  - 4.375
+  - -65
+  - -5
+  - 8
+  - -105
+  - -5
+  - 8
+  - -95
+  - 0
+  - 8.125
+  - -115
+  - 5
+  - 8
+  - -105
+  - 5
+  - 8
+  - -95
+  - -5
+  - 8
+  - -85
+  - -5
+  - 8
+  - -65
+  - -5
+  - 8
+  - -55
+  - 0
+  - 8
+  - -75
+  - 5
+  - 8
+  - -85
+  - 5
+  - 8
+  - -65
+  - 5
+  - 8
+  - -55
+  - 10
+  - 8.125
+  - -115
+  - 17.5
+  - 8.125
+  - -115
+  - 15
+  - 8
+  - -105
+  - 15
+  - 8
+  - -95
+  - 10
+  - 8
+  - -75
+  - 15
+  - 8
+  - -85
+  - 17.5
+  - 8.125
+  - -75
+  - 15
+  - 8
+  - -65
+  - 15
+  - 8
+  - -55
+  - -2.5
+  - 4.4999995
+  - -45
+  - 5
+  - 4.4999995
+  - -45
+  - 0
+  - 4.4999995
+  - -35
+  - 0
+  - 4.4999995
+  - -25
+  - -5
+  - 4.4999995
+  - -5
+  - 5
+  - 4.4999995
+  - -5
+  - 5
+  - 4.4999995
+  - 5
+  - -5
+  - 4.5625
+  - -15
+  - -5
+  - 4.5625
+  - 5
+  - 5
+  - 4.5625
+  - -15
+  - 10
+  - 4.4999995
+  - -35
+  - 10
+  - 4.4999995
+  - -25
+  - 13.75
+  - 4.4999995
+  - -45
+  - 16.25
+  - 4.375
+  - -35
+  - 16.25
+  - 4.375
+  - -25
+  - 12.5
+  - 4.4999995
+  - -15
+  - 12.5
+  - 4.4999995
+  - -5
+  - 13.75
+  - 4.4999995
+  - 5
+  - -2.5
+  - 8
+  - -45
+  - -5
+  - 8
+  - -35
+  - -2.5
+  - 8
+  - -25
+  - 5
+  - 8
+  - -45
+  - 5
+  - 8
+  - -35
+  - 5
+  - 8
+  - -25
+  - -5
+  - 8
+  - -5
+  - -5
+  - 8
+  - 5
+  - 0
+  - 8
+  - -15
+  - 5
+  - 8
+  - -5
+  - 5
+  - 8
+  - 5
+  - 15
+  - 8
+  - -45
+  - 15
+  - 8
+  - -35
+  - 15
+  - 8
+  - -25
+  - 7.5
+  - 8
+  - -15
+  - 15
+  - 8
+  - -15
+  - 15
+  - 8
+  - -5
+  - 15
+  - 8
+  - 5
+  - -30.9375
+  - -1.25
+  - 15
+  - -30.9375
+  - -1.25
+  - 25
+  - -30.9375
+  - -1.25
+  - 32.5
+  - -25
+  - -1.25
+  - 10
+  - -25
+  - -1.25
+  - 30
+  - -30.9375
+  - -1.25
+  - 40
+  - -30.9375
+  - -1.25
+  - 60
+  - -25
+  - -1.25
+  - 50
+  - -10
+  - -1.25
+  - 20
+  - -10
+  - -1.25
+  - 60
+  - -29.6875
+  - 1.25
+  - 15
+  - -29.6875
+  - 1.25
+  - 25
+  - -31.25
+  - 1.25
+  - 35
+  - -27.5
+  - 1.25
+  - 27.1875
+  - -20
+  - 1.4999999
+  - 15
+  - -21.5625
+  - 1.25
+  - 17.5
+  - -25
+  - 1.4999999
+  - 35
+  - -20
+  - 1.25
+  - 27.1875
+  - -31.25
+  - 1.25
+  - 45
+  - -31.25
+  - 1.25
+  - 55
+  - -31.25
+  - 1.25
+  - 65
+  - -25
+  - 1.4999999
+  - 45
+  - -25
+  - 1.4999999
+  - 55
+  - -25
+  - 1.4999999
+  - 65
+  - -15
+  - 1.25
+  - 21.25
+  - -17.5
+  - 1.4999999
+  - 35
+  - -12.5
+  - 1.4999999
+  - 15
+  - -6.875
+  - 1.25
+  - 9.6875
+  - -7.5
+  - 1.25
+  - 21.25
+  - -12.5
+  - 1.25
+  - 27.1875
+  - -10
+  - 1.4999999
+  - 35
+  - -15
+  - 1.4999999
+  - 45
+  - -15
+  - 1.4999999
+  - 55
+  - -15
+  - 1.4999999
+  - 65
+  - -30.9375
+  - -1.25
+  - 70
+  - -30.9375
+  - -1.25
+  - 80
+  - -30.9375
+  - -1.25
+  - 100
+  - -25
+  - -1.25
+  - 70
+  - -25
+  - -1.25
+  - 90
+  - -30.9375
+  - -1.25
+  - 110
+  - -30.9375
+  - -1.25
+  - 120
+  - -25
+  - -1.25
+  - 110
+  - -25
+  - -1.4999998
+  - 125
+  - -10
+  - -1.25
+  - 100
+  - -17.5
+  - -1.25
+  - 130.625
+  - -15
+  - -1.4999998
+  - 125
+  - -7.5
+  - -1.25
+  - 130.625
+  - -31.25
+  - 1.25
+  - 75
+  - -28.75
+  - 1.4999999
+  - 85
+  - -28.75
+  - 1.4999999
+  - 95
+  - -25
+  - 1.4999999
+  - 75
+  - -20
+  - 1.4999999
+  - 85
+  - -20
+  - 1.4999999
+  - 95
+  - -31.25
+  - 1.25
+  - 105
+  - -31.25
+  - 1.25
+  - 115
+  - -28.75
+  - 1.4999999
+  - 125
+  - -28.75
+  - 1.25
+  - 131.25
+  - -25
+  - 1.4999999
+  - 105
+  - -25
+  - 1.4999999
+  - 115
+  - -20
+  - 1.4999999
+  - 125
+  - -20
+  - 1.25
+  - 131.25
+  - -15
+  - 1.4999999
+  - 75
+  - -10
+  - 1.4999999
+  - 85
+  - -12.5
+  - 1.4999999
+  - 95
+  - -17.5
+  - 1.4999999
+  - 105
+  - -15
+  - 1.4999999
+  - 115
+  - -10
+  - 1.4999999
+  - 105
+  - -7.5
+  - 1.4999999
+  - 115
+  - -10
+  - 1.4999999
+  - 125
+  - -10
+  - 1.25
+  - 131.25
+  - 5
+  - -1.25
+  - 10
+  - 5
+  - -1.25
+  - 30
+  - 5
+  - -1.25
+  - 50
+  - 13.75
+  - -1.4999998
+  - 15
+  - 13.75
+  - -1.4999998
+  - 25
+  - 13.75
+  - -1.4999998
+  - 35
+  - 13.75
+  - -1.4999998
+  - 45
+  - 13.75
+  - -1.4999998
+  - 55
+  - 13.75
+  - -1.4999998
+  - 65
+  - -5.9375
+  - 1.4999999
+  - 15
+  - -5
+  - 1.25
+  - 27.1875
+  - 3.125
+  - 1.4999999
+  - 15
+  - 3.125
+  - 1.25
+  - 21.25
+  - 0
+  - 1.4999999
+  - 35
+  - 5
+  - 1.25
+  - 27.1875
+  - -5
+  - 1.4999999
+  - 45
+  - -5
+  - 1.4999999
+  - 55
+  - -5
+  - 1.4999999
+  - 65
+  - 5
+  - 1.4999999
+  - 45
+  - 5
+  - 1.4999999
+  - 55
+  - 5
+  - 1.4999999
+  - 65
+  - 7.8125
+  - 1.25
+  - 15
+  - 7.8125
+  - 1.25
+  - 21.25
+  - 9.375
+  - 1.25
+  - 22.5
+  - 7.5
+  - 1.4999999
+  - 35
+  - 8.4375
+  - 1.25
+  - 24.375
+  - 15
+  - 1.4999999
+  - 15
+  - 15
+  - 1.4999999
+  - 25
+  - 15
+  - 1.4999999
+  - 35
+  - 15
+  - 1.4999999
+  - 45
+  - 15
+  - 1.4999999
+  - 55
+  - 15
+  - 1.4999999
+  - 65
+  - 5
+  - -1.25
+  - 70
+  - 5
+  - -1.25
+  - 90
+  - -5
+  - -1.4999998
+  - 125
+  - 5
+  - -1.25
+  - 110
+  - 5
+  - -1.4999998
+  - 125
+  - 13.75
+  - -1.4999998
+  - 75
+  - 13.75
+  - -1.4999998
+  - 85
+  - 13.75
+  - -1.4999998
+  - 95
+  - 13.75
+  - -1.4999998
+  - 105
+  - 13.75
+  - -1.4999998
+  - 115
+  - 12.5
+  - -1.25
+  - 130.625
+  - 13.75
+  - -1.4999998
+  - 125
+  - -5
+  - 1.4999999
+  - 75
+  - -5
+  - 1.4999999
+  - 95
+  - -2.5
+  - 1.4999999
+  - 85
+  - 5
+  - 1.4999999
+  - 75
+  - 5
+  - 1.4999999
+  - 85
+  - 5
+  - 1.4999999
+  - 95
+  - -2.5
+  - 1.4999999
+  - 125
+  - 0
+  - 1.4999999
+  - 105
+  - 0
+  - 1.4999999
+  - 115
+  - 0
+  - 1.25
+  - 131.25
+  - 5
+  - 1.4999999
+  - 125
+  - 15
+  - 1.4999999
+  - 75
+  - 15
+  - 1.4999999
+  - 85
+  - 15
+  - 1.4999999
+  - 95
+  - 7.5
+  - 1.4999999
+  - 105
+  - 7.5
+  - 1.4999999
+  - 115
+  - 7.5
+  - 1.25
+  - 131.25
+  - 15
+  - 1.4999999
+  - 105
+  - 15
+  - 1.4999999
+  - 115
+  - 15
+  - 1.4999999
+  - 125
+  - 15
+  - 1.25
+  - 131.25
+  - -30.9375
+  - 4.375
+  - 25
+  - -28.4375
+  - 4.4999995
+  - 35
+  - -20
+  - 4.4999995
+  - 15
+  - -20
+  - 4.4999995
+  - 35
+  - -28.4375
+  - 4.5625
+  - 15
+  - -25
+  - 4.5625
+  - 25
+  - -30.9375
+  - 4.375
+  - 55
+  - -28.4375
+  - 4.4999995
+  - 65
+  - -25
+  - 4.4999995
+  - 45
+  - -25
+  - 4.4999995
+  - 55
+  - -20
+  - 4.4999995
+  - 65
+  - -10
+  - 4.4999995
+  - 15
+  - -10
+  - 4.4999995
+  - 35
+  - -15
+  - 4.5625
+  - 25
+  - -17.5
+  - 4.4999995
+  - 45
+  - -15
+  - 4.4999995
+  - 55
+  - -10
+  - 4.4999995
+  - 45
+  - -10
+  - 4.4999995
+  - 65
+  - -7.5
+  - 4.4999995
+  - 55
+  - -28.75
+  - 8
+  - 15
+  - -31.25
+  - 8.125
+  - 25
+  - -28.75
+  - 8
+  - 35
+  - -20
+  - 8
+  - 15
+  - -25
+  - 8
+  - 25
+  - -20
+  - 8
+  - 35
+  - -31.25
+  - 8.125
+  - 45
+  - -31.25
+  - 8.125
+  - 55
+  - -31.25
+  - 8.125
+  - 65
+  - -25
+  - 8
+  - 45
+  - -25
+  - 8
+  - 55
+  - -25
+  - 8
+  - 65
+  - -15
+  - 8
+  - 25
+  - -10
+  - 8
+  - 15
+  - -10
+  - 8
+  - 35
+  - -15
+  - 8
+  - 45
+  - -15
+  - 8
+  - 55
+  - -15
+  - 8
+  - 65
+  - -7.5
+  - 8
+  - 55
+  - -30.9375
+  - 4.375
+  - 95
+  - -25
+  - 4.4999995
+  - 75
+  - -25
+  - 4.4999995
+  - 85
+  - -25
+  - 4.4999995
+  - 95
+  - -28.4375
+  - 4.4999995
+  - 105
+  - -30.9375
+  - 4.375
+  - 115
+  - -28.4375
+  - 4.4999995
+  - 125
+  - -25
+  - 4.4999995
+  - 115
+  - -20
+  - 4.4999995
+  - 105
+  - -20
+  - 4.4999995
+  - 125
+  - -17.5
+  - 4.4999995
+  - 75
+  - -15
+  - 4.4999995
+  - 85
+  - -15
+  - 4.4999995
+  - 95
+  - -10
+  - 4.4999995
+  - 75
+  - -7.5
+  - 4.4999995
+  - 95
+  - -15
+  - 4.4999995
+  - 115
+  - -10
+  - 4.4999995
+  - 105
+  - -7.5
+  - 4.4999995
+  - 115
+  - -12.5
+  - 4.4999995
+  - 125
+  - -31.25
+  - 8.125
+  - 75
+  - -28.75
+  - 8
+  - 85
+  - -28.75
+  - 8
+  - 95
+  - -25
+  - 8
+  - 75
+  - -20
+  - 8
+  - 85
+  - -20
+  - 8
+  - 95
+  - -28.75
+  - 8
+  - 105
+  - -28.75
+  - 8
+  - 115
+  - -31.25
+  - 8.125
+  - 125
+  - -31.25
+  - 8.125
+  - 131.25
+  - -20
+  - 8
+  - 105
+  - -20
+  - 8
+  - 115
+  - -25
+  - 8
+  - 125
+  - -25
+  - 8.125
+  - 131.25
+  - -17.5
+  - 8
+  - 75
+  - -10
+  - 8
+  - 75
+  - -10
+  - 8
+  - 85
+  - -10
+  - 8
+  - 95
+  - -15
+  - 8
+  - 125
+  - -15
+  - 8.125
+  - 131.25
+  - -10
+  - 8
+  - 105
+  - -10
+  - 8
+  - 115
+  - -5
+  - 4.0625
+  - 10
+  - 5
+  - 4.4999995
+  - 15
+  - 0
+  - 4.4999995
+  - 35
+  - -2.5
+  - 4.5625
+  - 15
+  - -5
+  - 4.5625
+  - 25
+  - 5
+  - 4.5625
+  - 25
+  - -2.5
+  - 4.4999995
+  - 45
+  - 5
+  - 4.4999995
+  - 45
+  - 0
+  - 4.4999995
+  - 55
+  - 0
+  - 4.4999995
+  - 65
+  - 7.5
+  - 4.4999995
+  - 35
+  - 12.5
+  - 4.4999995
+  - 15
+  - 12.5
+  - 4.4999995
+  - 25
+  - 13.75
+  - 4.4999995
+  - 35
+  - 7.5
+  - 4.4999995
+  - 65
+  - 10
+  - 4.4999995
+  - 55
+  - 13.75
+  - 4.4999995
+  - 45
+  - 13.75
+  - 4.4999995
+  - 65
+  - 16.25
+  - 4.375
+  - 55
+  - -5
+  - 8
+  - 25
+  - 0
+  - 8
+  - 15
+  - 0
+  - 8
+  - 35
+  - 5
+  - 8
+  - 25
+  - -5
+  - 8
+  - 45
+  - -5
+  - 8
+  - 65
+  - 5
+  - 8
+  - 45
+  - 0
+  - 8
+  - 55
+  - 5
+  - 8
+  - 65
+  - 7.5
+  - 8
+  - 15
+  - 7.5
+  - 8
+  - 35
+  - 15
+  - 8
+  - 15
+  - 15
+  - 8
+  - 25
+  - 15
+  - 8
+  - 35
+  - 10
+  - 8
+  - 55
+  - 15
+  - 8
+  - 45
+  - 17.5
+  - 8.125
+  - 55
+  - 15
+  - 8
+  - 65
+  - -5
+  - 4.4999995
+  - 85
+  - 0
+  - 4.4999995
+  - 75
+  - 0
+  - 4.4999995
+  - 95
+  - 5
+  - 4.4999995
+  - 85
+  - -2.5
+  - 4.4999995
+  - 105
+  - -5
+  - 4.4999995
+  - 125
+  - 0
+  - 4.4999995
+  - 115
+  - 5
+  - 4.4999995
+  - 105
+  - 1.25
+  - 4.375
+  - 130.625
+  - 5
+  - 4.4999995
+  - 125
+  - 7.5
+  - 4.4999995
+  - 75
+  - 7.5
+  - 4.4999995
+  - 95
+  - 13.75
+  - 4.4999995
+  - 75
+  - 13.75
+  - 4.4999995
+  - 85
+  - 13.75
+  - 4.4999995
+  - 95
+  - 7.5
+  - 4.4999995
+  - 115
+  - 11.25
+  - 4.375
+  - 130.625
+  - 13.75
+  - 4.4999995
+  - 105
+  - 13.75
+  - 4.4999995
+  - 115
+  - 13.75
+  - 4.4999995
+  - 125
+  - -2.5
+  - 8
+  - 85
+  - 0
+  - 8
+  - 75
+  - 0
+  - 8
+  - 95
+  - 5
+  - 8
+  - 85
+  - -5
+  - 8
+  - 125
+  - 0
+  - 8
+  - 105
+  - 0
+  - 8
+  - 115
+  - 5
+  - 8
+  - 125
+  - 5
+  - 8.125
+  - 131.25
+  - 7.5
+  - 8
+  - 75
+  - 7.5
+  - 8
+  - 95
+  - 15
+  - 8
+  - 75
+  - 15
+  - 8
+  - 85
+  - 15
+  - 8
+  - 95
+  - 7.5
+  - 8
+  - 105
+  - 7.5
+  - 8
+  - 115
+  - 15
+  - 8
+  - 105
+  - 15
+  - 8
+  - 115
+  - 15
+  - 8
+  - 125
+  - 15
+  - 8.125
+  - 131.25
+  hasCustomPoints: 0
+--- !u!4 &555034896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555034894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.19908, y: -0.5, z: -6.333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &646794879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +3191,7 @@ GameObject:
   - component: {fileID: 668902394}
   - component: {fileID: 668902393}
   - component: {fileID: 668902392}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1070,7 +3244,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9514022e904b22a4a8cac23ef9554abc, type: 2}
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1273,10 +3447,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66d2f67b56efd645a3b43ac45eef4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundListener
-  hearingThreshold: 0.2
+  hearingThreshold: 1
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   occlusionMultiplier: 0.6
 --- !u!114 &900838752
 MonoBehaviour:
@@ -1562,7 +3736,7 @@ GameObject:
   - component: {fileID: 937041554}
   - component: {fileID: 937041553}
   - component: {fileID: 937041552}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Obstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1615,7 +3789,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9514022e904b22a4a8cac23ef9554abc, type: 2}
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1793,10 +3967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66d2f67b56efd645a3b43ac45eef4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundListener
-  hearingThreshold: 0.2
+  hearingThreshold: 1
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   occlusionMultiplier: 0.6
 --- !u!114 &1461131765
 MonoBehaviour:
@@ -2070,6 +4244,55 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &1463588166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1463588168}
+  - component: {fileID: 1463588169}
+  m_Layer: 0
+  m_Name: pureAudioTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1463588168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463588166}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.71, y: 1.64, z: 5.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463588169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463588166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e58a40737214d84da6d2ad91fbbdbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosionTestTrigger
+  explosionKey: 98
+  explosionSoundType: 6
+  explosionLifetime: 1
+  drawDebugSphere: 1
+  debugSphereRadius: 1
 --- !u!1 &1486177639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,7 +4305,7 @@ GameObject:
   - component: {fileID: 1486177642}
   - component: {fileID: 1486177641}
   - component: {fileID: 1486177640}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2135,7 +4358,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9514022e904b22a4a8cac23ef9554abc, type: 2}
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2213,62 +4436,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 646794880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1599305402
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1599305404}
-  - component: {fileID: 1599305403}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1599305403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599305402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687c0a25a1f2a8d4b948135cdaa84e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  intensityTable:
-  - soundType: 1
-    intensity: 1
-  - soundType: 2
-    intensity: 0.8
-  - soundType: 3
-    intensity: 1.2
-  - soundType: 4
-    intensity: 1
-  - soundType: 5
-    intensity: 1.5
-  soundEvents: []
---- !u!4 &1599305404
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599305402}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.57436, y: 0, z: -10.82603}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1660424507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,7 +4448,7 @@ GameObject:
   - component: {fileID: 1660424510}
   - component: {fileID: 1660424509}
   - component: {fileID: 1660424508}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Obstacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2334,7 +4501,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9514022e904b22a4a8cac23ef9554abc, type: 2}
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2380,6 +4547,63 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 47261280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1749625932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1749625934}
+  - component: {fileID: 1749625933}
+  m_Layer: 0
+  m_Name: Acoustic Material
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1749625933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749625932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d733470c3e967144a2c25c362e4040b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticMaterial
+  properties: {fileID: 11400000, guid: 47dd462ca33ffd246971d0e4cb200426, type: 2}
+  hasCustomData: 0
+  customData:
+    absorption:
+      selection: 2147483647
+      points: []
+    transmission:
+      selection: 2147483647
+      points: []
+    scattering:
+      selection: 2147483647
+      points: []
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!4 &1749625934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749625932}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.19908, y: -0.5, z: -6.333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1840255948
 PrefabInstance:
@@ -2450,7 +4674,7 @@ GameObject:
   - component: {fileID: 1858247884}
   - component: {fileID: 1858247883}
   - component: {fileID: 1858247882}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Obstacle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2503,7 +4727,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9514022e904b22a4a8cac23ef9554abc, type: 2}
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2550,6 +4774,118 @@ Transform:
   m_Children: []
   m_Father: {fileID: 47261280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1876791563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1876791564}
+  - component: {fileID: 1876791567}
+  - component: {fileID: 1876791566}
+  - component: {fileID: 1876791565}
+  m_Layer: 8
+  m_Name: Obstacle (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1876791564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876791563}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 47261280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1876791565
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876791563}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1876791566
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876791563}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0e5456610ebbd1b4782da2879a4146d2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1876791567
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876791563}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2067300135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,6 +4949,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2c2f06a96a474e98b4bf6d15ecfd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SensorControlInput
+--- !u!1001 &3413394536895448149
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.57436
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.82603
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3818818143440522330, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
 --- !u!1001 &8601709118223834828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2669,10 +5062,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8796585364296409950, guid: 285caebe061a626409ba89acb3fc82e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9083339240412446644, guid: 285caebe061a626409ba89acb3fc82e4, type: 3}
       propertyPath: m_Name
       value: sensor_1
@@ -2691,7 +5080,11 @@ SceneRoots:
   - {fileID: 335039595}
   - {fileID: 47261280}
   - {fileID: 2067300137}
-  - {fileID: 1599305404}
+  - {fileID: 3413394536895448149}
   - {fileID: 8601709118223834828}
   - {fileID: 1461131769}
   - {fileID: 900838756}
+  - {fileID: 140530987}
+  - {fileID: 555034896}
+  - {fileID: 1749625934}
+  - {fileID: 1463588168}
