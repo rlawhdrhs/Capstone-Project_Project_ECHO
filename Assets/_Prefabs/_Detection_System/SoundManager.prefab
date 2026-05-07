@@ -46,17 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   intensityTable:
   - soundType: 1
-    intensity: 1
+    intensity: 2
+    detectionRadius: 10
   - soundType: 2
-    intensity: 0.8
+    intensity: 3
+    detectionRadius: 20
   - soundType: 3
     intensity: 1.2
+    detectionRadius: 8
   - soundType: 4
     intensity: 1
+    detectionRadius: 8
   - soundType: 5
     intensity: 1.5
+    detectionRadius: 8
   - soundType: 6
-    intensity: 3
+    intensity: 8
+    detectionRadius: 70
   clipTable:
   - soundType: 1
     clips:
@@ -67,6 +73,15 @@ MonoBehaviour:
     volume: 1
     minDistance: 2
     maxDistance: 22
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
+  - soundType: 6
+    clips:
+    - {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
+    volume: 1
+    minDistance: 3
+    maxDistance: 70
     rolloffMode: 0
     pitchMin: 0.95
     pitchMax: 1.05

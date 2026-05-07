@@ -3447,10 +3447,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66d2f67b56efd645a3b43ac45eef4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundListener
-  hearingThreshold: 0.2
+  hearingThreshold: 1
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   occlusionMultiplier: 0.6
 --- !u!114 &900838752
 MonoBehaviour:
@@ -3967,10 +3967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66d2f67b56efd645a3b43ac45eef4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundListener
-  hearingThreshold: 0.2
+  hearingThreshold: 1
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   occlusionMultiplier: 0.6
 --- !u!114 &1461131765
 MonoBehaviour:
@@ -4253,7 +4253,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1463588168}
-  - component: {fileID: 1463588167}
   - component: {fileID: 1463588169}
   m_Layer: 0
   m_Name: pureAudioTest
@@ -4261,104 +4260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!82 &1463588167
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463588166}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 1
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 15
-  MaxDistance: 100
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_IsActive: 1
 --- !u!4 &1463588168
 Transform:
   m_ObjectHideFlags: 0
@@ -4368,7 +4270,7 @@ Transform:
   m_GameObject: {fileID: 1463588166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.71, y: 2.477, z: 9.19}
+  m_LocalPosition: {x: 4.71, y: 1.64, z: 5.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4383,13 +4285,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1463588166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07f270ac36c49789466c75ceb88424c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e58a40737214d84da6d2ad91fbbdbff, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAudioSource
-  enableSpatialization: 1
-  gainBoostDb: 0
-  enableAcoustics: 1
-  reverbSendDb: 6
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosionTestTrigger
+  explosionKey: 98
+  explosionSoundType: 6
+  explosionLifetime: 1
+  drawDebugSphere: 1
+  debugSphereRadius: 1
 --- !u!1 &1486177639
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,14 +4997,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
-      propertyPath: intensityTable.Array.data[0].intensity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
-      propertyPath: intensityTable.Array.data[0].detectionRadius
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 3818818143440522330, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -5166,10 +5061,6 @@ PrefabInstance:
     - target: {fileID: 6031416209000095634, guid: 285caebe061a626409ba89acb3fc82e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8796585364296409950, guid: 285caebe061a626409ba89acb3fc82e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9083339240412446644, guid: 285caebe061a626409ba89acb3fc82e4, type: 3}
       propertyPath: m_Name
