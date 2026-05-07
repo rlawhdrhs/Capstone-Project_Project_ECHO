@@ -75,6 +75,7 @@ Assets/_Scripts/
  CoverAssistSystem.cs
  CoverHighlightSystem.cs
  DataMissionInteractor.cs
+ EMPDoor.cs
  Network/
   LaserDetector_Network.cs
   LocalVRRig.cs
