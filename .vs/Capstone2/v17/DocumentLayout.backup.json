@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\unityproject\\Capstone2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\StealthDetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\StealthDetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\LIghtMoveX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\EffectUI\\PressButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,21 +86,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StealthDetector.cs",
-              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\StealthDetector.cs",
-              "RelativeDocumentMoniker": "Assets\\_Scripts\\StealthDetector.cs",
-              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\StealthDetector.cs",
-              "RelativeToolTip": "Assets\\_Scripts\\StealthDetector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T10:54:28.867Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -115,24 +98,24 @@
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\EffectUI\\LIghtMoveX.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T20:00:39.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T20:00:39.158Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "RobotSelectButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
               "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\RobotSelectButton.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABgAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAcwGYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T15:40:03.147Z"
+              "WhenOpened": "2026-05-05T15:40:03.147Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "MapButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\MapButton.cs",
@@ -144,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "CameraSelector.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\CameraSelector.cs",
@@ -204,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "ChooseSceneAndCharacter.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneAndCharacter.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneAndCharacter.cs",
@@ -216,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "StartSceneButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneButton.cs",
@@ -228,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "ChooseSceneButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\ChooseSceneButton.cs",
@@ -240,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "StartSceneTransition.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\StartSceneTransition.cs",
@@ -252,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "ButtonHoverScale.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ButtonUi\\ButtonHoverScale.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ButtonUi\\ButtonHoverScale.cs",
@@ -264,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "ShowRestartButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ending\\ShowRestartButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ending\\ShowRestartButton.cs",
@@ -276,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "EndingGameManager.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ending\\EndingGameManager.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ending\\EndingGameManager.cs",
@@ -288,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "EndingManager.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ending\\EndingManager.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ending\\EndingManager.cs",
@@ -300,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "EndingTest.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ending\\EndingTest.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ending\\EndingTest.cs",
@@ -312,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "EndingType.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\ending\\EndingType.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\ending\\EndingType.cs",
@@ -324,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "SoundEmitter_Network.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Network\\SoundEmitter_Network.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Network\\SoundEmitter_Network.cs",
