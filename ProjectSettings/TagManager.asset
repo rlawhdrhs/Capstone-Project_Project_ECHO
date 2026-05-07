@@ -30,6 +30,7 @@ TagManager:
   - QDSUITextInputField
   - SamplesInfoPanel
   - QDSUIToggleCheckboxRadio
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -47,12 +48,10 @@ TagManager:
   - 
   - Outline
   - 
+  - Intruder
+  - Chaser
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - MissionLight
   - 
   - 
   - 

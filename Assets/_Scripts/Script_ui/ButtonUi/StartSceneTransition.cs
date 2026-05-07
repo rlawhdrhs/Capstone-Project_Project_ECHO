@@ -72,6 +72,6 @@ public class StartSceneTransition : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene("3.Main");
     }
 }

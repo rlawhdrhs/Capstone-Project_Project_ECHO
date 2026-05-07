@@ -19,6 +19,9 @@ public class StartSceneButton : MonoBehaviour
     [Header("Transition")]
     public StartSceneTransition transition;
 
+    [Header("Camera Mode")]
+    public string cameraMode;
+
     void Start()
     {
         originalScale = transform.localScale;
@@ -69,6 +72,9 @@ public class StartSceneButton : MonoBehaviour
         transform.localScale = originalScale;
 
         yield return new WaitForSeconds(0.2f);
+
+        // 카메라 모드 저장
+        GameEntryData.cameraMode = cameraMode;
 
         if (transition != null)
         {
