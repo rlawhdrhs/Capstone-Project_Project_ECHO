@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SoundListener : MonoBehaviour
 {
-    public float hearingThreshold = 0.05f;
+    [Header("Hearing")]
+    public float hearingThreshold = 1.0f;
+
+    [Header("Occlusion")]
     public LayerMask obstacleMask;
-    public float occlusionMultiplier = 0.6f;
+    public float occlusionMultiplier = 0.45f;
 
     public Action<SoundData, float> OnSoundDetected;
 
@@ -21,26 +24,45 @@ public class SoundListener : MonoBehaviour
             if (processedSoundIds.Contains(sound.id))
                 continue;
 
-            float distance = Vector3.Distance(transform.position, sound.position);
+            TryDetectSound(sound);
+        }
+    }
 
-            float distanceFactor = 1f / (1f + distance * 0.5f);
+    private void TryDetectSound(SoundData sound)
+    {
+        float distance = Vector3.Distance(transform.position, sound.position);
 
-            float occlusionFactor = 1f;
-            if (Physics.Linecast(sound.position, transform.position, obstacleMask))
-            {
-                occlusionFactor = occlusionMultiplier;
-            }
+        if (distance > sound.detectionRadius)
+            return;
 
-            float perceivedIntensity = sound.intensity * distanceFactor * occlusionFactor;
+        float distanceFactor = 1f - Mathf.Clamp01(distance / sound.detectionRadius);
 
-            if (perceivedIntensity >= hearingThreshold)
-            {
-                Debug.Log($"{gameObject.name} 소리 감지: {sound.soundType} / 위치: {sound.position} / 강도: {perceivedIntensity}");
+        float occlusionFactor = 1f;
 
-                OnSoundDetected?.Invoke(sound, perceivedIntensity);
+        if (Physics.Linecast(sound.position, transform.position, obstacleMask))
+        {
+            occlusionFactor = occlusionMultiplier;
+        }
 
-                processedSoundIds.Add(sound.id);
-            }
+        float perceivedIntensity =
+            sound.intensity *
+            distanceFactor *
+            occlusionFactor;
+
+        if (perceivedIntensity >= hearingThreshold)
+        {
+            Debug.Log(
+                $"{gameObject.name} 소리 감지: {sound.soundType}" +
+                $" / 위치: {sound.position}" +
+                $" / 거리: {distance:F2}" +
+                $" / 거리감쇠: {distanceFactor:F2}" +
+                $" / 차폐: {occlusionFactor:F2}" +
+                $" / 최종강도: {perceivedIntensity:F2}"
+            );
+
+            OnSoundDetected?.Invoke(sound, perceivedIntensity);
+
+            processedSoundIds.Add(sound.id);
         }
     }
 }

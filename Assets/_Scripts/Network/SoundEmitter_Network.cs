@@ -37,19 +37,19 @@ public class SoundEmitter_Network : NetworkBehaviour
     }
 
     void EmitSound(Vector3 currentPosition, float movedDistance)
-{
-    Vector3 soundPos = currentPosition + Vector3.down * 1f;
-    float speed = movedDistance / Runner.DeltaTime;
+    {
+        Vector3 soundPos = currentPosition + Vector3.down * 1f;
+        float speed = movedDistance / Runner.DeltaTime;
 
-    RPC_PlaySound(soundPos, soundLifetime, (int)SoundType.Footstep);
-}
+        RPC_PlaySound(soundPos, soundLifetime, (int)SoundType.Footstep);
+    }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
-public void RPC_PlaySound(Vector3 pos, float lifetime, SoundType soundType)
-{
-    if (SoundManager.Instance != null)
+    public void RPC_PlaySound(Vector3 pos, float lifetime, SoundType soundType)
     {
-        SoundManager.Instance.RegisterSound(pos, lifetime, soundType);
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.RegisterSound(pos, lifetime, soundType);
+        }
     }
-}
 }

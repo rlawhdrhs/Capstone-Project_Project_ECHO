@@ -1,0 +1,38 @@
+튜토리얼 - 추적자의 시작 씬에서
+Welcome.
+This facility is under restricted surveillance.
+Your role is simple.
+Monitor the system… and eliminate any intruders.
+
+
+
+1. 잠입자가 건물에 들어오면
+Intruder detected.
+Signal acquired.
+Monitoring active.
+
+(임시로 미니맵의 랜덤한 장소가 빛나며 이런식으로 신호가 발생한다는걸 알려주는 튜토리얼 음성)
+Watch the screen carefully.
+Noise will appear as a signal.
+Track it.
+
+Once power is restored,
+all systems will come online.
+
+2. 전력 복구 완료되면
+Power restored.
+Sensors online.
+Tracking initiated.
+
+
+3. 전력이 재차단되면 (폭탄으로 터짐)
+Main system offline
+Eliminate the intruder
+
+4. 침입자 제거 완료
+Target neutralized.
+Area secured.
+
+
+**맵을 보는 중, 소리 감지되면
+Noise detected.
