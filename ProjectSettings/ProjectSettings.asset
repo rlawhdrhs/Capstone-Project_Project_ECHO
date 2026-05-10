@@ -4,16 +4,16 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: b4514db44432d914aaeb5550441ba29c
+  productGUID: 62e0fc97cb0f3e84a9f28746429e3b75
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 3
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: My project
+  productName: Capstone-Project_Project_ECHO
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.12156863, b: 0.1254902, a: 1}
@@ -46,8 +46,8 @@ PlayerSettings:
   defaultScreenHeight: 1080
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_StereoRenderingPath: 0
-  m_ActiveColorSpace: 0
+  m_StereoRenderingPath: 2
+  m_ActiveColorSpace: 1
   unsupportedMSAAFallback: 0
   m_SpriteBatchMaxVertexCount: 65535
   m_SpriteBatchVertexThreshold: 300
@@ -99,8 +99,8 @@ PlayerSettings:
   resizableWindow: 0
   useMacAppStoreValidation: 0
   macAppStoreCategory: public.app-category.games
-  gpuSkinning: 0
-  meshDeformation: 0
+  gpuSkinning: 1
+  meshDeformation: 2
   xboxPIXTextureCapture: 0
   xboxEnableAvatar: 0
   xboxEnableKinect: 0
@@ -167,7 +167,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.DefaultCompany.Myproject
+    Android: com.DefaultCompany.CapstoneProject_Project_ECHO
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -175,8 +175,8 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 25
-  AndroidTargetSdkVersion: 0
+  AndroidMinSdkVersion: 32
+  AndroidTargetSdkVersion: 34
   AndroidPreferredInstallLocation: 0
   AndroidPreferredDataLocation: 1
   aotOptions: 
@@ -393,7 +393,13 @@ PlayerSettings:
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
-  m_BuildTargetGraphicsAPIs: []
+  m_BuildTargetGraphicsAPIs:
+  - m_BuildTarget: WindowsStandaloneSupport
+    m_APIs: 02000000
+    m_Automatic: 0
+  - m_BuildTarget: AndroidPlayer
+    m_APIs: 15000000
+    m_Automatic: 0
   m_BuildTargetVRSettings: []
   m_DefaultShaderChunkSizeInMB: 16
   m_DefaultShaderChunkCount: 0
@@ -681,9 +687,8 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: USE_INPUT_SYSTEM_POSE_CONTROL;UNITY_POST_PROCESSING_STACK_V2;USE_STICK_CONTROL_THUMBSTICKS;PHOTON_FUSION_PHYSICS_ADDON_DEFINED;FUSION_WEAVER;FUSION2;FUSION_2;FUSION_2_0;FUSION_2_0_9;FUSION_2_OR_NEWER;FUSION_2_0_OR_NEWER;FUSION_LOGLEVEL_INFO
-    CloudRendering: UNITY_POST_PROCESSING_STACK_V2
-    EmbeddedLinux: UNITY_POST_PROCESSING_STACK_V2;PHOTON_FUSION_PHYSICS_ADDON_DEFINED
+    Android: PHOTON_FUSION_PHYSICS_ADDON_DEFINED;OVR_DISABLE_HAND_PINCH_BUTTON_MAPPING
+    EmbeddedLinux: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     GameCoreScarlett: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     GameCoreXboxOne: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     Kepler: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
@@ -693,14 +698,13 @@ PlayerSettings:
     PS4: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     PS5: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     QNX: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
-    Stadia: UNITY_POST_PROCESSING_STACK_V2
-    Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;UNITY_POST_PROCESSING_STACK_V2;USE_STICK_CONTROL_THUMBSTICKS;FUSION_LOGLEVEL_INFO;FUSION_WEAVER;FUSION2;FUSION_2;FUSION_2_0;FUSION_2_0_9;FUSION_2_OR_NEWER;FUSION_2_0_OR_NEWER;PHOTON_FUSION_PHYSICS_ADDON_DEFINED
+    Standalone: FUSION_WEAVER;FUSION2;FUSION_2;FUSION_2_0;FUSION_2_0_9;FUSION_2_OR_NEWER;FUSION_2_0_OR_NEWER;FUSION_LOGLEVEL_INFO;PHOTON_FUSION_PHYSICS_ADDON_DEFINED;OVR_DISABLE_HAND_PINCH_BUTTON_MAPPING
     VisionOS: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     WebGL: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     Windows Store Apps: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     XboxOne: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
     iPhone: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
-    tvOS: UNITY_POST_PROCESSING_STACK_V2;PHOTON_FUSION_PHYSICS_ADDON_DEFINED
+    tvOS: PHOTON_FUSION_PHYSICS_ADDON_DEFINED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -720,14 +724,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: My project
+  metroPackageName: Capstone-Project_Project_ECHO
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: My project
+  metroApplicationDescription: Capstone-Project_Project_ECHO
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
