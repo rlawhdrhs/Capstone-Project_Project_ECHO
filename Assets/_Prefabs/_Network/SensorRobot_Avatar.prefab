@@ -10,11 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8460399042890013394}
   - component: {fileID: 4955600838653663416}
+  - component: {fileID: -7007958320293682369}
   - component: {fileID: 5387324953235544320}
   - component: {fileID: 7525512869937108221}
   - component: {fileID: 8300422882704459551}
   - component: {fileID: 2242734241507275410}
   - component: {fileID: -167871423003913383}
+  - component: {fileID: -2559461430101864269}
+  - component: {fileID: 2773514292445942142}
   m_Layer: 0
   m_Name: SensorRobot_Avatar
   m_TagString: Untagged
@@ -55,11 +58,29 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: -7007958320293682369}
   - {fileID: 5387324953235544320}
   - {fileID: 8300422882704459551}
   - {fileID: 2242734241507275410}
   - {fileID: -167871423003913383}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &-7007958320293682369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129913900726152689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8a596d57c0c1f4d9eeedbc6b650788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChaserVision_New
+  viewDistance: 50
+  chaserGlobalVolume: {fileID: 0}
+  normalColor: {r: 0.3, g: 0.3, b: 1, a: 1}
+  alertColor: {r: 1, g: 0.15, b: 0.15, a: 1}
+  colorChangeSpeed: 6
 --- !u!114 &5387324953235544320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +164,7 @@ MonoBehaviour:
   detectRadius: 10
   playerLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 65664
   visionCone: {fileID: 521665356392520165}
   _isLaserOn:
     _value: 0
@@ -152,6 +173,37 @@ MonoBehaviour:
   _prevSpace:
     _value: 0
   isControlledByMe: 0
+--- !u!114 &-2559461430101864269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129913900726152689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9a63e075a5dd2499963dd049daa17c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntruderSoundDetector_Network
+  detectRange: 15
+  targetCube: {fileID: 0}
+--- !u!114 &2773514292445942142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129913900726152689}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a78e3620638a1248be4d0bef2f0e1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntruderSoundDetector
+  detectRange: 15
+  intruderLayer:
+    serializedVersion: 2
+    m_Bits: 65664
+  targetCube: {fileID: 0}
 --- !u!1 &7614922890206415217
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,8 +55,6 @@ Shader "FX/ProceduralWater"
         LOD 350
         ColorMask RGB
 
-        GrabPass { "_RefractionTex" }
-
         Pass
         {
             Blend SrcAlpha OneMinusSrcAlpha
@@ -72,7 +70,7 @@ Shader "FX/ProceduralWater"
 
             #include "UnityCG.cginc"
 
-            sampler2D _RefractionTex;
+            sampler2D _CameraOpaqueTexture;
             UNITY_DECLARE_DEPTH_TEXTURE(_CameraDepthTexture);
 
             float4 _BaseColor;
@@ -303,7 +301,7 @@ Shader "FX/ProceduralWater"
                 float fresnel = pow(1.0 - ndv, _FresnelPower) * _FresnelScale + _FresnelBias;
                 fresnel = saturate(fresnel);
 
-                half4 refr = tex2Dproj(_RefractionTex, UNITY_PROJ_COORD(i.grabPos));
+                half4 refr = tex2Dproj(_CameraOpaqueTexture, UNITY_PROJ_COORD(i.grabPos));
                 float3 refrRgb = refr.rgb * lerp(1.0, absorb, 0.75);
 
                 float refrToWater = saturate(_RefractionStrength + depthLerp * 0.55);

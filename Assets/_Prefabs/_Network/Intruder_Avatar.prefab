@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 4640237190147671299}
   - component: {fileID: 7702765635475142460}
   - component: {fileID: 4171325265442302744}
+  - component: {fileID: 1196764929142873321}
   m_Layer: 7
   m_Name: Intruder_Model
   m_TagString: Untagged
@@ -952,6 +953,28 @@ MonoBehaviour:
   - m_Rig: {fileID: 6775498344686473865}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &1196764929142873321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3345774135754523635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1a1d7d51a720541aa9466fa673b55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StealthController
+  rend: {fileID: 1668809249797193881}
+  _isHidden:
+    _value: 0
+  _isDetectedByChaser:
+    _value: 0
+  normalColor: {r: 0, g: 0, b: 1, a: 1}
+  detectedColor: {r: 1, g: 0, b: 0, a: 1}
+  hiddenColor: {r: 0, g: 0, b: 1, a: 0.3}
+  useBlinkEffect: 0
+  blinkInterval: 0.5
 --- !u!1 &3499476957088458619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2424,7 @@ MonoBehaviour:
   - {fileID: 1788966569660105352}
   - {fileID: 4157682429546303588}
   - {fileID: 2147550976129407761}
+  - {fileID: 1196764929142873321}
   - {fileID: 6866285928244897298}
   - {fileID: 7365717999112213270}
   ForceRemoteRenderTimeframe: 0
@@ -2436,8 +2460,6 @@ MonoBehaviour:
   avatarHead: {fileID: 5691629291865991006}
   avatarLeftHand: {fileID: 5005428090650409845}
   avatarRightHand: {fileID: 6749245529286255077}
-  heightOffset: 0.9
-  floorY: 0
   animator: {fileID: 7702765635475142460}
   _netMoveX: 0
   _netMoveZ: 0
@@ -2450,6 +2472,7 @@ MonoBehaviour:
   isSensorRobot: 0
   gravity: -9.81
   jumpForce: 5
+  moveSpeed: 3
 --- !u!143 &-2894411966826004063
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2468,8 +2491,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.8
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -2515,8 +2538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundEmitter_Network
   stepDistance: 1.5
-  baseSoundIntensity: 1
   soundLifetime: 0.3
+  footstepYOffset: -1
+  isRunning: 0
 --- !u!1 &7622729119995212620
 GameObject:
   m_ObjectHideFlags: 0

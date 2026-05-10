@@ -3,32 +3,30 @@ using UnityEngine;
 
 public class VRRigSynchronizer : NetworkBehaviour
 {
-    [Header("아바타 뼈대 연결 (NetworkTransform이 달린 부위들)")]
+    [Header("아바타 뼈대 연결")]
     public Transform avatarHead;
     public Transform avatarLeftHand;
     public Transform avatarRightHand;
-    public float heightOffset = 0.9f;
-    public float floorY = 0f;
+
     private CharacterController _cc;
-    [Header("애니메이션 동기화")]
     public Animator animator;
+
     [Networked] public float netMoveX { get; set; }
     [Networked] public float netMoveZ { get; set; }
     [Networked] public float netCrouch { get; set; }
     [Networked] public NetworkBool PrevLeftClick { get; set; }
     [Networked] public NetworkBool IsFrozen { get; set; }
     public bool localFreeze = false;
-
-    [Header("센서 로봇 여부")]
     public bool isSensorRobot = false;
+
     [Header("중력 관련")]
     [Networked] private float _velocityY { get; set; }
     public float gravity = -9.81f;
     public float jumpForce = 5f;
+    public float moveSpeed = 3f; // 이동 속도 추가
 
     public override void Spawned()
     {
-        // 1. 내가 조종하는 내 캐릭터일 때
         if (HasInputAuthority)
         {
             _cc = GetComponent<CharacterController>();
@@ -37,13 +35,13 @@ public class VRRigSynchronizer : NetworkBehaviour
             {
                 LocalVRRig.Instance.isOnlineMode = true;
 
-                LocalVRRig.Instance.transform.position = transform.position;
+                var moveProvider = LocalVRRig.Instance.GetComponent<UnityEngine.XR.Interaction.Toolkit.ContinuousMoveProviderBase>();
+                if (moveProvider != null) moveProvider.enabled = false;
 
-                if (LocalVRRig.Instance.avatarRoot != null)
-                {
-                    LocalVRRig.Instance.avatarRoot.gameObject.SetActive(false);
-                }
+                var localCC = LocalVRRig.Instance.GetComponent<CharacterController>();
+                if (localCC != null) localCC.enabled = false;
 
+                // 뼈대 연결
                 LocalVRRig.Instance.avatarRoot = this.transform;
                 LocalVRRig.Instance.avatarHead = this.avatarHead;
                 LocalVRRig.Instance.avatarLeftHand = this.avatarLeftHand;
@@ -51,10 +49,7 @@ public class VRRigSynchronizer : NetworkBehaviour
                 LocalVRRig.Instance.animator = this.animator;
             }
 
-            if (avatarHead != null)
-            {
-                avatarHead.localScale = Vector3.zero;
-            }
+            if (avatarHead != null) avatarHead.localScale = Vector3.zero; // 내 시야 가림 방지
         }
     }
 
@@ -64,12 +59,20 @@ public class VRRigSynchronizer : NetworkBehaviour
 
         if (GetInput(out NetworkInputData data))
         {
-            // --- A. 물리 이동 연산 ---
-            if (_cc != null)
+            // --- 1. 회전: 머리가 바라보는 방향(Y축)으로 몸통을 맞춥니다 ---
+            Vector3 headForward = data.headRotation * Vector3.forward;
+            headForward.y = 0f; // 땅과 수평 유지
+            if (headForward.sqrMagnitude > 0.01f)
             {
-                Vector3 currentPos = transform.position;
-                Vector3 targetPos = data.headPosition;
-                Vector3 moveDelta = new Vector3(targetPos.x - currentPos.x, 0, targetPos.z - currentPos.z);
+                transform.rotation = Quaternion.LookRotation(headForward);
+            }
+
+            // --- 2. 이동: 아바타의 Character Controller가 직접 움직입니다 ---
+            if (_cc != null && _cc.enabled)
+            {
+                // transform.forward는 이미 위에서 머리 방향으로 맞춰졌으므로, 앞으로(moveZ) 누르면 시선 방향으로 갑니다.
+                Vector3 moveDirection = (transform.forward * data.moveZ) + (transform.right * data.moveX);
+                Vector3 moveDelta = moveDirection * moveSpeed * Runner.DeltaTime;
 
                 if (_cc.isGrounded)
                 {
@@ -82,14 +85,8 @@ public class VRRigSynchronizer : NetworkBehaviour
 
                 _cc.Move(moveDelta);
             }
-            else
-            {
-                Vector3 fallbackPos = data.headPosition;
-                fallbackPos.y = transform.position.y;
-                transform.position = fallbackPos;
-            }
 
-            // --- B. IK 동기화 (머리 및 양손) ---
+            // --- 3. IK (머리와 양손 위치 동기화) ---
             if (avatarHead != null)
             {
                 avatarHead.position = data.headPosition;
@@ -98,29 +95,21 @@ public class VRRigSynchronizer : NetworkBehaviour
             if (avatarLeftHand != null) avatarLeftHand.position = data.leftHandPosition;
             if (avatarRightHand != null) avatarRightHand.position = data.rightHandPosition;
 
-            Vector3 headForward = data.headRotation * Vector3.forward;
-            headForward.y = 0f;
-            if (headForward.sqrMagnitude > 0.01f)
-            {
-                transform.rotation = Quaternion.LookRotation(headForward);
-            }
-
-            // --- D. 버튼 클릭 이벤트 ---
+            // --- 4. 상호작용 (버튼 클릭) ---
             bool isClickedThisFrame = data.leftClick && !PrevLeftClick;
             PrevLeftClick = data.leftClick;
-
             if (isClickedThisFrame)
             {
                 Ray ray = new Ray(data.headPosition, data.headRotation * Vector3.forward);
                 if (Physics.Raycast(ray, out RaycastHit hit, 5f))
                 {
-                    VRButton targetButton = hit.collider.GetComponent<VRButton>();
-                    if (targetButton != null) targetButton.PressButton();
+                    if (hit.collider.TryGetComponent(out VRButton targetButton))
+                        targetButton.PressButton();
                 }
             }
         }
 
-        // --- E. 애니메이션 동기화 ---
+        // --- 5. 애니메이션 데이터 갱신 ---
         if (HasInputAuthority && animator != null)
         {
             netMoveX = animator.GetFloat("MoveX");
@@ -131,7 +120,6 @@ public class VRRigSynchronizer : NetworkBehaviour
 
     public override void Render()
     {
-        // 남의 캐릭터일 때
         if (!HasInputAuthority && animator != null)
         {
             animator.SetFloat("MoveX", netMoveX);

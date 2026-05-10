@@ -1383,7 +1383,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7885986470491228767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,8 +1399,6 @@ MonoBehaviour:
   avatarHead: {fileID: 419600603594468862}
   avatarLeftHand: {fileID: 1857790608088877666}
   avatarRightHand: {fileID: 6566231218507920678}
-  heightOffset: 0.9
-  floorY: 0
   animator: {fileID: 8812152615558101575}
   _netMoveX: 0
   _netMoveZ: 0
@@ -1413,6 +1411,7 @@ MonoBehaviour:
   isSensorRobot: 0
   gravity: -9.81
   jumpForce: 5
+  moveSpeed: 3
 --- !u!114 &1078401389494535692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1426,7 +1425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PossessionManager
   myHumanAvatar: {fileID: 7885986470491228767}
-  currentRobot: {fileID: 0}
+  currentDrone: {fileID: 0}
   xrOrigin: {fileID: 0}
 --- !u!1 &2918024174120506002
 GameObject:

@@ -109,13 +109,13 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         NetworkInputData data = new NetworkInputData();
 
         // 2. WASD 키 입력 수집
-        // 앞/뒤
+        /*// 앞/뒤
         if (Input.GetKey(KeyCode.W)) data.moveZ = 1f;
         if (Input.GetKey(KeyCode.S)) data.moveZ = -1f;
 
         // 좌/우 회전 (A/D)
         if (Input.GetKey(KeyCode.A)) data.turnY = -1f;
-        if (Input.GetKey(KeyCode.D)) data.turnY = 1f;
+        if (Input.GetKey(KeyCode.D)) data.turnY = 1f;*/
 
         float rightTrigger = Input.GetAxis("XRI_Right_Trigger");
         data.rightTrigger = Input.GetKey(KeyCode.R) || rightTrigger > 0.1f;
