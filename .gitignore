@@ -58,3 +58,15 @@ sysinfo.txt
 
 # Main-Asset-folder
 Assets/PBR_Modular_SciFi_corridor/
+
+.utmp/
+Library/
+Temp/
+Logs/
+Obj/
+Build/
+UserSettings/
+
+Assets/MetaXR/
+Assets/Plugins/Android/
+Assets/XR/

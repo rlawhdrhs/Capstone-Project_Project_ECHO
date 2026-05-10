@@ -33,7 +33,7 @@ Material:
     - _Parallax: 0.02
     m_Colors:
     - _BaseColor: {r: 0.20754719, g: 0.18757567, b: 0.18757567, a: 1}
-    - _Color: {r: 0.20754716, g: 0.18757564, b: 0.18757564, a: 1}
+    - _Color: {r: 0.20754719, g: 0.18757567, b: 0.18757567, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &27171030133397233
