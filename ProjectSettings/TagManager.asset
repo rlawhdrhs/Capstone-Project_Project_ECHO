@@ -42,10 +42,10 @@ TagManager:
   - Player
   - Wall
   - Cover
-  - 
+  - Clickable
   - Hidden
   - Detected
-  - 
+  - Door
   - Outline
   - 
   - Intruder
