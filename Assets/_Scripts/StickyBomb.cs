@@ -1,15 +1,19 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit.Interactables; // XRI 3.x 네임스페이스
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 [RequireComponent(typeof(Rigidbody), typeof(XRGrabInteractable))]
 public class StickyBomb : MonoBehaviour
 {
     [Header("점착 설정")]
-    [Tooltip("폭탄이 붙을 수 있는 레이어를 선택하세요")]
     public LayerMask stickableLayers;
-    
-    [Tooltip("한 번 붙으면 다시 잡을 수 없게 할 것인지?")]
     public bool disableGrabAfterStick = true;
+
+    [Header("EMP 폭발 설정")]
+    [Tooltip("벽에 붙은 후 터지기까지 걸리는 시간")]
+    public float explosionDelay = 3.0f;
+    [Tooltip("EMP 해킹이 미치는 반경 (미터)")]
+    public float empRadius = 3.0f;
 
     private Rigidbody _rb;
     private XRGrabInteractable _grabInteractable;
@@ -23,13 +27,9 @@ public class StickyBomb : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // 1. 이미 어딘가에 붙어있다면 무시
         if (_isStuck) return;
-
-        // 2. 플레이어가 현재 손에 쥐고 있는 상태라면 무시 (던진 후만 작동)
         if (_grabInteractable.isSelected) return;
 
-        // 3. 충돌한 오브젝트가 '붙을 수 있는 레이어'인지 확인
         if ((stickableLayers.value & (1 << collision.gameObject.layer)) != 0)
         {
             StickToSurface(collision);
@@ -54,6 +54,39 @@ public class StickyBomb : MonoBehaviour
             _grabInteractable.enabled = false;
         }
 
-        Debug.Log("<color=green>폭탄 점착 완료!</color>");
+        Debug.Log("<color=green>폭탄 점착 완료! 3초 후 폭발합니다.</color>");
+        
+        // 🔥 추가됨: 점착과 동시에 폭발 카운트다운 시작
+        StartCoroutine(ExplosionRoutine());
+    }
+
+    IEnumerator ExplosionRoutine()
+    {
+        // 1. 설정된 시간만큼 대기
+        yield return new WaitForSeconds(explosionDelay);
+
+        // 2. 주변 물체 스캔 (보이지 않는 구체 레이더)
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, empRadius);
+
+        foreach (var hit in hitColliders)
+        {
+            // 근처에 EMPDoor 스크립트를 가진 오브젝트가 있는지 확인
+            EMPDoor door = hit.GetComponent<EMPDoor>();
+            if (door != null)
+            {
+                door.OpenDoor(); // 문 열기 함수 실행
+            }
+        }
+
+        // 3. 폭탄 제거
+        Debug.Log("<color=red>EMP 방출!</color>");
+        Destroy(gameObject);
+    }
+
+    // 에디터에서 폭발 반경을 시각적으로 확인하기 위함
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, empRadius);
     }
 }
