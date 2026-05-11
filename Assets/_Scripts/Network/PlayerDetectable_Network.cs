@@ -29,6 +29,14 @@ public class PlayerDetectable_Network : NetworkBehaviour
 
     private bool canEnterRemovable = true;
 
+    private TickTimer detectionTimer;
+
+    [Header("Detect Points")]
+    [SerializeField] private Transform detectPointsRoot;
+
+    private Transform[] detectPoints;
+    public Transform[] DetectPoints => detectPoints;
+
     public override void Spawned()
     {
         objectRenderer = GetComponent<Renderer>();
@@ -36,6 +44,16 @@ public class PlayerDetectable_Network : NetworkBehaviour
         {
             instanceMaterial = objectRenderer.material;
             UpdateColor(); // 초기 색상 설정
+        }
+
+        if (detectPointsRoot != null)
+        {
+            int childCount = detectPointsRoot.childCount;
+            detectPoints = new Transform[childCount];
+            for (int i = 0; i < childCount; i++)
+            {
+                detectPoints[i] = detectPointsRoot.GetChild(i);
+            }
         }
     }
 
@@ -58,14 +76,13 @@ public class PlayerDetectable_Network : NetworkBehaviour
     {
         if (isRemoved || !Object.HasStateAuthority) return;
 
-        if (isDetected)
+        if (detectionTimer.Expired(Runner))
         {
-            detectionGauge += increaseSpeed * Runner.DeltaTime;
+            isDetected = false;
         }
-        else
-        {
-            detectionGauge -= decreaseSpeed * Runner.DeltaTime;
-        }
+
+        if (isDetected) detectionGauge += increaseSpeed * Runner.DeltaTime;
+        else detectionGauge -= decreaseSpeed * Runner.DeltaTime;
 
         detectionGauge = Mathf.Clamp(detectionGauge, 0f, maxGauge);
 
@@ -76,6 +93,16 @@ public class PlayerDetectable_Network : NetworkBehaviour
         else if (detectionGauge <= 0f)
         {
             isRemovable = false; // 게이지가 다 깎이면 제거 가능 상태 해제
+        }
+    }
+
+    public void NotifyDetected()
+    {
+        if (Object.HasStateAuthority)
+        {
+            isDetected = true;
+            // 0.1초 동안 레이저가 안 들어오면 감지가 풀린 것으로 판정
+            detectionTimer = TickTimer.CreateFromSeconds(Runner, 0.1f);
         }
     }
 
