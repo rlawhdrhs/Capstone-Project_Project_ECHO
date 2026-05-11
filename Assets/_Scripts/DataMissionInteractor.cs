@@ -30,6 +30,11 @@ public class DataMissionInteractor : MonoBehaviour
                 _isTouching = false;
                 Debug.Log("<color=yellow>★ [SYSTEM] 미션 클리어! ★</color>");
                 onMissionClear?.Invoke();
+                //네트워크에 미션 클리어 동기화
+                if (NetworkGameManager.Instance != null)
+                {
+                    NetworkGameManager.Instance.Rpc_AddDataProgress();
+                }
             }
         }
     }

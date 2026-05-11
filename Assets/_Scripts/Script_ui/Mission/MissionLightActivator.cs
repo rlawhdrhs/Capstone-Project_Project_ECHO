@@ -10,6 +10,8 @@ public class MissionLightActivator : MonoBehaviour
 
     private bool activated = false;
 
+    public DataMissionSpawner DataMissionSpawner;
+
     void Start()
     {
         TurnOffMissionLights();
@@ -59,6 +61,11 @@ public class MissionLightActivator : MonoBehaviour
         }
 
         Debug.Log("Mission Light 활성화");
+
+        if (NetworkGameManager.Instance != null && NetworkGameManager.Instance.Object.IsValid)
+        {
+            NetworkGameManager.Instance.Rpc_CompletePowerRestore();
+        }
     }
 
     // 시작 시 전부 끄기
