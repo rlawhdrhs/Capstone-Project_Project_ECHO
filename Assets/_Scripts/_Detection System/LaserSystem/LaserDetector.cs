@@ -3,88 +3,89 @@ using UnityEngine;
 public class LaserDetector : MonoBehaviour
 {
     [Header("Detection Settings")]
-    public float detectDistance = 10f;
-    public float detectAngle = 25f;
+    public float detectDistance = 20f;
+    public float detectAngle = 20f;
 
-    [Header("Laser Height")]
-    public float originHeight = 0.3f;
-    public float heightRange = 0.15f;
+    [Header("VR / Camera Origin")]
+    [Tooltip("VR에서는 CenterEyeAnchor 또는 HMD Camera Transform을 연결하세요.")]
+    public Transform laserOrigin;
 
-    [Header("References")]
+    [Header("Height Limit")]
+    public bool useHeightLimit = false;
+    public float heightRange = 0.7f;
+
+    [Header("Target")]
     public PlayerDetectable player;
-    public VisionConeMesh visionCone;
 
-    [Header("Input")]
+    [Header("Obstacle")]
+    [Tooltip("Wall, Obstacle 등 레이저를 막는 레이어만 넣으세요. Player 레이어는 넣지 마세요.")]
+    public LayerMask obstacleMask;
+
+    [Header("Input Test")]
+    [Tooltip("네트워크 적용 시 false로 두고, 네트워크/VR 입력 스크립트에서 SetLaserActive()를 호출하세요.")]
+    public bool useKeyboardInput = true;
     public KeyCode toggleKey = KeyCode.R;
+
+    [Header("Debug")]
+    public bool showDebugRay = true;
+    public bool showAngleGuide = true;
 
     private bool isLaserOn = false;
     private bool wasDetectedLastFrame = false;
 
+    private PlayerDetectable currentDetectedTarget;
+    private Transform currentDetectedPoint;
 
-    void Start()
+    public bool IsLaserOn => isLaserOn;
+    public PlayerDetectable CurrentDetectedTarget => currentDetectedTarget;
+    public Transform CurrentDetectedPoint => currentDetectedPoint;
+
+    private void Start()
     {
+        if (laserOrigin == null)
+        {
+            Transform foundCameraPoint = transform.Find("CameraPoint");
+
+            if (foundCameraPoint != null)
+            {
+                laserOrigin = foundCameraPoint;
+            }
+            else
+            {
+                laserOrigin = transform;
+                Debug.LogWarning($"{name}: Laser Origin이 비어 있어서 자기 transform을 사용합니다. VR에서는 CenterEyeAnchor 또는 CameraPoint를 연결하세요.");
+            }
+        }
+
         if (player == null)
         {
             player = FindAnyObjectByType<PlayerDetectable>();
         }
-
-        if (visionCone != null)
-        {
-            visionCone.gameObject.SetActive(false);
-            visionCone.SetCone(detectAngle, detectDistance, originHeight, heightRange * 2f);
-        }
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(toggleKey))
+        if (useKeyboardInput)
         {
-            isLaserOn = !isLaserOn;
-            Debug.Log($"{name} Laser Toggle: {isLaserOn}");
-            
-            if (visionCone != null)
-            {
-                visionCone.gameObject.SetActive(isLaserOn);
-            }
-        }
-
-        float moveSpeed = 1.0f;
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            originHeight += moveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            originHeight -= moveSpeed * Time.deltaTime;
+            HandleKeyboardInput();
         }
 
         if (!isLaserOn)
         {
-            if (player != null)
-            {
-                player.SetDetected(false);
-                player.UpdateGauge(false);
-            }
-
-            wasDetectedLastFrame = false;
+            ClearDetectionState();
             return;
         }
 
-        if (visionCone != null)
-        {
-            visionCone.SetCone(detectAngle, detectDistance, originHeight, heightRange * 2f);
-        }
+        bool isDetected = CheckPlayerDetected(out PlayerDetectable detectedTarget, out Transform detectedPoint);
 
-        Transform detectedPoint;
-        bool isDetected = CheckPlayerDetected(out detectedPoint);
+        currentDetectedTarget = detectedTarget;
+        currentDetectedPoint = detectedPoint;
 
         if (isDetected && !wasDetectedLastFrame)
         {
-            Debug.Log($"[LaserDetector] 감지 시작! Player: {player.gameObject.name}, Point: {detectedPoint.name}");
+            Debug.Log($"[LaserDetector] 감지 시작! Player: {detectedTarget.gameObject.name}, Point: {detectedPoint.name}");
         }
-        
+
         if (!isDetected && wasDetectedLastFrame)
         {
             Debug.Log("[LaserDetector] 감지 해제!");
@@ -97,27 +98,102 @@ public class LaserDetector : MonoBehaviour
             player.SetDetected(isDetected);
             player.UpdateGauge(isDetected);
         }
+
+        if (showDebugRay)
+        {
+            DrawDebugLaser(isDetected);
+        }
     }
 
-    bool CheckPlayerDetected(out Transform detectedPoint)
+    private void HandleKeyboardInput()
     {
+        if (Input.GetKeyDown(toggleKey))
+        {
+            SetLaserActive(!isLaserOn);
+        }
+    }
+
+    public void SetLaserActive(bool value)
+    {
+        isLaserOn = value;
+        wasDetectedLastFrame = false;
+
+        if (!isLaserOn)
+        {
+            ClearDetectionState();
+        }
+
+        Debug.Log($"{name} Laser Active: {isLaserOn}");
+    }
+
+    public void SetLaserActiveByControl(bool value)
+    {
+        SetLaserActive(false);
+        enabled = value;
+    }
+
+    public bool TryEliminateCurrentTarget()
+    {
+        if (currentDetectedTarget == null)
+        {
+            Debug.Log("[LaserDetector] 제거할 대상 없음");
+            return false;
+        }
+
+        if (!currentDetectedTarget.isRemovable)
+        {
+            Debug.Log("[LaserDetector] 대상이 아직 제거 가능 상태가 아님");
+            return false;
+        }
+
+        currentDetectedTarget.TryRemove();
+        return true;
+    }
+
+    private void ClearDetectionState()
+    {
+        currentDetectedTarget = null;
+        currentDetectedPoint = null;
+
+        if (player != null)
+        {
+            player.SetDetected(false);
+            player.UpdateGauge(false);
+        }
+
+        wasDetectedLastFrame = false;
+    }
+
+    private bool CheckPlayerDetected(out PlayerDetectable detectedTarget, out Transform detectedPoint)
+    {
+        detectedTarget = null;
         detectedPoint = null;
 
-        if (player == null || player.isRemoved) return false;
+        if (player == null || player.isRemoved)
+            return false;
 
         Transform[] detectPoints = player.DetectPoints;
-        if (detectPoints == null || detectPoints.Length == 0) return false;
 
-        Vector3 origin = transform.position + Vector3.up * originHeight;
-        Vector3 forwardDir = Camera.main.transform.forward;
+        if (detectPoints == null || detectPoints.Length == 0)
+            return false;
+
+        Ray aimRay = GetAimRay();
+
+        Vector3 origin = aimRay.origin;
+        Vector3 forwardDir = aimRay.direction;
 
         foreach (Transform point in detectPoints)
         {
-            if (point == null) continue;
-
-            float heightDifference = Mathf.Abs(point.position.y - origin.y);
-            if (heightDifference > heightRange)
+            if (point == null)
                 continue;
+
+            if (useHeightLimit)
+            {
+                float heightDifference = Mathf.Abs(point.position.y - origin.y);
+
+                if (heightDifference > heightRange)
+                    continue;
+            }
 
             Vector3 toTarget = point.position - origin;
             float distanceToTarget = toTarget.magnitude;
@@ -131,34 +207,46 @@ public class LaserDetector : MonoBehaviour
             if (angle > detectAngle * 0.5f)
                 continue;
 
-            RaycastHit hit;
-            if (Physics.Raycast(origin, dirToTarget, out hit, distanceToTarget))
-            {
-                if (hit.transform == point || hit.transform.IsChildOf(player.transform))
-                {
-                    detectedPoint = point;
-                    return true;
-                }
-            }
+            bool isBlocked = Physics.Linecast(origin, point.position, obstacleMask);
+
+            if (isBlocked)
+                continue;
+
+            detectedTarget = player;
+            detectedPoint = point;
+            return true;
         }
 
         return false;
     }
 
-    public void SetLaserActiveByControl(bool value)
+    private Ray GetAimRay()
     {
-        isLaserOn = false;
-        wasDetectedLastFrame = false;
-
-        if (visionCone != null)
-            visionCone.gameObject.SetActive(false);
-
-        if (player != null)
+        if (laserOrigin != null)
         {
-            player.SetDetected(false);
-            player.UpdateGauge(false);
+            return new Ray(laserOrigin.position, laserOrigin.forward);
         }
 
-        enabled = value;
+        return new Ray(transform.position, transform.forward);
+    }
+
+    private void DrawDebugLaser(bool isDetected)
+    {
+        Ray aimRay = GetAimRay();
+
+        Debug.DrawRay(
+            aimRay.origin,
+            aimRay.direction * detectDistance,
+            isDetected ? Color.red : Color.green
+        );
+
+        if (!showAngleGuide)
+            return;
+
+        Vector3 leftDir = Quaternion.AngleAxis(-detectAngle * 0.5f, Vector3.up) * aimRay.direction;
+        Vector3 rightDir = Quaternion.AngleAxis(detectAngle * 0.5f, Vector3.up) * aimRay.direction;
+
+        Debug.DrawRay(aimRay.origin, leftDir * detectDistance, Color.yellow);
+        Debug.DrawRay(aimRay.origin, rightDir * detectDistance, Color.yellow);
     }
 }

@@ -106,6 +106,8 @@ MonoBehaviour:
   viewAngle: 25
   viewDistance: 10
   segments: 20
+  heightOffset: 0.8
+  thickness: 0.4
 --- !u!1 &3632582176782226652
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +123,6 @@ GameObject:
   - component: {fileID: -8150989330851171587}
   - component: {fileID: 607616356284664978}
   - component: {fileID: 2551822232395145850}
-  - component: {fileID: 2753421954698605285}
   - component: {fileID: 1923502682358271713}
   - component: {fileID: 8801269586890239048}
   - component: {fileID: -3678920499654001567}
@@ -259,14 +260,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector
   detectDistance: 10
   detectAngle: 25
-  targetPlayer: {fileID: 0}
-  visionCone: {fileID: 6202191987204188078}
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  laserOrigin: {fileID: 0}
+  useHeightLimit: 1
+  originHeight: 0.3
+  heightRange: 0.5
+  player: {fileID: 0}
   toggleKey: 114
-  _isLaserOn:
-    _value: 0
+  showDebugRay: 1
 --- !u!120 &2551822232395145850
 LineRenderer:
   serializedVersion: 3
@@ -377,18 +377,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &2753421954698605285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3632582176782226652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616390efd32433c489345ecea404723d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RemovalTester
 --- !u!114 &1923502682358271713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,8 +408,6 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 607616356284664978}
-  - {fileID: 2753421954698605285}
   - {fileID: -3678920499654001567}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &-3678920499654001567
