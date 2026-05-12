@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\unityproject\\Capstone2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorSoundOnly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorSoundOnly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\FindExitCubeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Exit\\FindExitCubeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FindExitCubeButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\FindExitCubeButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Exit\\FindExitCubeButton.cs",
@@ -34,12 +34,11 @@
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Exit\\FindExitCubeButton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T15:21:42.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-11T15:21:42.158Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ExitDoorSoundOnly.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorSoundOnly.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorSoundOnly.cs",
@@ -52,13 +51,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ExitDoorController.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs",
               "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs",
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAcwH8AAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAcwL8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-11T15:20:45.482Z",
               "EditorCaption": ""

@@ -1,18 +1,53 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowRestartButton : MonoBehaviour
 {
-    public GameObject restartButton;
-    public float delay = 5f;
+    [Header("3D Button")]
+    public GameObject restartButtonCube;
+
+    [Header("UI")]
+    public GameObject endingTextObject;
+
+    [Header("Fade")]
+    public Image fadeImage;
+    public float fadeDuration = 3f;
 
     void Start()
     {
-        restartButton.SetActive(false); // Ã³À½¿£ ¼û±è
-        Invoke("ShowButton", delay);
+        restartButtonCube.SetActive(false);
+        endingTextObject.SetActive(false);
+
+        StartCoroutine(EndingSequence());
     }
 
-    void ShowButton()
+    IEnumerator EndingSequence()
     {
-        restartButton.SetActive(true);
+        yield return new WaitForSeconds(15f);
+
+        float timer = 0f;
+        Color color = fadeImage.color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+
+            float alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
+            fadeImage.color = new Color(color.r, color.g, color.b, alpha);
+
+            yield return null;
+        }
+
+        fadeImage.color = new Color(color.r, color.g, color.b, 1f);
+
+        // 18ÃÊÂë ¿£µù ¹®±¸ µîÀå
+        endingTextObject.transform.SetAsLastSibling();
+        endingTextObject.SetActive(true);
+
+        // 20ÃÊÂë 3D Å¥ºê ¹öÆ° µîÀå
+        yield return new WaitForSeconds(2f);
+
+        restartButtonCube.SetActive(true);
     }
 }
