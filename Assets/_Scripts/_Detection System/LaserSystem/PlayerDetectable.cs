@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerDetectable : MonoBehaviour
 {
-    private Renderer objectRenderer;
-    private Material instanceMaterial;
+    private Renderer[] objectRenderers;
+    private Material[] instanceMaterials;
 
     [SerializeField] private Color normalColor = Color.cyan;
     [SerializeField] private Color detectedColor = Color.red;
@@ -22,7 +22,6 @@ public class PlayerDetectable : MonoBehaviour
     [Header("Removable Settings")]
     public float removableDuration = 0.5f;
     private float removableTimer = 0f;
-
     private bool canEnterRemovable = true;
 
     [Header("Detect Points")]
@@ -31,11 +30,18 @@ public class PlayerDetectable : MonoBehaviour
     private Transform[] detectPoints;
     public Transform[] DetectPoints => detectPoints;
 
-    void Awake()
+    private void Awake()
+    {
+        SetupDetectPoints();
+        SetupRenderers();
+    }
+
+    private void SetupDetectPoints()
     {
         if (detectPointsRoot == null)
         {
             Transform found = transform.Find("DetectPoints");
+
             if (found != null)
                 detectPointsRoot = found;
         }
@@ -43,6 +49,7 @@ public class PlayerDetectable : MonoBehaviour
         if (detectPointsRoot != null)
         {
             detectPoints = new Transform[detectPointsRoot.childCount];
+
             for (int i = 0; i < detectPointsRoot.childCount; i++)
             {
                 detectPoints[i] = detectPointsRoot.GetChild(i);
@@ -55,30 +62,44 @@ public class PlayerDetectable : MonoBehaviour
         }
     }
 
-    void Start()
+    private void SetupRenderers()
     {
-        objectRenderer = GetComponent<Renderer>();
+        objectRenderers = GetComponentsInChildren<Renderer>();
 
-        if (objectRenderer != null)
+        if (objectRenderers == null || objectRenderers.Length == 0)
         {
-            instanceMaterial = objectRenderer.material;
-            instanceMaterial.color = normalColor;
+            Debug.LogWarning($"{gameObject.name}: Renderer를 찾지 못함");
+            return;
         }
+
+        instanceMaterials = new Material[objectRenderers.Length];
+
+        for (int i = 0; i < objectRenderers.Length; i++)
+        {
+            instanceMaterials[i] = objectRenderers[i].material;
+        }
+
+        SetColor(normalColor);
     }
 
     public void SetDetected(bool detected)
     {
-        if (instanceMaterial == null || isRemoved) return;
+        if (isRemoved)
+            return;
 
         if (isRemovable)
-            instanceMaterial.color = removableColor;
-        else
-            instanceMaterial.color = detected ? detectedColor : normalColor;
+        {
+            SetColor(removableColor);
+            return;
+        }
+
+        SetColor(detected ? detectedColor : normalColor);
     }
 
     public void UpdateGauge(bool detected)
     {
-        if (isRemoved) return;
+        if (isRemoved)
+            return;
 
         if (isRemovable)
         {
@@ -87,26 +108,37 @@ public class PlayerDetectable : MonoBehaviour
                 removableTimer -= Time.deltaTime;
 
                 if (removableTimer <= 0f)
+                {
                     ExitRemovableState();
+                }
             }
+
             return;
         }
 
         if (!detected)
+        {
             canEnterRemovable = true;
+        }
 
         if (detected)
+        {
             detectionGauge += increaseSpeed * Time.deltaTime;
+        }
         else
+        {
             detectionGauge -= decreaseSpeed * Time.deltaTime;
+        }
 
         detectionGauge = Mathf.Clamp(detectionGauge, 0f, maxGauge);
 
         if (detectionGauge >= maxGauge && canEnterRemovable)
+        {
             EnterRemovableState();
+        }
     }
 
-    void EnterRemovableState()
+    private void EnterRemovableState()
     {
         isRemovable = true;
         canEnterRemovable = false;
@@ -114,25 +146,42 @@ public class PlayerDetectable : MonoBehaviour
 
         Debug.Log($"{gameObject.name} 제거 가능 상태!");
 
-        if (instanceMaterial != null)
-            instanceMaterial.color = removableColor;
+        SetColor(removableColor);
     }
 
-    void ExitRemovableState()
+    private void ExitRemovableState()
     {
         isRemovable = false;
-        Debug.Log($"{gameObject.name} 제거 실패 → 다시 감소 시작");
         detectionGauge = maxGauge * 0.7f;
+
+        Debug.Log($"{gameObject.name} 제거 실패 → 다시 감소 시작");
     }
 
     public void TryRemove()
     {
         Debug.Log($"TryRemove 호출됨 | isRemovable: {isRemovable} | isRemoved: {isRemoved}");
 
-        if (!isRemovable || isRemoved) return;
+        if (!isRemovable || isRemoved)
+            return;
 
         isRemoved = true;
+
         Debug.Log($"{gameObject.name} 제거됨!");
+
         gameObject.SetActive(false);
+    }
+
+    private void SetColor(Color color)
+    {
+        if (instanceMaterials == null)
+            return;
+
+        for (int i = 0; i < instanceMaterials.Length; i++)
+        {
+            if (instanceMaterials[i] != null)
+            {
+                instanceMaterials[i].color = color;
+            }
+        }
     }
 }
