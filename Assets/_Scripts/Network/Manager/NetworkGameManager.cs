@@ -21,6 +21,8 @@ public class NetworkGameManager : NetworkBehaviour
     // 로컬 UI 연동이나 이벤트를 위한 델리게이트 (선택 사항)
     public System.Action<int> OnMissionChangedEvent;
 
+    public GameObject exitObject;
+
     private void Awake()
     {
         if (Instance == null) { Instance = this; }
@@ -69,9 +71,19 @@ public class NetworkGameManager : NetworkBehaviour
         //EscapeTimer = TickTimer.CreateFromSeconds(Runner, 120f);
         Debug.Log("[NetworkGameManager] 출구가 개방되었습니다!");
 
-        // TODO: 여기에 출구 프리팹을 Runner.Spawn() 
+        RPC_ActivateExitObject();
 
         CurrentMissionIndex = 3; // 탈출 미션 활성화
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_ActivateExitObject()
+    {
+        if (exitObject != null)
+        {
+            exitObject.SetActive(true); // 각자의 로컬 환경에서 오브젝트를 켬
+            Debug.Log("출구 오브젝트가 활성화되었습니다!");
+        }
     }
 
     // --- 4. 최종 탈출 요청 ---

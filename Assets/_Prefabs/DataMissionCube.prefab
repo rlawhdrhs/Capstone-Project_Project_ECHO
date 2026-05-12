@@ -240,6 +240,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8433878136115161719}
     m_Modifications:
+    - target: {fileID: 2489836559761890320, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
+      propertyPath: m_ColorPropertyName
+      value: baseColorFactor
+      objectReference: {fileID: 0}
     - target: {fileID: 3774509235512974894, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
       propertyPath: m_Name
       value: Interaction Affordance
@@ -288,6 +292,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7396278978564332023, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
+      propertyPath: m_Renderer
+      value: 
+      objectReference: {fileID: 1769766730608535505}
     - target: {fileID: 8634317094661461186, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
       propertyPath: m_InteractableSource
       value: 
@@ -359,6 +367,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -5645937942226959685, guid: d19ed6bacd917b144aa55abc7356e998, type: 3}
+--- !u!23 &1769766730608535505 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2357821742089604820, guid: d19ed6bacd917b144aa55abc7356e998, type: 3}
+  m_PrefabInstance: {fileID: 4050938484872472837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2213468238553218805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2774220344278030320, guid: d19ed6bacd917b144aa55abc7356e998, type: 3}

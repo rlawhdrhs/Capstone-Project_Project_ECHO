@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 2242734241507275410}
   - component: {fileID: -167871423003913383}
   - component: {fileID: -2559461430101864269}
-  - component: {fileID: 2773514292445942142}
   m_Layer: 0
   m_Name: SensorRobot_Avatar
   m_TagString: Untagged
@@ -35,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21, y: 6, z: 26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2516355208708615470}
@@ -71,7 +70,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129913900726152689}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d8a596d57c0c1f4d9eeedbc6b650788, type: 3}
   m_Name: 
@@ -159,20 +158,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector_Network
   detectDistance: 10
   detectAngle: 25
-  originHeight: 0.3
+  laserOrigin: {fileID: 547002380457317446}
+  useHeightLimit: 0
   heightRange: 0.15
-  detectRadius: 10
-  playerLayer:
+  obstacleMask:
     serializedVersion: 2
-    m_Bits: 65664
-  visionCone: {fileID: 521665356392520165}
+    m_Bits: 320
+  isControlledByMe: 0
   _isLaserOn:
     _value: 0
   _prevRightTrigger:
     _value: 0
   _prevSpace:
     _value: 0
-  isControlledByMe: 0
+  showDebugRay: 1
+  showAngleGuide: 1
 --- !u!114 &-2559461430101864269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,23 +186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntruderSoundDetector_Network
   detectRange: 15
-  targetCube: {fileID: 0}
---- !u!114 &2773514292445942142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129913900726152689}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a78e3620638a1248be4d0bef2f0e1cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntruderSoundDetector
-  detectRange: 15
-  intruderLayer:
-    serializedVersion: 2
-    m_Bits: 65664
   targetCube: {fileID: 0}
 --- !u!1 &7614922890206415217
 GameObject:
@@ -235,79 +218,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2516355208708615470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2424855352549120144
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2516355208708615470}
-    m_Modifications:
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2146687657042308966, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_Name
-      value: VisionCone
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
---- !u!114 &521665356392520165 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2781961197350699381, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-  m_PrefabInstance: {fileID: 2424855352549120144}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c15437190ea50408c4ea01160f319e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VisionConeMesh
---- !u!4 &2644308162350636384 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-  m_PrefabInstance: {fileID: 2424855352549120144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2693533865464203973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,9 +280,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e539d573154cb8c428097e264fbd541c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 547002380457317446}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e539d573154cb8c428097e264fbd541c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2644308162350636384}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e539d573154cb8c428097e264fbd541c, type: 3}
 --- !u!4 &2516355208708615470 stripped

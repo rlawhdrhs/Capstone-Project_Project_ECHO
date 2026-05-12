@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StickyBomb
   stickableLayers:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 256
   disableGrabAfterStick: 1
   explosionDelay: 3
   empRadius: 0.5

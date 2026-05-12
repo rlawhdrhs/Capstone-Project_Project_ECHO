@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9211454834089388653}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: mixamorig:HeadTop_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1619,7 +1619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1053641431822833999}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: mixamorig:Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2180,7 +2180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5691629291865991006}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: mixamorig:Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2461,6 +2461,12 @@ MonoBehaviour:
   avatarLeftHand: {fileID: 5005428090650409845}
   avatarRightHand: {fileID: 6749245529286255077}
   animator: {fileID: 7702765635475142460}
+  headPositionOffset: {x: 0, y: -0.12, z: -0.15}
+  headRotationOffset: {x: 0, y: 0, z: 0}
+  leftHandPositionOffset: {x: 0, y: 0, z: 0}
+  leftHandRotationOffset: {x: 0, y: 0, z: 0}
+  rightHandPositionOffset: {x: 0, y: 0, z: 0}
+  rightHandRotationOffset: {x: 0, y: 0, z: 0}
   _netMoveX: 0
   _netMoveZ: 0
   _netCrouch: 0
@@ -2473,6 +2479,7 @@ MonoBehaviour:
   gravity: -9.81
   jumpForce: 5
   moveSpeed: 3
+  _netAvatarScale: 1
 --- !u!143 &-2894411966826004063
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2489,7 +2496,7 @@ CharacterController:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 1.8
   m_Radius: 0.3
@@ -2497,7 +2504,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!114 &4157682429546303588
 MonoBehaviour:
   m_ObjectHideFlags: 0
