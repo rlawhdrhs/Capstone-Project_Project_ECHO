@@ -2377,7 +2377,6 @@ GameObject:
   - component: {fileID: 3699613321547869966}
   - component: {fileID: 4481659541458636648}
   - component: {fileID: 1788966569660105352}
-  - component: {fileID: -2894411966826004063}
   - component: {fileID: 4157682429546303588}
   - component: {fileID: 2147550976129407761}
   m_Layer: 7
@@ -2461,12 +2460,7 @@ MonoBehaviour:
   avatarLeftHand: {fileID: 5005428090650409845}
   avatarRightHand: {fileID: 6749245529286255077}
   animator: {fileID: 7702765635475142460}
-  headPositionOffset: {x: 0, y: -0.12, z: -0.15}
-  headRotationOffset: {x: 0, y: 0, z: 0}
-  leftHandPositionOffset: {x: 0, y: 0, z: 0}
-  leftHandRotationOffset: {x: 0, y: 0, z: 0}
-  rightHandPositionOffset: {x: 0, y: 0, z: 0}
-  rightHandRotationOffset: {x: 0, y: 0, z: 0}
+  centerPositionOffset: {x: 0, y: 0.55, z: -0.15}
   _netMoveX: 0
   _netMoveZ: 0
   _netCrouch: 0
@@ -2476,35 +2470,8 @@ MonoBehaviour:
     _value: 0
   localFreeze: 0
   isSensorRobot: 0
-  gravity: -9.81
-  jumpForce: 5
-  moveSpeed: 3
   _netAvatarScale: 1
---- !u!143 &-2894411966826004063
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7333243311895911484}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Height: 1.8
-  m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.8, z: 0}
+  avatarDefaultEyeHeight: 1.7
 --- !u!114 &4157682429546303588
 MonoBehaviour:
   m_ObjectHideFlags: 0

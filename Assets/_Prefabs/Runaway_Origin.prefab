@@ -1840,6 +1840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7253249399330903448}
     m_Modifications:
+    - target: {fileID: 1695117587471076474, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
+      propertyPath: m_XROrigin
+      value: 
+      objectReference: {fileID: 4751436334446780597}
     - target: {fileID: 3044921571507714408, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1880,6 +1884,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4028013268159778686, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
+      propertyPath: m_HeadTransform
+      value: 
+      objectReference: {fileID: 192946383885204910}
+    - target: {fileID: 4028013268159778686, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
+      propertyPath: m_LeftControllerTransform
+      value: 
+      objectReference: {fileID: 8101400038417306132}
+    - target: {fileID: 4028013268159778686, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
+      propertyPath: m_RightControllerTransform
+      value: 
+      objectReference: {fileID: 6142288619979001717}
     - target: {fileID: 5788436523849277742, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
       propertyPath: m_Name
       value: Locomotion

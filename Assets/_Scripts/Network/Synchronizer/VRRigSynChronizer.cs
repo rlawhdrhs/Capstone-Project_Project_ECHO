@@ -8,7 +8,6 @@ public class VRRigSynchronizer : NetworkBehaviour
     public Transform avatarLeftHand;
     public Transform avatarRightHand;
 
-    private CharacterController _cc;
     public Animator animator;
 
     [Header("동기화 보정")]
@@ -22,11 +21,6 @@ public class VRRigSynchronizer : NetworkBehaviour
     public bool localFreeze = false;
     public bool isSensorRobot = false;
 
-    [Header("중력 관련")]
-    [Networked] private float _velocityY { get; set; }
-    public float gravity = -9.81f;
-    public float jumpForce = 5f;
-    public float moveSpeed = 3f;
 
     [Header("아바타 스케일 (사용자 키 맞춤)")]
     [Networked] public float netAvatarScale { get; set; } = 1f;
@@ -34,6 +28,7 @@ public class VRRigSynchronizer : NetworkBehaviour
     // 아바타의 기본 목 길이를 저장
     private float defaultAvatarHeight = 1.7f;
     public float avatarDefaultEyeHeight = 1.7f;
+    private Vector3 _localHeadOffset;
 
     public override void Spawned()
     {
@@ -41,22 +36,31 @@ public class VRRigSynchronizer : NetworkBehaviour
         {
             defaultAvatarHeight = avatarHead.position.y - transform.position.y;
             if (defaultAvatarHeight < 1.0f) defaultAvatarHeight = avatarDefaultEyeHeight;
+
+            _localHeadOffset = transform.InverseTransformPoint(avatarHead.position);
         }
 
         if (HasInputAuthority)
         {
-            _cc = GetComponent<CharacterController>();
 
             if (LocalVRRig.Instance != null && !isSensorRobot)
             {
                 LocalVRRig.Instance.isOnlineMode = true;
 
-                // 기존 이동/물리 컴포넌트 비활성화
+                CharacterController localCC = LocalVRRig.Instance.GetComponent<CharacterController>();
+                if (localCC != null) localCC.enabled = false;
+
+                // xr_origin을 네트워크 매니저가 정해준 이 아바타의 스폰 위치로 순간이동
+                LocalVRRig.Instance.transform.position = this.transform.position;
+                LocalVRRig.Instance.transform.rotation = this.transform.rotation;
+
+                // 이동 끝났으니 CC 다시 켜기
+                if (localCC != null) localCC.enabled = true;
+
+
+                // 기존 이동 컴포넌트 비활성화
                 var moveProvider = LocalVRRig.Instance.GetComponent<UnityEngine.XR.Interaction.Toolkit.ContinuousMoveProviderBase>();
                 if (moveProvider != null) moveProvider.enabled = false;
-
-                var localCC = LocalVRRig.Instance.GetComponent<CharacterController>();
-                if (localCC != null) localCC.enabled = false;
 
                 // 내 온라인 아바타 몸통에 Local 하드웨어 연결
                 LocalVRRig.Instance.avatarRoot = this.transform;
@@ -74,45 +78,34 @@ public class VRRigSynchronizer : NetworkBehaviour
 
         if (GetInput(out NetworkInputData data))
         {
-            // ==========================================
-            // 1. 아바타 동기화 핵심 로직 (LocalVRRig와 동일한 수학 적용)
-            // ==========================================
-
-            // A. 회전 (머리가 바라보는 방향)
+            // 1. 머리가 바라보는 방향으로 몸통 회전
             Vector3 headForward = data.headRotation * Vector3.forward;
             headForward.y = 0f;
             if (headForward.sqrMagnitude > 0.01f)
-            {
                 transform.rotation = Quaternion.LookRotation(headForward);
-            }
 
-            // B. 초기 위치 (Y는 현재 바닥 유지)
-            Vector3 targetRootPosition = data.headPosition;
-            targetRootPosition.y = transform.position.y;
-            transform.position = targetRootPosition;
+            // ========================================================
+            // 2. 플레이어 키 측정 및 아바타 크기(스케일) 조절
+            // (카메라 높이 1.7m와 XR Origin 높이 4.4m의 차이를 완벽히 계산)
+            // ========================================================
+            float currentHmdHeight = data.headPosition.y - data.rootPosition.y;
 
-            // C. 실제 키 측정 및 스케일 적용
-            float currentHmdHeight = data.headPosition.y - transform.position.y;
-            if (currentHmdHeight < 0.5f) currentHmdHeight = avatarDefaultEyeHeight;
+            // 시뮬레이터 오류로 카메라가 바닥에 박혔을 때만 방어
+            if (currentHmdHeight < 0.1f) currentHmdHeight = avatarDefaultEyeHeight;
 
-            float scaleRatio = currentHmdHeight / defaultAvatarHeight;
-            scaleRatio = Mathf.Clamp(scaleRatio, 0.5f, 1.5f);
-
-            // 네트워크 변수에 스케일 저장 (Render에서 남들에게 보여주기 위함)
-            netAvatarScale = scaleRatio;
+            // 아바타가 작아지거나 커지도록 스케일 적용
+            netAvatarScale = currentHmdHeight / defaultAvatarHeight;
             transform.localScale = Vector3.one * netAvatarScale;
 
-            // D. 정수리 보임 해결 (XZ 오차 밀어내기)
-            if (avatarHead != null)
-            {
-                Vector3 headOffset = data.headPosition - avatarHead.position;
-                headOffset.y = 0f; // 높이는 이미 스케일로 맞췄으므로 무시
+            Vector3 alignedRootPosition = new Vector3(data.headPosition.x, data.rootPosition.y, data.headPosition.z);
 
-                transform.position += headOffset; // 오차만큼 아바타를 끌어당김
-                transform.position += transform.TransformDirection(centerPositionOffset); // 미세 오프셋
-            }
+            transform.position = alignedRootPosition;
 
-            // E. IK (머리/손 회전 동기화)
+            // (선택) 정수리가 보인다면 인스펙터의 centerPositionOffset Y값을 아주 살짝(0.1 등) 올려주세요.
+            transform.position += transform.TransformDirection(centerPositionOffset);
+
+
+            // 4. IK 동기화 (머리와 손의 회전/위치 덮어쓰기)
             if (avatarHead != null) avatarHead.rotation = data.headRotation;
             if (avatarLeftHand != null)
             {
@@ -125,11 +118,7 @@ public class VRRigSynchronizer : NetworkBehaviour
                 avatarRightHand.rotation = data.rightHandRotation;
             }
 
-            // ==========================================
-            // 2. 이동 및 상호작용 (기존 로직 유지)
-            // ==========================================
-
-
+            // --- 상호작용 로직 ---
             bool isClickedThisFrame = data.leftClick && !PrevLeftClick;
             PrevLeftClick = data.leftClick;
             if (isClickedThisFrame)
@@ -143,7 +132,7 @@ public class VRRigSynchronizer : NetworkBehaviour
             }
         }
 
-        // 3. 애니메이션 데이터 갱신
+        // 5. 애니메이션 갱신
         if (HasInputAuthority && animator != null)
         {
             netMoveX = animator.GetFloat("MoveX");

@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class LocalVRRig : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class LocalVRRig : MonoBehaviour
     public float avatarDefaultEyeHeight = 1.7f;
 
     private float defaultAvatarHeight;
+
+    private CharacterController localCC;
     void Start()
     {
         if (avatarRoot != null) previousPosition = avatarRoot.position;
@@ -49,27 +52,15 @@ public class LocalVRRig : MonoBehaviour
 
             if (defaultAvatarHeight < 1.0f) defaultAvatarHeight = avatarDefaultEyeHeight;
         }
+        localCC = GetComponent<CharacterController>();
     }
 
     void LateUpdate()
     {
         if (hardwareHead == null) return;
 
-        if (isOnlineMode)
+        if (!isOnlineMode)
         {
-            if (avatarRoot != null)
-            {
-                Vector3 targetPos = avatarRoot.position;
-
-                targetPos.x -= hardwareHead.localPosition.x;
-                targetPos.z -= hardwareHead.localPosition.z;
-
-                transform.position = targetPos;
-            }
-        }
-        else
-        {
-            // 오프라인일 때만 카메라가 몸통을 끌고 다님
             if (avatarRoot != null && avatarHead != null)
             {
                 SynchronizeTransforms();
@@ -77,6 +68,16 @@ public class LocalVRRig : MonoBehaviour
         }
 
         UpdateAnimation();
+
+        if (localCC != null)
+        {
+            // 캡슐 높이가 0.5 미만으로 찌그러지면 강제로 복구
+            if (localCC.height < 0.5f)
+            {
+                localCC.height = 0.5f;
+                localCC.center = new Vector3(localCC.center.x, 0.25f, localCC.center.z); // 중심점도 높이의 절반으로 맞춰줌
+            }
+        }
     }
 
     void SynchronizeTransforms()
@@ -95,11 +96,6 @@ public class LocalVRRig : MonoBehaviour
         scaleRatio = Mathf.Clamp(scaleRatio, 0.5f, 1.5f);
         avatarRoot.localScale = Vector3.one * scaleRatio;
 
-        // =========================================================
-        // 3. [질문자님 아이디어 완벽 적용] 머리를 카메라에 정확히 맞춤!
-        // =========================================================
-        // Y축(높이)을 무시하지 않고, X, Y, Z 모든 오차를 다 더해서 
-        // 아바타 머리를 카메라 위치로 강제로 텔레포트(이동) 시킵니다.
         Vector3 headOffset = hardwareHead.position - avatarHead.position;
         avatarRoot.position += headOffset;
 
@@ -121,11 +117,10 @@ public class LocalVRRig : MonoBehaviour
         }
     }
 
-    void UpdateAnimation()
+    void UpdateAnimation() 
     {
         if (animator == null || avatarRoot == null) return;
 
-        // ... (MoveX, MoveZ 계산하는 위쪽 코드는 기존과 동일하게 유지) ...
         Vector3 currentPos = new Vector3(avatarRoot.position.x, 0, avatarRoot.position.z);
         Vector3 prevPos = new Vector3(previousPosition.x, 0, previousPosition.z);
         Vector3 velocity = (currentPos - prevPos) / Time.deltaTime;
@@ -149,10 +144,6 @@ public class LocalVRRig : MonoBehaviour
         animator.SetFloat("MoveX", currentMoveX);
         animator.SetFloat("MoveZ", currentMoveZ);
 
-        // =========================================================
-        // [중요 Fix] 스케일에 맞춰서 애니메이터의 Crouch 기준점도 수정
-        // =========================================================
-        // 아바타 스케일이 0.7배로 줄었다면, 서 있는 키 1.7m도 0.7배 줄여서 계산해야 합니다!
         float currentScale = avatarRoot.localScale.y;
         float scaledStandingHeight = standingHeight * currentScale;
         float scaledCrouchingHeight = crouchingHeight * currentScale;
@@ -160,27 +151,7 @@ public class LocalVRRig : MonoBehaviour
         // 로컬 포지션이 아니라 HMD의 실제 높이 사용
         float currentHmdHeight = hardwareHead.position.y - transform.position.y;
 
-        // 내 키에 맞춰진 새로운 기준값으로 Crouch 계산
         currentCrouch = Mathf.InverseLerp(scaledStandingHeight, scaledCrouchingHeight, currentHmdHeight);
         animator.SetFloat("Crouch", currentCrouch);
     }
-
-    //    // 2. 스케일 비율 계산 = 내 실제 키 / 아바타의 원래 키
-    //    float scaleRatio = currentHmdHeight / avatarDefaultEyeHeight;
-
-    //    scaleRatio = Mathf.Clamp(scaleRatio, 0.5f, 1.5f);
-
-    //    // 3. 내 화면에서 즉시 아바타 크기 적용
-    //    if (avatarRoot != null)
-    //    {
-    //        avatarRoot.localScale = Vector3.one * scaleRatio;
-    //    }
-
-    //    // 4. 이 크기를 서버에 전송하여 남들에게도 동기화
-    //    if (syncScript != null)
-    //    {
-    //        syncScript.RPC_SetAvatarScale(scaleRatio);
-    //    }
-
-    //    Debug.Log($"[키 맞춤 완료] 실제 HMD 높이: {currentHmdHeight}m, 아바타 스케일: {scaleRatio}배");
 }

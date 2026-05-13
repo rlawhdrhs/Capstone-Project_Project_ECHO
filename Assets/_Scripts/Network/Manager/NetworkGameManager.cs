@@ -6,6 +6,7 @@ public class NetworkGameManager : NetworkBehaviour
 {
     public static NetworkGameManager Instance { get; private set; }
     public DataMissionSpawner DataMissionSpawner;
+    public UnityEngine.XR.Interaction.Toolkit.XRInteractionManager localXRManager;
 
     // --- 동기화되는 게임 상태 ---
     // 현재 진행 중인 미션 번호 (0: 전력 복구, 1: 데이터 수집, 2: 출구 해제, 3: 탈출)

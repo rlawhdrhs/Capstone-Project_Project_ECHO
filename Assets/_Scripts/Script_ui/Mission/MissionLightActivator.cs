@@ -17,7 +17,7 @@ public class MissionLightActivator : MonoBehaviour
         TurnOffMissionLights();
     }
 
-    void Update()
+    /*void Update()
     {
         // 마우스 왼쪽 클릭
         if (Input.GetMouseButtonDown(0))
@@ -35,6 +35,12 @@ public class MissionLightActivator : MonoBehaviour
                 }
             }
         }
+    }*/
+
+    public void OnPlayButtonClicked()
+    {
+        ActivateMissionLights();
+        NetworkGameManager.Instance.Rpc_CompletePowerRestore();
     }
 
     // 불 켜기

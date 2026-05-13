@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class DataMissionInteractor : MonoBehaviour
 {
@@ -12,6 +14,20 @@ public class DataMissionInteractor : MonoBehaviour
     private float _timer = 0f;
     private bool _isTouching = false;
     private bool _isCleared = false;
+
+    void Start()
+    {
+        // 자식 오브젝트에 있을 수도 있으니 GetComponentInChildren을 사용해 안전하게 찾습니다!
+        XRSimpleInteractable myInteractable = GetComponentInChildren<XRSimpleInteractable>();
+
+        if (myInteractable != null && myInteractable.interactionManager == null)
+        {
+            if (NetworkGameManager.Instance != null && NetworkGameManager.Instance.localXRManager != null)
+            {
+                myInteractable.interactionManager = NetworkGameManager.Instance.localXRManager;
+            }
+        }
+    }
 
     // XRI 이벤트에서 호출할 함수들
     public void OnTouchStart() { if (!_isCleared) _isTouching = true; }

@@ -1,7 +1,8 @@
-using UnityEngine;
 using Fusion;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class DataMissionSpawner : NetworkBehaviour
 {
@@ -11,6 +12,8 @@ public class DataMissionSpawner : NetworkBehaviour
     public Transform[] spawnPoints;
     //스폰 개수
     int spawnCount = 5;
+
+    public UnityEngine.XR.Interaction.Toolkit.XRInteractionManager localXRManager;
 
     public void SpawnRandomMissions()
     {
@@ -34,10 +37,17 @@ public class DataMissionSpawner : NetworkBehaviour
             Transform selectedPoint = availablePoints[randomIndex];
 
             // 선택된 위치에 미션 프리팹을 네트워크 스폰합니다.
-            Runner.Spawn(dataMissionPrefab, selectedPoint.position, selectedPoint.rotation);
+            NetworkObject spawnedNode = Runner.Spawn(dataMissionPrefab, selectedPoint.position, selectedPoint.rotation);
 
             // 4. 이미 미션을 스폰한 위치는 리스트에서 제거하여 중복 스폰을 막습니다.
             availablePoints.RemoveAt(randomIndex);
+
+            XRSimpleInteractable interactable = spawnedNode.GetComponent<XRSimpleInteractable>();
+
+            if (interactable != null && localXRManager != null)
+            {
+                interactable.interactionManager = localXRManager;
+            }
         }
     }
 }
