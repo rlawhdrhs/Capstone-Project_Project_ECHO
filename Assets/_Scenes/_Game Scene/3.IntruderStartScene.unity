@@ -12858,7 +12858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22844,13 +22844,13 @@ MonoBehaviour:
   avatarLeftHand: {fileID: 837036095}
   avatarRightHand: {fileID: 837036094}
   animator: {fileID: 837036093}
-  centerPositionOffset: {x: 0, y: 0, z: 0}
+  centerPositionOffset: {x: 0, y: -0.05, z: -0.15}
   standingHeight: 1.6
   crouchingHeight: 1
   currentCrouch: 0
   animationSmoothness: 10
   isOnlineMode: 0
-  hardwareHeadOffset: {x: 0, y: -0.12, z: -0.15}
+  avatarDefaultEyeHeight: 1.7
 --- !u!4 &880754271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9870114075f7d7a4c883e03f15e1f945, type: 3}
@@ -24234,7 +24234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
