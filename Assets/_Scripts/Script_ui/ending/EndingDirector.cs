@@ -103,7 +103,7 @@ public class EndingDirector : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            float alpha = Mathf.Lerp(0f, 0.8f, timer / fadeDuration);
+            float alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
 
             intruderFadeImage.color =
                 new Color(intruderColor.r, intruderColor.g, intruderColor.b, alpha);

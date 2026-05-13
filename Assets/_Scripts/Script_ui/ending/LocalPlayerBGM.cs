@@ -1,43 +1,84 @@
-
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class LocalPlayerBGM : MonoBehaviour
+public class LocalIntruderBGM_Normal : MonoBehaviour
 {
-    public bool isLocalPlayerBGM = true;
+    [Header("Layer")]
+    public string intruderLayerName = "intruder";
+
+    [Header("Delay")]
+    public float playDelay = 6f;
 
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
 
-        if (isLocalPlayerBGM)
-            audioSource.Play();
-        else
-            audioSource.Stop();
+        if (gameObject.layer != LayerMask.NameToLayer(intruderLayerName))
+        {
+            audioSource.enabled = false;
+            return;
+        }
+
+        StartCoroutine(PlayAfterDelay());
+    }
+
+    IEnumerator PlayAfterDelay()
+    {
+        yield return new WaitForSeconds(playDelay);
+
+        audioSource.enabled = true;
+        audioSource.Play();
     }
 }
 
-//using Unity.Netcode;
+//ngo버전...
+
+//using System.Collections;
 //using UnityEngine;
+//using Unity.Netcode;
 
 //[RequireComponent(typeof(AudioSource))]
-//public class LocalPlayerBGM : NetworkBehaviour
+//public class LocalIntruderBGM : NetworkBehaviour
 //{
+//    [Header("Role Layer")]
+//    public string intruderLayerName = "intruder";
+
+//    [Header("Delay")]
+//    public float playDelay = 6f;
+
 //    private AudioSource audioSource;
 
-//    void Start()
+//    public override void OnNetworkSpawn()
 //    {
 //        audioSource = GetComponent<AudioSource>();
+//        audioSource.Stop();
 
-//        if (IsOwner)
+//        // 내 로컬 플레이어가 아니면 소리 절대 안 남
+//        if (!IsOwner)
 //        {
-//            audioSource.Play();
+//            audioSource.enabled = false;
+//            return;
 //        }
-//        else
+
+//        // 내 오브젝트가 intruder 레이어가 아니면 소리 안 남
+//        if (gameObject.layer != LayerMask.NameToLayer(intruderLayerName))
 //        {
-//            audioSource.Stop();
+//            audioSource.enabled = false;
+//            return;
 //        }
+
+//        StartCoroutine(PlayAfterDelay());
+//    }
+
+//    private IEnumerator PlayAfterDelay()
+//    {
+//        yield return new WaitForSeconds(playDelay);
+
+//        audioSource.enabled = true;
+//        audioSource.Play();
 //    }
 //}
