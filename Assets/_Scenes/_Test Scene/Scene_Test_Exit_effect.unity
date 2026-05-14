@@ -66649,7 +66649,7 @@ MonoBehaviour:
   ExitAudioSource: {fileID: 1096886950}
   ExitSound: {fileID: 8300000, guid: d91434e18d0fe2546899ce6c2145685a, type: 3}
   soundManager: {fileID: 523053163}
-  exitDoorController: {fileID: 1096886946}
+  exitDoorController: {fileID: 1096886952}
 --- !u!82 &461351108
 AudioSource:
   m_ObjectHideFlags: 0
@@ -134872,6 +134872,7 @@ MonoBehaviour:
   currentCrouch: 0
   animationSmoothness: 10
   isOnlineMode: 0
+  avatarDefaultEyeHeight: 1.7
 --- !u!1001 &970271815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153448,6 +153449,7 @@ GameObject:
   - component: {fileID: 1096886947}
   - component: {fileID: 1096886950}
   - component: {fileID: 1096886946}
+  - component: {fileID: 1096886952}
   m_Layer: 21
   m_Name: DoorClickArea
   m_TagString: Untagged
@@ -153462,7 +153464,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096886945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec16a166c59669941b5f9b6facb45688, type: 3}
   m_Name: 
@@ -153670,6 +153672,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1551477385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1096886952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096886945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f54116117651b247a20947b59fd7656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExitDoorController_VR
+  canClickDoor: 0
+  doorTop: {fileID: 1958542842}
+  doorBottom: {fileID: 320511366}
+  topOpenOffset: {x: 0, y: 3, z: 0}
+  bottomOpenOffset: {x: 0, y: -3, z: 0}
+  doorOpenTime: 3
+  whiteLight: {fileID: 43026871}
+  maxLightIntensity: 8
+  player: {fileID: 26501141}
+  exitPoint: {fileID: 749189403}
+  moveTime: 3
+  whiteFadeImage: {fileID: 961146747}
+  endingSceneName: EndingScene
 --- !u!1001 &1096894196
 PrefabInstance:
   m_ObjectHideFlags: 0

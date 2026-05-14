@@ -17,9 +17,7 @@ public class NetworkGameManager : NetworkBehaviour
     public int MaxDataNodes = 5; // 총 해야할 데이터 미션 개수
 
     [Networked] public NetworkBool IsExitOpen { get; set; }
-    //[Networked] public TickTimer EscapeTimer { get; set; }
-
-    // 로컬 UI 연동이나 이벤트를 위한 델리게이트 (선택 사항)
+    [Networked] public TickTimer GlobalGameTimer { get; set; }
     public System.Action<int> OnMissionChangedEvent;
 
     public GameObject exitObject;
@@ -30,6 +28,14 @@ public class NetworkGameManager : NetworkBehaviour
         else { Destroy(gameObject); }
     }
 
+    public override void Spawned()
+    {
+        if (HasStateAuthority)
+        {
+            GlobalGameTimer = TickTimer.CreateFromSeconds(Runner, 600f);
+        }
+        OnMissionChangedEvent?.Invoke(CurrentMissionIndex);
+    }
     // --- 1. 전력 복구 (불 켜기) 완료 요청 ---
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void Rpc_CompletePowerRestore()

@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataMissionInteractor
   targetTime: 3
+  toleranceTime: 0.5
   onMissionClear:
     m_PersistentCalls:
       m_Calls: []
@@ -313,6 +314,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2774220344278030320, guid: d19ed6bacd917b144aa55abc7356e998, type: 3}
   m_PrefabInstance: {fileID: 179060123724644671}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &4827502781426615015 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4648447124737835992, guid: d19ed6bacd917b144aa55abc7356e998, type: 3}
+  m_PrefabInstance: {fileID: 179060123724644671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6190807649324310683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,6 +327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 334956272778773587}
     m_Modifications:
+    - target: {fileID: 2489836559761890320, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
+      propertyPath: m_ColorPropertyName
+      value: baseColorFactor
+      objectReference: {fileID: 0}
     - target: {fileID: 3774509235512974894, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
       propertyPath: m_Name
       value: Interaction Affordance
@@ -369,6 +379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7396278978564332023, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
+      propertyPath: m_Renderer
+      value: 
+      objectReference: {fileID: 4827502781426615015}
     - target: {fileID: 8634317094661461186, guid: eb9104ef66b7305468adb3697fdeed5e, type: 3}
       propertyPath: m_InteractableSource
       value: 

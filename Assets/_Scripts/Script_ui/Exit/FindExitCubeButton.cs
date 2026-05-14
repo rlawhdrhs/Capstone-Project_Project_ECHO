@@ -20,7 +20,7 @@ public class FindExitCubeButton : MonoBehaviour
     public ExitDoorSoundOnly soundManager;
 
     [Header("문 클릭 가능")]
-    public ExitDoorController exitDoorController;
+    public ExitDoorController_VR exitDoorController;
 
     private Vector3 originalScale;
     private bool isPressed = false;
@@ -30,23 +30,23 @@ public class FindExitCubeButton : MonoBehaviour
         originalScale = transform.localScale;
     }
 
-    void Update()
-    {
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+    //void Update()
+    //{
+    //    if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+    //    {
+    //        Vector2 mousePos = Mouse.current.position.ReadValue();
+    //        Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
-            {
-                if (hit.collider.gameObject == gameObject)
-                {
-                    Debug.Log("FindExitCube 클릭됨");
-                    PressButton();
-                }
-            }
-        }
-    }
+    //        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+    //        {
+    //            if (hit.collider.gameObject == gameObject)
+    //            {
+    //                Debug.Log("FindExitCube 클릭됨");
+    //                PressButton();
+    //            }
+    //        }
+    //    }
+    //}
 
     public void PressButton()
     {
