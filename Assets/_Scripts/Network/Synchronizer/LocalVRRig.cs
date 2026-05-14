@@ -1,4 +1,6 @@
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class LocalVRRig : MonoBehaviour
 {
@@ -34,30 +36,31 @@ public class LocalVRRig : MonoBehaviour
 
     public bool isOnlineMode = false;
 
+    [Header("아바타 캘리브레이션 (키 맞춤)")]
+    public float avatarDefaultEyeHeight = 1.7f;
+
+    private float defaultAvatarHeight;
+
+    private CharacterController localCC;
     void Start()
     {
         if (avatarRoot != null) previousPosition = avatarRoot.position;
+
+        if (avatarRoot != null && avatarHead != null)
+        {
+            defaultAvatarHeight = avatarHead.position.y - avatarRoot.position.y;
+
+            if (defaultAvatarHeight < 1.0f) defaultAvatarHeight = avatarDefaultEyeHeight;
+        }
+        localCC = GetComponent<CharacterController>();
     }
 
     void LateUpdate()
     {
         if (hardwareHead == null) return;
 
-        if (isOnlineMode)
+        if (!isOnlineMode)
         {
-            if (avatarRoot != null)
-            {
-                Vector3 targetPos = avatarRoot.position;
-
-                targetPos.x -= hardwareHead.localPosition.x;
-                targetPos.z -= hardwareHead.localPosition.z;
-
-                transform.position = targetPos;
-            }
-        }
-        else
-        {
-            // 오프라인일 때만 카메라가 몸통을 끌고 다님
             if (avatarRoot != null && avatarHead != null)
             {
                 SynchronizeTransforms();
@@ -65,18 +68,42 @@ public class LocalVRRig : MonoBehaviour
         }
 
         UpdateAnimation();
+
+        if (localCC != null)
+        {
+            // 캡슐 높이가 0.5 미만으로 찌그러지면 강제로 복구
+            if (localCC.height < 0.5f)
+            {
+                localCC.height = 0.5f;
+                localCC.center = new Vector3(localCC.center.x, 0.25f, localCC.center.z); // 중심점도 높이의 절반으로 맞춰줌
+            }
+        }
     }
 
     void SynchronizeTransforms()
     {
-        Vector3 finalBodyPosition = hardwareHead.position;
-        finalBodyPosition.y = transform.position.y;
-        avatarRoot.position = finalBodyPosition + centerPositionOffset;
-
+        // 1. 몸통 회전
         Vector3 headForward = hardwareHead.forward;
         headForward.y = 0f;
-        if (headForward != Vector3.zero)
+        if (headForward.sqrMagnitude > 0.01f)
             avatarRoot.rotation = Quaternion.LookRotation(headForward);
+
+        // 2. 키 측정 및 스케일 적용
+        float currentHmdHeight = hardwareHead.position.y - transform.position.y;
+        if (currentHmdHeight < 0.5f) currentHmdHeight = avatarDefaultEyeHeight;
+
+        float scaleRatio = currentHmdHeight / defaultAvatarHeight;
+        scaleRatio = Mathf.Clamp(scaleRatio, 0.5f, 1.5f);
+        avatarRoot.localScale = Vector3.one * scaleRatio;
+
+        Vector3 headOffset = hardwareHead.position - avatarHead.position;
+        avatarRoot.position += headOffset;
+
+        // 추가 오프셋 적용
+        avatarRoot.position += avatarRoot.TransformDirection(centerPositionOffset);
+
+        // 4. 머리 회전 및 손 동기화
+        avatarHead.rotation = hardwareHead.rotation;
 
         if (avatarLeftHand != null && hardwareLeftHand != null)
         {
@@ -90,7 +117,7 @@ public class LocalVRRig : MonoBehaviour
         }
     }
 
-    void UpdateAnimation()
+    void UpdateAnimation() 
     {
         if (animator == null || avatarRoot == null) return;
 
@@ -100,7 +127,6 @@ public class LocalVRRig : MonoBehaviour
         previousPosition = avatarRoot.position;
 
         Vector3 localVelocity = avatarRoot.InverseTransformDirection(velocity);
-
         float maxWalkSpeed = 2.0f;
         float targetX = Mathf.Clamp(localVelocity.x / maxWalkSpeed, -1f, 1f);
         float targetZ = Mathf.Clamp(localVelocity.z / maxWalkSpeed, -1f, 1f);
@@ -118,8 +144,14 @@ public class LocalVRRig : MonoBehaviour
         animator.SetFloat("MoveX", currentMoveX);
         animator.SetFloat("MoveZ", currentMoveZ);
 
-        float currentHeadHeight = hardwareHead.localPosition.y;
-        currentCrouch = Mathf.InverseLerp(standingHeight, crouchingHeight, currentHeadHeight);
+        float currentScale = avatarRoot.localScale.y;
+        float scaledStandingHeight = standingHeight * currentScale;
+        float scaledCrouchingHeight = crouchingHeight * currentScale;
+
+        // 로컬 포지션이 아니라 HMD의 실제 높이 사용
+        float currentHmdHeight = hardwareHead.position.y - transform.position.y;
+
+        currentCrouch = Mathf.InverseLerp(scaledStandingHeight, scaledCrouchingHeight, currentHmdHeight);
         animator.SetFloat("Crouch", currentCrouch);
     }
 }

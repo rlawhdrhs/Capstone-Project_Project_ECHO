@@ -47,10 +47,10 @@ TagManager:
   - Detected
   - Door
   - Outline
-  - 
+  - localAvatar
   - Intruder
   - Chaser
-  - 
+  - Overlay UI
   - MissionLight
   - 
   - ExitDoor

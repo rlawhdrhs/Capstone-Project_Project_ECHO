@@ -10,12 +10,14 @@ public class MissionLightActivator : MonoBehaviour
 
     private bool activated = false;
 
+    public DataMissionSpawner DataMissionSpawner;
+
     void Start()
     {
         TurnOffMissionLights();
     }
 
-    void Update()
+    /*void Update()
     {
         // 마우스 왼쪽 클릭
         if (Input.GetMouseButtonDown(0))
@@ -33,6 +35,12 @@ public class MissionLightActivator : MonoBehaviour
                 }
             }
         }
+    }*/
+
+    public void OnPlayButtonClicked()
+    {
+        ActivateMissionLights();
+        NetworkGameManager.Instance.Rpc_CompletePowerRestore();
     }
 
     // 불 켜기
@@ -59,6 +67,11 @@ public class MissionLightActivator : MonoBehaviour
         }
 
         Debug.Log("Mission Light 활성화");
+
+        if (NetworkGameManager.Instance != null && NetworkGameManager.Instance.Object.IsValid)
+        {
+            NetworkGameManager.Instance.Rpc_CompletePowerRestore();
+        }
     }
 
     // 시작 시 전부 끄기

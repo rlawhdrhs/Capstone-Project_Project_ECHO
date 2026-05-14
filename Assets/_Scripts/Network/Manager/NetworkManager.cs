@@ -108,21 +108,12 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         // 1. 입력 데이터를 담을 구조체 생성
         NetworkInputData data = new NetworkInputData();
 
-        // 2. WASD 키 입력 수집
-        /*// 앞/뒤
-        if (Input.GetKey(KeyCode.W)) data.moveZ = 1f;
-        if (Input.GetKey(KeyCode.S)) data.moveZ = -1f;
-
-        // 좌/우 회전 (A/D)
-        if (Input.GetKey(KeyCode.A)) data.turnY = -1f;
-        if (Input.GetKey(KeyCode.D)) data.turnY = 1f;*/
-
         float rightTrigger = Input.GetAxis("XRI_Right_Trigger");
         data.rightTrigger = Input.GetKey(KeyCode.R) || rightTrigger > 0.1f;
 
         bool isLeftAPressed = false;
         try { isLeftAPressed = Input.GetButton("XRI_Left_PrimaryButton"); }
-        catch { /* Input Manager에 세팅 안 되어있을 때 에러 방지 */ }
+        catch {  }
 
         // 키보드 X키나 왼쪽 A버튼을 누르면 true
         data.leftButtonA = Input.GetKey(KeyCode.X) || isLeftAPressed;
@@ -131,7 +122,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         data.leftClick = Input.GetMouseButton(0);
         // 점프 (Space)
         data.jump = Input.GetButton("XRI_Left_GripButton");
-        data.keyR = Input.GetKey(KeyCode.R);
+        data.keyR = Input.GetKey(KeyCode.R) || Input.GetButton("XRI_Right_SecondaryButton");
         data.keySpace = Input.GetKey(KeyCode.Space);
 
         if (LocalVRRig.Instance != null)
