@@ -19,7 +19,8 @@ public class PlayerDetectable_Network : NetworkBehaviour
     [Header("State")]
     [Networked] public NetworkBool isRemovable { get; set; }
     [Networked] public NetworkBool isRemoved { get; set; }
-    [Networked] public NetworkBool isDetected { get; set; }
+    [Networked, OnChangedRender(nameof(OnDetectedChanged))]
+    public NetworkBool isDetected { get; set; }
     [Networked] private NetworkBool canEnterRemovable { get; set; }
 
     [Header("Removable Settings")]
@@ -33,6 +34,12 @@ public class PlayerDetectable_Network : NetworkBehaviour
     [SerializeField] private Transform detectPointsRoot;
     private Transform[] detectPoints;
     public Transform[] DetectPoints => detectPoints;
+
+    [Header("Silhouette")]
+    public Material redSilhouetteMaterial;
+
+    // 원래 아바타가 가지고 있던 머티리얼 원본을 기억할 배열
+    private Material[][] originalMaterials;
 
     public override void Spawned()
     {
@@ -64,20 +71,77 @@ public class PlayerDetectable_Network : NetworkBehaviour
         objectRenderers = GetComponentsInChildren<Renderer>();
         if (objectRenderers == null || objectRenderers.Length == 0) return;
 
-        instanceMaterials = new Material[objectRenderers.Length];
+        originalMaterials = new Material[objectRenderers.Length][];
         for (int i = 0; i < objectRenderers.Length; i++)
         {
-            instanceMaterials[i] = objectRenderers[i].material;
+            originalMaterials[i] = objectRenderers[i].materials;
         }
-        UpdateColors(normalColor);
     }
 
     public override void Render()
     {
-        if (instanceMaterials == null || isRemoved) return;
+        if (objectRenderers == null || isRemoved) return;
 
-        if (isRemovable) UpdateColors(removableColor);
-        else UpdateColors(isDetected ? detectedColor : normalColor);
+        bool isMyAvatar = Object.HasInputAuthority;
+        if (Runner.IsServer && Object.HasStateAuthority) isMyAvatar = true;
+
+        if (isMyAvatar)
+        {
+            // 잠입자 본인 화면
+            EnableRenderers(true);
+            RestoreOriginalMaterials(); // 항상 본모습 유지
+        }
+        else
+        {
+            // 추격자 화면
+            if (isDetected)
+            {
+                EnableRenderers(true);
+                ApplyRedSilhouette(); // 붉은 아우라
+            }
+            else
+            {
+                EnableRenderers(false); // 평소엔 투명
+            }
+        }
+    }
+    private void ApplyRedSilhouette()
+    {
+        if (redSilhouetteMaterial == null) return;
+
+        for (int i = 0; i < objectRenderers.Length; i++)
+        {
+            if (objectRenderers[i] != null)
+            {
+                // 원본 머티리얼 개수와 똑같은 크기의 배열을 만들고, 전부 빨간색으로 채웁니다.
+                Material[] redMats = new Material[originalMaterials[i].Length];
+                for (int j = 0; j < redMats.Length; j++)
+                {
+                    redMats[j] = redSilhouetteMaterial;
+                }
+                objectRenderers[i].materials = redMats;
+            }
+        }
+    }
+    private void RestoreOriginalMaterials()
+    {
+        for (int i = 0; i < objectRenderers.Length; i++)
+        {
+            // 현재 머티리얼이 원본과 다를 때만 덮어씌워서 퍼포먼스 낭비를 줄입니다.
+            if (objectRenderers[i] != null && objectRenderers[i].materials[0] != originalMaterials[i][0])
+            {
+                objectRenderers[i].materials = originalMaterials[i];
+            }
+        }
+    }
+
+    private void EnableRenderers(bool isVisible)
+    {
+        foreach (var r in objectRenderers)
+        {
+            if (r != null && r.enabled != isVisible)
+                r.enabled = isVisible;
+        }
     }
 
     private void UpdateColors(Color color)
@@ -86,6 +150,18 @@ public class PlayerDetectable_Network : NetworkBehaviour
         {
             if (instanceMaterials[i] != null)
                 instanceMaterials[i].color = color;
+        }
+    }
+
+    void OnDetectedChanged()
+    {
+        // 내 아바타일 때만 내 화면(UI)에 경고를 띄움!
+        if (Object.HasInputAuthority || (Runner.IsServer && Object.HasStateAuthority))
+        {
+            if (IntruderDetectedUI.Instance != null)
+            {
+                IntruderDetectedUI.Instance.ShowWarning(isDetected);
+            }
         }
     }
 

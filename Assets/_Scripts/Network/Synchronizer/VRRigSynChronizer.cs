@@ -57,11 +57,6 @@ public class VRRigSynchronizer : NetworkBehaviour
                 // 이동 끝났으니 CC 다시 켜기
                 if (localCC != null) localCC.enabled = true;
 
-
-                // 기존 이동 컴포넌트 비활성화
-                var moveProvider = LocalVRRig.Instance.GetComponent<UnityEngine.XR.Interaction.Toolkit.ContinuousMoveProviderBase>();
-                if (moveProvider != null) moveProvider.enabled = false;
-
                 // 내 온라인 아바타 몸통에 Local 하드웨어 연결
                 LocalVRRig.Instance.avatarRoot = this.transform;
                 LocalVRRig.Instance.avatarHead = this.avatarHead;
@@ -84,10 +79,6 @@ public class VRRigSynchronizer : NetworkBehaviour
             if (headForward.sqrMagnitude > 0.01f)
                 transform.rotation = Quaternion.LookRotation(headForward);
 
-            // ========================================================
-            // 2. 플레이어 키 측정 및 아바타 크기(스케일) 조절
-            // (카메라 높이 1.7m와 XR Origin 높이 4.4m의 차이를 완벽히 계산)
-            // ========================================================
             float currentHmdHeight = data.headPosition.y - data.rootPosition.y;
 
             // 시뮬레이터 오류로 카메라가 바닥에 박혔을 때만 방어
@@ -101,7 +92,6 @@ public class VRRigSynchronizer : NetworkBehaviour
 
             transform.position = alignedRootPosition;
 
-            // (선택) 정수리가 보인다면 인스펙터의 centerPositionOffset Y값을 아주 살짝(0.1 등) 올려주세요.
             transform.position += transform.TransformDirection(centerPositionOffset);
 
 
@@ -156,7 +146,6 @@ public class VRRigSynchronizer : NetworkBehaviour
         }
     }
 
-    // RPC 함수들은 기존과 동일하게 유지...
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
     public void RPC_SetFrozenState(NetworkBool freezeState) { /* ... */ }
 

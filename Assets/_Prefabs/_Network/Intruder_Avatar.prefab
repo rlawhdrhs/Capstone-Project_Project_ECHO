@@ -2499,6 +2499,7 @@ MonoBehaviour:
     _value: 0
   removableDuration: 2
   detectPointsRoot: {fileID: 4417782600958711408}
+  redSilhouetteMaterial: {fileID: 2100000, guid: 2f712b0acb5bdb941b0c22000cbf69a7, type: 2}
 --- !u!114 &2147550976129407761
 MonoBehaviour:
   m_ObjectHideFlags: 0

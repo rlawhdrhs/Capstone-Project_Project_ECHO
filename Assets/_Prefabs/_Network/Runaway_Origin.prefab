@@ -281,6 +281,8 @@ GameObject:
   - component: {fileID: 4049603770829761412}
   - component: {fileID: 3558066974133726775}
   - component: {fileID: 4515369153255087664}
+  - component: {fileID: 849094274145209468}
+  - component: {fileID: 7964783362318943828}
   m_Layer: 0
   m_Name: Runaway_Origin
   m_TagString: Untagged
@@ -415,6 +417,75 @@ MonoBehaviour:
   animationSmoothness: 10
   isOnlineMode: 0
   avatarDefaultEyeHeight: 1.7
+--- !u!114 &849094274145209468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448863544825560127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbe60de73152894ca4f2ba80eafd2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoverAssistSystem
+  coverDetectRadius: 1
+  desiredCoverOffset: 0.3
+  assistSpeed: 0.2
+  maxAssistDistance: 1.5
+  coverLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  minCoverHeight: 1
+  rayWidthOffset: 0.3
+  moveInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 9bcbc3b1-ab66-4757-9965-feaa208de05c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  exitInputThreshold: 0.6
+--- !u!114 &7964783362318943828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448863544825560127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2760df29c57e19438ecc186582db179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSprint
+  sprintButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Sprint Button
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 74f262c8-7c9a-4e24-9156-02ceb592abe4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: ce792d00-aeb1-47a6-85db-cb811c5bbded
+        m_Path: <XRController>{RightHand}/primaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Sprint Button
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: -2882492780503314980, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  moveProvider: {fileID: 4907240439626865390}
+  walkSpeed: 2.5
+  sprintSpeed: 5
 --- !u!1 &7216695317932759588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1447,6 @@ GameObject:
   - component: {fileID: 7235046822772538875}
   - component: {fileID: 3428949001016504547}
   - component: {fileID: 5957959937707905140}
-  - component: {fileID: 3929415029079337980}
   m_Layer: 0
   m_Name: LefthandController
   m_TagString: Untagged
@@ -1657,33 +1727,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3929415029079337980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9131044929473284905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2760df29c57e19438ecc186582db179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSprint
-  sprintButton:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Sprint Button
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 5e277755-c689-4097-a926-a6b1e3754b86
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: -8227620849196907262, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  moveProvider: {fileID: 4907240439626865390}
-  walkSpeed: 2
-  sprintSpeed: 5
 --- !u!1001 &4115414930695425108
 PrefabInstance:
   m_ObjectHideFlags: 0
