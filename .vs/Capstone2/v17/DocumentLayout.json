@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\unityproject\\Capstone2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\CameraMove\\EndingPrisonCamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Ending\\CameraMove\\EndingPrisonCamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\SceneLoad\\SceneFader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\SceneLoad\\SceneFader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\RandomLightSwing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Scripts\\Script_ui\\Ending\\RandomLightSwing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -63,6 +71,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EndingPrisonCamera.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\CameraMove\\EndingPrisonCamera.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\CameraMove\\EndingPrisonCamera.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\CameraMove\\EndingPrisonCamera.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Ending\\CameraMove\\EndingPrisonCamera.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAEsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T11:20:53.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SceneFader.cs",
+              "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\SceneLoad\\SceneFader.cs",
+              "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\SceneLoad\\SceneFader.cs",
+              "ToolTip": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\SceneLoad\\SceneFader.cs",
+              "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\SceneLoad\\SceneFader.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAMwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T08:44:25.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "RandomLightSwing.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\RandomLightSwing.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\RandomLightSwing.cs",
@@ -70,12 +104,11 @@
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Ending\\RandomLightSwing.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T17:25:38.483Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T17:25:38.483Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "LookLeftRight.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\Camera\\LookLeftRight.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\Camera\\LookLeftRight.cs",
@@ -83,12 +116,11 @@
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Ending\\Camera\\LookLeftRight.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAcwCYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T16:46:43.429Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T16:46:43.429Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "StopSoundAfter6Seconds.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\StopSoundAfter6Seconds.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\StopSoundAfter6Seconds.cs",
@@ -100,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "LocalPlayerBGM.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\LocalPlayerBGM.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\LocalPlayerBGM.cs",
@@ -112,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "EndingClimbMove.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\Camera\\EndingClimbMove.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\Camera\\EndingClimbMove.cs",
@@ -120,12 +152,11 @@
               "RelativeToolTip": "Assets\\_Scripts\\Script_ui\\Ending\\Camera\\EndingClimbMove.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAAcwF8AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T15:24:46.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T15:24:46.954Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "SequentialActivator.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\Bomb\\SequentialActivator.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\Bomb\\SequentialActivator.cs",
@@ -137,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "EndingDirector.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\EndingDirector.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\EndingDirector.cs",
@@ -149,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "AutoExplosionChildren.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\Bomb\\AutoExplosionChildren.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\Bomb\\AutoExplosionChildren.cs",
@@ -161,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "EndingSceneLoader.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Ending\\notyet\\EndingSceneLoader.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Ending\\notyet\\EndingSceneLoader.cs",
@@ -173,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "FindExitCubeButton.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\FindExitCubeButton.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Exit\\FindExitCubeButton.cs",
@@ -185,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ExitDoorSoundOnly.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorSoundOnly.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorSoundOnly.cs",
@@ -197,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "ExitDoorController.cs",
               "DocumentMoniker": "C:\\unityproject\\Capstone2\\Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs",
               "RelativeDocumentMoniker": "Assets\\_Scripts\\Script_ui\\Exit\\ExitDoorController.cs",
