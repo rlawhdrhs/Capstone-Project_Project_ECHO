@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9211454834089388653}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: mixamorig:HeadTop_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1619,7 +1619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1053641431822833999}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: mixamorig:Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2180,7 +2180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5691629291865991006}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: mixamorig:Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2377,7 +2377,6 @@ GameObject:
   - component: {fileID: 3699613321547869966}
   - component: {fileID: 4481659541458636648}
   - component: {fileID: 1788966569660105352}
-  - component: {fileID: -2894411966826004063}
   - component: {fileID: 4157682429546303588}
   - component: {fileID: 2147550976129407761}
   m_Layer: 7
@@ -2461,6 +2460,7 @@ MonoBehaviour:
   avatarLeftHand: {fileID: 5005428090650409845}
   avatarRightHand: {fileID: 6749245529286255077}
   animator: {fileID: 7702765635475142460}
+  centerPositionOffset: {x: 0, y: 0.55, z: -0.15}
   _netMoveX: 0
   _netMoveZ: 0
   _netCrouch: 0
@@ -2470,34 +2470,8 @@ MonoBehaviour:
     _value: 0
   localFreeze: 0
   isSensorRobot: 0
-  gravity: -9.81
-  jumpForce: 5
-  moveSpeed: 3
---- !u!143 &-2894411966826004063
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7333243311895911484}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.8
-  m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  _netAvatarScale: 1
+  avatarDefaultEyeHeight: 1.7
 --- !u!114 &4157682429546303588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,6 +2499,7 @@ MonoBehaviour:
     _value: 0
   removableDuration: 2
   detectPointsRoot: {fileID: 4417782600958711408}
+  redSilhouetteMaterial: {fileID: 2100000, guid: 2f712b0acb5bdb941b0c22000cbf69a7, type: 2}
 --- !u!114 &2147550976129407761
 MonoBehaviour:
   m_ObjectHideFlags: 0
