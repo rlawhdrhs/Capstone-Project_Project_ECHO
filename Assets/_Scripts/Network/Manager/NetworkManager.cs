@@ -105,6 +105,10 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     // 플레이어 입력 데이터 전송
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        if (LocalVRRig.Instance != null && !LocalVRRig.Instance.isOnlineMode)
+        {
+            return;
+        }
         // 1. 입력 데이터를 담을 구조체 생성
         NetworkInputData data = new NetworkInputData();
 
