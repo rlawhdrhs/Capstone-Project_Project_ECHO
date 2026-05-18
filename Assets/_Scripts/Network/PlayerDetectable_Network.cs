@@ -46,6 +46,14 @@ public class PlayerDetectable_Network : NetworkBehaviour
         SetupDetectPoints();
         SetupRenderers();
         canEnterRemovable = true;
+
+        if (Object.HasInputAuthority)
+        {
+            if (NetworkGameManager.Instance != null)
+            {
+                NetworkGameManager.Instance.isLocalPlayerInfiltrator = true;
+            }
+        }
     }
 
     private void SetupDetectPoints()
@@ -248,6 +256,11 @@ public class PlayerDetectable_Network : NetworkBehaviour
     private void TryRemoveRpc()
     {
         isRemoved = true;
+
+        if (NetworkGameManager.Instance != null)
+        {
+            NetworkGameManager.Instance.TriggerChaserWin();
+        }
         Runner.Despawn(Object);
     }
 }

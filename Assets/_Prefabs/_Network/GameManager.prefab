@@ -65,8 +65,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NetworkGameManager
   DataMissionSpawner: {fileID: 0}
+  localXRManager: {fileID: 0}
+  infiltratorWinScene: Intruder_Win
+  infiltratorLoseScene: Intruder_Lose
+  chaserWinScene: Chaser_Win
+  chaserLoseScene: Chaser_Lose
+  isLocalPlayerInfiltrator: 0
   _CurrentMissionIndex: 0
   _DataCollectionProgress: 0
   MaxDataNodes: 5
   _IsExitOpen:
     _value: 0
+  exitObject: {fileID: 0}

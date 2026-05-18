@@ -36,7 +36,7 @@ public class ChooseSceneButton : MonoBehaviour
         PressButton();
     }
 
-    void OnXRPressed(SelectEnterEventArgs args)
+    public void OnXRPressed(SelectEnterEventArgs args)
     {
         PressButton();
     }

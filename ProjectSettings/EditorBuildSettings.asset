@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/_Game Scene/0.StartScene_Develop.unity
+    path: Assets/_Scenes/_Game Scene/0.StartScene.unity
     guid: 408d726abc55f014e8f91d05aef5e348
   - enabled: 1
     path: Assets/_Scenes/_Game Scene/0.Tutorial.unity
@@ -32,6 +32,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/_Game Scene/4.Ending.unity
     guid: 4d6a034f39a845348bdede65e3778ccd
+  - enabled: 1
+    path: Assets/_Scenes/_Game Scene/Endings/Chaser_Lose.unity
+    guid: a9eeb54144f220241b75de73e41912be
+  - enabled: 1
+    path: Assets/_Scenes/_Game Scene/Endings/Chaser_Win.unity
+    guid: cb6aa247ce568d143b937edd78060231
+  - enabled: 1
+    path: Assets/_Scenes/_Game Scene/Endings/Intruder_Lose.unity
+    guid: 002b7c0b5a0cab846ac5f68538b086e5
+  - enabled: 1
+    path: Assets/_Scenes/_Game Scene/Endings/Intruder_Win.unity
+    guid: 318049a03bd89984ebfdf2ddd3948743
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d7d06587cb1f1cb43a4ddb23819b72f7, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
