@@ -29,6 +29,8 @@ public struct NetworkInputData : INetworkInput
     public Quaternion rightHandRotation;
     //쪼그려 앉기
     public float crouch;
+    //센서 로봇 조종
+    public NetworkBool isPossessingDrone;
 }
 
 public class NetworkMove : NetworkBehaviour

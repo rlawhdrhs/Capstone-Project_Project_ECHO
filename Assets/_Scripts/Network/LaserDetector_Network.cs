@@ -8,28 +8,23 @@ public class LaserDetector_Network : NetworkBehaviour
     public float detectAngle = 20f;
 
     [Header("VR / Camera Origin")]
-    [Tooltip("VR에서는 CenterEyeAnchor 또는 로봇의 CameraPoint Transform을 연결하세요.")]
     public Transform laserOrigin;
 
+    public bool isSensorRobot = false;
     [Header("Height Limit")]
     public bool useHeightLimit = false;
     public float heightRange = 0.7f;
 
     [Header("Obstacle")]
-    [Tooltip("Wall, Obstacle 등 레이저를 막는 레이어만 넣으세요. Player 레이어는 절대 넣지 마세요!")]
     public LayerMask obstacleMask;
-    public bool isControlledByMe = false;
 
-    // 퓨전 네트워크 동기화 변수
-    [Networked] public NetworkBool isLaserOn { get; set; }
-    [Networked] public NetworkBool prevRightTrigger { get; set; }
+    [Networked] public NetworkBool isDetectorActive { get; set; }
     [Networked] public NetworkBool prevSpace { get; set; }
 
     [Header("Debug")]
     public bool showDebugRay = true;
     public bool showAngleGuide = true;
 
-    // 타겟 캐싱
     private PlayerDetectable_Network targetPlayer;
 
     public override void Spawned()
@@ -39,20 +34,19 @@ public class LaserDetector_Network : NetworkBehaviour
             Transform foundCameraPoint = transform.Find("CameraPoint");
             laserOrigin = foundCameraPoint != null ? foundCameraPoint : transform;
         }
+
+        if (Object.HasStateAuthority)
+        {
+            isDetectorActive = !isSensorRobot;
+        }
     }
 
     public override void FixedUpdateNetwork()
     {
-        // 1. 입력 처리 (빙의한 플레이어의 입력)
+        if (!isDetectorActive) return;
+        // 1. 입력 처리 (제거 버튼만 남김)
         if (GetInput(out NetworkInputData data))
         {
-            bool isTriggerPressedThisFrame = data.rightTrigger && !prevRightTrigger;
-            if (isTriggerPressedThisFrame && Object.HasStateAuthority)
-            {
-                isLaserOn = !isLaserOn;
-            }
-            prevRightTrigger = data.rightTrigger;
-
             bool isSpacePressedThisFrame = data.keySpace && !prevSpace;
             if (isSpacePressedThisFrame && Object.HasStateAuthority)
             {
@@ -64,16 +58,17 @@ public class LaserDetector_Network : NetworkBehaviour
             prevSpace = data.keySpace;
         }
 
-        // 2. 잠입자 타겟 런타임 캐싱 (네트워크 환경용)
+        // 2. 잠입자 타겟 런타임 캐싱
         if (targetPlayer == null && NetworkManager.Instance.InfiltratorObject != null)
         {
             targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable_Network>();
         }
 
-        // 3. 레이저 판정 로직 (오직 호스트/서버만 연산)
+        // 3. 레이저 판정 로직 (항상 감지 모드)
         if (!Object.HasStateAuthority) return;
 
-        if (isLaserOn && targetPlayer != null && !targetPlayer.isRemoved)
+        // 🌟 isLaserOn 조건문을 삭제하여, 게임 내내 항상 감지하도록 변경했습니다.
+        if (targetPlayer != null && !targetPlayer.isRemoved)
         {
             if (CheckPlayerDetected())
             {
@@ -82,7 +77,6 @@ public class LaserDetector_Network : NetworkBehaviour
         }
     }
 
-    // 팀원이 작성한 Raycast 탐지 로직 이식
     private bool CheckPlayerDetected()
     {
         Transform[] detectPoints = targetPlayer.DetectPoints;
@@ -96,7 +90,6 @@ public class LaserDetector_Network : NetworkBehaviour
         {
             if (point == null) continue;
 
-            // 1. 높이 제한 확인
             if (useHeightLimit)
             {
                 float heightDifference = Mathf.Abs(point.position.y - origin.y);
@@ -106,20 +99,16 @@ public class LaserDetector_Network : NetworkBehaviour
             Vector3 toTarget = point.position - origin;
             float distanceToTarget = toTarget.magnitude;
 
-            // 2. 거리 확인
             if (distanceToTarget > detectDistance) continue;
 
             Vector3 dirToTarget = toTarget.normalized;
             float angle = Vector3.Angle(forwardDir, dirToTarget);
 
-            // 3. 시야각 확인
             if (angle > detectAngle * 0.5f) continue;
 
-            // 4. 장애물(벽)에 가려졌는지 확인
             bool isBlocked = Physics.Linecast(origin, point.position, obstacleMask);
             if (isBlocked) continue;
 
-            // 모든 조건을 통과하면 감지 성공!
             return true;
         }
 
@@ -132,13 +121,11 @@ public class LaserDetector_Network : NetworkBehaviour
                                    : new Ray(transform.position, transform.forward);
     }
 
-    // 디버그 레이는 클라이언트에서도 볼 수 있게 Render에서 처리
     public override void Render()
     {
-        if (showDebugRay && isLaserOn)
+        if (showDebugRay && isDetectorActive)
         {
             Ray aimRay = GetAimRay();
-            // 호스트에서는 isDetected 여부를 정확히 알지만, 클라이언트에서는 레이저 On 상태만 표시
             Debug.DrawRay(aimRay.origin, aimRay.direction * detectDistance, Color.red);
 
             if (showAngleGuide)

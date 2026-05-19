@@ -55,9 +55,6 @@ public class NetworkSoundSensor : NetworkBehaviour
         if (rig != null) rig.IsFrozen = true;
 
         IsControlled = false;
-
-        LaserDetector_Network laser = GetComponent<LaserDetector_Network>();
-        if (laser != null) laser.isLaserOn = false;
     }
 
     // 카메라 셋업은 나(추격자)의 로컬 화면에서만 일어남

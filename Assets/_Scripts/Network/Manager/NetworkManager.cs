@@ -126,8 +126,9 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         data.leftClick = Input.GetMouseButton(0);
         // 점프 (Space)
         data.jump = Input.GetButton("XRI_Left_GripButton");
-        data.keyR = Input.GetKey(KeyCode.R) || Input.GetButton("XRI_Right_SecondaryButton");
-        data.keySpace = Input.GetKey(KeyCode.Space);
+        bool isRightAPressed = false;
+        try { isRightAPressed = Input.GetButton("XRI_Right_PrimaryButton"); } catch { }
+        data.keySpace = Input.GetKey(KeyCode.Space) || isRightAPressed;
 
         if (LocalVRRig.Instance != null)
         {
@@ -147,6 +148,11 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             data.moveX = Input.GetAxis("Horizontal");
             data.moveZ = Input.GetAxis("Vertical");
             data.crouch = LocalVRRig.Instance.currentCrouch;
+        }
+
+        if (PossessionManager.Instance != null)
+        {
+            data.isPossessingDrone = PossessionManager.Instance.currentDrone != null;
         }
 
         input.Set(data);

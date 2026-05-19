@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class SensorSynchronizer : NetworkBehaviour
 {
-    public Transform droneBody; // 드론 본체
-    public float speed = 3.0f;
+    public Transform droneBody;
+
+    [Header("드론 동기화 보정")]
+    public Vector3 centerPositionOffset;
 
     public override void FixedUpdateNetwork()
     {
@@ -12,20 +14,19 @@ public class SensorSynchronizer : NetworkBehaviour
         {
             if (droneBody != null)
             {
-                droneBody.rotation = data.headRotation;
+                Vector3 headForward = data.headRotation * Vector3.forward;
+                headForward.y = 0f; // Y값을 0으로 만들어 위아래(X축) 기울기를 제거
+
+                if (headForward.sqrMagnitude > 0.01f)
+                {
+                    droneBody.rotation = Quaternion.LookRotation(headForward);
+                }
             }
 
-            // 1. 내 시선(고개 방향)을 기준으로 앞뒤/좌우 벡터를 구함
-            Vector3 forward = data.headRotation * Vector3.forward;
-            Vector3 right = data.headRotation * Vector3.right;
-            forward.y = 0;
-            right.y = 0;
-            forward.Normalize();
-            right.Normalize();
+            Vector3 alignedPosition = new Vector3(data.headPosition.x, data.rootPosition.y, data.headPosition.z);
+            transform.position = alignedPosition;
 
-            Vector3 moveDir = (forward * data.moveZ) + (right * data.moveX);
-
-            transform.position += moveDir * speed * Runner.DeltaTime;
+            transform.position += transform.TransformDirection(centerPositionOffset);
         }
     }
 }

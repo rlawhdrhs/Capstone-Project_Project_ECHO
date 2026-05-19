@@ -117,16 +117,10 @@ public class NetworkSensorManager : NetworkBehaviour
                 LocalVRRig.Instance.avatarRightHand = robotRig.avatarRightHand;
                 LocalVRRig.Instance.animator = robotRig.animator;
 
-                // 레이저 조종 권한 부여
-                LaserDetector_Network laser = targetSensor.GetComponent<LaserDetector_Network>();
-                if (laser != null) laser.isControlledByMe = true;
             }
 
             if (prevSensor != null && prevSensor != targetSensor)
             {
-                LaserDetector_Network prevLaser = prevSensor.GetComponent<LaserDetector_Network>();
-                if (prevLaser != null) prevLaser.isControlledByMe = false;
-
                 VRRigSynchronizer prevRig = prevSensor.GetComponent<VRRigSynchronizer>();
                 if (prevRig != null)
                 {

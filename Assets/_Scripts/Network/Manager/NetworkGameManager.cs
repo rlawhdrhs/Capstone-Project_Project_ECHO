@@ -123,10 +123,19 @@ public class NetworkGameManager : NetworkBehaviour
 
         Debug.Log($"게임 종료! 승자: {winner}, 로드할 씬: {sceneToLoad}");
 
-        Runner.Shutdown();
-        SceneManager.LoadScene(sceneToLoad);
+        StartCoroutine(ShutdownAndLoadScene(sceneToLoad));
     }
+    private System.Collections.IEnumerator ShutdownAndLoadScene(string sceneName)
+    {
+        yield return new WaitForSeconds(0.5f);
 
+        if (Runner != null)
+        {
+            Runner.Shutdown();
+        }
+
+        SceneManager.LoadScene(sceneName);
+    }
     void OnMissionIndexChanged()
     {
         OnMissionChangedEvent?.Invoke(CurrentMissionIndex);
