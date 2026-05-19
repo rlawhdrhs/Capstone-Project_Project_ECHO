@@ -3977,7 +3977,7 @@ MonoBehaviour:
   useKeyboardInput: 1
   toggleKey: 114
   detectionAudioSource: {fileID: 0}
-  detectionBeepClip: {fileID: 8300000, guid: 5938f4f60675ac249a22c59b02816daa, type: 3}
+  detectionBeepClip: {fileID: 8300000, guid: bd3f3c12315150b4eb4e4d7489f3f89d, type: 3}
   lockedClip: {fileID: 0}
   maxBeepInterval: 0.5
   minBeepInterval: 0.1
