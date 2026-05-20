@@ -16,6 +16,8 @@ public class PossessionManager : NetworkBehaviour
     private Vector3 humanStoredPosition;
     private Quaternion humanStoredRotation;
 
+    [Networked] public NetworkBool PrevLeftButtonA { get; set; }
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -39,41 +41,47 @@ public class PossessionManager : NetworkBehaviour
     {
         if (GetInput(out NetworkInputData data))
         {
-            if (currentDrone != null && data.leftButtonA)
+            bool isReturnPressedThisFrame = data.leftButtonA && !PrevLeftButtonA;
+            PrevLeftButtonA = data.leftButtonA;
+
+            if (currentDrone != null && isReturnPressedThisFrame && Runner.IsForward)
             {
                 ReturnToHuman();
             }
         }
     }
 
-    private void LateUpdate()
-    {
-        if (currentDrone != null && xrOrigin != null && LocalVRRig.Instance.hardwareHead != null)
-        {
-            // 1. 목표 지점은 드론의 바닥이 아니라 드론의 '카메라(눈)' 위치입니다.
-            Vector3 targetEyePosition = currentDrone.droneBody.position;
+    //private void LateUpdate()
+    //{
+    //    if (currentDrone != null && xrOrigin != null && LocalVRRig.Instance.hardwareHead != null)
+    //    {
+    //        // 1. 목표 지점은 드론의 바닥이 아니라 드론의 '카메라(눈)' 위치입니다.
+    //        Vector3 targetEyePosition = currentDrone.droneBody.position;
 
-            // 2. 내 실제 헤드셋(카메라)이 목표 지점에 가기 위해 얼마나 이동해야 하는지 계산합니다.
-            Vector3 offset = targetEyePosition - LocalVRRig.Instance.hardwareHead.position;
+    //        // 2. 내 실제 헤드셋(카메라)이 목표 지점에 가기 위해 얼마나 이동해야 하는지 계산합니다.
+    //        Vector3 offset = targetEyePosition - LocalVRRig.Instance.hardwareHead.position;
 
-            // 3. XR Origin 자체를 그 오차만큼 밀어줍니다. (로코모션이 움직이려 해도 여기서 강제로 붙잡음)
-            xrOrigin.position += offset;
-        }
-    }
+    //        // 3. XR Origin 자체를 그 오차만큼 밀어줍니다. (로코모션이 움직이려 해도 여기서 강제로 붙잡음)
+    //        xrOrigin.position += offset;
+    //    }
+    //}
 
     public void PossessDrone(SensorSynchronizer targetDrone)
     {
-        if (targetDrone == null || myHumanAvatar == null) return;
+        if (targetDrone == null || myHumanAvatar == null || currentDrone != null) return;
 
         currentDrone = targetDrone;
 
-        humanStoredPosition = xrOrigin.position;
-        humanStoredRotation = xrOrigin.rotation;
+        if (Runner.IsForward)
+        {
+            humanStoredPosition = xrOrigin.position;
+            humanStoredRotation = xrOrigin.rotation;
+            TeleportXRToDrone(targetDrone);
+        }
 
         myHumanAvatar.localFreeze = true;
 
         RPC_RequestPossession(myHumanAvatar.Object, targetDrone.Object, Runner.LocalPlayer);
-        TeleportXRToDrone(targetDrone);
     }
 
     public void ReturnToHuman()
@@ -84,8 +92,8 @@ public class PossessionManager : NetworkBehaviour
         currentDrone = null;
 
         myHumanAvatar.localFreeze = false;
-
         RPC_RequestReturn(myHumanAvatar.Object, previousDrone.Object, Runner.LocalPlayer);
+
         TeleportXRToHuman(humanStoredPosition, humanStoredRotation);
     }
 
@@ -102,10 +110,15 @@ public class PossessionManager : NetworkBehaviour
         LocalVRRig.Instance.avatarLeftHand = null;
         LocalVRRig.Instance.avatarRightHand = null;
         LocalVRRig.Instance.animator = null;
+
+        if (xrCC != null) xrCC.enabled = true;
     }
 
     private void TeleportXRToHuman(Vector3 forcePos, Quaternion forceRot)
     {
+        CharacterController xrCC = xrOrigin.GetComponent<CharacterController>();
+
+        if (xrCC != null) xrCC.enabled = false;
         xrOrigin.position = forcePos;
         xrOrigin.rotation = forceRot;
 
@@ -115,7 +128,6 @@ public class PossessionManager : NetworkBehaviour
         LocalVRRig.Instance.avatarRightHand = myHumanAvatar.avatarRightHand;
         LocalVRRig.Instance.animator = myHumanAvatar.animator;
 
-        CharacterController xrCC = xrOrigin.GetComponent<CharacterController>();
         if (xrCC != null) xrCC.enabled = true;
     }
 
@@ -124,6 +136,8 @@ public class PossessionManager : NetworkBehaviour
     {
         humanObj.GetComponent<VRRigSynchronizer>().IsFrozen = true;
         droneObj.AssignInputAuthority(player);
+
+        if (droneObj.TryGetComponent(out LaserDetector_Network dLaser)) dLaser.isDetectorActive = true;
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
@@ -131,5 +145,7 @@ public class PossessionManager : NetworkBehaviour
     {
         droneObj.RemoveInputAuthority();
         humanObj.GetComponent<VRRigSynchronizer>().IsFrozen = false;
+
+        if (droneObj.TryGetComponent(out LaserDetector_Network dLaser)) dLaser.isDetectorActive = false;
     }
 }

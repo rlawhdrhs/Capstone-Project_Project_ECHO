@@ -5887,11 +5887,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2705282918986374369, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.8
+      value: 3.7600124
       objectReference: {fileID: 0}
     - target: {fileID: 2705282918986374369, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0.0000000017479119
       objectReference: {fileID: 0}
     - target: {fileID: 2705282918986374371, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33528,6 +33528,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8211113527040113763, guid: 2eb2ace7ebd14944a9d76bdc9a67e380, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211113527040113763, guid: 2eb2ace7ebd14944a9d76bdc9a67e380, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8211113527040113789, guid: 2eb2ace7ebd14944a9d76bdc9a67e380, type: 3}
@@ -149531,7 +149535,7 @@ GameObject:
   - component: {fileID: 1042587218}
   - component: {fileID: 1042587224}
   - component: {fileID: 1042587225}
-  m_Layer: 21
+  m_Layer: 10
   m_Name: DoorClickArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162913,14 +162917,9 @@ MonoBehaviour:
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   HierarchyHash:
     serializedVersion: 2
-    Hash: 52931e8e2314c87095472ec7440784cb
+    Hash: 14d2be62fe66e039ff9dc3b87cbc4e2c
 --- !u!1 &1115959634
 GameObject:
   m_ObjectHideFlags: 0
@@ -166073,7 +166072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1135354930
 Transform:
   m_ObjectHideFlags: 0
@@ -217789,6 +217788,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8211113527040113763, guid: 2eb2ace7ebd14944a9d76bdc9a67e380, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8211113527040113789, guid: 2eb2ace7ebd14944a9d76bdc9a67e380, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -242019,6 +242022,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2705282918986203267, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2705282918986203277, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -246608,6 +246615,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2705282918986203267, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705282918986203267, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2705282918986203277, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
@@ -285354,6 +285365,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2705282918986203267, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705282918986203267, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2705282918986203277, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}

@@ -63,6 +63,7 @@ public class VRRigSynchronizer : NetworkBehaviour
                 LocalVRRig.Instance.avatarLeftHand = this.avatarLeftHand;
                 LocalVRRig.Instance.avatarRightHand = this.avatarRightHand;
                 LocalVRRig.Instance.animator = this.animator;
+                LocalVRRig.Instance.centerPositionOffset = this.centerPositionOffset;
             }
         }
     }
@@ -73,6 +74,7 @@ public class VRRigSynchronizer : NetworkBehaviour
 
         if (GetInput(out NetworkInputData data))
         {
+            if (data.isPossessingDrone) return;
             // 1. 머리가 바라보는 방향으로 몸통 회전
             Vector3 headForward = data.headRotation * Vector3.forward;
             headForward.y = 0f;
@@ -111,7 +113,7 @@ public class VRRigSynchronizer : NetworkBehaviour
             // --- 상호작용 로직 ---
             bool isClickedThisFrame = data.leftClick && !PrevLeftClick;
             PrevLeftClick = data.leftClick;
-            if (isClickedThisFrame)
+            if (isClickedThisFrame && Runner.IsForward)
             {
                 Ray ray = new Ray(data.headPosition, data.headRotation * Vector3.forward);
                 if (Physics.Raycast(ray, out RaycastHit hit, 5f))

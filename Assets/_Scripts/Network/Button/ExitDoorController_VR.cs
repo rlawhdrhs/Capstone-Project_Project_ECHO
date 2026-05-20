@@ -121,6 +121,7 @@ public class ExitDoorController_VR : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(endingSceneName);
+        //SceneManager.LoadScene(endingSceneName);
+        NetworkGameManager.Instance.Rpc_EscapeSuccess();
     }
 }
