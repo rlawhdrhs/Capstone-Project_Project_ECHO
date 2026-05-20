@@ -26,6 +26,26 @@ public class LaserDetector : MonoBehaviour
     public bool useKeyboardInput = true;
     public KeyCode toggleKey = KeyCode.R;
 
+    [Header("Detection Beep")]
+    [Tooltip("레이저 감지음 재생용 AudioSource입니다. SoundManager가 아니라 이 AudioSource로 재생합니다.")]
+    public AudioSource detectionAudioSource;
+
+    [Tooltip("감지 게이지가 차는 동안 반복 재생할 짧은 삐빅 소리입니다.")]
+    public AudioClip detectionBeepClip;
+
+    [Tooltip("제거 가능 상태가 되었을 때 1회 재생할 락온 완료음입니다.")]
+    public AudioClip lockedClip;
+
+    [Tooltip("게이지가 낮을 때 삐빅 간격입니다.")]
+    public float maxBeepInterval = 0.8f;
+
+    [Tooltip("게이지가 높을 때 삐빅 간격입니다.")]
+    public float minBeepInterval = 0.15f;
+
+    [Tooltip("이 게이지 비율 이상부터 삐빅 소리가 납니다.")]
+    [Range(0f, 1f)]
+    public float minGaugeRatioToBeep = 0.1f;
+
     [Header("Debug")]
     public bool showDebugRay = true;
     public bool showAngleGuide = true;
@@ -35,6 +55,9 @@ public class LaserDetector : MonoBehaviour
 
     private PlayerDetectable currentDetectedTarget;
     private Transform currentDetectedPoint;
+
+    private float nextBeepTime = 0f;
+    private bool lockedSoundPlayed = false;
 
     public bool IsLaserOn => isLaserOn;
     public PlayerDetectable CurrentDetectedTarget => currentDetectedTarget;
@@ -60,6 +83,11 @@ public class LaserDetector : MonoBehaviour
         if (player == null)
         {
             player = FindAnyObjectByType<PlayerDetectable>();
+        }
+
+        if (detectionAudioSource == null)
+        {
+            detectionAudioSource = GetComponent<AudioSource>();
         }
     }
 
@@ -98,6 +126,8 @@ public class LaserDetector : MonoBehaviour
             player.SetDetected(isDetected);
             player.UpdateGauge(isDetected);
         }
+
+        UpdateDetectionBeep(isDetected);
 
         if (showDebugRay)
         {
@@ -162,6 +192,7 @@ public class LaserDetector : MonoBehaviour
         }
 
         wasDetectedLastFrame = false;
+        ResetDetectionBeep();
     }
 
     private bool CheckPlayerDetected(out PlayerDetectable detectedTarget, out Transform detectedPoint)
@@ -228,6 +259,89 @@ public class LaserDetector : MonoBehaviour
         }
 
         return new Ray(transform.position, transform.forward);
+    }
+
+    private void UpdateDetectionBeep(bool isDetected)
+    {
+        if (!isDetected || player == null)
+        {
+            ResetDetectionBeep();
+            return;
+        }
+
+        float gaugeRatio = GetPlayerGaugeRatio();
+
+        if (player.isRemovable)
+        {
+            PlayLockedSoundOnce();
+            return;
+        }
+
+        lockedSoundPlayed = false;
+
+        if (gaugeRatio < minGaugeRatioToBeep)
+        {
+            return;
+        }
+
+        float interval = Mathf.Lerp(maxBeepInterval, minBeepInterval, gaugeRatio);
+
+        if (Time.time >= nextBeepTime)
+        {
+            PlayDetectionBeep();
+            nextBeepTime = Time.time + interval;
+        }
+    }
+
+    private float GetPlayerGaugeRatio()
+    {
+        /*
+         * 아래 코드는 PlayerDetectable에 detectionGauge, maxGauge가 public이라고 가정한 버전입니다.
+         * 만약 private이라서 오류가 나면 PlayerDetectable에 getter를 추가해야 합니다.
+         *
+         * public float DetectionGauge => detectionGauge;
+         * public float MaxGauge => maxGauge;
+         *
+         * 그리고 아래 코드를 player.DetectionGauge / player.MaxGauge로 바꾸면 됩니다.
+         */
+
+        if (player.maxGauge <= 0f)
+        {
+            return 0f;
+        }
+
+        return Mathf.Clamp01(player.detectionGauge / player.maxGauge);
+    }
+
+    private void PlayDetectionBeep()
+    {
+        if (detectionAudioSource == null || detectionBeepClip == null)
+        {
+            return;
+        }
+
+        detectionAudioSource.PlayOneShot(detectionBeepClip);
+    }
+
+    private void PlayLockedSoundOnce()
+    {
+        if (lockedSoundPlayed)
+        {
+            return;
+        }
+
+        lockedSoundPlayed = true;
+
+        if (detectionAudioSource != null && lockedClip != null)
+        {
+            detectionAudioSource.PlayOneShot(lockedClip);
+        }
+    }
+
+    private void ResetDetectionBeep()
+    {
+        nextBeepTime = 0f;
+        lockedSoundPlayed = false;
     }
 
     private void DrawDebugLaser(bool isDetected)

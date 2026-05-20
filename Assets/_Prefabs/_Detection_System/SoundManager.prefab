@@ -63,6 +63,9 @@ MonoBehaviour:
   - soundType: 6
     intensity: 8
     detectionRadius: 70
+  - soundType: 7
+    intensity: 3
+    detectionRadius: 20
   clipTable:
   - soundType: 1
     clips:
@@ -71,17 +74,35 @@ MonoBehaviour:
     - {fileID: 8300000, guid: efcaf82943053404ea54b0a9e3b33632, type: 3}
     - {fileID: 8300000, guid: 9a277df9cc2ddd3488ce3498d5469f94, type: 3}
     volume: 1
-    minDistance: 2
-    maxDistance: 22
+    minDistance: 5
+    maxDistance: 20
     rolloffMode: 0
     pitchMin: 0.95
     pitchMax: 1.05
-  - soundType: 6
+  - soundType: 7
     clips:
     - {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
     volume: 1
+    minDistance: 20
+    maxDistance: 70
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
+  - soundType: 8
+    clips:
+    - {fileID: 8300000, guid: 3573df8b378cf5e40bd1a886aa5ad4af, type: 3}
+    volume: 1
     minDistance: 3
     maxDistance: 70
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
+  - soundType: 3
+    clips:
+    - {fileID: 8300000, guid: 2fe1ab17285ba8a4fb091d49d668c266, type: 3}
+    volume: 1
+    minDistance: 10
+    maxDistance: 30
     rolloffMode: 0
     pitchMin: 0.95
     pitchMax: 1.05

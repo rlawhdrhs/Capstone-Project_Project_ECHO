@@ -10,6 +10,10 @@ public class SoundEmitter : MonoBehaviour
     [Header("State")]
     public bool isRunning = false;
 
+    [Header("Surface Override")]
+    [SerializeField] private bool useFootstepOverride = false;
+    [SerializeField] private SoundType overrideFootstepType = SoundType.WalkFootstep;
+
     private Vector3 lastPosition;
     private float accumulatedDistance;
 
@@ -40,7 +44,7 @@ public class SoundEmitter : MonoBehaviour
 
     void EmitFootstep(Vector3 currentPosition)
     {
-        SoundType soundType = isRunning ? SoundType.RunFootstep : SoundType.WalkFootstep;
+        SoundType soundType = GetCurrentFootstepSoundType();
         Vector3 soundPosition = currentPosition + Vector3.up * footstepYOffset;
 
         if (SoundManager.Instance != null)
@@ -55,6 +59,31 @@ public class SoundEmitter : MonoBehaviour
         {
             Debug.LogWarning("SoundManager.Instance가 null임");
         }
+    }
+
+    private SoundType GetCurrentFootstepSoundType()
+    {
+        if (useFootstepOverride)
+        {
+            return overrideFootstepType;
+        }
+
+        return isRunning ? SoundType.RunFootstep : SoundType.WalkFootstep;
+    }
+
+    public void SetFootstepOverride(SoundType soundType)
+    {
+        useFootstepOverride = true;
+        overrideFootstepType = soundType;
+
+        Debug.Log($"[SoundEmitter] Footstep override ON: {soundType}");
+    }
+
+    public void ClearFootstepOverride()
+    {
+        useFootstepOverride = false;
+
+        Debug.Log("[SoundEmitter] Footstep override OFF");
     }
 
     public void EmitSound(Vector3 position, SoundType soundType)
