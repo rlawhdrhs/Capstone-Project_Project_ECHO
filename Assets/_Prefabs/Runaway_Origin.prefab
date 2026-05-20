@@ -1409,7 +1409,7 @@ MonoBehaviour:
   maxAssistDistance: 1.5
   coverLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   minCoverHeight: 1
   rayWidthOffset: 0.3
   moveInput:
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   gazeRadius: 0.3
   coverLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   highlightColor: {r: 0.78616345, g: 0.6160233, b: 0.3288041, a: 1}
 --- !u!1001 &1177151739752338684
 PrefabInstance:
@@ -1840,6 +1840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7253249399330903448}
     m_Modifications:
+    - target: {fileID: 1695117587471076474, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
+      propertyPath: m_XROrigin
+      value: 
+      objectReference: {fileID: 4751436334446780597}
     - target: {fileID: 3044921571507714408, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
