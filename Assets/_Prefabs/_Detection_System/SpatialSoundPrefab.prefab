@@ -156,6 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAudioSource
   enableSpatialization: 1
-  gainBoostDb: 0
+  gainBoostDb: 2.9
   enableAcoustics: 1
-  reverbSendDb: 6
+  reverbSendDb: 0
