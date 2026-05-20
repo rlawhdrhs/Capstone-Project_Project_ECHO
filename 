@@ -1,0 +1,16 @@
+[33me687e886[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/door-open-and-ui[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{0}: merge origin/develop: Fast-forward
+[33ma0948c1a[m HEAD@{1}: commit: fix:머리와 카메라 동기화 개선
+[33ma7b26cff[m HEAD@{2}: pull origin feature/door-open-and-ui: Fast-forward
+[33m019d511e[m HEAD@{3}: commit: feature:미션 및 게임 매니저 구현 및 미션 랜덤 배치 적용
+[33med982122[m[33m ([m[1;32mdevelop[m[33m)[m HEAD@{4}: checkout: moving from develop to feature/door-open-and-ui
+[33med982122[m[33m ([m[1;32mdevelop[m[33m)[m HEAD@{5}: checkout: moving from release/alpha-test to develop
+[33m51d5ceb6[m[33m ([m[1;31morigin/release/alpha-test[m[33m, [m[1;32mrelease/alpha-test[m[33m)[m HEAD@{6}: reset: moving to HEAD
+[33m51d5ceb6[m[33m ([m[1;31morigin/release/alpha-test[m[33m, [m[1;32mrelease/alpha-test[m[33m)[m HEAD@{7}: reset: moving to HEAD
+[33m51d5ceb6[m[33m ([m[1;31morigin/release/alpha-test[m[33m, [m[1;32mrelease/alpha-test[m[33m)[m HEAD@{8}: checkout: moving from develop to release/alpha-test
+[33med982122[m[33m ([m[1;32mdevelop[m[33m)[m HEAD@{9}: commit (merge): Merge: 충돌 해결(씬 중복)
+[33me1a6f29c[m HEAD@{10}: commit: Chore:player-movement 씬 수정
+[33mffac59a6[m HEAD@{11}: commit: save:병합 전 로컬 프리펩 수정 및 추가
+[33mefda9ccd[m HEAD@{12}: commit: fix:프리펩 연결 재설정 및 교체
+[33m4ce7a29d[m HEAD@{13}: checkout: moving from develop to develop
+[33m4ce7a29d[m HEAD@{14}: checkout: moving from main to develop
+[33m82c0aa9f[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{15}: clone: from https://github.com/rlawhdrhs/Capstone-Project_Project_ECHO.git
