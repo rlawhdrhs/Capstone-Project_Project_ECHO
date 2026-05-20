@@ -2,11 +2,27 @@ using UnityEngine;
 
 public class EMPDoor : MonoBehaviour
 {
-    // 폭탄이 터질 때 호출될 함수
+    private Animator _animator;
+    private bool _isOpened = false;
+
+    void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        
+        if (_animator == null)
+        {
+            Debug.LogError($"{gameObject.name}에 Animator가 없습니다! 애니메이션을 추가해주세요.");
+        }
+    }
+
     public void OpenDoor()
     {
-        Debug.Log($"⚡ EMP 감지! {gameObject.name} 시스템 해킹 완료.");
+        if (_isOpened) return; 
+
+        _isOpened = true;
         
-        gameObject.SetActive(false); 
+        _animator.SetTrigger("Open");
+
+        Debug.Log($"<color=blue>{gameObject.name} 문이 EMP 충격으로 개방되었습니다!</color>");
     }
 }

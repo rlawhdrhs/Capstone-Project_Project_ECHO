@@ -50,6 +50,26 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 /warnaserror+:NU1605
 
 [sourceFiles]
+Assets/DownAssets/
+ Clock/Scripts/Clock.cs
+ Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/CTI_URP_CustomWind.cs
+ ScifiOfficeLite/Scripts/
+  DemoDoor.cs
+  DemoFirstPersonController.cs
+ TooManyCrosshairs/Cursors/_Demo/Scripts/
+  CursorChanger.cs
+  CursorTrigger.cs
+  HideMouseCursor.cs
+  MoveToMousePosition.cs
+ TooManyCrosshairs/HELLSLAYER Crosshairs/_Demo/Scripts/
+  Crosshair.cs
+  Gun.cs
+ TooManyCrosshairs/Unknown's Crosshairs/_Demo/Scripts/
+  Crosshair.cs
+  Gun.cs
+ TooManyCrosshairs/_Demo/Scripts/
+  Crosshair.cs
+  Gun.cs
 Assets/Samples/Meta XR Core SDK/85.0.0/Sample Scenes/Scripts/
  OVRControllerDrivenHandPosesSample.cs
  OVRHandTrackingWideMotionModeSample.cs
@@ -76,30 +96,89 @@ Assets/_Scripts/
  CoverHighlightSystem.cs
  DataMissionInteractor.cs
  EMPDoor.cs
+ Network/Button/
+  NetworkRobotSelectButton.cs
+  SensorRobotButtonLink.cs
+  VRButton.cs
  Network/
+  ChaserSetup.cs
   LaserDetector_Network.cs
-  LocalVRRig.cs
-  NetworkManager.cs
+  Manager/
+   GameStateManager.cs
+   LobbyManager.cs
+   NetworkManager.cs
   NetworkMove.cs
   PlayerCameraHandler.cs
   PlayerDetectable_Network.cs
+  PossessionManager.cs
   RemovalTester_Network.cs
-  SoundEmitter_Network.cs
-  SoundEventNetworkManager.cs
-  VRRigSynChronizer.cs
+  Sensor/
+   ChaserVision_New.cs
+   IntruderSoundDetector_Network.cs
+   NetworkSensorManager.cs
+   NetworkSoundSensor.cs
+   RobotScanner_Network.cs
+   StealthController.cs
+  Sound/
+   SoundEmitter_Network.cs
+   SoundEventNetworkManager.cs
+  SupperClass/NetworkSingleton.cs
+  Synchronizer/
+   LocalVRRig.cs
+   SensorSynchronizer.cs
+   VRRigSynChronizer.cs
  PlayerSprint.cs
+ Script_ui/ButtonUi/
+  BoxClickSubtitle.cs
+  CameraSelector.cs
+  ChooseSceneAndCharacter.cs
+  ChooseSceneButton.cs
+  GameEntryData.cs
+  MapButton.cs
+  SceneButtonManager.cs
+  StartSceneButton.cs
+  StartSceneTransition.cs
+  TooltipTrigger.cs
  Script_ui/
+  ChaserVision.cs
+  EffectUI/
+   BlinkTransition.cs
+   FlickerLight.cs
+   LIghtMoveX.cs
+   OutlineLayerApplier.cs
+   PressButton.cs
+   RotateY.cs
+   WakeUpTransition.cs
+  ending/
+   EndingGameManager.cs
+   EndingManager.cs
+   EndingTest.cs
+   EndingType.cs
+   ShowRestartButton.cs
+  Exit/
+   ExitDoorController.cs
+   ExitDoorSoundOnly.cs
+   FindExitCubeButton.cs
   GreenMove.cs
+  Infiltrator.cs
   InfiltratorHide.cs
   InfiltratorMove.cs
+  Mission/MissionLightActivator.cs
+  RobotSelectButton.cs
+  Sensor/
+   CubeColorChanger.cs
+   IntruderSoundDetector.cs
+   MoveSoundPlayer.cs
+  SimpleLookTurn.cs
  StealthDetector.cs
  StickyBomb.cs
  TestButton.cs
- _Detection System/LaserSystem/
-  LaserDetector.cs
-  PlayerDetectable.cs
-  VisionConeMesh.cs
  _Detection System/
+  ExplosionTest.cs
+  LaserSystem/
+   LaserDetector.cs
+   PlayerDetectable.cs
+   VisionConeMesh.cs
   RemovalTestere.cs
   SensorSystem/
    SensorControlInput.cs
@@ -112,6 +191,7 @@ Assets/_Scripts/
    SoundListener.cs
    SoundManager.cs
    SoundType.cs
+   SpatialSoundPlayer.cs
  _Mission System/
   MissionBase.cs
   MissionClearTest.cs
@@ -409,6 +489,9 @@ Library/PackageCache/
  com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
  com.unity.testtools.codecoverage@19a841221620/lib/ReportGenerator/ReportGeneratorMerged.dll
 Library/ScriptAssemblies/
+ glTFast.dll
+ glTFast.dots.dll
+ glTFast.Editor.dll
  Meta.XR.Audio.dll
  Meta.XR.Audio.Editor.dll
  Meta.XR.BuildingBlocks.AIBlocks.dll
@@ -464,6 +547,8 @@ Library/ScriptAssemblies/
  Oculus.VR.Scripts.Editor.dll
  ParrelSync.dll
  PPv2URPConverters.dll
+ Unity.Animation.Rigging.dll
+ Unity.Animation.Rigging.Editor.dll
  Unity.Burst.dll
  Unity.Burst.Editor.dll
  Unity.Collections.dll
@@ -555,6 +640,7 @@ Temp/bin/Debug/
  Fusion.Unity.dll
  Fusion.Unity.Editor.dll
  Unity.XR.Hands.Samples.VisualizerSample.dll
+ Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.dll
  Unity.XR.Interaction.Toolkit.Samples.Hands.dll
  Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.dll
  Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.dll
