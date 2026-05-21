@@ -1,13 +1,12 @@
 public enum SoundType
 {
-    Footstep,
     WalkFootstep,
     RunFootstep,
-    GlassStep,
-    Collision,
-    Action,
-    ObjectThrow,
+    GlassFootstep,
+    WaterFootstep,
     Explosion,
-    AlarmBugBeep
-
+    AlarmBugBeep,
+    DoorOpen,
+    DataCollect,
+    DataCollected
 }
