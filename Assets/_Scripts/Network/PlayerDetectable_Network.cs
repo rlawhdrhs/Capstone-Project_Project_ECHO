@@ -41,6 +41,16 @@ public class PlayerDetectable_Network : NetworkBehaviour
     // 원래 아바타가 가지고 있던 머티리얼 원본을 기억할 배열
     private Material[][] originalMaterials;
 
+    [Header("Detection Audio")]
+    [Tooltip("감지 소리를 재생할 오디오 소스")]
+    public AudioSource detectionAudioSource;
+    [Tooltip("감지되었을 때 재생할 삐- 소리 클립")]
+    public AudioClip detectionClip;
+    [Tooltip("소리가 너무 자주 중복 재생되는 것을 막기 위한 쿨타임 (초)")]
+    public float soundCooldown = 0.5f;
+
+    private float _lastSoundPlayTime = -999f; // 마지막 소리 재생 시간 기억
+
     public override void Spawned()
     {
         SetupDetectPoints();
@@ -163,12 +173,37 @@ public class PlayerDetectable_Network : NetworkBehaviour
 
     void OnDetectedChanged()
     {
-        // 내 아바타일 때만 내 화면(UI)에 경고를 띄움!
         if (Object.HasInputAuthority || (Runner.IsServer && Object.HasStateAuthority))
         {
             if (IntruderDetectedUI.Instance != null)
             {
                 IntruderDetectedUI.Instance.ShowWarning(isDetected);
+            }
+        }
+        if (isDetected && (Time.time - _lastSoundPlayTime >= soundCooldown))
+        {
+            PlayDetectionSound();
+        }
+    }
+
+    private void PlayDetectionSound()
+    {
+        if (detectionAudioSource != null && detectionClip != null)
+        {
+            if (isDetected)
+            {
+                detectionAudioSource.clip = detectionClip;
+                detectionAudioSource.loop = true;
+
+                if (!detectionAudioSource.isPlaying)
+                {
+                    detectionAudioSource.Play();
+                }
+            }
+            else
+            {
+                detectionAudioSource.loop = false;
+                detectionAudioSource.Stop();
             }
         }
     }

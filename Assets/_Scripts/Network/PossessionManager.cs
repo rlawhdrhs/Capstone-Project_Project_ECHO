@@ -16,6 +16,9 @@ public class PossessionManager : NetworkBehaviour
     private Vector3 humanStoredPosition;
     private Quaternion humanStoredRotation;
 
+    private Vector3 droneInitialPosition;
+    private Quaternion droneInitialRotation;
+
     [Networked] public NetworkBool PrevLeftButtonA { get; set; }
 
     private void Awake()
@@ -76,6 +79,10 @@ public class PossessionManager : NetworkBehaviour
         {
             humanStoredPosition = xrOrigin.position;
             humanStoredRotation = xrOrigin.rotation;
+
+            droneInitialPosition = targetDrone.transform.position;
+            droneInitialRotation = targetDrone.transform.rotation;
+
             TeleportXRToDrone(targetDrone);
         }
 
@@ -92,7 +99,7 @@ public class PossessionManager : NetworkBehaviour
         currentDrone = null;
 
         myHumanAvatar.localFreeze = false;
-        RPC_RequestReturn(myHumanAvatar.Object, previousDrone.Object, Runner.LocalPlayer);
+        RPC_RequestReturn(myHumanAvatar.Object, previousDrone.Object, Runner.LocalPlayer, droneInitialPosition, droneInitialRotation);
 
         TeleportXRToHuman(humanStoredPosition, humanStoredRotation);
     }
@@ -141,8 +148,11 @@ public class PossessionManager : NetworkBehaviour
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    private void RPC_RequestReturn(NetworkObject humanObj, NetworkObject droneObj, PlayerRef player)
+    private void RPC_RequestReturn(NetworkObject humanObj, NetworkObject droneObj, PlayerRef player, Vector3 droneReturnPos, Quaternion droneReturnRot)
     {
+        droneObj.transform.position = droneReturnPos;
+        droneObj.transform.rotation = droneReturnRot;
+
         droneObj.RemoveInputAuthority();
         humanObj.GetComponent<VRRigSynchronizer>().IsFrozen = false;
 

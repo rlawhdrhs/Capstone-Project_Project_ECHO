@@ -13,7 +13,7 @@ public class BoxClickSubtitle : MonoBehaviour
             subtitlePanel.SetActive(false);
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         if (subtitlePanel == null) return;
 

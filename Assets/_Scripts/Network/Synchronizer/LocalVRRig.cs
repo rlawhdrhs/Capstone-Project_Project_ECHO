@@ -59,6 +59,15 @@ public class LocalVRRig : MonoBehaviour
     {
         if (hardwareHead == null) return;
 
+        if (localCC != null)
+        {
+            float targetHeight = hardwareHead.localPosition.y;
+            targetHeight = Mathf.Clamp(targetHeight, 0.5f, 2.5f);
+
+            localCC.height = targetHeight;
+            localCC.center = new Vector3(localCC.center.x, targetHeight / 2f, localCC.center.z);
+        }
+
         if (!isOnlineMode)
         {
             if (avatarRoot != null && avatarHead != null)
@@ -68,16 +77,6 @@ public class LocalVRRig : MonoBehaviour
         }
 
         UpdateAnimation();
-
-        if (localCC != null)
-        {
-            // 캡슐 높이가 0.5 미만으로 찌그러지면 강제로 복구
-            if (localCC.height < 0.5f)
-            {
-                localCC.height = 0.5f;
-                localCC.center = new Vector3(localCC.center.x, 0.25f, localCC.center.z); // 중심점도 높이의 절반으로 맞춰줌
-            }
-        }
     }
 
     void SynchronizeTransforms()
@@ -149,7 +148,8 @@ public class LocalVRRig : MonoBehaviour
         float scaledCrouchingHeight = crouchingHeight * currentScale;
 
         // 로컬 포지션이 아니라 HMD의 실제 높이 사용
-        float currentHmdHeight = hardwareHead.position.y - transform.position.y;
+        //float currentHmdHeight = hardwareHead.position.y - transform.position.y;
+        float currentHmdHeight = hardwareHead.localPosition.y;
 
         currentCrouch = Mathf.InverseLerp(scaledStandingHeight, scaledCrouchingHeight, currentHmdHeight);
         animator.SetFloat("Crouch", currentCrouch);

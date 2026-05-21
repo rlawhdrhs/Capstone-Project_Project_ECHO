@@ -1371,10 +1371,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRRigSynchronizer
   avatarHead: {fileID: 419600603594468862}
-  avatarLeftHand: {fileID: 1857790608088877666}
-  avatarRightHand: {fileID: 6566231218507920678}
+  avatarLeftHand: {fileID: 1173286523692284882}
+  avatarRightHand: {fileID: 6148277390982737701}
   animator: {fileID: 8812152615558101575}
-  centerPositionOffset: {x: 0, y: -0.1, z: -0.4}
+  centerPositionOffset: {x: 0, y: -0.1, z: -0.8}
   _netMoveX: 0
   _netMoveZ: 0
   _netCrouch: 0
@@ -1401,6 +1401,8 @@ MonoBehaviour:
   myHumanAvatar: {fileID: 7885986470491228767}
   currentDrone: {fileID: 0}
   xrOrigin: {fileID: 0}
+  _PrevLeftButtonA:
+    _value: 0
 --- !u!1 &2918024174120506002
 GameObject:
   m_ObjectHideFlags: 0
