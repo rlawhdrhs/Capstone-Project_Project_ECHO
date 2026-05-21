@@ -6,8 +6,7 @@ public class FootstepOverrideArea : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
 
     [Header("Override Sound")]
-    [SerializeField] private SoundType overrideSoundType = SoundType.GlassStep;
-
+    [SerializeField] private SoundType overrideSoundType = SoundType.GlassFootstep;
     [Header("Debug")]
     [SerializeField] private bool showDebugLog = true;
 

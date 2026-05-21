@@ -45,41 +45,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   intensityTable:
-  - soundType: 1
+  - soundType: 0
     intensity: 2
     detectionRadius: 10
-  - soundType: 2
+  - soundType: 1
     intensity: 3
     detectionRadius: 20
-  - soundType: 3
+  - soundType: 2
     intensity: 1.2
     detectionRadius: 8
-  - soundType: 4
+  - soundType: 3
     intensity: 1
     detectionRadius: 8
-  - soundType: 5
+  - soundType: 4
     intensity: 1.5
     detectionRadius: 8
-  - soundType: 6
+  - soundType: 5
     intensity: 8
     detectionRadius: 70
+  - soundType: 6
+    intensity: 3
+    detectionRadius: 20
   - soundType: 7
     intensity: 3
     detectionRadius: 20
+  - soundType: 8
+    intensity: 3
+    detectionRadius: 20
   clipTable:
-  - soundType: 1
+  - soundType: 0
     clips:
     - {fileID: 8300000, guid: 96b6746746e828941984ff521eea6929, type: 3}
     - {fileID: 8300000, guid: 8fac842689801df469130fd5d4c66b01, type: 3}
     - {fileID: 8300000, guid: efcaf82943053404ea54b0a9e3b33632, type: 3}
     - {fileID: 8300000, guid: 9a277df9cc2ddd3488ce3498d5469f94, type: 3}
     volume: 1
-    minDistance: 5
-    maxDistance: 20
+    minDistance: 7
+    maxDistance: 30
     rolloffMode: 0
     pitchMin: 0.95
     pitchMax: 1.05
-  - soundType: 7
+  - soundType: 2
+    clips:
+    - {fileID: 8300000, guid: 2fe1ab17285ba8a4fb091d49d668c266, type: 3}
+    volume: 1
+    minDistance: 10
+    maxDistance: 30
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
+  - soundType: 3
+    clips:
+    - {fileID: 8300000, guid: a9a41f2be0e968b48b1ce6a927f45dbb, type: 3}
+    - {fileID: 8300000, guid: e3f4251fc0b51f54fa7eae594abe6901, type: 3}
+    - {fileID: 8300000, guid: fa610563f7b2b784085bd339dccf40b2, type: 3}
+    - {fileID: 8300000, guid: 13599dfc940b89c44b9877c052c746b6, type: 3}
+    volume: 1
+    minDistance: 10
+    maxDistance: 30
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
+  - soundType: 4
     clips:
     - {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
     volume: 1
@@ -88,18 +115,36 @@ MonoBehaviour:
     rolloffMode: 0
     pitchMin: 0.95
     pitchMax: 1.05
-  - soundType: 8
+  - soundType: 5
     clips:
     - {fileID: 8300000, guid: 3573df8b378cf5e40bd1a886aa5ad4af, type: 3}
     volume: 1
-    minDistance: 3
+    minDistance: 15
     maxDistance: 70
     rolloffMode: 0
     pitchMin: 0.95
     pitchMax: 1.05
-  - soundType: 3
+  - soundType: 6
     clips:
-    - {fileID: 8300000, guid: 2fe1ab17285ba8a4fb091d49d668c266, type: 3}
+    - {fileID: 8300000, guid: 8a2d56bd11632f74282e71e8bb79884b, type: 3}
+    volume: 1
+    minDistance: 10
+    maxDistance: 40
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
+  - soundType: 7
+    clips:
+    - {fileID: 8300000, guid: d2551cfa877339d489b9c4ed77e894ae, type: 3}
+    volume: 1
+    minDistance: 10
+    maxDistance: 30
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
+  - soundType: 8
+    clips:
+    - {fileID: 8300000, guid: d8a1c0e225759b14c9403be7261a89a3, type: 3}
     volume: 1
     minDistance: 10
     maxDistance: 30
