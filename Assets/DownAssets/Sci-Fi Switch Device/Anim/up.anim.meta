@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1e7706dd44972fe49af28ac6ed173920
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 230541
+  packageName: Sci-Fi Switch Device
+  packageVersion: 1.0.0
+  assetPath: Assets/Sci-Fi Switch Device/Anim/up.anim
+  uploadId: 530062
