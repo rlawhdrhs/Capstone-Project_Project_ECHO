@@ -4,10 +4,16 @@ using Fusion.Sockets;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine.InputSystem;
 
 public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
     public static NetworkManager Instance;
+
+    private InputAction rightAButton;
+    private InputAction leftXButton;
+    private InputAction rightTrigger;
+    private InputAction leftGrip;
 
     [Header("Scene Settings")]
     public int mainSceneBuildIndex = 1;
@@ -22,6 +28,17 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         {
             Destroy(gameObject);
         }
+        // New Input System의 하드웨어 경로(Path)를 코드로 직접 바인딩합니다.
+        rightAButton = new InputAction(binding: "<XRController>{RightHand}/primaryButton");
+        leftXButton = new InputAction(binding: "<XRController>{LeftHand}/primaryButton");
+        rightTrigger = new InputAction(binding: "<XRController>{RightHand}/trigger");
+        leftGrip = new InputAction(binding: "<XRController>{LeftHand}/grip");
+
+        // 사용 가능하도록 활성화
+        rightAButton.Enable();
+        leftXButton.Enable();
+        rightTrigger.Enable();
+        leftGrip.Enable();
     }
 
     public GameObject lobbyUI;
@@ -105,51 +122,39 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     // 플레이어 입력 데이터 전송
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        if (LocalVRRig.Instance != null && !LocalVRRig.Instance.isOnlineMode)
-        {
-            return;
-        }
-        // 1. 입력 데이터를 담을 구조체 생성
+        if (LocalVRRig.Instance != null && !LocalVRRig.Instance.isOnlineMode) return;
+
         NetworkInputData data = new NetworkInputData();
 
-        float rightTrigger = Input.GetAxis("XRI_Right_Trigger");
-        data.rightTrigger = Input.GetKey(KeyCode.R) || rightTrigger > 0.1f;
+        // .IsPressed()나 .ReadValue<float>()로 아주 간단하게 값을 가져옵니다.
+        bool isRightAPressed = rightAButton.IsPressed();
+        bool isLeftAPressed = leftXButton.IsPressed();
+        float rightTriggerValue = rightTrigger.ReadValue<float>();
+        bool isLeftGripPressed = leftGrip.IsPressed();
 
-        bool isLeftAPressed = false;
-        try { isLeftAPressed = Input.GetButton("XRI_Left_PrimaryButton"); }
-        catch {  }
-
-        // 키보드 X키나 왼쪽 A버튼을 누르면 true
+        // 퓨전 데이터 매핑 (키보드 디버깅용 레거시 유지)
+        data.rightTrigger = Input.GetKey(KeyCode.R) || rightTriggerValue > 0.1f;
         data.leftButtonA = Input.GetKey(KeyCode.X) || isLeftAPressed;
-
-        // 마우스 좌클릭
-        data.leftClick = Input.GetMouseButton(0);
-        // 점프 (Space)
-        data.jump = Input.GetButton("XRI_Left_GripButton");
-        bool isRightAPressed = false;
-        try { isRightAPressed = Input.GetButton("XRI_Right_PrimaryButton"); } catch { }
+        data.jump = isLeftGripPressed;
         data.keySpace = Input.GetKey(KeyCode.Space) || isRightAPressed;
 
+        data.leftClick = Input.GetMouseButton(0);
+
+        // [이하 기존 위치/회전 동기화 로직 동일]
         if (LocalVRRig.Instance != null)
         {
             data.headPosition = LocalVRRig.Instance.hardwareHead.position;
             data.headRotation = LocalVRRig.Instance.hardwareHead.rotation;
-
             data.leftHandPosition = LocalVRRig.Instance.hardwareLeftHand.position;
             data.leftHandRotation = LocalVRRig.Instance.hardwareLeftHand.rotation;
-
             data.rightHandPosition = LocalVRRig.Instance.hardwareRightHand.position;
             data.rightHandRotation = LocalVRRig.Instance.hardwareRightHand.rotation;
-
             data.rootPosition = LocalVRRig.Instance.transform.position;
             data.rootRotation = LocalVRRig.Instance.transform.rotation;
-
-            // 애니메이션용 데이터 (기존 로직 활용)
             data.moveX = Input.GetAxis("Horizontal");
             data.moveZ = Input.GetAxis("Vertical");
             data.crouch = LocalVRRig.Instance.currentCrouch;
         }
-
         if (PossessionManager.Instance != null)
         {
             data.isPossessingDrone = PossessionManager.Instance.currentDrone != null;
