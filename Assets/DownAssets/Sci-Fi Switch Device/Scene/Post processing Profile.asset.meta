@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6699e346ec933b343a3946ef588c8a0e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 230541
+  packageName: Sci-Fi Switch Device
+  packageVersion: 1.0.0
+  assetPath: Assets/Sci-Fi Switch Device/Scene/Post processing Profile.asset
+  uploadId: 530062

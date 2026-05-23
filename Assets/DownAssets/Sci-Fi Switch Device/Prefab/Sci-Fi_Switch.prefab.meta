@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0d048297c2e880149bf18928da90c7b0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 230541
+  packageName: Sci-Fi Switch Device
+  packageVersion: 1.0.0
+  assetPath: Assets/Sci-Fi Switch Device/Prefab/Sci-Fi_Switch.prefab
+  uploadId: 530062
