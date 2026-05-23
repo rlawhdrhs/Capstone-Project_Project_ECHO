@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 5192912457909673730}
   - component: {fileID: 4129924989466341174}
   - component: {fileID: 5652814950487702671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Runaway_Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
