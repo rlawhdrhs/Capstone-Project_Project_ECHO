@@ -1167,6 +1167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 145427134693239955, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2025291069784351195, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -1179,6 +1183,14 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 768527242}
+    - target: {fileID: 4411846311942145395, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: walkSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411846311942145395, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: sprintSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4411846311942145395, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: moveProvider
       value: 

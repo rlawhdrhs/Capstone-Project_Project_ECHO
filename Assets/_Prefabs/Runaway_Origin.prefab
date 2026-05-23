@@ -1276,8 +1276,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -8227620849196907262, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   moveProvider: {fileID: 145427134693239955}
-  walkSpeed: 2
-  sprintSpeed: 5
+  walkSpeed: 1
+  sprintSpeed: 2
 --- !u!1 &8601686537568609618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4028013268159778686, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
       propertyPath: m_MoveSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4028013268159778686, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
       propertyPath: m_HeadTransform
