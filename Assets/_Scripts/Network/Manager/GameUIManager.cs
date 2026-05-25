@@ -9,6 +9,11 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI progressText;  // 0/5 진행도
     public TextMeshProUGUI timerText;     // 10:00 타이머
 
+    [Header("미니맵 설정")]
+    public GameObject minimapObject;
+
+    private bool _isMinimapInitialized = false;
+
     void Start()
     {
         if (missionText != null) missionText.text = "Mission 1: Restore power to the dark room";
@@ -34,6 +39,11 @@ public class GameUIManager : MonoBehaviour
     {
         if (NetworkGameManager.Instance == null) return;
         if (NetworkGameManager.Instance.Object == null || !NetworkGameManager.Instance.Object.IsValid) return;
+
+        if (!_isMinimapInitialized)
+        {
+            SetupMinimapRoleVisibility();
+        }
 
         // UI 연결이 안 되어 있어도 에러가 나지 않도록 방어
         if (timerText == null || progressText == null) return;
@@ -68,6 +78,17 @@ public class GameUIManager : MonoBehaviour
             // 다른 미션일 때는 진행도 텍스트를 숨김
             progressText.gameObject.SetActive(false);
         }
+    }
+
+    private void SetupMinimapRoleVisibility()
+    {
+        if (minimapObject == null) return;
+
+        bool isHost = NetworkGameManager.Instance.Runner.IsServer;
+
+        minimapObject.SetActive(isHost);
+
+        _isMinimapInitialized = true;
     }
 
     // 미션 단계가 바뀔 때 한 번만 호출됨

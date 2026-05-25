@@ -15153,6 +15153,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2256859360030485598, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
+      propertyPath: mainSceneBuildIndex
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7508800665587960872, guid: e2d1e99d3f861dd419f1876db03cd681, type: 3}
       propertyPath: SortKey
       value: 2055224135
@@ -42292,6 +42296,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4654788640244084850, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 1677028344}
+    - target: {fileID: 45808084033246212, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 684947925}
     - target: {fileID: 248565847340085548, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -42336,6 +42348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Runaway_Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 3428949001016504547, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 684947925}
     - target: {fileID: 4515369153255087664, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: animator
       value: 
@@ -42430,6 +42446,55 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1194875528}
   m_SourcePrefab: {fileID: 100100000, guid: 1aaf3ef80841d9c4990a27fee328eb1c, type: 3}
+--- !u!1 &1677028343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1677028345}
+  - component: {fileID: 1677028344}
+  m_Layer: 0
+  m_Name: VignetteGlobalVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1677028344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677028343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 15a3debdc5fcaa14782a6fc71ae7a78d, type: 2}
+--- !u!4 &1677028345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677028343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1582253, y: -0.16619408, z: -6.351096}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1677505587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49043,3 +49108,4 @@ SceneRoots:
   - {fileID: 684947924}
   - {fileID: 1674458216}
   - {fileID: 1329729396}
+  - {fileID: 1677028345}

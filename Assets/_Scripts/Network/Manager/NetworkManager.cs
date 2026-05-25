@@ -11,9 +11,15 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public static NetworkManager Instance;
 
     private InputAction rightAButton;
+    private InputAction rightBButton;
     private InputAction leftXButton;
     private InputAction rightTrigger;
     private InputAction leftGrip;
+    private InputAction rightGrip;
+
+    public bool IsLeftGripPressed => leftGrip != null && leftGrip.IsPressed();
+    public bool IsLeftGripDown => leftGrip != null && leftGrip.WasPressedThisFrame();
+    public bool IsLeftGripUp => leftGrip != null && leftGrip.WasReleasedThisFrame();
 
     [Header("Scene Settings")]
     public int mainSceneBuildIndex = 1;
@@ -33,12 +39,16 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         leftXButton = new InputAction(binding: "<XRController>{LeftHand}/primaryButton");
         rightTrigger = new InputAction(binding: "<XRController>{RightHand}/trigger");
         leftGrip = new InputAction(binding: "<XRController>{LeftHand}/grip");
+        rightBButton = new InputAction(binding: "<XRController>{RightHand}/secondaryButton");
+        rightGrip = new InputAction(binding: "<XRController>{RightHand}/grip");
 
         // 사용 가능하도록 활성화
         rightAButton.Enable();
         leftXButton.Enable();
         rightTrigger.Enable();
         leftGrip.Enable();
+        rightBButton.Enable();
+        rightGrip.Enable();
     }
 
     public GameObject lobbyUI;
@@ -128,16 +138,19 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         // .IsPressed()나 .ReadValue<float>()로 아주 간단하게 값을 가져옵니다.
         bool isRightAPressed = rightAButton.IsPressed();
+        bool isRightBPressed = rightBButton.IsPressed() || Input.GetKey(KeyCode.B);
         bool isLeftAPressed = leftXButton.IsPressed();
         float rightTriggerValue = rightTrigger.ReadValue<float>();
         bool isLeftGripPressed = leftGrip.IsPressed();
+        bool isRightGripPressed = rightGrip.IsPressed() || Input.GetKey(KeyCode.G);
 
         // 퓨전 데이터 매핑 (키보드 디버깅용 레거시 유지)
         data.rightTrigger = Input.GetKey(KeyCode.R) || rightTriggerValue > 0.1f;
         data.leftButtonA = Input.GetKey(KeyCode.X) || isLeftAPressed;
         data.jump = isLeftGripPressed;
         data.keySpace = Input.GetKey(KeyCode.Space) || isRightAPressed;
-
+        data.rightButtonB = isRightBPressed;
+        data.rightGripPressed = isRightGripPressed;
         data.leftClick = Input.GetMouseButton(0);
 
         // [이하 기존 위치/회전 동기화 로직 동일]
@@ -163,8 +176,40 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         input.Set(data);
     }
 
+    public void RequestCmdExplosion(Vector3 emitPosition, float radius)
+    {
+        if (_networkRunner != null && _networkRunner.IsRunning)
+        {
+            // 포톤 RPC 함수를 가동합니다.
+            RPC_ExplodeAndOpenDoors(emitPosition, radius);
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_ExplodeAndOpenDoors(Vector3 emitPosition, float radius)
+    {
+        Debug.Log($"<color=cyan>[네트워크 RPC] {emitPosition} 좌표에서 EMP 폭발 수신! 주변 문을 확인합니다.</color>");
+
+        // 모든 사람들의 화면에서 해당 좌표 주변의 문을 센싱해서 엽니다.
+        Collider[] hitColliders = Physics.OverlapSphere(emitPosition, radius);
+
+        foreach (var hit in hitColliders)
+        {
+            NetworkSplitSlidingDoor door = hit.GetComponentInParent<NetworkSplitSlidingDoor>();
+
+            if (door != null && !door.IsOpen)
+            {
+                // 문을 제어하는 주권(State Authority)이 있는 사람(보통 Host/Server)만 진짜 문을 토글합니다.
+                if (_networkRunner.IsServer)
+                {
+                    door.ToggleDoor();
+                    Debug.Log($"<color=lime>[서버 판정] {door.gameObject.name} 문 열기 성공!</color>");
+                }
+            }
+        }
+    }
     // =========================================================
-    #region Unused Callbacks 
+        #region Unused Callbacks 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason info) { }

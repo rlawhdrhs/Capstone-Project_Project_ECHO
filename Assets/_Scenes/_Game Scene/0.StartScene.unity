@@ -332,6 +332,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4654788640244084850, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 483501396}
     - target: {fileID: 248565847340085548, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1175,6 +1179,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 60, y: 30, z: 0}
+--- !u!1 &483501395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483501397}
+  - component: {fileID: 483501396}
+  m_Layer: 0
+  m_Name: VignetteGlobalVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &483501396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483501395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 15a3debdc5fcaa14782a6fc71ae7a78d, type: 2}
+--- !u!4 &483501397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483501395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1582253, y: -0.16619408, z: -6.351096}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529129805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3d6320cda221d45a5a2abfb9a7db9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextSceneButton
-  targetSceneName: 1.ModeSelectScene
+  targetSceneName: 0.Tutorial
   pressedScale: 0.8
   speed: 0.08
   audioSource: {fileID: 726747764}
@@ -2849,3 +2902,4 @@ SceneRoots:
   - {fileID: 94996096}
   - {fileID: 64883989}
   - {fileID: 123366759}
+  - {fileID: 483501397}

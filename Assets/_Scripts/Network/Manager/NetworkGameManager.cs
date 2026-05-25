@@ -43,6 +43,8 @@ public class NetworkGameManager : NetworkBehaviour
         if (HasStateAuthority)
         {
             GlobalGameTimer = TickTimer.CreateFromSeconds(Runner, 600f);
+
+            SetAllDoorsState(true);
         }
         OnMissionChangedEvent?.Invoke(CurrentMissionIndex);
     }
@@ -74,6 +76,37 @@ public class NetworkGameManager : NetworkBehaviour
         IsExitOpen = true;
         RPC_ActivateExitObject();
         CurrentMissionIndex = 3;
+
+        SetAllDoorsState(false);
+        Debug.Log("<color=red>[시스템] 탈출구 개방! 기지 전체 문을 폐쇄합니다.</color>");
+    }
+
+    private void SetAllDoorsState(bool open)
+    {
+        // 네트워크 변수를 바꾸는 연산이므로, 오직 서버(State Authority)에서만 실행되도록 방어합니다.
+        if (!HasStateAuthority) return;
+
+        // 씬에 배치된 모든 NetworkSplitSlidingDoor 컴포넌트를 탐색합니다.
+        NetworkSplitSlidingDoor[] allDoors = FindObjectsByType<NetworkSplitSlidingDoor>(FindObjectsSortMode.None);
+
+        foreach (var door in allDoors)
+        {
+            if (door != null && door.Object != null)
+            {
+                // 서버가 해당 문의 권한을 가지고 있다면 변수를 직접 변경합니다.
+                // (일반적인 씬 배치 오브젝트들은 방장 서버가 자동으로 권한을 가집니다)
+                if (door.Object.HasStateAuthority)
+                {
+                    door.IsOpen = open;
+                }
+                else
+                {
+                    // 혹시라도 클라이언트가 임시 권한을 쥐고 있는 문이 있다면, 
+                    // 문 스크립트에 만들어 둔 Rpc_RequestToggleDoor 혹은 강제 상태 동기화 로직을 활용할 수 있습니다.
+                    door.IsOpen = open;
+                }
+            }
+        }
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]

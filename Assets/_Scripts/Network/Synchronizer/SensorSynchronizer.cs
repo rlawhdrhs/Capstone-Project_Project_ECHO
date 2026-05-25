@@ -8,6 +8,9 @@ public class SensorSynchronizer : NetworkBehaviour
     [Header("드론 동기화 보정")]
     public Vector3 centerPositionOffset;
 
+    [Header("이동 제한 구역 설정")]
+    public Collider movementZone;
+
     public override void FixedUpdateNetwork()
     {
         if (GetInput(out NetworkInputData data))
@@ -15,7 +18,7 @@ public class SensorSynchronizer : NetworkBehaviour
             if (droneBody != null)
             {
                 Vector3 headForward = data.headRotation * Vector3.forward;
-                headForward.y = 0f; // Y값을 0으로 만들어 위아래(X축) 기울기를 제거
+                headForward.y = 0f;
 
                 if (headForward.sqrMagnitude > 0.01f)
                 {

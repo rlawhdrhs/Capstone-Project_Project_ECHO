@@ -48,4 +48,31 @@ public class SpatialSoundPlayer : MonoBehaviour
 
         Destroy(gameObject, clip.length + 0.2f);
     }
+
+    public void Play_Loop(
+    AudioClip clip,
+    float volume = 1f,
+    float minDistance = 2f,
+    float maxDistance = 30f,
+    AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic,
+    float pitchMin = 0.95f,
+    float pitchMax = 1.05f
+)
+    {
+        if (clip == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        audioSource.clip = clip;
+        audioSource.volume = volume;
+        audioSource.minDistance = minDistance;
+        audioSource.maxDistance = maxDistance;
+        audioSource.rolloffMode = rolloffMode;
+        audioSource.pitch = Random.Range(pitchMin, pitchMax);
+        audioSource.loop = true; // 👈 오디오 소스에 루프 설정 적용
+
+        audioSource.Play();
+    }
 }

@@ -8,6 +8,9 @@ public class MissionLightActivator : MonoBehaviour
     [Header("클릭 가능한 큐브")]
     public GameObject targetCube;
 
+    [Header("사운드 매니저 연동 설정")]
+    public SoundType lightActivationSoundType;
+
     private bool activated = false;
 
     public DataMissionSpawner DataMissionSpawner;
@@ -49,6 +52,11 @@ public class MissionLightActivator : MonoBehaviour
         if (activated) return;
 
         activated = true;
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.EmitSound(transform.position, 5.0f, lightActivationSoundType);
+        }
 
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
 
