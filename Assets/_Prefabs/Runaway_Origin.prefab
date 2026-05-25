@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7253249399330903448
 Transform:
   m_ObjectHideFlags: 0
@@ -682,7 +682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6142288619979001717
 Transform:
   m_ObjectHideFlags: 0
@@ -977,7 +977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8101400038417306132
 Transform:
   m_ObjectHideFlags: 0
@@ -1293,6 +1293,7 @@ GameObject:
   - component: {fileID: 5192912457909673730}
   - component: {fileID: 4129924989466341174}
   - component: {fileID: 5652814950487702671}
+  - component: {fileID: 1437116985605514561}
   m_Layer: 7
   m_Name: Runaway_Origin
   m_TagString: Untagged
@@ -1450,6 +1451,19 @@ MonoBehaviour:
   characterController: {fileID: 9102737067035192405}
   stealthThreshold: 1.2
   isStealthMode: 0
+--- !u!114 &1437116985605514561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601686537568609618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f439630af538cfc4f821a7b6eff70387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunawayStatus
+  moveProvider: {fileID: 145427134693239955}
 --- !u!1 &8805571871746293668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &192946383885204910
 Transform:
   m_ObjectHideFlags: 0
@@ -1912,6 +1926,10 @@ PrefabInstance:
     - target: {fileID: 5788436523849277742, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
       propertyPath: m_Name
       value: Locomotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788436523849277742, guid: e6a6ee1ce3bfa3a49bad8d01f65799b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

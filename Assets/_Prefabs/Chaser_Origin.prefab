@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 3881755029389849969}
   - component: {fileID: 6559720805583622956}
   - component: {fileID: 5267275921861301536}
+  - component: {fileID: 339254461538166658}
   m_Layer: 7
   m_Name: Chaser_Origin
   m_TagString: Untagged
@@ -1107,6 +1108,27 @@ MonoBehaviour:
   rightControllerTransform: {fileID: 8182850497463273616}
   detectionAngle: 45
   detectionRadius: 20
+--- !u!114 &339254461538166658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876265007476860004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dda118854940048b2647a4d88c81b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChaserElectricShock
+  leftControllerTransform: {fileID: 557065524963331511}
+  rightControllerTransform: {fileID: 8182850497463273616}
+  chargeTimeReq: 1
+  armSpreadThreshold: 0.4
+  shockRadius: 3
+  runawayLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  stunDuration: 3
 --- !u!1 &7202943740041683100
 GameObject:
   m_ObjectHideFlags: 0
