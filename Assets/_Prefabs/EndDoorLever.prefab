@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1398291295115116635}
   - component: {fileID: 335520523962353112}
   - component: {fileID: 2538954181318326276}
-  m_Layer: 20
+  m_Layer: 25
   m_Name: switch_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2265145704137196049}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -324,12 +324,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412864da73e956b4ca704ca0c9c9bb88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EscapeLever
-  targetAngle: 135
-  invertDirection: 0
+  targetAngle: 40
   onLeverPulled:
     m_PersistentCalls:
       m_Calls: []
-  rotationAxis: {x: 1, y: 0, z: 0}
 --- !u!1 &5178230459484865257
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1075085739989556741}
-  m_Layer: 20
+  m_Layer: 0
   m_Name: EndDoorLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +373,7 @@ GameObject:
   - component: {fileID: 5662575084167922636}
   - component: {fileID: 1254742838695139625}
   - component: {fileID: 2451311654281275801}
-  m_Layer: 20
+  m_Layer: 0
   m_Name: switch_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

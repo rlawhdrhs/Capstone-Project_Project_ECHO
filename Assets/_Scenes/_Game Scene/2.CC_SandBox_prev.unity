@@ -911,6 +911,7 @@ MonoBehaviour:
   currentCrouch: 0
   animationSmoothness: 10
   isOnlineMode: 0
+  avatarDefaultEyeHeight: 1.7
 --- !u!1 &530269128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2226,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 75c2c08c5639a184db8e2aded2c32462, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
