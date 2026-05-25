@@ -282,7 +282,8 @@ PrefabInstance:
         animation clip 'Crouched Walking'\n\tFrom animation clip 'Crouched Walking'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7001769289015000067, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4504702101284027297, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
       insertIndex: -1
@@ -291,12 +292,12 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
 --- !u!4 &277708838 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6749245529286255077, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5484280447406679039, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
   m_PrefabInstance: {fileID: 277708837}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &277708839 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5005428090650409845, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8618938217949181294, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
   m_PrefabInstance: {fileID: 277708837}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &277708840 stripped
@@ -2020,11 +2021,11 @@ PrefabInstance:
     - target: {fileID: 4515369153255087664, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: avatarLeftHand
       value: 
-      objectReference: {fileID: 277708839}
+      objectReference: {fileID: 277708838}
     - target: {fileID: 4515369153255087664, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: avatarRightHand
       value: 
-      objectReference: {fileID: 277708838}
+      objectReference: {fileID: 277708839}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

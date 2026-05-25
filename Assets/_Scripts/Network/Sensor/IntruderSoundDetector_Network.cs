@@ -33,7 +33,7 @@ public class IntruderSoundDetector_Network : MonoBehaviour
             if (distance <= detectRange)
             {
                 // 콘솔창에서 어떤 소리를 감지했는지 확인용
-                Debug.Log($"[센서 감지] 소리 종류: {soundEvent.soundType}, 위치: {soundEvent.position}");
+                //Debug.Log($"[센서 감지] 소리 종류: {soundEvent.soundType}, 위치: {soundEvent.position}");
 
                 // 하나라도 감지 범위 내에 있으면 즉시 true를 반환하고 루프를 종료합니다.
                 return true;

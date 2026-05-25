@@ -2,41 +2,39 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class bombDebug : MonoBehaviour
+public class XRGrabDebug : MonoBehaviour
 {
-    private XRGrabInteractable _grabInteractable;
+    private XRGrabInteractable grabInteractable;
 
     void Awake()
     {
-        _grabInteractable = GetComponent<XRGrabInteractable>();
+        grabInteractable = GetComponent<XRGrabInteractable>();
+        if (grabInteractable == null) return;
 
-        if (_grabInteractable != null)
-        {
-            // XRI 시스템의 상호작용 이벤트를 코드로 직접 리스닝합니다.
-            _grabInteractable.hoverEntered.AddListener(OnHoverEntered);
-            _grabInteractable.hoverExited.AddListener(OnHoverExited);
-            _grabInteractable.selectEntered.AddListener(OnSelectEntered);
-            _grabInteractable.selectExited.AddListener(OnSelectExited);
-        }
+        // XRIT 이벤트 연결
+        grabInteractable.hoverEntered.AddListener(OnHoverEnter);
+        grabInteractable.hoverExited.AddListener(OnHoverExit);
+        grabInteractable.selectEntered.AddListener(OnSelectEnter);
+        grabInteractable.selectExited.AddListener(OnSelectExit);
     }
 
-    private void OnHoverEntered(HoverEnterEventArgs args)
+    private void OnHoverEnter(HoverEnterEventArgs args)
     {
-        Debug.Log($"<color=yellow>[XRI 디버그] 🤝 손이 폭탄 범위 안에 들어옴! (감지된 손: {args.interactorObject.transform.name})</color>");
+        Debug.Log($"[XRDebug] 손이 물체에 닿음 (Hover Enter) -> Interactor: {args.interactorObject.transform.name}");
     }
 
-    private void OnHoverExited(HoverExitEventArgs args)
+    private void OnHoverExit(HoverExitEventArgs args)
     {
-        Debug.Log($"<color=white>[XRI 디버그] 👋 손이 폭탄 범위에서 나감.</color>");
+        Debug.Log($"[XRDebug] 손이 물체에서 떨어짐 (Hover Exit)");
     }
 
-    private void OnSelectEntered(SelectEnterEventArgs args)
+    private void OnSelectEnter(SelectEnterEventArgs args)
     {
-        Debug.Log($"<color=lime>[XRI 디버그] 🎉 ★그랩 성공!★ 손이 폭탄을 쥐었습니다!</color>");
+        Debug.Log($"[XRDebug] ★잡기 성공★ (Select Enter) -> Interactor: {args.interactorObject.transform.name}");
     }
 
-    private void OnSelectExited(SelectExitEventArgs args)
+    private void OnSelectExit(SelectExitEventArgs args)
     {
-        Debug.Log($"<color=orange>[XRI 디버그] ❌ 그랩 해제 또는 강제 놓침 발생.</color>");
+        Debug.Log($"[XRDebug] 물체를 놓음 (Select Exit)");
     }
 }

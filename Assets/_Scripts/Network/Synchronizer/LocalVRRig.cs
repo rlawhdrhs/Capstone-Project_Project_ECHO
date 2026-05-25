@@ -107,12 +107,12 @@ public class LocalVRRig : MonoBehaviour
         if (avatarLeftHand != null && hardwareLeftHand != null)
         {
             avatarLeftHand.position = hardwareLeftHand.position;
-            avatarLeftHand.rotation = hardwareLeftHand.rotation;
+            avatarLeftHand.rotation = hardwareLeftHand.rotation * Quaternion.Euler(new Vector3(30, 0, 0));
         }
         if (avatarRightHand != null && hardwareRightHand != null)
         {
             avatarRightHand.position = hardwareRightHand.position;
-            avatarRightHand.rotation = hardwareRightHand.rotation;
+            avatarRightHand.rotation = hardwareRightHand.rotation * Quaternion.Euler(new Vector3(30, 0, 0));
         }
     }
 

@@ -173,6 +173,11 @@ public class PossessionManager : NetworkBehaviour
         droneObj.AssignInputAuthority(player);
 
         if (droneObj.TryGetComponent(out LaserDetector_Network dLaser)) dLaser.isDetectorActive = true;
+
+        if (droneObj.TryGetComponent(out SensorSynchronizer sensor))
+        {
+            sensor.netIsLightOn = true;
+        }
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
@@ -185,5 +190,10 @@ public class PossessionManager : NetworkBehaviour
         humanObj.GetComponent<VRRigSynchronizer>().IsFrozen = false;
 
         if (droneObj.TryGetComponent(out LaserDetector_Network dLaser)) dLaser.isDetectorActive = false;
+
+        if (droneObj.TryGetComponent(out SensorSynchronizer sensor))
+        {
+            sensor.netIsLightOn = false;
+        }
     }
 }

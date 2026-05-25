@@ -69,7 +69,7 @@ public class LocalHostGrabber : MonoBehaviour
     {
         grabbedObject = obj;
 
-        // [추가] 만약 잡으려는 물체가 레버(EscapeLever)라면 뜯어내지 않고 조작 시작
+        // 1. 레버 체크
         EscapeLever lever = obj.GetComponent<EscapeLever>();
         if (lever != null)
         {
@@ -78,15 +78,21 @@ public class LocalHostGrabber : MonoBehaviour
             return;
         }
 
+        // 2. 힌지 도어 체크
+        InteractableHingeDoor door = obj.GetComponent<InteractableHingeDoor>();
+        if (door != null)
+        {
+            door.StartPull(holdPoint != null ? holdPoint : transform);
+            UnactivateHover();
+            return;
+        }
+
         // 일반 오브젝트용 기존 로직 (그대로 유지)
-        grabbedObject = obj;
         grabbedRigidbody = obj.GetComponent<Rigidbody>();
         if (grabbedRigidbody != null) grabbedRigidbody.isKinematic = true;
-
         grabbedObject.transform.SetParent(holdPoint != null ? holdPoint : transform);
         grabbedObject.transform.localPosition = Vector3.zero;
         grabbedObject.transform.localRotation = Quaternion.identity;
-
         UnactivateHover();
     }
 
@@ -94,7 +100,7 @@ public class LocalHostGrabber : MonoBehaviour
     {
         if (grabbedObject == null) return;
 
-        // [추가] 레버를 놓고 마치는 경우
+        // 1. 레버 체크
         EscapeLever lever = grabbedObject.GetComponent<EscapeLever>();
         if (lever != null)
         {
@@ -104,10 +110,19 @@ public class LocalHostGrabber : MonoBehaviour
             return;
         }
 
+        // 2. 힌지 도어 체크
+        InteractableHingeDoor door = grabbedObject.GetComponent<InteractableHingeDoor>();
+        if (door != null)
+        {
+            door.EndPull();
+            TriggerNetworkEvent(grabbedObject);
+            grabbedObject = null;
+            return;
+        }
+
         // 일반 오브젝트용 기존 로직 (그대로 유지)
         grabbedObject.transform.SetParent(null);
         if (grabbedRigidbody != null) grabbedRigidbody.isKinematic = false;
-
         TriggerNetworkEvent(grabbedObject);
         grabbedObject = null;
         grabbedRigidbody = null;

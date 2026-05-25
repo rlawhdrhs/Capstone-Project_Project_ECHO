@@ -410,7 +410,7 @@ MonoBehaviour:
   alarmDuration: 8
   localAudioSource: {fileID: 7052784989260653114}
   warningClip: {fileID: 8300000, guid: cc1a07711cd765b4aad2bf88208ce1d6, type: 3}
-  alarmSoundType: 8
+  alarmSoundType: 5
   alarmSoundLifetime: 8
   renderers:
   - {fileID: 3901467992170479644}

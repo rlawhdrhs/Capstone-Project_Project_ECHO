@@ -208,8 +208,21 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             }
         }
     }
+
+    public bool CheckIfLocalPlayerIsChaser()
+    {
+        // 런너가 꺼져있거나 작동 중이 아니라면 기본값(false) 리턴
+        if (_networkRunner == null || !_networkRunner.IsRunning)
+        {
+            return false;
+        }
+
+        // ★ 핵심 판정: 이 프로젝트 구조상 Host는 잠입자이고 Client는 추격자입니다.
+        // 따라서 현재 로컬 컴퓨터의 런너가 Client 모드라면 '추격자'인 상태(true)입니다.
+        return _networkRunner.IsClient;
+    }
     // =========================================================
-        #region Unused Callbacks 
+    #region Unused Callbacks 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason info) { }

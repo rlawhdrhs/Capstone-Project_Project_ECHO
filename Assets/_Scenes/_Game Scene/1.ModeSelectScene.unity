@@ -2397,7 +2397,8 @@ PrefabInstance:
         animation clip 'Crouched Walking'\n\tFrom animation clip 'Crouched Walking'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7001769289015000067, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4504702101284027297, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
       insertIndex: -1
@@ -2411,12 +2412,12 @@ Animator:
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1640221734 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6749245529286255077, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8618938217949181294, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
   m_PrefabInstance: {fileID: 1640221732}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1640221735 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5005428090650409845, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5484280447406679039, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
   m_PrefabInstance: {fileID: 1640221732}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1640221736 stripped

@@ -15,17 +15,15 @@ public class EMPSpawner : NetworkBehaviour
     {
         if (Object.HasInputAuthority)
         {
-            GameObject handObj = GameObject.Find("LefthandController");
-            if (handObj == null) handObj = GameObject.Find("LeftHandController");
 
-            if (handObj != null)
+            if (LocalVRRig.Instance.hardwareLeftHand != null)
             {
-                _rightHandTransform = handObj.transform;
-                Debug.Log($"<color=cyan>[스포너 성공] 오른손 컨트롤러 매칭 완료! ({handObj.name})</color>");
+                _rightHandTransform = LocalVRRig.Instance.hardwareLeftHand;
+                Debug.Log($"<color=cyan>[스포너 성공] 왼손 컨트롤러 매칭 완료!</color>");
             }
             else
             {
-                Debug.LogError("<color=red>[스포너 에러] 오른손 컨트롤러를 찾지 못했습니다!</color>");
+                Debug.LogError("<color=red>[스포너 에러] 왼손 컨트롤러를 찾지 못했습니다!</color>");
             }
         }
     }

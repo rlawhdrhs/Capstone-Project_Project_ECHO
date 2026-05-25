@@ -2336,8 +2336,8 @@ MonoBehaviour:
   hardwareRightHand: {fileID: 1139475638}
   avatarRoot: {fileID: 1504985314}
   avatarHead: {fileID: 1504985312}
-  avatarLeftHand: {fileID: 1504985311}
-  avatarRightHand: {fileID: 1504985310}
+  avatarLeftHand: {fileID: 1504985310}
+  avatarRightHand: {fileID: 1504985311}
   animator: {fileID: 1504985313}
   centerPositionOffset: {x: 0, y: 0.55, z: -0.3}
   standingHeight: 1.7
@@ -2360,8 +2360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRMovementVignette
   globalVolume: {fileID: 564338672}
   playerRoot: {fileID: 1139475640}
-  moveThreshold: 0.01
-  rotateThreshold: 0.3
+  moveSpeedThreshold: 0.2
+  rotateSpeedThreshold: 10
   maxIntensity: 0.6
   smoothness: 0.4
   fadeSpeed: 1
@@ -2795,7 +2795,8 @@ PrefabInstance:
         animation clip 'Crouched Walking'\n\tFrom animation clip 'Crouched Walking'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7001769289015000067, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4504702101284027297, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
       insertIndex: -1
@@ -2804,12 +2805,12 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
 --- !u!4 &1504985310 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6749245529286255077, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5484280447406679039, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
   m_PrefabInstance: {fileID: 1504985309}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1504985311 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5005428090650409845, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8618938217949181294, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
   m_PrefabInstance: {fileID: 1504985309}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1504985312 stripped

@@ -11,6 +11,10 @@ public class SensorSynchronizer : NetworkBehaviour
     [Header("이동 제한 구역 설정")]
     public Collider movementZone;
 
+    [Header("빙의 불빛 설정")]
+    public GameObject droneLightObject;
+    [Networked] public NetworkBool netIsLightOn { get; set; }
+
     public override void FixedUpdateNetwork()
     {
         if (GetInput(out NetworkInputData data))
@@ -30,6 +34,15 @@ public class SensorSynchronizer : NetworkBehaviour
             transform.position = alignedPosition;
 
             transform.position += transform.TransformDirection(centerPositionOffset);
+        }
+    }
+
+    public override void Render()
+    {
+        base.Render();
+        if (droneLightObject != null)
+        {
+            droneLightObject.SetActive(netIsLightOn);
         }
     }
 }

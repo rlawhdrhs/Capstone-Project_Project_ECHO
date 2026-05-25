@@ -8137,6 +8137,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4534264641828652, guid: 4663d5cca4ed98548946e758cd5979e2, type: 3}
   m_PrefabInstance: {fileID: 1450818574}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &239909405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5484280447406679039, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_PrefabInstance: {fileID: 1329729396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &241180798
 GameObject:
   m_ObjectHideFlags: 0
@@ -12987,7 +12992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21223,6 +21228,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2089378212}
   m_SourcePrefab: {fileID: 100100000, guid: 4663d5cca4ed98548946e758cd5979e2, type: 3}
+--- !u!4 &751792645 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8618938217949181294, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+  m_PrefabInstance: {fileID: 1329729396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &754356533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4534264641828652, guid: 82a6bf9ca38d9d443997ccec084ba669, type: 3}
@@ -24162,7 +24172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32849,23 +32859,14 @@ PrefabInstance:
         animation clip 'Crouched Walking'\n\tFrom animation clip 'Crouched Walking'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7001769289015000067, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4504702101284027297, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
       insertIndex: -1
       addedObject: {fileID: 30304397}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
---- !u!4 &1329729397 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6749245529286255077, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
-  m_PrefabInstance: {fileID: 1329729396}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1329729398 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5005428090650409845, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
-  m_PrefabInstance: {fileID: 1329729396}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1329729399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5691629291865991006, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
@@ -42348,6 +42349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Runaway_Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 2215004741121391480, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3428949001016504547, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -42367,11 +42372,11 @@ PrefabInstance:
     - target: {fileID: 4515369153255087664, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: avatarLeftHand
       value: 
-      objectReference: {fileID: 1329729398}
+      objectReference: {fileID: 239909405}
     - target: {fileID: 4515369153255087664, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: avatarRightHand
       value: 
-      objectReference: {fileID: 1329729397}
+      objectReference: {fileID: 751792645}
     m_RemovedComponents:
     - {fileID: 3929415029079337980, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
     m_RemovedGameObjects: []
