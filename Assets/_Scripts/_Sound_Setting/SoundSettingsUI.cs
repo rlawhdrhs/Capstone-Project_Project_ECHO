@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,11 @@ public class SoundSettingsUI : MonoBehaviour
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider bgmVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
+
+    [Header("Value Texts")]
+    [SerializeField] private TMP_Text masterValueText;
+    [SerializeField] private TMP_Text bgmValueText;
+    [SerializeField] private TMP_Text sfxValueText;
 
     [Header("Buttons")]
     [SerializeField] private Button resetButton;
@@ -36,6 +42,10 @@ public class SoundSettingsUI : MonoBehaviour
         SetupSlider(masterVolumeSlider, audioSettingsManager.MasterVolume);
         SetupSlider(bgmVolumeSlider, audioSettingsManager.BGMVolume);
         SetupSlider(sfxVolumeSlider, audioSettingsManager.SFXVolume);
+
+        UpdateMasterValueText(audioSettingsManager.MasterVolume);
+        UpdateBGMValueText(audioSettingsManager.BGMVolume);
+        UpdateSFXValueText(audioSettingsManager.SFXVolume);
     }
 
     private void SetupSlider(Slider slider, float value)
@@ -51,19 +61,60 @@ public class SoundSettingsUI : MonoBehaviour
     private void RegisterEvents()
     {
         if (masterVolumeSlider != null)
-            masterVolumeSlider.onValueChanged.AddListener(audioSettingsManager.SetMasterVolume);
+            masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
 
         if (bgmVolumeSlider != null)
-            bgmVolumeSlider.onValueChanged.AddListener(audioSettingsManager.SetBGMVolume);
+            bgmVolumeSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
 
         if (sfxVolumeSlider != null)
-            sfxVolumeSlider.onValueChanged.AddListener(audioSettingsManager.SetSFXVolume);
+            sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
 
         if (resetButton != null)
             resetButton.onClick.AddListener(OnClickReset);
 
         if (backButton != null)
             backButton.onClick.AddListener(OnClickBack);
+    }
+
+    private void OnMasterVolumeChanged(float value)
+    {
+        audioSettingsManager.SetMasterVolume(value);
+        UpdateMasterValueText(value);
+    }
+
+    private void OnBGMVolumeChanged(float value)
+    {
+        audioSettingsManager.SetBGMVolume(value);
+        UpdateBGMValueText(value);
+    }
+
+    private void OnSFXVolumeChanged(float value)
+    {
+        audioSettingsManager.SetSFXVolume(value);
+        UpdateSFXValueText(value);
+    }
+
+    private void UpdateMasterValueText(float value)
+    {
+        UpdateValueText(masterValueText, value);
+    }
+
+    private void UpdateBGMValueText(float value)
+    {
+        UpdateValueText(bgmValueText, value);
+    }
+
+    private void UpdateSFXValueText(float value)
+    {
+        UpdateValueText(sfxValueText, value);
+    }
+
+    private void UpdateValueText(TMP_Text targetText, float value)
+    {
+        if (targetText == null) return;
+
+        int percent = Mathf.RoundToInt(value * 100f);
+        targetText.text = percent + "%";
     }
 
     private void OnClickReset()
@@ -89,12 +140,18 @@ public class SoundSettingsUI : MonoBehaviour
         if (audioSettingsManager == null) return;
 
         if (masterVolumeSlider != null)
-            masterVolumeSlider.onValueChanged.RemoveListener(audioSettingsManager.SetMasterVolume);
+            masterVolumeSlider.onValueChanged.RemoveListener(OnMasterVolumeChanged);
 
         if (bgmVolumeSlider != null)
-            bgmVolumeSlider.onValueChanged.RemoveListener(audioSettingsManager.SetBGMVolume);
+            bgmVolumeSlider.onValueChanged.RemoveListener(OnBGMVolumeChanged);
 
         if (sfxVolumeSlider != null)
-            sfxVolumeSlider.onValueChanged.RemoveListener(audioSettingsManager.SetSFXVolume);
+            sfxVolumeSlider.onValueChanged.RemoveListener(OnSFXVolumeChanged);
+
+        if (resetButton != null)
+            resetButton.onClick.RemoveListener(OnClickReset);
+
+        if (backButton != null)
+            backButton.onClick.RemoveListener(OnClickBack);
     }
 }
