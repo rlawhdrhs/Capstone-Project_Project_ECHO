@@ -1327,7 +1327,7 @@ MonoBehaviour:
   sfxValueText: {fileID: 4763328207885681921}
   resetButton: {fileID: 5174367967516107594}
   backButton: {fileID: 5024421586272747907}
-  settingsPanel: {fileID: 0}
+  settingsPanel: {fileID: 2919517237920416483}
 --- !u!1 &3317635060160134350
 GameObject:
   m_ObjectHideFlags: 0
