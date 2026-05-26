@@ -73,7 +73,7 @@ public class LocalHostGrabber : MonoBehaviour
         EscapeLever lever = obj.GetComponent<EscapeLever>();
         if (lever != null)
         {
-            lever.StartPull(holdPoint != null ? holdPoint : transform);
+            //lever.StartPull(holdPoint != null ? holdPoint : transform);
             UnactivateHover();
             return;
         }
@@ -104,7 +104,7 @@ public class LocalHostGrabber : MonoBehaviour
         EscapeLever lever = grabbedObject.GetComponent<EscapeLever>();
         if (lever != null)
         {
-            lever.EndPull();
+            //lever.EndPull();
             TriggerNetworkEvent(grabbedObject);
             grabbedObject = null;
             return;

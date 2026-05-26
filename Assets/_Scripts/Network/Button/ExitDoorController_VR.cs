@@ -29,9 +29,6 @@ public class ExitDoorController_VR : MonoBehaviour
     [Header("하얀 화면 Fade")]
     public Image whiteFadeImage;
 
-    [Header("엔딩 씬")]
-    public string endingSceneName = "EndingScene";
-
     private bool isOpening = false;
 
     // CharacterController 제어를 위한 변수
@@ -121,7 +118,6 @@ public class ExitDoorController_VR : MonoBehaviour
             yield return null;
         }
 
-        //SceneManager.LoadScene(endingSceneName);
         NetworkGameManager.Instance.Rpc_EscapeSuccess();
     }
 }

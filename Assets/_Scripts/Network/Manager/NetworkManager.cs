@@ -12,14 +12,18 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
     private InputAction rightAButton;
     private InputAction rightBButton;
-    private InputAction leftXButton;
     private InputAction rightTrigger;
-    private InputAction leftGrip;
     private InputAction rightGrip;
+    private InputAction leftXButton;
+    private InputAction leftYButton;
+    private InputAction leftMenuButton;
+    private InputAction leftGrip;
 
     public bool IsLeftGripPressed => leftGrip != null && leftGrip.IsPressed();
     public bool IsLeftGripDown => leftGrip != null && leftGrip.WasPressedThisFrame();
     public bool IsLeftGripUp => leftGrip != null && leftGrip.WasReleasedThisFrame();
+    public bool IsLeftYDown => leftYButton != null && leftYButton.WasPressedThisFrame();
+    public bool IsLeftMenuDown => leftMenuButton != null && leftMenuButton.WasPressedThisFrame();
 
     [Header("Scene Settings")]
     public int mainSceneBuildIndex = 1;
@@ -37,6 +41,8 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         // New Input System의 하드웨어 경로(Path)를 코드로 직접 바인딩합니다.
         rightAButton = new InputAction(binding: "<XRController>{RightHand}/primaryButton");
         leftXButton = new InputAction(binding: "<XRController>{LeftHand}/primaryButton");
+        leftYButton = new InputAction(binding: "<XRController>{LeftHand}/secondaryButton");
+        leftMenuButton = new InputAction(binding: "<XRController>{LeftHand}/menu");
         rightTrigger = new InputAction(binding: "<XRController>{RightHand}/trigger");
         leftGrip = new InputAction(binding: "<XRController>{LeftHand}/grip");
         rightBButton = new InputAction(binding: "<XRController>{RightHand}/secondaryButton");
@@ -45,6 +51,8 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         // 사용 가능하도록 활성화
         rightAButton.Enable();
         leftXButton.Enable();
+        leftYButton.Enable();
+        leftMenuButton.Enable();
         rightTrigger.Enable();
         leftGrip.Enable();
         rightBButton.Enable();
@@ -87,7 +95,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         _networkRunner.ProvideInput = true;
 
         _networkRunner.AddCallbacks(this);
-
         var sceneManager = gameObject.GetComponent<NetworkSceneManagerDefault>();
         if (sceneManager == null)
         {
@@ -140,6 +147,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         bool isRightAPressed = rightAButton.IsPressed();
         bool isRightBPressed = rightBButton.IsPressed() || Input.GetKey(KeyCode.B);
         bool isLeftAPressed = leftXButton.IsPressed();
+        bool isLeftBPressed = leftYButton.IsPressed() || Input.GetKey(KeyCode.Y);
         float rightTriggerValue = rightTrigger.ReadValue<float>();
         bool isLeftGripPressed = leftGrip.IsPressed();
         bool isRightGripPressed = rightGrip.IsPressed() || Input.GetKey(KeyCode.G);
@@ -220,6 +228,32 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         // ★ 핵심 판정: 이 프로젝트 구조상 Host는 잠입자이고 Client는 추격자입니다.
         // 따라서 현재 로컬 컴퓨터의 런너가 Client 모드라면 '추격자'인 상태(true)입니다.
         return _networkRunner.IsClient;
+    }
+
+    public void RequestStunToIntruder(float duration)
+    {
+        if (_networkRunner != null && _networkRunner.IsRunning)
+        {
+            RPC_StunIntruder(duration);
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    private void RPC_StunIntruder(float duration)
+    {
+        // 오직 호스트(잠입자) 본인의 컴퓨터 화면에서만 이동을 차단하도록 판정
+        if (_networkRunner.IsServer)
+        {
+            // 이전에 언급하신 LocalVRRig(XR Origin)에 붙어있는 RunawayStatus를 찾아 실행
+            if (LocalVRRig.Instance != null)
+            {
+                RunawayStatus runaway = LocalVRRig.Instance.GetComponent<RunawayStatus>();
+                if (runaway != null)
+                {
+                    runaway.ApplyStun(duration);
+                }
+            }
+        }
     }
     // =========================================================
     #region Unused Callbacks 

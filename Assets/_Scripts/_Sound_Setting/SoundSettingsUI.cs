@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SoundSettingsUI : MonoBehaviour
 {
+    public static AudioSettingsManager Instance;
+    public float MasterVolume { get; private set; }
     [Header("Sliders")]
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider bgmVolumeSlider;

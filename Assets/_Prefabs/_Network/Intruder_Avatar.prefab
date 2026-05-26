@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 1298782479660396953}
   m_Layer: 7
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 4417782600958711408}
   m_Layer: 7
   m_Name: DetectPoints
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 1196764929142873321}
   m_Layer: 7
   m_Name: Intruder_Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 1668809249797193881}
   m_Layer: 7
   m_Name: Clotch_up
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

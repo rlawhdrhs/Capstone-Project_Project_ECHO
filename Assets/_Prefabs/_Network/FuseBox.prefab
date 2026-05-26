@@ -754,8 +754,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.03
-  m_Center: {x: -0.0000000037252903, y: 0, z: 0.000000004656613}
+  m_Radius: 0.05
+  m_Center: {x: -0.0000000037252903, y: 0, z: -0.000000011175871}
 --- !u!1001 &1851305245780117804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.03
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0.000000004656613}
 --- !u!1001 &4968490617645767482
 PrefabInstance:
@@ -1105,7 +1105,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.03
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0.000000004656613}
 --- !u!4 &7848773135938736774 stripped
 Transform:

@@ -45,6 +45,8 @@ public class GameUIManager : MonoBehaviour
             SetupMinimapRoleVisibility();
         }
 
+        HandleMinimapInput();
+
         // UI 연결이 안 되어 있어도 에러가 나지 않도록 방어
         if (timerText == null || progressText == null) return;
 
@@ -80,13 +82,29 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    private void HandleMinimapInput()
+    {
+        if (minimapObject == null) return;
+
+        // 1. 오직 호스트(Server)인 경우에만 작동 가능
+        if (NetworkGameManager.Instance.Runner.IsServer)
+        {
+            // 2. NetworkManager에서 왼쪽 Y버튼이 눌렸는지 확인 (PC 키보드 테스트시 'Y' 키도 지원되게 연동)
+            if (NetworkManager.Instance != null && (NetworkManager.Instance.IsLeftYDown || Input.GetKeyDown(KeyCode.Y)))
+            {
+                // 현재 상태를 반전시켜 껐다 켰다(Toggle) 처리
+                minimapObject.SetActive(!minimapObject.activeSelf);
+            }
+        }
+    }
+
     private void SetupMinimapRoleVisibility()
     {
         if (minimapObject == null) return;
 
         bool isHost = NetworkGameManager.Instance.Runner.IsServer;
 
-        minimapObject.SetActive(isHost);
+        minimapObject.SetActive(false);
 
         _isMinimapInitialized = true;
     }
