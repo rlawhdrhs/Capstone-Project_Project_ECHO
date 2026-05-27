@@ -12,6 +12,9 @@ public class GameUIManager : MonoBehaviour
     [Header("미니맵 설정")]
     public GameObject minimapObject;
 
+    [Header("스텔스 UI 설정")]
+    public GameObject stealthModeUI;
+
     private bool _isMinimapInitialized = false;
 
     void Start()
@@ -19,6 +22,9 @@ public class GameUIManager : MonoBehaviour
         if (missionText != null) missionText.text = "Mission 1: Restore power to the dark room";
         if (progressText != null) progressText.gameObject.SetActive(false);
         if (timerText != null) timerText.text = "10:00";
+
+        if (stealthModeUI != null) stealthModeUI.SetActive(false);
+
         // 미션이 바뀔 때마다 OnUpdateMissionText 함수가 실행되도록 구독
         if (NetworkGameManager.Instance != null)
         {
@@ -46,6 +52,17 @@ public class GameUIManager : MonoBehaviour
         }
 
         HandleMinimapInput();
+
+        if (stealthModeUI != null)
+        {
+            bool shouldShowStealthUI = StealthDetector.Instance != null && StealthDetector.Instance.isStealthMode;
+
+            // 매 프레임 SetActive를 호출하는 것보다 상태가 바뀔 때만 호출되도록 방어 코드 추가
+            if (stealthModeUI.activeSelf != shouldShowStealthUI)
+            {
+                stealthModeUI.SetActive(shouldShowStealthUI);
+            }
+        }
 
         // UI 연결이 안 되어 있어도 에러가 나지 않도록 방어
         if (timerText == null || progressText == null) return;
@@ -92,8 +109,16 @@ public class GameUIManager : MonoBehaviour
             // 2. NetworkManager에서 왼쪽 Y버튼이 눌렸는지 확인 (PC 키보드 테스트시 'Y' 키도 지원되게 연동)
             if (NetworkManager.Instance != null && (NetworkManager.Instance.IsLeftYDown || Input.GetKeyDown(KeyCode.Y)))
             {
-                // 현재 상태를 반전시켜 껐다 켰다(Toggle) 처리
-                minimapObject.SetActive(!minimapObject.activeSelf);
+                // 켜질 예정인지 끔 상태가 될 예정인지 미리 계산
+                bool willBeActive = !minimapObject.activeSelf;
+
+                // 태블릿 껐다 켰다(Toggle) 처리
+                minimapObject.SetActive(willBeActive);
+
+                if (willBeActive)
+                {
+                    OnUpdateMissionText(NetworkGameManager.Instance.CurrentMissionIndex);
+                }
             }
         }
     }

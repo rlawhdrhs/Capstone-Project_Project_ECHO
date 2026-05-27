@@ -144,9 +144,9 @@ MonoBehaviour:
   stickableLayers:
     serializedVersion: 2
     m_Bits: 8192
-  grabRadius: 0.25
   explosionDelay: 3
   empRadius: 3
+  explosionSoundType: 4
 --- !u!1001 &8993350205137151539
 PrefabInstance:
   m_ObjectHideFlags: 0

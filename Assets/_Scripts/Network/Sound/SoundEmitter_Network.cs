@@ -22,6 +22,24 @@ public class SoundEmitter_Network : NetworkBehaviour
     {
         lastPosition = transform.position;
         accumulatedDistance = 0f;
+
+        if (NetworkManager.Instance != null)
+        {
+            NetworkManager.Instance.RegisterInfiltrator(Object);
+        }
+
+        if (Object.HasInputAuthority && LocalVRRig.Instance != null)
+        {
+            // LocalVRRig(XR_Origin)에서 링크 컴포넌트를 가져오거나 없으면 새로 붙임
+            XROriginStepSoundLinker linker = LocalVRRig.Instance.GetComponent<XROriginStepSoundLinker>();
+            if (linker == null)
+            {
+                linker = LocalVRRig.Instance.gameObject.AddComponent<XROriginStepSoundLinker>();
+            }
+
+            // 이 링크 스크립트에 자기 자신(아바타 발소리 스크립트)을 등록!
+            linker.networkSoundEmitter = this;
+        }
     }
 
     public override void FixedUpdateNetwork()
@@ -96,6 +114,30 @@ public class SoundEmitter_Network : NetworkBehaviour
         else
         {
             Debug.LogWarning("SoundManager.Instance가 null임");
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_RequestStunToMe(float duration)
+    {
+        // 주권자인 호스트(잠입자) 컴퓨터에서만 실행됨이 100% 보장됩니다.
+        Debug.Log($"📡 [호스트 수신 완료] 잠입자가 추격자로부터 {duration}초 스턴 RPC를 받았습니다!");
+
+        if (LocalVRRig.Instance != null)
+        {
+            RunawayStatus runaway = LocalVRRig.Instance.GetComponent<RunawayStatus>();
+            if (runaway != null)
+            {
+                runaway.ApplyStun(duration);
+            }
+            else
+            {
+                Debug.LogError("❌ [에러] LocalVRRig은 찾았으나 RunawayStatus 컴포넌트가 없습니다!");
+            }
+        }
+        else
+        {
+            Debug.LogError("❌ [에러] 호스트 화면에 LocalVRRig.Instance가 null입니다!");
         }
     }
 }

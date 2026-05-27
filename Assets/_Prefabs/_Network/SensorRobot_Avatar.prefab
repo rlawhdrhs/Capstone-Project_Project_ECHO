@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -167871423003913383}
   - component: {fileID: -2559461430101864269}
   - component: {fileID: 6373799968956278812}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: SensorRobot_Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 8887471343537403976}
   - component: {fileID: 4070125362626032491}
   - component: {fileID: 2313149033840101497}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: WhiteLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 264241151
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -322,7 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 547002380457317446}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: CameraPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,9 +397,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SensorRobot_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e539d573154cb8c428097e264fbd541c, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: e539d573154cb8c428097e264fbd541c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e539d573154cb8c428097e264fbd541c, type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

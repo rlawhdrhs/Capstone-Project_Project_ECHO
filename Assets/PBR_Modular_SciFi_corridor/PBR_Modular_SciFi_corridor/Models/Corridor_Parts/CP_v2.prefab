@@ -406,8 +406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NetworkSplitSlidingDoor
   upperPanel: {fileID: 2705282918986374369}
   lowerPanel: {fileID: 2705282918986374371}
-  upperClosedY: 2.2
-  lowerClosedY: 0.5
+  upperClosedY: 2.7
+  lowerClosedY: 0.95
   openOffset: {x: 0, y: 3, z: 0}
   openSpeed: 3
   _IsOpen:

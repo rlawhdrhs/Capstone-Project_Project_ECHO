@@ -54,7 +54,7 @@ TagManager:
   - MissionLight
   - Grabbable
   - ExitDoor
-  - 
+  - Sensor
   - ButtonI
   - ButtonC
   - LeverOnly

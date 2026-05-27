@@ -68,6 +68,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
     public NetworkObject InfiltratorObject { get; private set; }
     public NetworkObject ChaserObject { get; private set; }
+    public NetworkRunner Runner => _networkRunner;
 
     public Vector3 SpawnPoint_intruder = new Vector3(3, 2, 0);
     public Vector3 SpawnPoint_chaser = new Vector3(0, 2, 0);
@@ -230,30 +231,10 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         return _networkRunner.IsClient;
     }
 
-    public void RequestStunToIntruder(float duration)
+    public void RegisterInfiltrator(NetworkObject infiltrator)
     {
-        if (_networkRunner != null && _networkRunner.IsRunning)
-        {
-            RPC_StunIntruder(duration);
-        }
-    }
-
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    private void RPC_StunIntruder(float duration)
-    {
-        // 오직 호스트(잠입자) 본인의 컴퓨터 화면에서만 이동을 차단하도록 판정
-        if (_networkRunner.IsServer)
-        {
-            // 이전에 언급하신 LocalVRRig(XR Origin)에 붙어있는 RunawayStatus를 찾아 실행
-            if (LocalVRRig.Instance != null)
-            {
-                RunawayStatus runaway = LocalVRRig.Instance.GetComponent<RunawayStatus>();
-                if (runaway != null)
-                {
-                    runaway.ApplyStun(duration);
-                }
-            }
-        }
+        InfiltratorObject = infiltrator;
+        Debug.Log($"[NetworkManager] 잠입자 오브젝트 등록 완료: {infiltrator.name}");
     }
     // =========================================================
     #region Unused Callbacks 

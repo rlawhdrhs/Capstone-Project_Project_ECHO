@@ -12,6 +12,9 @@ public class NetworkStickyBomb : MonoBehaviour
     public float explosionDelay = 3.0f;
     public float empRadius = 3.0f;
 
+    [Header("사운드 설정")]
+    public SoundType explosionSoundType;
+
     private Rigidbody _rb;
     private Collider _collider;
     private bool _isStuck = false;
@@ -85,7 +88,14 @@ public class NetworkStickyBomb : MonoBehaviour
     {
         yield return new WaitForSeconds(explosionDelay);
 
-        // 결과만 서버 RPC로 전송 (구현해두신 포톤 문 열기 로직 호출)
+        if (SoundManager.Instance != null)
+        {
+            // 위치, 소리 데이터 유지 시간(초), 사운드 종류 전달
+            // 폭발음 오디오 클립의 길이에 맞춰 대략 3.0f 초 정도 라이프타임을 줍니다.
+            SoundManager.Instance.EmitSound(transform.position, 3.0f, explosionSoundType);
+        }
+
+        // 결과만 서버 RPC로 전송
         if (NetworkManager.Instance != null)
         {
             NetworkManager.Instance.RequestCmdExplosion(transform.position, empRadius);

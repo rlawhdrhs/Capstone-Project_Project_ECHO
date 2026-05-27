@@ -82,6 +82,9 @@ MonoBehaviour:
   - soundType: 12
     intensity: 3
     detectionRadius: 20
+  - soundType: 13
+    intensity: 3
+    detectionRadius: 20
   clipTable:
   - soundType: 0
     clips:
@@ -197,6 +200,15 @@ MonoBehaviour:
     rolloffMode: 0
     pitchMin: 0.95
     pitchMax: 1.05
+  - soundType: 13
+    clips:
+    - {fileID: 8300000, guid: 381fefdf7bc6d0f42a510f518f67831d, type: 3}
+    volume: 1
+    minDistance: 15
+    maxDistance: 100
+    rolloffMode: 0
+    pitchMin: 0.95
+    pitchMax: 1.05
   spatialSoundPrefab: {fileID: 4786652906108849840, guid: 2fe1ba11568fe1b4eaafe8fe7ceb64a6, type: 3}
   local2DAudioSource: {fileID: -692915423507902409}
   soundEvents: []
@@ -209,7 +221,7 @@ AudioSource:
   m_GameObject: {fileID: 3818818143440522330}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1

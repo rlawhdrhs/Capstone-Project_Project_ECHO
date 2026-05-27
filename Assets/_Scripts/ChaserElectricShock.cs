@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 public class ChaserElectricShock : MonoBehaviour
 {
-    [Header("컨트롤러 설정")]
+    [Header("컨트롤러 트랜스폼")]
     public Transform leftControllerTransform;
     public Transform rightControllerTransform;
 
@@ -20,6 +21,28 @@ public class ChaserElectricShock : MonoBehaviour
     private float initialArmDistance = 0f;
     private float chargeHapticTimer = 0f;
 
+    // New Input System 액션
+    private InputAction leftGripAction;
+    private InputAction rightGripAction;
+
+    void Awake()
+    {
+        leftGripAction = new InputAction(binding: "<XRController>{LeftHand}/grip");
+        rightGripAction = new InputAction(binding: "<XRController>{RightHand}/grip");
+    }
+
+    void OnEnable()
+    {
+        leftGripAction.Enable();
+        rightGripAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        leftGripAction.Disable();
+        rightGripAction.Disable();
+    }
+
     void Update()
     {
         HandleElectricShock();
@@ -27,11 +50,11 @@ public class ChaserElectricShock : MonoBehaviour
 
     private void HandleElectricShock()
     {
-        InputDevice leftDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-        InputDevice rightDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        bool leftGripPressed = leftGripAction.ReadValue<float>() > 0.1f;
+        bool rightGripPressed = rightGripAction.ReadValue<float>() > 0.1f;
 
-        bool leftGripPressed = leftDevice.TryGetFeatureValue(CommonUsages.grip, out float leftGrip) && leftGrip > 0.1f;
-        bool rightGripPressed = rightDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGrip) && rightGrip > 0.1f;
+        UnityEngine.XR.InputDevice leftDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        UnityEngine.XR.InputDevice rightDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
         if (leftGripPressed && rightGripPressed)
         {
@@ -42,8 +65,8 @@ public class ChaserElectricShock : MonoBehaviour
                 chargeHapticTimer -= Time.deltaTime;
                 if (chargeHapticTimer <= 0)
                 {
-                    leftDevice.SendHapticImpulse(0, 0.2f, 0.05f);
-                    rightDevice.SendHapticImpulse(0, 0.2f, 0.05f);
+                    if (leftDevice.isValid) leftDevice.SendHapticImpulse(0, 0.2f, 0.05f);
+                    if (rightDevice.isValid) rightDevice.SendHapticImpulse(0, 0.2f, 0.05f);
                     chargeHapticTimer = 0.05f;
                 }
 
@@ -52,8 +75,8 @@ public class ChaserElectricShock : MonoBehaviour
                     isCharged = true;
                     initialArmDistance = Vector3.Distance(leftControllerTransform.position, rightControllerTransform.position);
 
-                    leftDevice.SendHapticImpulse(0, 0.7f, 0.2f);
-                    rightDevice.SendHapticImpulse(0, 0.7f, 0.2f);
+                    if (leftDevice.isValid) leftDevice.SendHapticImpulse(0, 0.7f, 0.2f);
+                    if (rightDevice.isValid) rightDevice.SendHapticImpulse(0, 0.7f, 0.2f);
                     Debug.Log("★ 전기 충격 차징 완료! 양팔을 쫙 벌리세요!");
                 }
             }
@@ -78,24 +101,39 @@ public class ChaserElectricShock : MonoBehaviour
         }
     }
 
-    private void FireElectricShock(InputDevice leftDevice, InputDevice rightDevice)
+    private void FireElectricShock(UnityEngine.XR.InputDevice leftDevice, UnityEngine.XR.InputDevice rightDevice)
     {
-        Debug.Log("⚡ 전기 충격 방출!!! ⚡");
-        leftDevice.SendHapticImpulse(0, 1.0f, 0.5f);
-        rightDevice.SendHapticImpulse(0, 1.0f, 0.5f);
+        Debug.Log("⚡ [추격자] 전기 충격 모션 감지! 방출 시도 !!! ⚡");
+        if (leftDevice.isValid) leftDevice.SendHapticImpulse(0, 1.0f, 0.5f);
+        if (rightDevice.isValid) rightDevice.SendHapticImpulse(0, 1.0f, 0.5f);
 
-        // [★ 멀티플레이 핵심 개편] 
-        // 1v1 구도이므로 NetworkManager가 관리하는 잠입자(InfiltratorObject) 가 존재하는지 확인합니다.
+        if (SoundManager.Instance != null)
+        {
+            // 내 위치(드론 위치)에서 1.5초간 지속되는 전기 충격음 프리펩 생성
+            SoundManager.Instance.EmitSound(transform.position, 1.5f, SoundType.ElectricShock);
+        }
+
         if (NetworkManager.Instance != null && NetworkManager.Instance.InfiltratorObject != null)
         {
-            // 추격자인 내 위치와 원격에 있는 잠입자 캐릭터 사이의 순수 거리 측정
             float distanceToTarget = Vector3.Distance(transform.position, NetworkManager.Instance.InfiltratorObject.transform.position);
+
+            Debug.Log($"[레이더 디버그] 계산된 거리: {distanceToTarget}m (공격 범위: {shockRadius}m)");
 
             if (distanceToTarget <= shockRadius)
             {
-                // 범위 안에 있다면 RPC를 날려 호스트 컴퓨터에게 직접 스턴 상태를 주입합니다.
-                NetworkManager.Instance.RequestStunToIntruder(stunDuration);
-                Debug.Log("🎯 잠입자 탐지 성공! 네트워크 RPC 스턴 요청 송신.");
+                // ★ 핵심 변경: 잠입자 오브젝트에서 네트워크 스크립트를 가져옵니다.
+                SoundEmitter_Network infiltratorSound = NetworkManager.Instance.InfiltratorObject.GetComponent<SoundEmitter_Network>();
+
+                if (infiltratorSound != null)
+                {
+                    // 아바타 고유의 NetworkBehaviour RPC를 직접 호출합니다!
+                    infiltratorSound.RPC_RequestStunToMe(stunDuration);
+                    Debug.Log("Target [추격자] 잠입자 아바타에 직접 스턴 RPC 발사 완료!");
+                }
+                else
+                {
+                    Debug.LogError("❌ [에러] 잠입자 오브젝트에서 SoundEmitter_Network를 찾을 수 없습니다.");
+                }
             }
         }
 

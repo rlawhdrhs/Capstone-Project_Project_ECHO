@@ -162,13 +162,16 @@ public class PlayerDetectable_Network : NetworkBehaviour
 
     void OnDetectedChanged()
     {
+        // 내 화면(InputAuthority)이거나 서버일 때만 로컬 UI 상태를 업데이트합니다.
         if (Object.HasInputAuthority || (Runner.IsServer && Object.HasStateAuthority))
         {
-            if (IntruderDetectedUI.Instance != null)
+            if (IntruderStatusUIManager.Instance != null)
             {
-                IntruderDetectedUI.Instance.ShowWarning(isDetected);
+                // ★ 핵심 수정: true 고정이 아니라 현재 변수 상태(isDetected)를 그대로 넘겨줍니다.
+                IntruderStatusUIManager.Instance.SetDetectedStatus(isDetected);
             }
         }
+
         if (isDetected)
         {
             // 감지되었는데 아직 재생 중인 사운드가 없다면 생성

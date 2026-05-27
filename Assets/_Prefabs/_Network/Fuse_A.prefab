@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6832656865442386522}
   - component: {fileID: 5070298476187283416}
   - component: {fileID: 8499496608851778827}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Fuse_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8459478939292698771}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: GrapAttach
   m_TagString: Untagged
   m_Icon: {fileID: 0}

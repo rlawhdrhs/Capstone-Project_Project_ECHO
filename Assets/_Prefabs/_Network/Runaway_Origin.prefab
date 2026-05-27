@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 867841341110265720}
   m_Layer: 7
   m_Name: Main Camera
-  m_TagString: Player
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,6 +289,8 @@ GameObject:
   - component: {fileID: 6447026875655250228}
   - component: {fileID: 416274137002540188}
   - component: {fileID: 4956370803446649731}
+  - component: {fileID: -2835935268755365952}
+  - component: {fileID: 2081054406088993381}
   m_Layer: 7
   m_Name: Runaway_Origin
   m_TagString: Player
@@ -527,6 +529,9 @@ MonoBehaviour:
   target: {fileID: 0}
   leftControllerTransform: {fileID: 8986208470805477751}
   rightControllerTransform: {fileID: 7944724150614712180}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8512
   detectionAngle: 45
   detectionRadius: 15
 --- !u!114 &6447026875655250228
@@ -572,6 +577,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e623ef57853a44aa8dac09043b66f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRI_RoleInitializer
+--- !u!114 &-2835935268755365952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448863544825560127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3247da759ce1d8a4e97fa97d9853850b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XROriginStepSoundLinker
+  networkSoundEmitter: {fileID: 0}
+--- !u!114 &2081054406088993381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448863544825560127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40b172f5b02b5844bf47fe0004bf1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StealthDetector
+  mainCamera: {fileID: 2937149283902636449}
+  characterController: {fileID: 4049603770829761412}
+  stealthThreshold: 1
+  isStealthMode: 0
 --- !u!1 &1487399196739225256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ac216f0eb04754b1d938aac6380b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RayInteractor: {fileID: 3410004644514594040}
+  m_RayInteractor: {fileID: 0}
   m_NearFarInteractor: {fileID: 0}
   m_TeleportInteractor: {fileID: 0}
   m_TeleportMode: {fileID: 1263111715868034790, guid: c348712bda248c246b8c49b3db54643f, type: 3}

@@ -14,25 +14,22 @@ public class FootstepOverrideArea : MonoBehaviour
     {
         if (!other.CompareTag(playerTag)) return;
 
-        SoundEmitter_Network networkSoundEmitter = other.GetComponent<SoundEmitter_Network>();
+        // 1. 충돌한 XR_Origin에서 연결고리(Linker)를 찾습니다.
+        XROriginStepSoundLinker linker = other.GetComponent<XROriginStepSoundLinker>();
+        if (linker == null || linker.networkSoundEmitter == null) return;
 
-        if (networkSoundEmitter == null)
+        // 2. 연결된 아바타의 발소리 스크립트를 가져옵니다.
+        SoundEmitter_Network soundEmitter = linker.networkSoundEmitter;
+
+        // 3. 내 로컬 캐릭터인 경우에만 오버라이드 상태를 변경합니다.
+        if (soundEmitter.Runner != null && soundEmitter.Runner.IsServer)
         {
-            networkSoundEmitter = other.GetComponentInParent<SoundEmitter_Network>();
-        }
+            soundEmitter.SetFootstepOverride(overrideSoundType);
 
-        if (networkSoundEmitter == null)
-        {
-            Debug.LogWarning("[FootstepOverrideArea] 플레이어에게서 SoundEmitter_Network를 찾을 수 없습니다.");
-            return;
-        }
-
-        // 새롭게 구현한 변경 함수 호출
-        networkSoundEmitter.SetFootstepOverride(overrideSoundType);
-
-        if (showDebugLog)
-        {
-            Debug.Log($"[FootstepOverrideArea] Entered. 발소리가 {overrideSoundType}로 오버라이드 됨.");
+            if (showDebugLog)
+            {
+                Debug.Log($"[Host Only] 잠입자가 구역 진입. 발소리 {overrideSoundType}로 오버라이드 됨.");
+            }
         }
     }
 
@@ -40,21 +37,19 @@ public class FootstepOverrideArea : MonoBehaviour
     {
         if (!other.CompareTag(playerTag)) return;
 
-        SoundEmitter_Network networkSoundEmitter = other.GetComponent<SoundEmitter_Network>();
+        XROriginStepSoundLinker linker = other.GetComponent<XROriginStepSoundLinker>();
+        if (linker == null || linker.networkSoundEmitter == null) return;
 
-        if (networkSoundEmitter == null)
+        SoundEmitter_Network soundEmitter = linker.networkSoundEmitter;
+
+        if (soundEmitter.Runner != null && soundEmitter.Runner.IsServer)
         {
-            networkSoundEmitter = other.GetComponentInParent<SoundEmitter_Network>();
-        }
+            soundEmitter.ClearFootstepOverride();
 
-        if (networkSoundEmitter == null) return;
-
-        // 오버라이드 해제 함수 호출
-        networkSoundEmitter.ClearFootstepOverride();
-
-        if (showDebugLog)
-        {
-            Debug.Log("[FootstepOverrideArea] Exited. 원래 발소리로 복구됨.");
+            if (showDebugLog)
+            {
+                Debug.Log("[Host Only] 잠입자가 구역 퇴장. 원래 발소리로 복구됨.");
+            }
         }
     }
 }
