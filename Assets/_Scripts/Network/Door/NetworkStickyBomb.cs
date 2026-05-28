@@ -1,13 +1,12 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.XR;
 
 [RequireComponent(typeof(Rigidbody))]
 public class NetworkStickyBomb : MonoBehaviour
 {
     [Header("점착 설정")]
-    public LayerMask stickableLayers;
-    public LayerMask doorLayers;
+    public LayerMask stickableLayers; // 일반 벽, 바닥 등 부착 가능한 레이어들
+    public LayerMask doorLayers;      // 특별히 문으로 판정할 레이어들
 
     [Header("EMP 폭발 설정")]
     public float explosionDelay = 3.0f;
@@ -43,8 +42,9 @@ public class NetworkStickyBomb : MonoBehaviour
     {
         if (_isStuck) return;
 
-        // 부딪힌 오브젝트의 레이어가 내가 지정한 벽/문 레이어인지 확인
-        if ((stickableLayers.value & (1 << other.gameObject.layer)) != 0)
+        int combinedMask = stickableLayers.value | doorLayers.value;
+
+        if ((combinedMask & (1 << other.gameObject.layer)) != 0)
         {
             PlantBombOnSurface(other);
         }
@@ -54,13 +54,16 @@ public class NetworkStickyBomb : MonoBehaviour
     {
         _isStuck = true;
 
+        // 부딪힌 오브젝트가 문 레이어 그룹에 속해 있는지 단독 검사
         if ((doorLayers.value & (1 << wallCollider.gameObject.layer)) != 0)
         {
             _finalSoundType = doorSoundType;
+            Debug.Log("🚪 [판정] 문에 부착됨 -> 문 전용 사운드로 세팅");
         }
         else
         {
             _finalSoundType = explosionSoundType;
+            Debug.Log("🧱 [판정] 일반 벽에 부착됨 -> 일반 폭발 사운드로 세팅");
         }
 
         // 1. 부모 해제
@@ -68,7 +71,10 @@ public class NetworkStickyBomb : MonoBehaviour
 
         // 2. 레이캐스트 정렬
         Vector3 rayStart = transform.position - transform.forward * 0.2f;
-        if (Physics.Raycast(rayStart, transform.forward, out RaycastHit hit, 1.0f, stickableLayers))
+
+        int combinedMask = stickableLayers.value | doorLayers.value;
+
+        if (Physics.Raycast(rayStart, transform.forward, out RaycastHit hit, 1.0f, combinedMask))
         {
             transform.position = hit.point;
             transform.up = hit.normal;
@@ -95,9 +101,16 @@ public class NetworkStickyBomb : MonoBehaviour
     {
         yield return new WaitForSeconds(explosionDelay);
 
-        if (SoundManager.Instance != null)
+        if (NetworkGameManager.Instance != null)
         {
-            SoundManager.Instance.EmitSound(transform.position, 3.0f, _finalSoundType);
+            NetworkGameManager.Instance.RPC_PlayGlobalSound(transform.position, 3.0f, _finalSoundType);
+        }
+        else
+        {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.EmitSound(transform.position, 3.0f, _finalSoundType);
+            }
         }
 
         // 결과만 서버 RPC로 전송

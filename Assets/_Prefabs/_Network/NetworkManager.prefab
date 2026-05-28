@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8026b725cf039d04ea0ace1ef083dfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConnectionManager
-  mainSceneBuildIndex: 12
+  mainSceneBuildIndex: 7
   lobbyUI: {fileID: 0}
   infiltratorPrefab:
     RawGuidValue: 3d4ea25eab3aeb74b80c1934e3cdd201

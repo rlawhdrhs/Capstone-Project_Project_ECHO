@@ -49,7 +49,11 @@ public class DataMissionInteractor : MonoBehaviour
 
                 StopLoopingSound();
 
-                if (SoundManager.Instance != null)
+                if (NetworkGameManager.Instance != null)
+                {
+                    NetworkGameManager.Instance.RPC_PlayGlobalSound(transform.position, 2.0f, clearSoundType);
+                }
+                else if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.EmitSound(transform.position, 2.0f, clearSoundType);
                 }

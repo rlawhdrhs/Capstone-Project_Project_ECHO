@@ -1,17 +1,35 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class IntruderSoundDetector_Network : MonoBehaviour
 {
+    public static List<IntruderSoundDetector_Network> Detectors = new List<IntruderSoundDetector_Network>();
+
     [Header("센서 감지 범위")]
     public float detectRange = 15f;
 
     [Header("UI 큐브 제어")]
     public CubeColorChanger targetCube;
 
+    public bool IsSoundDetected { get; private set; }
+
+    private void OnEnable()
+    {
+        Detectors.Add(this);
+    }
+
+    // 오브젝트가 파괴되거나 꺼질 때 리스트에서 자동 제거
+    private void OnDisable()
+    {
+        Detectors.Remove(this);
+    }
+
     void Update()
     {
         // 매 프레임마다 소리 감지 여부를 확인합니다.
         bool isDetected = CheckForSoundsInManager();
+
+        IsSoundDetected = isDetected;
 
         // 감지 여부에 따라 UI 큐브 색상을 변경합니다.
         UpdateCubeColor(isDetected);
@@ -28,14 +46,8 @@ public class IntruderSoundDetector_Network : MonoBehaviour
             // 센서(로봇) 위치와 소리가 발생한 위치 사이의 거리 계산
             float distance = Vector3.Distance(transform.position, soundEvent.position);
 
-            // 소리가 센서의 감지 범위 안에서 발생했다면
-            // (참고: soundEvent.detectionRadius를 활용하고 싶다면 distance <= soundEvent.detectionRadius 로 변경해도 됩니다)
             if (distance <= detectRange)
             {
-                // 콘솔창에서 어떤 소리를 감지했는지 확인용
-                //Debug.Log($"[센서 감지] 소리 종류: {soundEvent.soundType}, 위치: {soundEvent.position}");
-
-                // 하나라도 감지 범위 내에 있으면 즉시 true를 반환하고 루프를 종료합니다.
                 return true;
             }
         }

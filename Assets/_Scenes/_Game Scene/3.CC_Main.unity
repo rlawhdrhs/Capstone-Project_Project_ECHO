@@ -344,6 +344,10 @@ PrefabInstance:
       propertyPath: SortKey
       value: 3232723595
       objectReference: {fileID: 0}
+    - target: {fileID: 3699613321547869966, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
+      propertyPath: NestedObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4504702101284027297, guid: 3d4ea25eab3aeb74b80c1934e3cdd201, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

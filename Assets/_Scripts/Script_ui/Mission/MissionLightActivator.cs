@@ -53,7 +53,11 @@ public class MissionLightActivator : MonoBehaviour
 
         activated = true;
 
-        if (SoundManager.Instance != null)
+        if (NetworkGameManager.Instance != null)
+        {
+            NetworkGameManager.Instance.RPC_PlayGlobalSound(transform.position, 5.0f, lightActivationSoundType);
+        }
+        else if (SoundManager.Instance != null)
         {
             SoundManager.Instance.EmitSound(transform.position, 5.0f, lightActivationSoundType);
         }

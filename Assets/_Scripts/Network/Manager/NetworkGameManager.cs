@@ -25,7 +25,8 @@ public class NetworkGameManager : NetworkBehaviour
     // --- 동기화되는 게임 상태 ---
     [Networked, OnChangedRender(nameof(OnMissionIndexChanged))]
     public int CurrentMissionIndex { get; set; } = 0;
-    [Networked] public int DataCollectionProgress { get; set; }
+    [Networked, OnChangedRender(nameof(OnDataProgressChanged))]
+    public int DataCollectionProgress { get; set; }
     public int MaxDataNodes = 5;
     [Networked] public NetworkBool IsExitOpen { get; set; }
     [Networked] public TickTimer GlobalGameTimer { get; set; }
@@ -47,6 +48,7 @@ public class NetworkGameManager : NetworkBehaviour
             SetAllDoorsState(true);
         }
         OnMissionChangedEvent?.Invoke(CurrentMissionIndex);
+        UpdateMissionUI_Local();
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
@@ -172,5 +174,46 @@ public class NetworkGameManager : NetworkBehaviour
     void OnMissionIndexChanged()
     {
         OnMissionChangedEvent?.Invoke(CurrentMissionIndex);
+        UpdateMissionUI_Local();
     }
+
+    void OnDataProgressChanged()
+    {
+        UpdateMissionUI_Local(); // 데이터 수집도 수치 변할 때 UI 새로고침
+    }
+
+    private void UpdateMissionUI_Local()
+    {
+        if (IntruderStatusUIManager.Instance == null) return;
+
+        // 1. 미션 1 (전력 복구) 완료 여부: 인덱스가 1 이상이 되었을 때
+        bool isM1Cleared = CurrentMissionIndex >= 1;
+
+        // 2. 미션 2 (데이터 수집) 진행 비율 (0.0f ~ 1.0f 사잇값 변환)
+        float m2ProgressFraction = MaxDataNodes > 0 ? (float)DataCollectionProgress / MaxDataNodes : 0f;
+
+        // 3. 미션 2 완료 여부: 인덱스가 탈출 단계(2 또는 3)로 넘어갔을 때
+        bool isM2Cleared = CurrentMissionIndex >= 2;
+
+        // 4. 미션 3 (탈출 완료) 여부: 게임 종료 여부와 연동
+        bool isM3Cleared = isGameOver;
+
+        // 이쁘게 가공된 데이터를 아까 만든 UI 매니저로 토스!
+        IntruderStatusUIManager.Instance.UpdateMissionUI(isM1Cleared, m2ProgressFraction, isM2Cleared, isM3Cleared);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_PlayGlobalSound(Vector3 position, float lifetime, SoundType soundType)
+    {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.EmitSound(position, lifetime, soundType);
+            Debug.Log($"🔊 [글로벌 사운드 RPC 수신] 종류: {soundType}, 위치: {position}");
+        }
+        else
+        {
+            Debug.LogWarning("SoundManager.Instance가 null이라 RPC 사운드를 재생할 수 없습니다.");
+        }
+    }
+
 }
