@@ -7,6 +7,7 @@ public class NetworkStickyBomb : MonoBehaviour
 {
     [Header("점착 설정")]
     public LayerMask stickableLayers;
+    public LayerMask doorLayers;
 
     [Header("EMP 폭발 설정")]
     public float explosionDelay = 3.0f;
@@ -14,26 +15,27 @@ public class NetworkStickyBomb : MonoBehaviour
 
     [Header("사운드 설정")]
     public SoundType explosionSoundType;
+    public SoundType doorSoundType;
 
     private Rigidbody _rb;
     private Collider _collider;
     private bool _isStuck = false;
+
+    private SoundType _finalSoundType;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
 
-        // 🔴 [핵심 1] 손에 들려있는 동안 포톤 물리가 절대 간섭하지 못하도록 락을 겁니다.
         _rb.isKinematic = true;
         _rb.useGravity = false;
 
-        // 🔴 [핵심 2] 유니티 물리 규칙상, Kinematic 물체가 정적인 벽에 부딪힐 때는 
-        // 일반 충돌(Collision)이 아니라 트리거(Trigger) 모드여야 100% 한 번에 감지합니다.
         if (_collider != null)
         {
             _collider.isTrigger = true;
         }
+        _finalSoundType = explosionSoundType;
     }
 
     // 손에 쥔 채로 벽이나 문에 닿았을 때 실행되는 함수
@@ -52,35 +54,40 @@ public class NetworkStickyBomb : MonoBehaviour
     {
         _isStuck = true;
 
-        // 1. 손(오른손 컨트롤러 부모)과의 연결을 끊고 세계에 독립시킵니다.
+        if ((doorLayers.value & (1 << wallCollider.gameObject.layer)) != 0)
+        {
+            _finalSoundType = doorSoundType;
+        }
+        else
+        {
+            _finalSoundType = explosionSoundType;
+        }
+
+        // 1. 부모 해제
         transform.SetParent(null);
 
-        // 2. 벽면에 이쁘게 정렬하기 위해 폭탄 중심에서 살짝 뒤쪽 방향으로 레이캐스트를 쏩니다.
+        // 2. 레이캐스트 정렬
         Vector3 rayStart = transform.position - transform.forward * 0.2f;
         if (Physics.Raycast(rayStart, transform.forward, out RaycastHit hit, 1.0f, stickableLayers))
         {
-            // 레이가 부딪힌 정확한 벽 표면 좌표와 각도로 폭탄을 착 붙입니다.
             transform.position = hit.point;
             transform.up = hit.normal;
         }
         else
         {
-            // 레이캐스트가 실패할 경우를 대비한 백업 (가장 가까운 벽 표면 좌표 획득)
             transform.position = wallCollider.ClosestPoint(transform.position);
         }
 
-        // 3. 이제 벽에 고정되었으므로 트리거 모드를 끄고 일반 물리 벽으로 환원합니다.
+        // 3. 트리거 원복
         if (_collider != null)
         {
             _collider.isTrigger = false;
         }
 
-        // 4. 움직이는 문일 수 있으므로 해당 벽/문의 자식으로 완전히 귀속시킵니다.
+        // 4. 자식으로 귀속
         transform.SetParent(wallCollider.transform);
 
-        Debug.Log("<color=green>[폭탄 설치 완료] 벽에 직접 C4처럼 폭탄을 부착했습니다! 3초 후 터집니다.</color>");
-
-        // 3초 카운트다운 루틴 시작
+        // 카운트다운 시작
         StartCoroutine(ExplosionRoutine());
     }
 
@@ -90,9 +97,7 @@ public class NetworkStickyBomb : MonoBehaviour
 
         if (SoundManager.Instance != null)
         {
-            // 위치, 소리 데이터 유지 시간(초), 사운드 종류 전달
-            // 폭발음 오디오 클립의 길이에 맞춰 대략 3.0f 초 정도 라이프타임을 줍니다.
-            SoundManager.Instance.EmitSound(transform.position, 3.0f, explosionSoundType);
+            SoundManager.Instance.EmitSound(transform.position, 3.0f, _finalSoundType);
         }
 
         // 결과만 서버 RPC로 전송

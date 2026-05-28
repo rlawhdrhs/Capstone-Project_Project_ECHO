@@ -25,6 +25,9 @@ public class ChaserElectricShock : MonoBehaviour
     private InputAction leftGripAction;
     private InputAction rightGripAction;
 
+    [Header("디버그용 순정 테스트")]
+    public GameObject directTestPrefab;
+
     void Awake()
     {
         leftGripAction = new InputAction(binding: "<XRController>{LeftHand}/grip");
@@ -46,6 +49,27 @@ public class ChaserElectricShock : MonoBehaviour
     void Update()
     {
         HandleElectricShock();
+
+        // =============== [에디터 디버그용 치트키 추가] ===============
+        // 키보드 T 키를 누르면 양팔 벌리기 제스처를 무시하고 무조건 발사 함수를 실행합니다.
+        if (Input.GetKeyDown(KeyCode.T))
+    {
+        Debug.Log("⌨️ [치트키] 키보드 T 입력 감지! 포톤 우회하고 생으로 소환합니다.");
+
+        if (directTestPrefab != null)
+        {
+            // 포톤 RPC 안 거치고 유니티 순정 기능으로 즉시 소환
+            GameObject clone = Instantiate(directTestPrefab, transform.position, Quaternion.identity);
+            clone.transform.localScale = new Vector3(shockRadius * 2f, shockRadius * 2f, shockRadius * 2f);
+            
+            Debug.Log($"🔥 [성공] 하이라키 창에 {clone.name}이 생성되었습니다!");
+        }
+        else
+        {
+            Debug.LogError("❌ [에러] directTestPrefab 칸이 비어있습니다! 인스펙터에서 에셋을 넣어주세요.");
+        }
+    }
+        // ==========================================================
     }
 
     private void HandleElectricShock()
@@ -103,40 +127,56 @@ public class ChaserElectricShock : MonoBehaviour
 
     private void FireElectricShock(UnityEngine.XR.InputDevice leftDevice, UnityEngine.XR.InputDevice rightDevice)
     {
-        Debug.Log("⚡ [추격자] 전기 충격 모션 감지! 방출 시도 !!! ⚡");
+        Debug.Log("⚡ [추격자] 전기 충격 방출!");
+
+        // 1. 컨트롤러 진동 및 사운드
         if (leftDevice.isValid) leftDevice.SendHapticImpulse(0, 1.0f, 0.5f);
         if (rightDevice.isValid) rightDevice.SendHapticImpulse(0, 1.0f, 0.5f);
 
         if (SoundManager.Instance != null)
         {
-            // 내 위치(드론 위치)에서 1.5초간 지속되는 전기 충격음 프리펩 생성
             SoundManager.Instance.EmitSound(transform.position, 1.5f, SoundType.ElectricShock);
         }
 
+        SensorSynchronizer droneSync = null;
+
+        if (PossessionManager.Instance != null && PossessionManager.Instance.currentDrone != null)
+        {
+            droneSync = PossessionManager.Instance.currentDrone;
+        }
+
+        if (droneSync != null && droneSync.electricShockwavePrefab != null)
+        {
+            // 1. 내 화면 즉시 생성
+            GameObject localFX = Instantiate(droneSync.electricShockwavePrefab, transform.position, Quaternion.identity);
+            localFX.transform.localScale = new Vector3(shockRadius * 2f, shockRadius * 2f, shockRadius * 2f);
+            Destroy(localFX, 3.0f);
+
+            // 2. 항상 켜져있는 본체 스크립트를 통해 RPC 발사 (잠입자 화면 스크립트가 켜져있으므로 정상 수신)
+            droneSync.RPC_PlayShockwaveVFX_Global(transform.position, shockRadius);
+            Debug.Log("✨ 항상 켜져있는 본체 스크립트를 통해 VFX RPC 전달 완료!");
+        }
+        else
+        {
+            Debug.LogError("❌ [VFX 에러] 현재 조종 중인 드론에서 LaserDetector_Network를 찾을 수 없습니다!");
+        }
+
+        // 4. 잠입자 스턴 판정 로직
         if (NetworkManager.Instance != null && NetworkManager.Instance.InfiltratorObject != null)
         {
             float distanceToTarget = Vector3.Distance(transform.position, NetworkManager.Instance.InfiltratorObject.transform.position);
-
-            Debug.Log($"[레이더 디버그] 계산된 거리: {distanceToTarget}m (공격 범위: {shockRadius}m)");
-
             if (distanceToTarget <= shockRadius)
             {
-                // ★ 핵심 변경: 잠입자 오브젝트에서 네트워크 스크립트를 가져옵니다.
                 SoundEmitter_Network infiltratorSound = NetworkManager.Instance.InfiltratorObject.GetComponent<SoundEmitter_Network>();
-
                 if (infiltratorSound != null)
                 {
-                    // 아바타 고유의 NetworkBehaviour RPC를 직접 호출합니다!
                     infiltratorSound.RPC_RequestStunToMe(stunDuration);
-                    Debug.Log("Target [추격자] 잠입자 아바타에 직접 스턴 RPC 발사 완료!");
-                }
-                else
-                {
-                    Debug.LogError("❌ [에러] 잠입자 오브젝트에서 SoundEmitter_Network를 찾을 수 없습니다.");
+                    Debug.Log("🎯 잠입자 타격 성공! 스턴 RPC 발사 완료!");
                 }
             }
         }
 
+        // 상태 리셋
         currentChargeTime = 0f;
         isCharged = false;
     }

@@ -143,10 +143,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NetworkStickyBomb
   stickableLayers:
     serializedVersion: 2
+    m_Bits: 320
+  doorLayers:
+    serializedVersion: 2
     m_Bits: 8192
   explosionDelay: 3
   empRadius: 3
   explosionSoundType: 4
+  doorSoundType: 6
 --- !u!1001 &8993350205137151539
 PrefabInstance:
   m_ObjectHideFlags: 0

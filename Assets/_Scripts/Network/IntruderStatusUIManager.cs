@@ -122,18 +122,15 @@ public class IntruderStatusUIManager : MonoBehaviour
         if (stealthUIObj != null) stealthUIObj.SetActive(false);
     }
 
-    // ★ 발로란트 뇌진탕 스타일 시야 울렁거림 코루틴
     private IEnumerator ConcussionPulseRoutine()
     {
-        Color baseColor = stunVignetteImage.color;
-
+        if (stunVignetteImage != null)
+        {
+            Color baseColor = stunVignetteImage.color;
+            stunVignetteImage.color = baseColor;
+        }
         while (true)
         {
-            // Sin 함수를 이용하여 알파(투명도) 값을 0.4에서 0.8 사이로 부드럽고 불규칙하게 진동시킵니다.
-            float pulse = Mathf.PingPong(Time.time * 3f, 0.4f) + 0.4f;
-            baseColor.a = pulse;
-            stunVignetteImage.color = baseColor;
-
             yield return null;
         }
     }

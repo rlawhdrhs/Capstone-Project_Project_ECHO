@@ -58,7 +58,7 @@ public class PossessionManager : NetworkBehaviour
         }
     }
 
-    private void LateUpdate()
+    /*private void LateUpdate()
     {
         // 드론에 빙의한 상태이고, 해당 드론에 제한 구역(movementZone)이 설정되어 있을 때만 가동
         if (currentDrone != null && xrOrigin != null && currentDrone.movementZone != null && LocalVRRig.Instance?.hardwareHead != null)
@@ -85,13 +85,25 @@ public class PossessionManager : NetworkBehaviour
                 if (xrCC != null) xrCC.enabled = true;
             }
         }
-    }
+    }*/
 
     public void PossessDrone(SensorSynchronizer targetDrone)
     {
         if (targetDrone == null || myHumanAvatar == null || currentDrone != null) return;
 
+        if (NetworkGameManager.Instance != null && NetworkGameManager.Instance.CurrentMissionIndex == 0)
+        {
+            Debug.LogWarning("<color=red>⚠️ [빙의 실패] 첫 번째 미션(전력 복구)이 완료되기 전에는 드론에 빙의할 수 없습니다!</color>");
+            return; // 함수를 여기서 즉시 종료하여 텔레포트 및 RPC 실행을 막습니다.
+        }
+
         currentDrone = targetDrone;
+
+        if (targetDrone.localBoundaryWall != null)
+        {
+            targetDrone.localBoundaryWall.SetActive(true);
+            Debug.Log($"🧱 [로컬] {targetDrone.name}의 이동 제한 벽 활성화!");
+        }
 
         if (Runner.IsForward)
         {
@@ -120,6 +132,12 @@ public class PossessionManager : NetworkBehaviour
 
         SensorSynchronizer previousDrone = currentDrone;
         currentDrone = null;
+
+        if (previousDrone.localBoundaryWall != null)
+        {
+            previousDrone.localBoundaryWall.SetActive(false);
+            Debug.Log($"🔓 [로컬] {previousDrone.name}의 이동 제한 벽 해제!");
+        }
 
         myHumanAvatar.localFreeze = false;
         RPC_RequestReturn(myHumanAvatar.Object, previousDrone.Object, Runner.LocalPlayer, droneInitialPosition, droneInitialRotation);

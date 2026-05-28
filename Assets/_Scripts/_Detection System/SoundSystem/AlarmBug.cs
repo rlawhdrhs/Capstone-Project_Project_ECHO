@@ -509,16 +509,17 @@ public class AlarmBug : MonoBehaviour
 
         foreach (Renderer r in renderers)
         {
-            if (r == null)
-            {
-                continue;
-            }
+            if (r == null) continue;
 
             foreach (Material mat in r.materials)
             {
                 if (mat != null)
                 {
                     mat.color = targetColor;
+
+                    mat.EnableKeyword("_EMISSION");
+
+                    mat.SetColor("_EmissionColor", targetColor * 2.0f);
                 }
             }
         }

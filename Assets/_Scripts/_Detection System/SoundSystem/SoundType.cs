@@ -13,5 +13,6 @@ public enum SoundType
     IntruderReturnSound,
     DetectSound,
     RestorePowerSound,
-    ElectricShock
+    ElectricShock,
+    StealthFootstep
 }

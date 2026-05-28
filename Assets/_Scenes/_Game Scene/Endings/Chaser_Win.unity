@@ -221,6 +221,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 380741640049452345, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465398736149949670, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4129924989466341174, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -269,6 +277,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7329153011714900675, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733182336335084264, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8601686537568609618, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_Name
       value: Runaway_Origin
@@ -277,18 +293,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8805571871746293668, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9102737067035192405, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 192946383885204910, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847704149}
+    - targetCorrespondingSourceObject: {fileID: 192946383885204910, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 600185851}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
 --- !u!20 &7793093 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2855050447507787977, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+  m_PrefabInstance: {fileID: 7793092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7793094 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 192946383885204910, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
   m_PrefabInstance: {fileID: 7793092}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7793095 stripped
@@ -643,7 +674,7 @@ AudioSource:
   m_GameObject: {fileID: 45199106}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 721d3b5370c07834db0d8977eb3c35f3, type: 3}
   m_PlayOnAwake: 1
@@ -1361,6 +1392,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2705282918986374371, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
   m_PrefabInstance: {fileID: 888170798}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &156164906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156164907}
+  - component: {fileID: 156164908}
+  m_Layer: 0
+  m_Name: Acoustic Material
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156164907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156164906}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1932538580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &156164908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156164906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d733470c3e967144a2c25c362e4040b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticMaterial
+  properties: {fileID: 11400000, guid: 47dd462ca33ffd246971d0e4cb200426, type: 2}
+  hasCustomData: 0
+  customData:
+    absorption:
+      selection: 2147483647
+      points: []
+    transmission:
+      selection: 2147483647
+      points: []
+    scattering:
+      selection: 2147483647
+      points: []
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &165181992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,7 +3276,7 @@ AudioSource:
   m_GameObject: {fileID: 437796476}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d723484a263d1d1479f6b967ef3dab96, type: 3}
   m_PlayOnAwake: 1
@@ -3437,7 +3525,7 @@ AudioSource:
   m_GameObject: {fileID: 474427723}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -4643,6 +4731,1827 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &571227272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571227273}
+  - component: {fileID: 571227274}
+  m_Layer: 0
+  m_Name: Acoustic map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &571227273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571227272}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1932538580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &571227274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571227272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b764f28a53ab488bd80d19c0c167a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticMap
+  SceneGroup: {fileID: 0}
+  customPointsEnabled: 0
+  Flags: 10
+  ReflectionCount: 6
+  MinSpacing: 1
+  MaxSpacing: 10
+  HeadHeight: 1.5
+  MaxHeight: 3
+  gravityVector: {x: 0, y: -1, z: 0}
+  relativeFilePath: StreamingAssets/Acoustics/Scene_Test_Sound1.xramap
+  hash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  pointCount: 587
+  cachedPoints:
+  - -30.9375
+  - -1.25
+  - -116.5625
+  - -30.9375
+  - -1.25
+  - -110
+  - -30.9375
+  - -1.25
+  - -100
+  - -25
+  - -1.25
+  - -114.0625
+  - -25
+  - -1.4999998
+  - -105
+  - -25
+  - -1.25
+  - -90
+  - -30.9375
+  - -1.25
+  - -80
+  - -30.9375
+  - -1.25
+  - -70
+  - -30.9375
+  - -1.25
+  - -60
+  - -25
+  - -1.25
+  - -70
+  - -17.5
+  - -1.25
+  - -114.0625
+  - -15
+  - -1.4999998
+  - -105
+  - -10
+  - -1.25
+  - -114.0625
+  - -10
+  - -1.25
+  - -90
+  - -10
+  - -1.25
+  - -60
+  - -31.25
+  - 1.25
+  - -115
+  - -31.25
+  - 1.25
+  - -105
+  - -31.25
+  - 1.25
+  - -95
+  - -25
+  - 1.25
+  - -115
+  - -25
+  - 1.4999999
+  - -105
+  - -25
+  - 1.4999999
+  - -95
+  - -31.25
+  - 1.25
+  - -85
+  - -31.25
+  - 1.25
+  - -75
+  - -31.25
+  - 1.25
+  - -65
+  - -28.75
+  - 1.4999999
+  - -55
+  - -25
+  - 1.4999999
+  - -85
+  - -25
+  - 1.4999999
+  - -75
+  - -25
+  - 1.4999999
+  - -65
+  - -20
+  - 1.4999999
+  - -55
+  - -15
+  - 1.25
+  - -115
+  - -15
+  - 1.4999999
+  - -105
+  - -15
+  - 1.4999999
+  - -95
+  - -7.5
+  - 1.25
+  - -115
+  - -7.5
+  - 1.4999999
+  - -105
+  - -7.5
+  - 1.4999999
+  - -95
+  - -15
+  - 1.4999999
+  - -85
+  - -15
+  - 1.4999999
+  - -75
+  - -15
+  - 1.4999999
+  - -65
+  - -7.5
+  - 1.4999999
+  - -75
+  - -10
+  - 1.4999999
+  - -55
+  - -30.9375
+  - -1.25
+  - -45
+  - -30.9375
+  - -1.25
+  - -35
+  - -30.9375
+  - -1.25
+  - -25
+  - -25
+  - -1.25
+  - -50
+  - -25
+  - -1.25
+  - -30
+  - -30.9375
+  - -1.25
+  - -15
+  - -30.9375
+  - -1.25
+  - -5
+  - -30.9375
+  - -1.25
+  - 5
+  - -25
+  - -1.25
+  - -10
+  - -10
+  - -1.25
+  - -20
+  - -28.75
+  - 1.4999999
+  - -45
+  - -31.25
+  - 1.25
+  - -35
+  - -31.25
+  - 1.25
+  - -25
+  - -20
+  - 1.4999999
+  - -45
+  - -25
+  - 1.4999999
+  - -35
+  - -25
+  - 1.4999999
+  - -25
+  - -29.6875
+  - 1.25
+  - -15
+  - -29.6875
+  - 1.25
+  - -5
+  - -29.6875
+  - 1.25
+  - 5
+  - -25
+  - 1.25
+  - -15.625
+  - -22.8125
+  - 1.4999999
+  - -5
+  - -22.8125
+  - 1.4999999
+  - 5
+  - -15
+  - 1.4999999
+  - -35
+  - -15
+  - 1.4999999
+  - -25
+  - -10
+  - 1.4999999
+  - -45
+  - -15
+  - 1.25
+  - -15.625
+  - -15
+  - 1.4999999
+  - -5
+  - -15
+  - 1.4999999
+  - 5
+  - -6.875
+  - 1.25
+  - 1.875
+  - -7.1875
+  - 1.25
+  - 6.875
+  - -5
+  - -1.4999998
+  - -105
+  - 0
+  - -1.25
+  - -114.0625
+  - 5
+  - -1.4999998
+  - -105
+  - 5
+  - -1.25
+  - -90
+  - 5
+  - -1.25
+  - -70
+  - 10
+  - -1.25
+  - -114.0625
+  - 13.75
+  - -1.4999998
+  - -105
+  - 16.25
+  - -1.25
+  - -114.0625
+  - 13.75
+  - -1.4999998
+  - -95
+  - 13.75
+  - -1.4999998
+  - -85
+  - 13.75
+  - -1.4999998
+  - -75
+  - 13.75
+  - -1.4999998
+  - -65
+  - 13.75
+  - -1.4999998
+  - -55
+  - 0
+  - 1.25
+  - -115
+  - 0
+  - 1.4999999
+  - -105
+  - 0
+  - 1.4999999
+  - -95
+  - -5
+  - 1.4999999
+  - -85
+  - -5
+  - 1.4999999
+  - -65
+  - 0
+  - 1.4999999
+  - -75
+  - 5
+  - 1.4999999
+  - -85
+  - 0
+  - 1.4999999
+  - -55
+  - 5
+  - 1.4999999
+  - -65
+  - 7.5
+  - 1.4999999
+  - -105
+  - 10
+  - 1.25
+  - -115
+  - 10
+  - 1.4999999
+  - -95
+  - 17.5
+  - 1.25
+  - -115
+  - 15
+  - 1.4999999
+  - -105
+  - 17.5
+  - 1.25
+  - -95
+  - 10
+  - 1.4999999
+  - -75
+  - 7.5
+  - 1.4999999
+  - -55
+  - 15
+  - 1.4999999
+  - -85
+  - 17.5
+  - 1.25
+  - -75
+  - 15
+  - 1.4999999
+  - -65
+  - 15
+  - 1.4999999
+  - -55
+  - 5
+  - -1.25
+  - -50
+  - 5
+  - -1.25
+  - -30
+  - 5
+  - -1.25
+  - -10
+  - 13.75
+  - -1.4999998
+  - -45
+  - 13.75
+  - -1.4999998
+  - -35
+  - 13.75
+  - -1.4999998
+  - -25
+  - 13.75
+  - -1.4999998
+  - -15
+  - 13.75
+  - -1.4999998
+  - -5
+  - 13.75
+  - -1.4999998
+  - 5
+  - -5
+  - 1.4999999
+  - -35
+  - -5
+  - 1.4999999
+  - -25
+  - 0
+  - 1.4999999
+  - -45
+  - 5
+  - 1.4999999
+  - -35
+  - 2.5
+  - 1.4999999
+  - -25
+  - -5
+  - 1.25
+  - -15.625
+  - -5.9375
+  - 1.4999999
+  - -5
+  - -4.0625
+  - 1.25
+  - 5
+  - -1.25
+  - 1.25
+  - -8.125
+  - 5
+  - 1.25
+  - -15.625
+  - 3.125
+  - 1.4999999
+  - -5
+  - 3.125
+  - 1.4999999
+  - 5
+  - 10
+  - 1.4999999
+  - -45
+  - 10
+  - 1.4999999
+  - -25
+  - 17.5
+  - 1.25
+  - -45
+  - 15
+  - 1.4999999
+  - -35
+  - 17.5
+  - 1.25
+  - -25
+  - 9.375
+  - 1.25
+  - -12.5
+  - 7.8125
+  - 1.25
+  - -5
+  - 7.8125
+  - 1.25
+  - 5
+  - 15
+  - 1.4999999
+  - -15
+  - 15
+  - 1.4999999
+  - -5
+  - 15
+  - 1.4999999
+  - 5
+  - -30.9375
+  - 4.375
+  - -114.0625
+  - -30.9375
+  - 4.375
+  - -105
+  - -30.9375
+  - 4.375
+  - -95
+  - -25
+  - 4.375
+  - -114.0625
+  - -25
+  - 4.4999995
+  - -105
+  - -25
+  - 4.4999995
+  - -95
+  - -28.4375
+  - 4.4999995
+  - -75
+  - -25
+  - 4.4999995
+  - -85
+  - -20
+  - 4.4999995
+  - -75
+  - -25
+  - 4.4999995
+  - -65
+  - -25
+  - 4.4999995
+  - -55
+  - -17.5
+  - 4.4999995
+  - -105
+  - -15
+  - 4.375
+  - -114.0625
+  - -15
+  - 4.4999995
+  - -95
+  - -10
+  - 4.4999995
+  - -105
+  - -7.5
+  - 4.375
+  - -114.0625
+  - -7.5
+  - 4.4999995
+  - -95
+  - -15
+  - 4.4999995
+  - -85
+  - -17.5
+  - 4.4999995
+  - -65
+  - -15
+  - 4.4999995
+  - -55
+  - -10
+  - 4.4999995
+  - -75
+  - -10
+  - 4.4999995
+  - -65
+  - -31.25
+  - 8.125
+  - -115
+  - -31.25
+  - 8.125
+  - -105
+  - -31.25
+  - 8.125
+  - -95
+  - -25
+  - 8.125
+  - -115
+  - -25
+  - 8
+  - -105
+  - -25
+  - 8
+  - -95
+  - -31.25
+  - 8.125
+  - -85
+  - -28.75
+  - 8
+  - -75
+  - -31.25
+  - 8.125
+  - -65
+  - -31.25
+  - 8.125
+  - -55
+  - -25
+  - 8
+  - -85
+  - -20
+  - 8
+  - -75
+  - -25
+  - 8
+  - -65
+  - -25
+  - 8
+  - -55
+  - -15
+  - 8.125
+  - -115
+  - -15
+  - 8
+  - -105
+  - -15
+  - 8
+  - -95
+  - -7.5
+  - 8.125
+  - -115
+  - -15
+  - 8
+  - -85
+  - -15
+  - 8
+  - -65
+  - -15
+  - 8
+  - -55
+  - -10
+  - 8
+  - -75
+  - -28.4375
+  - 4.4999995
+  - -45
+  - -28.4375
+  - 4.4999995
+  - -25
+  - -20
+  - 4.4999995
+  - -45
+  - -25
+  - 4.4999995
+  - -35
+  - -20
+  - 4.4999995
+  - -25
+  - -30.9375
+  - 4.375
+  - 5
+  - -25
+  - 4.4999995
+  - 5
+  - -20
+  - 4.4999995
+  - -5
+  - -28.4375
+  - 4.5625
+  - -5
+  - -25
+  - 4.5625
+  - -15
+  - -15
+  - 4.4999995
+  - -35
+  - -10
+  - 4.4999995
+  - -45
+  - -10
+  - 4.4999995
+  - -25
+  - -7.5
+  - 4.4999995
+  - -35
+  - -15
+  - 4.4999995
+  - 5
+  - -12.5
+  - 4.4999995
+  - -5
+  - -15
+  - 4.5625
+  - -15
+  - -28.75
+  - 8
+  - -45
+  - -31.25
+  - 8.125
+  - -35
+  - -28.75
+  - 8
+  - -25
+  - -20
+  - 8
+  - -45
+  - -25
+  - 8
+  - -35
+  - -20
+  - 8
+  - -25
+  - -31.25
+  - 8.125
+  - -15
+  - -31.25
+  - 8.125
+  - -5
+  - -31.25
+  - 8.125
+  - 5
+  - -25
+  - 8
+  - -15
+  - -25
+  - 8
+  - -5
+  - -25
+  - 8
+  - 5
+  - -15
+  - 8
+  - -35
+  - -10
+  - 8
+  - -45
+  - -10
+  - 8
+  - -25
+  - -15
+  - 8
+  - -15
+  - -15
+  - 8
+  - -5
+  - -15
+  - 8
+  - 5
+  - -7.5
+  - 8
+  - -15
+  - 0
+  - 4.375
+  - -114.0625
+  - 0
+  - 4.4999995
+  - -105
+  - 0
+  - 4.4999995
+  - -95
+  - -5
+  - 4.4999995
+  - -85
+  - -5
+  - 4.4999995
+  - -55
+  - 0
+  - 4.4999995
+  - -75
+  - 2.5
+  - 4.4999995
+  - -85
+  - 0
+  - 4.4999995
+  - -65
+  - 5
+  - 4.4999995
+  - -55
+  - 10
+  - 4.375
+  - -114.0625
+  - 10
+  - 4.4999995
+  - -105
+  - 10
+  - 4.4999995
+  - -95
+  - 16.25
+  - 4.375
+  - -116.5625
+  - 16.25
+  - 4.375
+  - -110
+  - 16.25
+  - 4.375
+  - -102.5
+  - 16.25
+  - 4.375
+  - -95
+  - 10
+  - 4.4999995
+  - -85
+  - 10
+  - 4.4999995
+  - -75
+  - 10
+  - 4.4999995
+  - -65
+  - 16.25
+  - 4.375
+  - -85
+  - 16.25
+  - 4.375
+  - -75
+  - 13.75
+  - 4.4999995
+  - -55
+  - 16.25
+  - 4.375
+  - -65
+  - -5
+  - 8
+  - -105
+  - -5
+  - 8
+  - -95
+  - 0
+  - 8.125
+  - -115
+  - 5
+  - 8
+  - -105
+  - 5
+  - 8
+  - -95
+  - -5
+  - 8
+  - -85
+  - -5
+  - 8
+  - -65
+  - -5
+  - 8
+  - -55
+  - 0
+  - 8
+  - -75
+  - 5
+  - 8
+  - -85
+  - 5
+  - 8
+  - -65
+  - 5
+  - 8
+  - -55
+  - 10
+  - 8.125
+  - -115
+  - 17.5
+  - 8.125
+  - -115
+  - 15
+  - 8
+  - -105
+  - 15
+  - 8
+  - -95
+  - 10
+  - 8
+  - -75
+  - 15
+  - 8
+  - -85
+  - 17.5
+  - 8.125
+  - -75
+  - 15
+  - 8
+  - -65
+  - 15
+  - 8
+  - -55
+  - -2.5
+  - 4.4999995
+  - -45
+  - 5
+  - 4.4999995
+  - -45
+  - 0
+  - 4.4999995
+  - -35
+  - 0
+  - 4.4999995
+  - -25
+  - -5
+  - 4.4999995
+  - -5
+  - 5
+  - 4.4999995
+  - -5
+  - 5
+  - 4.4999995
+  - 5
+  - -5
+  - 4.5625
+  - -15
+  - -5
+  - 4.5625
+  - 5
+  - 5
+  - 4.5625
+  - -15
+  - 10
+  - 4.4999995
+  - -35
+  - 10
+  - 4.4999995
+  - -25
+  - 13.75
+  - 4.4999995
+  - -45
+  - 16.25
+  - 4.375
+  - -35
+  - 16.25
+  - 4.375
+  - -25
+  - 12.5
+  - 4.4999995
+  - -15
+  - 12.5
+  - 4.4999995
+  - -5
+  - 13.75
+  - 4.4999995
+  - 5
+  - -2.5
+  - 8
+  - -45
+  - -5
+  - 8
+  - -35
+  - -2.5
+  - 8
+  - -25
+  - 5
+  - 8
+  - -45
+  - 5
+  - 8
+  - -35
+  - 5
+  - 8
+  - -25
+  - -5
+  - 8
+  - -5
+  - -5
+  - 8
+  - 5
+  - 0
+  - 8
+  - -15
+  - 5
+  - 8
+  - -5
+  - 5
+  - 8
+  - 5
+  - 15
+  - 8
+  - -45
+  - 15
+  - 8
+  - -35
+  - 15
+  - 8
+  - -25
+  - 7.5
+  - 8
+  - -15
+  - 15
+  - 8
+  - -15
+  - 15
+  - 8
+  - -5
+  - 15
+  - 8
+  - 5
+  - -30.9375
+  - -1.25
+  - 15
+  - -30.9375
+  - -1.25
+  - 25
+  - -30.9375
+  - -1.25
+  - 32.5
+  - -25
+  - -1.25
+  - 10
+  - -25
+  - -1.25
+  - 30
+  - -30.9375
+  - -1.25
+  - 40
+  - -30.9375
+  - -1.25
+  - 60
+  - -25
+  - -1.25
+  - 50
+  - -10
+  - -1.25
+  - 20
+  - -10
+  - -1.25
+  - 60
+  - -29.6875
+  - 1.25
+  - 15
+  - -29.6875
+  - 1.25
+  - 25
+  - -31.25
+  - 1.25
+  - 35
+  - -27.5
+  - 1.25
+  - 27.1875
+  - -20
+  - 1.4999999
+  - 15
+  - -21.5625
+  - 1.25
+  - 17.5
+  - -25
+  - 1.4999999
+  - 35
+  - -20
+  - 1.25
+  - 27.1875
+  - -31.25
+  - 1.25
+  - 45
+  - -31.25
+  - 1.25
+  - 55
+  - -31.25
+  - 1.25
+  - 65
+  - -25
+  - 1.4999999
+  - 45
+  - -25
+  - 1.4999999
+  - 55
+  - -25
+  - 1.4999999
+  - 65
+  - -15
+  - 1.25
+  - 21.25
+  - -17.5
+  - 1.4999999
+  - 35
+  - -12.5
+  - 1.4999999
+  - 15
+  - -6.875
+  - 1.25
+  - 9.6875
+  - -7.5
+  - 1.25
+  - 21.25
+  - -12.5
+  - 1.25
+  - 27.1875
+  - -10
+  - 1.4999999
+  - 35
+  - -15
+  - 1.4999999
+  - 45
+  - -15
+  - 1.4999999
+  - 55
+  - -15
+  - 1.4999999
+  - 65
+  - -30.9375
+  - -1.25
+  - 70
+  - -30.9375
+  - -1.25
+  - 80
+  - -30.9375
+  - -1.25
+  - 100
+  - -25
+  - -1.25
+  - 70
+  - -25
+  - -1.25
+  - 90
+  - -30.9375
+  - -1.25
+  - 110
+  - -30.9375
+  - -1.25
+  - 120
+  - -25
+  - -1.25
+  - 110
+  - -25
+  - -1.4999998
+  - 125
+  - -10
+  - -1.25
+  - 100
+  - -17.5
+  - -1.25
+  - 130.625
+  - -15
+  - -1.4999998
+  - 125
+  - -7.5
+  - -1.25
+  - 130.625
+  - -31.25
+  - 1.25
+  - 75
+  - -28.75
+  - 1.4999999
+  - 85
+  - -28.75
+  - 1.4999999
+  - 95
+  - -25
+  - 1.4999999
+  - 75
+  - -20
+  - 1.4999999
+  - 85
+  - -20
+  - 1.4999999
+  - 95
+  - -31.25
+  - 1.25
+  - 105
+  - -31.25
+  - 1.25
+  - 115
+  - -28.75
+  - 1.4999999
+  - 125
+  - -28.75
+  - 1.25
+  - 131.25
+  - -25
+  - 1.4999999
+  - 105
+  - -25
+  - 1.4999999
+  - 115
+  - -20
+  - 1.4999999
+  - 125
+  - -20
+  - 1.25
+  - 131.25
+  - -15
+  - 1.4999999
+  - 75
+  - -10
+  - 1.4999999
+  - 85
+  - -12.5
+  - 1.4999999
+  - 95
+  - -17.5
+  - 1.4999999
+  - 105
+  - -15
+  - 1.4999999
+  - 115
+  - -10
+  - 1.4999999
+  - 105
+  - -7.5
+  - 1.4999999
+  - 115
+  - -10
+  - 1.4999999
+  - 125
+  - -10
+  - 1.25
+  - 131.25
+  - 5
+  - -1.25
+  - 10
+  - 5
+  - -1.25
+  - 30
+  - 5
+  - -1.25
+  - 50
+  - 13.75
+  - -1.4999998
+  - 15
+  - 13.75
+  - -1.4999998
+  - 25
+  - 13.75
+  - -1.4999998
+  - 35
+  - 13.75
+  - -1.4999998
+  - 45
+  - 13.75
+  - -1.4999998
+  - 55
+  - 13.75
+  - -1.4999998
+  - 65
+  - -5.9375
+  - 1.4999999
+  - 15
+  - -5
+  - 1.25
+  - 27.1875
+  - 3.125
+  - 1.4999999
+  - 15
+  - 3.125
+  - 1.25
+  - 21.25
+  - 0
+  - 1.4999999
+  - 35
+  - 5
+  - 1.25
+  - 27.1875
+  - -5
+  - 1.4999999
+  - 45
+  - -5
+  - 1.4999999
+  - 55
+  - -5
+  - 1.4999999
+  - 65
+  - 5
+  - 1.4999999
+  - 45
+  - 5
+  - 1.4999999
+  - 55
+  - 5
+  - 1.4999999
+  - 65
+  - 7.8125
+  - 1.25
+  - 15
+  - 7.8125
+  - 1.25
+  - 21.25
+  - 9.375
+  - 1.25
+  - 22.5
+  - 7.5
+  - 1.4999999
+  - 35
+  - 8.4375
+  - 1.25
+  - 24.375
+  - 15
+  - 1.4999999
+  - 15
+  - 15
+  - 1.4999999
+  - 25
+  - 15
+  - 1.4999999
+  - 35
+  - 15
+  - 1.4999999
+  - 45
+  - 15
+  - 1.4999999
+  - 55
+  - 15
+  - 1.4999999
+  - 65
+  - 5
+  - -1.25
+  - 70
+  - 5
+  - -1.25
+  - 90
+  - -5
+  - -1.4999998
+  - 125
+  - 5
+  - -1.25
+  - 110
+  - 5
+  - -1.4999998
+  - 125
+  - 13.75
+  - -1.4999998
+  - 75
+  - 13.75
+  - -1.4999998
+  - 85
+  - 13.75
+  - -1.4999998
+  - 95
+  - 13.75
+  - -1.4999998
+  - 105
+  - 13.75
+  - -1.4999998
+  - 115
+  - 12.5
+  - -1.25
+  - 130.625
+  - 13.75
+  - -1.4999998
+  - 125
+  - -5
+  - 1.4999999
+  - 75
+  - -5
+  - 1.4999999
+  - 95
+  - -2.5
+  - 1.4999999
+  - 85
+  - 5
+  - 1.4999999
+  - 75
+  - 5
+  - 1.4999999
+  - 85
+  - 5
+  - 1.4999999
+  - 95
+  - -2.5
+  - 1.4999999
+  - 125
+  - 0
+  - 1.4999999
+  - 105
+  - 0
+  - 1.4999999
+  - 115
+  - 0
+  - 1.25
+  - 131.25
+  - 5
+  - 1.4999999
+  - 125
+  - 15
+  - 1.4999999
+  - 75
+  - 15
+  - 1.4999999
+  - 85
+  - 15
+  - 1.4999999
+  - 95
+  - 7.5
+  - 1.4999999
+  - 105
+  - 7.5
+  - 1.4999999
+  - 115
+  - 7.5
+  - 1.25
+  - 131.25
+  - 15
+  - 1.4999999
+  - 105
+  - 15
+  - 1.4999999
+  - 115
+  - 15
+  - 1.4999999
+  - 125
+  - 15
+  - 1.25
+  - 131.25
+  - -30.9375
+  - 4.375
+  - 25
+  - -28.4375
+  - 4.4999995
+  - 35
+  - -20
+  - 4.4999995
+  - 15
+  - -20
+  - 4.4999995
+  - 35
+  - -28.4375
+  - 4.5625
+  - 15
+  - -25
+  - 4.5625
+  - 25
+  - -30.9375
+  - 4.375
+  - 55
+  - -28.4375
+  - 4.4999995
+  - 65
+  - -25
+  - 4.4999995
+  - 45
+  - -25
+  - 4.4999995
+  - 55
+  - -20
+  - 4.4999995
+  - 65
+  - -10
+  - 4.4999995
+  - 15
+  - -10
+  - 4.4999995
+  - 35
+  - -15
+  - 4.5625
+  - 25
+  - -17.5
+  - 4.4999995
+  - 45
+  - -15
+  - 4.4999995
+  - 55
+  - -10
+  - 4.4999995
+  - 45
+  - -10
+  - 4.4999995
+  - 65
+  - -7.5
+  - 4.4999995
+  - 55
+  - -28.75
+  - 8
+  - 15
+  - -31.25
+  - 8.125
+  - 25
+  - -28.75
+  - 8
+  - 35
+  - -20
+  - 8
+  - 15
+  - -25
+  - 8
+  - 25
+  - -20
+  - 8
+  - 35
+  - -31.25
+  - 8.125
+  - 45
+  - -31.25
+  - 8.125
+  - 55
+  - -31.25
+  - 8.125
+  - 65
+  - -25
+  - 8
+  - 45
+  - -25
+  - 8
+  - 55
+  - -25
+  - 8
+  - 65
+  - -15
+  - 8
+  - 25
+  - -10
+  - 8
+  - 15
+  - -10
+  - 8
+  - 35
+  - -15
+  - 8
+  - 45
+  - -15
+  - 8
+  - 55
+  - -15
+  - 8
+  - 65
+  - -7.5
+  - 8
+  - 55
+  - -30.9375
+  - 4.375
+  - 95
+  - -25
+  - 4.4999995
+  - 75
+  - -25
+  - 4.4999995
+  - 85
+  - -25
+  - 4.4999995
+  - 95
+  - -28.4375
+  - 4.4999995
+  - 105
+  - -30.9375
+  - 4.375
+  - 115
+  - -28.4375
+  - 4.4999995
+  - 125
+  - -25
+  - 4.4999995
+  - 115
+  - -20
+  - 4.4999995
+  - 105
+  - -20
+  - 4.4999995
+  - 125
+  - -17.5
+  - 4.4999995
+  - 75
+  - -15
+  - 4.4999995
+  - 85
+  - -15
+  - 4.4999995
+  - 95
+  - -10
+  - 4.4999995
+  - 75
+  - -7.5
+  - 4.4999995
+  - 95
+  - -15
+  - 4.4999995
+  - 115
+  - -10
+  - 4.4999995
+  - 105
+  - -7.5
+  - 4.4999995
+  - 115
+  - -12.5
+  - 4.4999995
+  - 125
+  - -31.25
+  - 8.125
+  - 75
+  - -28.75
+  - 8
+  - 85
+  - -28.75
+  - 8
+  - 95
+  - -25
+  - 8
+  - 75
+  - -20
+  - 8
+  - 85
+  - -20
+  - 8
+  - 95
+  - -28.75
+  - 8
+  - 105
+  - -28.75
+  - 8
+  - 115
+  - -31.25
+  - 8.125
+  - 125
+  - -31.25
+  - 8.125
+  - 131.25
+  - -20
+  - 8
+  - 105
+  - -20
+  - 8
+  - 115
+  - -25
+  - 8
+  - 125
+  - -25
+  - 8.125
+  - 131.25
+  - -17.5
+  - 8
+  - 75
+  - -10
+  - 8
+  - 75
+  - -10
+  - 8
+  - 85
+  - -10
+  - 8
+  - 95
+  - -15
+  - 8
+  - 125
+  - -15
+  - 8.125
+  - 131.25
+  - -10
+  - 8
+  - 105
+  - -10
+  - 8
+  - 115
+  - -5
+  - 4.0625
+  - 10
+  - 5
+  - 4.4999995
+  - 15
+  - 0
+  - 4.4999995
+  - 35
+  - -2.5
+  - 4.5625
+  - 15
+  - -5
+  - 4.5625
+  - 25
+  - 5
+  - 4.5625
+  - 25
+  - -2.5
+  - 4.4999995
+  - 45
+  - 5
+  - 4.4999995
+  - 45
+  - 0
+  - 4.4999995
+  - 55
+  - 0
+  - 4.4999995
+  - 65
+  - 7.5
+  - 4.4999995
+  - 35
+  - 12.5
+  - 4.4999995
+  - 15
+  - 12.5
+  - 4.4999995
+  - 25
+  - 13.75
+  - 4.4999995
+  - 35
+  - 7.5
+  - 4.4999995
+  - 65
+  - 10
+  - 4.4999995
+  - 55
+  - 13.75
+  - 4.4999995
+  - 45
+  - 13.75
+  - 4.4999995
+  - 65
+  - 16.25
+  - 4.375
+  - 55
+  - -5
+  - 8
+  - 25
+  - 0
+  - 8
+  - 15
+  - 0
+  - 8
+  - 35
+  - 5
+  - 8
+  - 25
+  - -5
+  - 8
+  - 45
+  - -5
+  - 8
+  - 65
+  - 5
+  - 8
+  - 45
+  - 0
+  - 8
+  - 55
+  - 5
+  - 8
+  - 65
+  - 7.5
+  - 8
+  - 15
+  - 7.5
+  - 8
+  - 35
+  - 15
+  - 8
+  - 15
+  - 15
+  - 8
+  - 25
+  - 15
+  - 8
+  - 35
+  - 10
+  - 8
+  - 55
+  - 15
+  - 8
+  - 45
+  - 17.5
+  - 8.125
+  - 55
+  - 15
+  - 8
+  - 65
+  - -5
+  - 4.4999995
+  - 85
+  - 0
+  - 4.4999995
+  - 75
+  - 0
+  - 4.4999995
+  - 95
+  - 5
+  - 4.4999995
+  - 85
+  - -2.5
+  - 4.4999995
+  - 105
+  - -5
+  - 4.4999995
+  - 125
+  - 0
+  - 4.4999995
+  - 115
+  - 5
+  - 4.4999995
+  - 105
+  - 1.25
+  - 4.375
+  - 130.625
+  - 5
+  - 4.4999995
+  - 125
+  - 7.5
+  - 4.4999995
+  - 75
+  - 7.5
+  - 4.4999995
+  - 95
+  - 13.75
+  - 4.4999995
+  - 75
+  - 13.75
+  - 4.4999995
+  - 85
+  - 13.75
+  - 4.4999995
+  - 95
+  - 7.5
+  - 4.4999995
+  - 115
+  - 11.25
+  - 4.375
+  - 130.625
+  - 13.75
+  - 4.4999995
+  - 105
+  - 13.75
+  - 4.4999995
+  - 115
+  - 13.75
+  - 4.4999995
+  - 125
+  - -2.5
+  - 8
+  - 85
+  - 0
+  - 8
+  - 75
+  - 0
+  - 8
+  - 95
+  - 5
+  - 8
+  - 85
+  - -5
+  - 8
+  - 125
+  - 0
+  - 8
+  - 105
+  - 0
+  - 8
+  - 115
+  - 5
+  - 8
+  - 125
+  - 5
+  - 8.125
+  - 131.25
+  - 7.5
+  - 8
+  - 75
+  - 7.5
+  - 8
+  - 95
+  - 15
+  - 8
+  - 75
+  - 15
+  - 8
+  - 85
+  - 15
+  - 8
+  - 95
+  - 7.5
+  - 8
+  - 105
+  - 7.5
+  - 8
+  - 115
+  - 15
+  - 8
+  - 105
+  - 15
+  - 8
+  - 115
+  - 15
+  - 8
+  - 125
+  - 15
+  - 8.125
+  - 131.25
+  hasCustomPoints: 0
 --- !u!1 &571307871
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,14 +7070,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600185850}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalRotation: {x: -0.12940954, y: 0.8365163, z: -0.22414392, w: 0.48296285}
+  m_LocalPosition: {x: 43.771152, y: 39.470234, z: 103.644424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1388045998}
   - {fileID: 474427724}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 7793094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &613306074
 PrefabInstance:
@@ -6928,14 +8837,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847704148}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalRotation: {x: -0.12940954, y: 0.8365163, z: -0.22414392, w: 0.48296285}
+  m_LocalPosition: {x: 43.771152, y: 39.470234, z: 103.644424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1228487330}
   - {fileID: 1691694240}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 7793094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &849819432
 GameObject:
@@ -8144,7 +10053,7 @@ AudioSource:
   m_GameObject: {fileID: 932176948}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -8316,7 +10225,7 @@ AudioSource:
   m_GameObject: {fileID: 959968877}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d723484a263d1d1479f6b967ef3dab96, type: 3}
   m_PlayOnAwake: 1
@@ -8914,7 +10823,7 @@ AudioSource:
   m_GameObject: {fileID: 1042903566}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d723484a263d1d1479f6b967ef3dab96, type: 3}
   m_PlayOnAwake: 1
@@ -10265,7 +12174,7 @@ AudioSource:
   m_GameObject: {fileID: 1214693690}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: afb38890e3f75c04894f21fa4cfcb3ec, type: 3}
   m_PlayOnAwake: 1
@@ -11227,7 +13136,7 @@ AudioSource:
   m_GameObject: {fileID: 1312058632}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d96cee5859aa2ee4a881905c8710e314, type: 3}
   m_PlayOnAwake: 1
@@ -11872,6 +13781,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8447562313176137941, guid: 5b02b76f7dfb9ff4bb417393faac62d4, type: 3}
   m_PrefabInstance: {fileID: 1404804309}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1405290619
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.19943
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.1358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_Name
+      value: XR Device Simulator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
 --- !u!1001 &1408759593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12985,7 +14955,7 @@ AudioSource:
   m_GameObject: {fileID: 1691694239}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -14141,7 +16111,7 @@ AudioSource:
   m_GameObject: {fileID: 1815593237}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -14639,7 +16609,7 @@ AudioSource:
   m_GameObject: {fileID: 1884597939}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c51e1520704561541b3a53d53a05b3ee, type: 3}
   m_PlayOnAwake: 1
@@ -15193,6 +17163,138 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 493860, guid: a73967be39a7cc74ca310e8a9d9de82d, type: 3}
   m_PrefabInstance: {fileID: 1910745270}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1932538579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -692915423507902409, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: clipTable.Array.data[2].maxDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: clipTable.Array.data[2].minDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: clipTable.Array.data[3].minDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[12].intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[12].soundType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[13].intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[13].soundType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[12].detectionRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[13].detectionRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015284516258738161, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 156164907}
+    - targetCorrespondingSourceObject: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 571227273}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+--- !u!4 &1932538580 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+  m_PrefabInstance: {fileID: 1932538579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1946600251
 GameObject:
   m_ObjectHideFlags: 0
@@ -15363,7 +17465,7 @@ AudioSource:
   m_GameObject: {fileID: 1955431801}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -15762,7 +17864,7 @@ AudioSource:
   m_GameObject: {fileID: 2010339544}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -16902,8 +19004,6 @@ SceneRoots:
   - {fileID: 932176949}
   - {fileID: 292316765}
   - {fileID: 2065131616}
-  - {fileID: 847704149}
-  - {fileID: 600185851}
   - {fileID: 1203666223}
   - {fileID: 1778886838}
   - {fileID: 2066413280}
@@ -16913,3 +19013,5 @@ SceneRoots:
   - {fileID: 309804756}
   - {fileID: 7793092}
   - {fileID: 846319061}
+  - {fileID: 1932538579}
+  - {fileID: 1405290619}

@@ -11,8 +11,8 @@ public class PlayerSprint : MonoBehaviour
     public DynamicMoveProvider moveProvider;
 
     [Header("Speed Settings (기본값)")]
-    public float walkSpeed = 2f;
-    public float sprintSpeed = 3f;
+    public float walkSpeed = 2.5f;
+    public float sprintSpeed = 4f;
 
     // ★ 역할별 속도가 초기화되었는지 확인하는 플래그
     private bool _isSpeedInitialized = false;
@@ -41,13 +41,13 @@ public class PlayerSprint : MonoBehaviour
             {
                 if (runner.IsServer) // 호스트 = 잠입자
                 {
-                    walkSpeed = 2.0f;
-                    sprintSpeed = 3.0f;
+                    walkSpeed = 2.5f;
+                    sprintSpeed = 4f;
                 }
                 else // 클라이언트 = 추격자
                 {
-                    walkSpeed = 2.5f;
-                    sprintSpeed = 2.5f;
+                    walkSpeed = 3f;
+                    sprintSpeed = 3f;
                 }
                 _isSpeedInitialized = true; // 초기화 완료
             }

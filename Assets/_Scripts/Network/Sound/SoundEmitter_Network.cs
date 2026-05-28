@@ -8,10 +8,14 @@ public class SoundEmitter_Network : NetworkBehaviour
     public float soundLifetime = 0.3f;
     public float footstepYOffset = -1f;
 
+    [Header("Meta XR Audio Acoustic Fix")]
+    public LayerMask groundLayers;
+    public float groundSurfaceOffset = 0.05f;
+    public float maxGroundCheckDistance = 1.8f;
+
     [Header("State")]
     public bool isRunning = false;
 
-    // ★ 추가: 발소리 오버라이드 상태를 기억할 변수들
     private bool isOverridden = false;
     private SoundType overriddenSoundType;
 
@@ -48,23 +52,23 @@ public class SoundEmitter_Network : NetworkBehaviour
         {
             Vector3 currentPosition = transform.position;
 
-            if (StealthDetector.Instance != null && StealthDetector.Instance.isStealthMode)
-            {
-                accumulatedDistance = 0f;
-                lastPosition = currentPosition;
-                return;
-            }
-
             float movedDistance = Vector3.Distance(currentPosition, lastPosition);
 
             if (movedDistance > 0.001f)
             {
                 accumulatedDistance += movedDistance;
 
-                while (accumulatedDistance >= stepDistance)
+
+                float currentStepDistance = stepDistance;
+                if (StealthDetector.Instance != null && StealthDetector.Instance.isStealthMode)
+                {
+                    currentStepDistance = stepDistance;
+                }
+
+                while (accumulatedDistance >= currentStepDistance)
                 {
                     EmitFootstep(currentPosition);
-                    accumulatedDistance -= stepDistance;
+                    accumulatedDistance -= currentStepDistance;
                 }
             }
 
@@ -76,23 +80,36 @@ public class SoundEmitter_Network : NetworkBehaviour
     {
         SoundType soundType;
 
-        // ★ 변경: 만약 특정 구역(유리, 물 위 등)에 들어와서 소리가 오버라이드 되었다면 그 소리를 우선 사용
         if (isOverridden)
         {
             soundType = overriddenSoundType;
+        }
+        else if (StealthDetector.Instance != null && StealthDetector.Instance.isStealthMode)
+        {
+            soundType = SoundType.StealthFootstep;
         }
         else
         {
             soundType = isRunning ? SoundType.RunFootstep : SoundType.WalkFootstep;
         }
 
-        Vector3 soundPosition = currentPosition + Vector3.up * footstepYOffset;
+        Vector3 soundPosition;
 
-        // RPC를 호출하여 나와 상대방 모두에게 소리를 내라고 명령합니다.
+        Vector3 rayStart = currentPosition + Vector3.up * 0.1f;
+
+        if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit hit, maxGroundCheckDistance, groundLayers, QueryTriggerInteraction.Collide))
+        {
+            soundPosition = hit.point + Vector3.up * groundSurfaceOffset;
+        }
+        else
+        {
+            soundPosition = currentPosition + Vector3.up * footstepYOffset;
+            Debug.LogWarning($"[SoundEmitter] 바닥 레이어 감지 실패! 백업 오프셋 위치로 소리를 생성합니다: {soundPosition}");
+        }
+
         RPC_EmitSound(soundPosition, soundLifetime, soundType);
     }
 
-    // ★ 추가: 외부 구역(Trigger)에서 발소리를 변경하기 위해 호출할 함수들
     public void SetFootstepOverride(SoundType type)
     {
         isOverridden = true;

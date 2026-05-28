@@ -2511,7 +2511,8 @@ MonoBehaviour:
   SortKey: 3685257049
   ObjectInterest: 1
   Flags: 262145
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 7869182351770629978}
   NetworkedBehaviours:
   - {fileID: 4481659541458636648}
   - {fileID: 1788966569660105352}
@@ -2631,6 +2632,11 @@ MonoBehaviour:
   stepDistance: 0.8
   soundLifetime: 0.3
   footstepYOffset: -1
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 268435456
+  groundSurfaceOffset: 0.5
+  maxGroundCheckDistance: 1.8
   isRunning: 0
 --- !u!114 &-6644707239407579600
 MonoBehaviour:
@@ -3158,13 +3164,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 78.839
       objectReference: {fileID: 0}
+    - target: {fileID: 872629884839528725, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
+      propertyPath: Flags
+      value: 262145
+      objectReference: {fileID: 0}
+    - target: {fileID: 872629884839528725, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
+      propertyPath: SortKey
+      value: 1499391731
+      objectReference: {fileID: 0}
+    - target: {fileID: 872629884839528725, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 872629884839528725, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2901585754840571542}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
+--- !u!114 &2901585754840571542 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5290681971701489881, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
+  m_PrefabInstance: {fileID: 7001065412415700559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9514ce5f601bf4cb14fe4de162da84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashlightVisibilityController
 --- !u!4 &7005418296439975579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4777606630871252, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
   m_PrefabInstance: {fileID: 7001065412415700559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7869182351770629978 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 872629884839528725, guid: 86cfe402426d8ab4593d4f858c3e21d3, type: 3}
+  m_PrefabInstance: {fileID: 7001065412415700559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
