@@ -25660,7 +25660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448863544825560127, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8986208470805477751, guid: 7c23f3949abc44d4f99c1a011f9d9e16, type: 3}
       propertyPath: m_LocalPosition.x
@@ -115213,6 +115213,7 @@ MonoBehaviour:
   progressText: {fileID: 32300610}
   timerText: {fileID: 437331303}
   minimapObject: {fileID: 0}
+  stealthModeUI: {fileID: 0}
 --- !u!114 &793107504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115225,9 +115226,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddabb5f974cbf5e4d90f9ea5a359f4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntruderDetectedUI
+  stunUIObj: {fileID: 0}
+  stunVignetteImage: {fileID: 0}
+  tinnitusAudioSource: {fileID: 0}
   warningTextObj: {fileID: 219427127}
   redVignetteObj: {fileID: 559051253}
   blinkSpeed: 0.2
+  stealthUIObj: {fileID: 0}
+  mission1StatusText: {fileID: 0}
+  mission2StatusText: {fileID: 0}
+  mission3StatusText: {fileID: 0}
+  mission2Slider: {fileID: 0}
+  mission2PercentText: {fileID: 0}
+  soundDetectionText: {fileID: 0}
 --- !u!1001 &793570925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144941,7 +144952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1002377311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152010,7 +152021,6 @@ MonoBehaviour:
   exitPoint: {fileID: 63998264}
   moveTime: 3
   whiteFadeImage: {fileID: 1456054588}
-  endingSceneName: EndingScene
 --- !u!114 &1042587225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218668,6 +218678,8 @@ MonoBehaviour:
   missionText: {fileID: 1106167499}
   progressText: {fileID: 32300610}
   timerText: {fileID: 437331303}
+  minimapObject: {fileID: 0}
+  stealthModeUI: {fileID: 0}
 --- !u!1001 &1489295053
 PrefabInstance:
   m_ObjectHideFlags: 0
