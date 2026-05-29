@@ -20,7 +20,12 @@ public class RunawayStatus : MonoBehaviour
         if (moveProvider != null)
         {
             Debug.Log($"😵 [생존자] 으악! 감전되었습니다! {duration}초 동안 이동 불가!");
-            
+
+            if (IntruderStatusUIManager.Instance != null)
+            {
+                IntruderStatusUIManager.Instance.SetStunStatus(true);
+            }
+
             // 조이스틱 이동 기능을 담당하는 컴포넌트를 강제로 꺼버림 (발 묶기)
             moveProvider.enabled = false; 
             
@@ -28,7 +33,13 @@ public class RunawayStatus : MonoBehaviour
             yield return new WaitForSeconds(duration); 
             
             // 대기 시간이 끝나면 이동 기능을 다시 켜줌
-            moveProvider.enabled = true; 
+            moveProvider.enabled = true;
+
+            if (IntruderStatusUIManager.Instance != null)
+            {
+                IntruderStatusUIManager.Instance.SetStunStatus(false);
+            }
+
             Debug.Log("🏃 [생존자] 기절이 풀렸습니다! 다시 도망칩니다!");
         }
         else

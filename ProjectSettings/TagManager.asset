@@ -52,15 +52,15 @@ TagManager:
   - Chaser
   - Overlay UI
   - MissionLight
-  - 
+  - Grabbable
   - ExitDoor
-  - 
+  - Sensor
   - ButtonI
   - ButtonC
   - LeverOnly
-  - 
-  - 
-  - 
+  - Fuse
+  - PlayerHand
+  - Ground
   - 
   - 
   - 

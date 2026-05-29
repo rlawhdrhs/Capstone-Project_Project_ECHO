@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Scenes/_Game Scene/3.Main_Door.unity.meta
+guid: 204aba47b0dbbb646afbebc8babb8d8b
+========
 guid: dbc8d4b1f5ef77645ad0eedf636cd1cd
+>>>>>>>> origin/develop:Assets/_Scenes/_Test Scene/SoundSettings_Test.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

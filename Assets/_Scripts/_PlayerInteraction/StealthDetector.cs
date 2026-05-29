@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class StealthDetector : MonoBehaviour
 {
+    public static StealthDetector Instance { get; private set; }
+
     [Header("참조 설정")]
     public Transform mainCamera; // Main Camera를 여기에 넣으세요.
     public CharacterController characterController; // XR Origin을 여기에 넣으세요.
@@ -11,6 +13,11 @@ public class StealthDetector : MonoBehaviour
     
     [Header("상태 (확인용)")]
     public bool isStealthMode = false;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
 
     void Update()
     {

@@ -4464,6 +4464,125 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &147403798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 147403802}
+  - component: {fileID: 147403801}
+  - component: {fileID: 147403800}
+  - component: {fileID: 147403799}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &147403799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147403798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab68ce6587aab0146b8dabefbd806791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.UI.XRUIInputModule
+  m_SendPointerHoverToParent: 1
+  m_ClickSpeed: 0.3
+  m_MoveDeadzone: 0.6
+  m_RepeatDelay: 0.5
+  m_RepeatRate: 0.1
+  m_TrackedDeviceDragThresholdMultiplier: 2
+  m_TrackedScrollDeltaMultiplier: 5
+  m_BypassUIToolkitEvents: 0
+  m_ActiveInputMode: 0
+  m_EnableXRInput: 1
+  m_EnableMouseInput: 1
+  m_EnableTouchInput: 1
+  m_EnableGamepadInput: 1
+  m_EnableJoystickInput: 1
+  m_PointAction: {fileID: 2869410428622933342, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_LeftClickAction: {fileID: 1855836014308820768, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_MiddleClickAction: {fileID: -6289560987278519447, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RightClickAction: {fileID: -2562941478296515153, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ScrollWheelAction: {fileID: 0}
+  m_NavigateAction: {fileID: 0}
+  m_SubmitAction: {fileID: 0}
+  m_CancelAction: {fileID: 0}
+  m_EnableBuiltinActionsAsFallback: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+--- !u!114 &147403800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147403798}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
+--- !u!114 &147403801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147403798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &147403802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147403798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &149432289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5989,7 +6108,7 @@ AudioSource:
   m_GameObject: {fileID: 205340860}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0db1b95ac56ac7b4b836fbf94813f2c1, type: 3}
   m_PlayOnAwake: 1
@@ -6667,7 +6786,7 @@ AudioSource:
   m_GameObject: {fileID: 267841377}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -6789,7 +6908,7 @@ AudioSource:
   m_GameObject: {fileID: 274959636}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -8100,7 +8219,7 @@ AudioSource:
   m_GameObject: {fileID: 318411469}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d723484a263d1d1479f6b967ef3dab96, type: 3}
   m_PlayOnAwake: 1
@@ -11506,7 +11625,7 @@ AudioSource:
   m_GameObject: {fileID: 474427723}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -13270,7 +13389,7 @@ AudioSource:
   m_GameObject: {fileID: 547013778}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -14159,7 +14278,7 @@ AudioSource:
   m_GameObject: {fileID: 596365110}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -14555,14 +14674,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600185850}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalRotation: {x: -0.12940954, y: 0.8365163, z: -0.22414392, w: 0.48296285}
+  m_LocalPosition: {x: 43.771152, y: 39.470234, z: 103.644424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1388045998}
   - {fileID: 474427724}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1499639217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &602982846
 PrefabInstance:
@@ -15284,7 +15403,7 @@ AudioSource:
   m_GameObject: {fileID: 617005803}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -16376,7 +16495,7 @@ AudioSource:
   m_GameObject: {fileID: 694956620}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -16629,7 +16748,7 @@ AudioSource:
   m_GameObject: {fileID: 704260862}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -16751,7 +16870,7 @@ AudioSource:
   m_GameObject: {fileID: 704333178}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -17163,7 +17282,7 @@ AudioSource:
   m_GameObject: {fileID: 711604173}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -18627,7 +18746,7 @@ AudioSource:
   m_GameObject: {fileID: 762469916}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c51e1520704561541b3a53d53a05b3ee, type: 3}
   m_PlayOnAwake: 1
@@ -20426,14 +20545,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847704148}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalRotation: {x: -0.12940954, y: 0.8365163, z: -0.22414392, w: 0.48296285}
+  m_LocalPosition: {x: 43.771152, y: 39.470234, z: 103.644424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1228487330}
   - {fileID: 1691694240}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1499639217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855935215
 GameObject:
@@ -20653,7 +20772,7 @@ AudioSource:
   m_GameObject: {fileID: 860961375}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -22749,7 +22868,7 @@ AudioSource:
   m_GameObject: {fileID: 949118822}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 447e97f44e7d0fd4eb6ddec82c319992, type: 3}
   m_PlayOnAwake: 1
@@ -23761,7 +23880,7 @@ AudioSource:
   m_GameObject: {fileID: 976156926}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -24141,7 +24260,7 @@ AudioSource:
   m_GameObject: {fileID: 983043592}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -24244,6 +24363,1827 @@ MonoBehaviour:
   Delay: 1
   MaximumStress: 0.6
   Range: 45
+--- !u!1 &987702363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987702364}
+  - component: {fileID: 987702365}
+  m_Layer: 0
+  m_Name: Acoustic map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &987702364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987702363}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2109929830}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &987702365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987702363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b764f28a53ab488bd80d19c0c167a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticMap
+  SceneGroup: {fileID: 0}
+  customPointsEnabled: 0
+  Flags: 10
+  ReflectionCount: 6
+  MinSpacing: 1
+  MaxSpacing: 10
+  HeadHeight: 1.5
+  MaxHeight: 3
+  gravityVector: {x: 0, y: -1, z: 0}
+  relativeFilePath: StreamingAssets/Acoustics/Scene_Test_Sound1.xramap
+  hash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  pointCount: 587
+  cachedPoints:
+  - -30.9375
+  - -1.25
+  - -116.5625
+  - -30.9375
+  - -1.25
+  - -110
+  - -30.9375
+  - -1.25
+  - -100
+  - -25
+  - -1.25
+  - -114.0625
+  - -25
+  - -1.4999998
+  - -105
+  - -25
+  - -1.25
+  - -90
+  - -30.9375
+  - -1.25
+  - -80
+  - -30.9375
+  - -1.25
+  - -70
+  - -30.9375
+  - -1.25
+  - -60
+  - -25
+  - -1.25
+  - -70
+  - -17.5
+  - -1.25
+  - -114.0625
+  - -15
+  - -1.4999998
+  - -105
+  - -10
+  - -1.25
+  - -114.0625
+  - -10
+  - -1.25
+  - -90
+  - -10
+  - -1.25
+  - -60
+  - -31.25
+  - 1.25
+  - -115
+  - -31.25
+  - 1.25
+  - -105
+  - -31.25
+  - 1.25
+  - -95
+  - -25
+  - 1.25
+  - -115
+  - -25
+  - 1.4999999
+  - -105
+  - -25
+  - 1.4999999
+  - -95
+  - -31.25
+  - 1.25
+  - -85
+  - -31.25
+  - 1.25
+  - -75
+  - -31.25
+  - 1.25
+  - -65
+  - -28.75
+  - 1.4999999
+  - -55
+  - -25
+  - 1.4999999
+  - -85
+  - -25
+  - 1.4999999
+  - -75
+  - -25
+  - 1.4999999
+  - -65
+  - -20
+  - 1.4999999
+  - -55
+  - -15
+  - 1.25
+  - -115
+  - -15
+  - 1.4999999
+  - -105
+  - -15
+  - 1.4999999
+  - -95
+  - -7.5
+  - 1.25
+  - -115
+  - -7.5
+  - 1.4999999
+  - -105
+  - -7.5
+  - 1.4999999
+  - -95
+  - -15
+  - 1.4999999
+  - -85
+  - -15
+  - 1.4999999
+  - -75
+  - -15
+  - 1.4999999
+  - -65
+  - -7.5
+  - 1.4999999
+  - -75
+  - -10
+  - 1.4999999
+  - -55
+  - -30.9375
+  - -1.25
+  - -45
+  - -30.9375
+  - -1.25
+  - -35
+  - -30.9375
+  - -1.25
+  - -25
+  - -25
+  - -1.25
+  - -50
+  - -25
+  - -1.25
+  - -30
+  - -30.9375
+  - -1.25
+  - -15
+  - -30.9375
+  - -1.25
+  - -5
+  - -30.9375
+  - -1.25
+  - 5
+  - -25
+  - -1.25
+  - -10
+  - -10
+  - -1.25
+  - -20
+  - -28.75
+  - 1.4999999
+  - -45
+  - -31.25
+  - 1.25
+  - -35
+  - -31.25
+  - 1.25
+  - -25
+  - -20
+  - 1.4999999
+  - -45
+  - -25
+  - 1.4999999
+  - -35
+  - -25
+  - 1.4999999
+  - -25
+  - -29.6875
+  - 1.25
+  - -15
+  - -29.6875
+  - 1.25
+  - -5
+  - -29.6875
+  - 1.25
+  - 5
+  - -25
+  - 1.25
+  - -15.625
+  - -22.8125
+  - 1.4999999
+  - -5
+  - -22.8125
+  - 1.4999999
+  - 5
+  - -15
+  - 1.4999999
+  - -35
+  - -15
+  - 1.4999999
+  - -25
+  - -10
+  - 1.4999999
+  - -45
+  - -15
+  - 1.25
+  - -15.625
+  - -15
+  - 1.4999999
+  - -5
+  - -15
+  - 1.4999999
+  - 5
+  - -6.875
+  - 1.25
+  - 1.875
+  - -7.1875
+  - 1.25
+  - 6.875
+  - -5
+  - -1.4999998
+  - -105
+  - 0
+  - -1.25
+  - -114.0625
+  - 5
+  - -1.4999998
+  - -105
+  - 5
+  - -1.25
+  - -90
+  - 5
+  - -1.25
+  - -70
+  - 10
+  - -1.25
+  - -114.0625
+  - 13.75
+  - -1.4999998
+  - -105
+  - 16.25
+  - -1.25
+  - -114.0625
+  - 13.75
+  - -1.4999998
+  - -95
+  - 13.75
+  - -1.4999998
+  - -85
+  - 13.75
+  - -1.4999998
+  - -75
+  - 13.75
+  - -1.4999998
+  - -65
+  - 13.75
+  - -1.4999998
+  - -55
+  - 0
+  - 1.25
+  - -115
+  - 0
+  - 1.4999999
+  - -105
+  - 0
+  - 1.4999999
+  - -95
+  - -5
+  - 1.4999999
+  - -85
+  - -5
+  - 1.4999999
+  - -65
+  - 0
+  - 1.4999999
+  - -75
+  - 5
+  - 1.4999999
+  - -85
+  - 0
+  - 1.4999999
+  - -55
+  - 5
+  - 1.4999999
+  - -65
+  - 7.5
+  - 1.4999999
+  - -105
+  - 10
+  - 1.25
+  - -115
+  - 10
+  - 1.4999999
+  - -95
+  - 17.5
+  - 1.25
+  - -115
+  - 15
+  - 1.4999999
+  - -105
+  - 17.5
+  - 1.25
+  - -95
+  - 10
+  - 1.4999999
+  - -75
+  - 7.5
+  - 1.4999999
+  - -55
+  - 15
+  - 1.4999999
+  - -85
+  - 17.5
+  - 1.25
+  - -75
+  - 15
+  - 1.4999999
+  - -65
+  - 15
+  - 1.4999999
+  - -55
+  - 5
+  - -1.25
+  - -50
+  - 5
+  - -1.25
+  - -30
+  - 5
+  - -1.25
+  - -10
+  - 13.75
+  - -1.4999998
+  - -45
+  - 13.75
+  - -1.4999998
+  - -35
+  - 13.75
+  - -1.4999998
+  - -25
+  - 13.75
+  - -1.4999998
+  - -15
+  - 13.75
+  - -1.4999998
+  - -5
+  - 13.75
+  - -1.4999998
+  - 5
+  - -5
+  - 1.4999999
+  - -35
+  - -5
+  - 1.4999999
+  - -25
+  - 0
+  - 1.4999999
+  - -45
+  - 5
+  - 1.4999999
+  - -35
+  - 2.5
+  - 1.4999999
+  - -25
+  - -5
+  - 1.25
+  - -15.625
+  - -5.9375
+  - 1.4999999
+  - -5
+  - -4.0625
+  - 1.25
+  - 5
+  - -1.25
+  - 1.25
+  - -8.125
+  - 5
+  - 1.25
+  - -15.625
+  - 3.125
+  - 1.4999999
+  - -5
+  - 3.125
+  - 1.4999999
+  - 5
+  - 10
+  - 1.4999999
+  - -45
+  - 10
+  - 1.4999999
+  - -25
+  - 17.5
+  - 1.25
+  - -45
+  - 15
+  - 1.4999999
+  - -35
+  - 17.5
+  - 1.25
+  - -25
+  - 9.375
+  - 1.25
+  - -12.5
+  - 7.8125
+  - 1.25
+  - -5
+  - 7.8125
+  - 1.25
+  - 5
+  - 15
+  - 1.4999999
+  - -15
+  - 15
+  - 1.4999999
+  - -5
+  - 15
+  - 1.4999999
+  - 5
+  - -30.9375
+  - 4.375
+  - -114.0625
+  - -30.9375
+  - 4.375
+  - -105
+  - -30.9375
+  - 4.375
+  - -95
+  - -25
+  - 4.375
+  - -114.0625
+  - -25
+  - 4.4999995
+  - -105
+  - -25
+  - 4.4999995
+  - -95
+  - -28.4375
+  - 4.4999995
+  - -75
+  - -25
+  - 4.4999995
+  - -85
+  - -20
+  - 4.4999995
+  - -75
+  - -25
+  - 4.4999995
+  - -65
+  - -25
+  - 4.4999995
+  - -55
+  - -17.5
+  - 4.4999995
+  - -105
+  - -15
+  - 4.375
+  - -114.0625
+  - -15
+  - 4.4999995
+  - -95
+  - -10
+  - 4.4999995
+  - -105
+  - -7.5
+  - 4.375
+  - -114.0625
+  - -7.5
+  - 4.4999995
+  - -95
+  - -15
+  - 4.4999995
+  - -85
+  - -17.5
+  - 4.4999995
+  - -65
+  - -15
+  - 4.4999995
+  - -55
+  - -10
+  - 4.4999995
+  - -75
+  - -10
+  - 4.4999995
+  - -65
+  - -31.25
+  - 8.125
+  - -115
+  - -31.25
+  - 8.125
+  - -105
+  - -31.25
+  - 8.125
+  - -95
+  - -25
+  - 8.125
+  - -115
+  - -25
+  - 8
+  - -105
+  - -25
+  - 8
+  - -95
+  - -31.25
+  - 8.125
+  - -85
+  - -28.75
+  - 8
+  - -75
+  - -31.25
+  - 8.125
+  - -65
+  - -31.25
+  - 8.125
+  - -55
+  - -25
+  - 8
+  - -85
+  - -20
+  - 8
+  - -75
+  - -25
+  - 8
+  - -65
+  - -25
+  - 8
+  - -55
+  - -15
+  - 8.125
+  - -115
+  - -15
+  - 8
+  - -105
+  - -15
+  - 8
+  - -95
+  - -7.5
+  - 8.125
+  - -115
+  - -15
+  - 8
+  - -85
+  - -15
+  - 8
+  - -65
+  - -15
+  - 8
+  - -55
+  - -10
+  - 8
+  - -75
+  - -28.4375
+  - 4.4999995
+  - -45
+  - -28.4375
+  - 4.4999995
+  - -25
+  - -20
+  - 4.4999995
+  - -45
+  - -25
+  - 4.4999995
+  - -35
+  - -20
+  - 4.4999995
+  - -25
+  - -30.9375
+  - 4.375
+  - 5
+  - -25
+  - 4.4999995
+  - 5
+  - -20
+  - 4.4999995
+  - -5
+  - -28.4375
+  - 4.5625
+  - -5
+  - -25
+  - 4.5625
+  - -15
+  - -15
+  - 4.4999995
+  - -35
+  - -10
+  - 4.4999995
+  - -45
+  - -10
+  - 4.4999995
+  - -25
+  - -7.5
+  - 4.4999995
+  - -35
+  - -15
+  - 4.4999995
+  - 5
+  - -12.5
+  - 4.4999995
+  - -5
+  - -15
+  - 4.5625
+  - -15
+  - -28.75
+  - 8
+  - -45
+  - -31.25
+  - 8.125
+  - -35
+  - -28.75
+  - 8
+  - -25
+  - -20
+  - 8
+  - -45
+  - -25
+  - 8
+  - -35
+  - -20
+  - 8
+  - -25
+  - -31.25
+  - 8.125
+  - -15
+  - -31.25
+  - 8.125
+  - -5
+  - -31.25
+  - 8.125
+  - 5
+  - -25
+  - 8
+  - -15
+  - -25
+  - 8
+  - -5
+  - -25
+  - 8
+  - 5
+  - -15
+  - 8
+  - -35
+  - -10
+  - 8
+  - -45
+  - -10
+  - 8
+  - -25
+  - -15
+  - 8
+  - -15
+  - -15
+  - 8
+  - -5
+  - -15
+  - 8
+  - 5
+  - -7.5
+  - 8
+  - -15
+  - 0
+  - 4.375
+  - -114.0625
+  - 0
+  - 4.4999995
+  - -105
+  - 0
+  - 4.4999995
+  - -95
+  - -5
+  - 4.4999995
+  - -85
+  - -5
+  - 4.4999995
+  - -55
+  - 0
+  - 4.4999995
+  - -75
+  - 2.5
+  - 4.4999995
+  - -85
+  - 0
+  - 4.4999995
+  - -65
+  - 5
+  - 4.4999995
+  - -55
+  - 10
+  - 4.375
+  - -114.0625
+  - 10
+  - 4.4999995
+  - -105
+  - 10
+  - 4.4999995
+  - -95
+  - 16.25
+  - 4.375
+  - -116.5625
+  - 16.25
+  - 4.375
+  - -110
+  - 16.25
+  - 4.375
+  - -102.5
+  - 16.25
+  - 4.375
+  - -95
+  - 10
+  - 4.4999995
+  - -85
+  - 10
+  - 4.4999995
+  - -75
+  - 10
+  - 4.4999995
+  - -65
+  - 16.25
+  - 4.375
+  - -85
+  - 16.25
+  - 4.375
+  - -75
+  - 13.75
+  - 4.4999995
+  - -55
+  - 16.25
+  - 4.375
+  - -65
+  - -5
+  - 8
+  - -105
+  - -5
+  - 8
+  - -95
+  - 0
+  - 8.125
+  - -115
+  - 5
+  - 8
+  - -105
+  - 5
+  - 8
+  - -95
+  - -5
+  - 8
+  - -85
+  - -5
+  - 8
+  - -65
+  - -5
+  - 8
+  - -55
+  - 0
+  - 8
+  - -75
+  - 5
+  - 8
+  - -85
+  - 5
+  - 8
+  - -65
+  - 5
+  - 8
+  - -55
+  - 10
+  - 8.125
+  - -115
+  - 17.5
+  - 8.125
+  - -115
+  - 15
+  - 8
+  - -105
+  - 15
+  - 8
+  - -95
+  - 10
+  - 8
+  - -75
+  - 15
+  - 8
+  - -85
+  - 17.5
+  - 8.125
+  - -75
+  - 15
+  - 8
+  - -65
+  - 15
+  - 8
+  - -55
+  - -2.5
+  - 4.4999995
+  - -45
+  - 5
+  - 4.4999995
+  - -45
+  - 0
+  - 4.4999995
+  - -35
+  - 0
+  - 4.4999995
+  - -25
+  - -5
+  - 4.4999995
+  - -5
+  - 5
+  - 4.4999995
+  - -5
+  - 5
+  - 4.4999995
+  - 5
+  - -5
+  - 4.5625
+  - -15
+  - -5
+  - 4.5625
+  - 5
+  - 5
+  - 4.5625
+  - -15
+  - 10
+  - 4.4999995
+  - -35
+  - 10
+  - 4.4999995
+  - -25
+  - 13.75
+  - 4.4999995
+  - -45
+  - 16.25
+  - 4.375
+  - -35
+  - 16.25
+  - 4.375
+  - -25
+  - 12.5
+  - 4.4999995
+  - -15
+  - 12.5
+  - 4.4999995
+  - -5
+  - 13.75
+  - 4.4999995
+  - 5
+  - -2.5
+  - 8
+  - -45
+  - -5
+  - 8
+  - -35
+  - -2.5
+  - 8
+  - -25
+  - 5
+  - 8
+  - -45
+  - 5
+  - 8
+  - -35
+  - 5
+  - 8
+  - -25
+  - -5
+  - 8
+  - -5
+  - -5
+  - 8
+  - 5
+  - 0
+  - 8
+  - -15
+  - 5
+  - 8
+  - -5
+  - 5
+  - 8
+  - 5
+  - 15
+  - 8
+  - -45
+  - 15
+  - 8
+  - -35
+  - 15
+  - 8
+  - -25
+  - 7.5
+  - 8
+  - -15
+  - 15
+  - 8
+  - -15
+  - 15
+  - 8
+  - -5
+  - 15
+  - 8
+  - 5
+  - -30.9375
+  - -1.25
+  - 15
+  - -30.9375
+  - -1.25
+  - 25
+  - -30.9375
+  - -1.25
+  - 32.5
+  - -25
+  - -1.25
+  - 10
+  - -25
+  - -1.25
+  - 30
+  - -30.9375
+  - -1.25
+  - 40
+  - -30.9375
+  - -1.25
+  - 60
+  - -25
+  - -1.25
+  - 50
+  - -10
+  - -1.25
+  - 20
+  - -10
+  - -1.25
+  - 60
+  - -29.6875
+  - 1.25
+  - 15
+  - -29.6875
+  - 1.25
+  - 25
+  - -31.25
+  - 1.25
+  - 35
+  - -27.5
+  - 1.25
+  - 27.1875
+  - -20
+  - 1.4999999
+  - 15
+  - -21.5625
+  - 1.25
+  - 17.5
+  - -25
+  - 1.4999999
+  - 35
+  - -20
+  - 1.25
+  - 27.1875
+  - -31.25
+  - 1.25
+  - 45
+  - -31.25
+  - 1.25
+  - 55
+  - -31.25
+  - 1.25
+  - 65
+  - -25
+  - 1.4999999
+  - 45
+  - -25
+  - 1.4999999
+  - 55
+  - -25
+  - 1.4999999
+  - 65
+  - -15
+  - 1.25
+  - 21.25
+  - -17.5
+  - 1.4999999
+  - 35
+  - -12.5
+  - 1.4999999
+  - 15
+  - -6.875
+  - 1.25
+  - 9.6875
+  - -7.5
+  - 1.25
+  - 21.25
+  - -12.5
+  - 1.25
+  - 27.1875
+  - -10
+  - 1.4999999
+  - 35
+  - -15
+  - 1.4999999
+  - 45
+  - -15
+  - 1.4999999
+  - 55
+  - -15
+  - 1.4999999
+  - 65
+  - -30.9375
+  - -1.25
+  - 70
+  - -30.9375
+  - -1.25
+  - 80
+  - -30.9375
+  - -1.25
+  - 100
+  - -25
+  - -1.25
+  - 70
+  - -25
+  - -1.25
+  - 90
+  - -30.9375
+  - -1.25
+  - 110
+  - -30.9375
+  - -1.25
+  - 120
+  - -25
+  - -1.25
+  - 110
+  - -25
+  - -1.4999998
+  - 125
+  - -10
+  - -1.25
+  - 100
+  - -17.5
+  - -1.25
+  - 130.625
+  - -15
+  - -1.4999998
+  - 125
+  - -7.5
+  - -1.25
+  - 130.625
+  - -31.25
+  - 1.25
+  - 75
+  - -28.75
+  - 1.4999999
+  - 85
+  - -28.75
+  - 1.4999999
+  - 95
+  - -25
+  - 1.4999999
+  - 75
+  - -20
+  - 1.4999999
+  - 85
+  - -20
+  - 1.4999999
+  - 95
+  - -31.25
+  - 1.25
+  - 105
+  - -31.25
+  - 1.25
+  - 115
+  - -28.75
+  - 1.4999999
+  - 125
+  - -28.75
+  - 1.25
+  - 131.25
+  - -25
+  - 1.4999999
+  - 105
+  - -25
+  - 1.4999999
+  - 115
+  - -20
+  - 1.4999999
+  - 125
+  - -20
+  - 1.25
+  - 131.25
+  - -15
+  - 1.4999999
+  - 75
+  - -10
+  - 1.4999999
+  - 85
+  - -12.5
+  - 1.4999999
+  - 95
+  - -17.5
+  - 1.4999999
+  - 105
+  - -15
+  - 1.4999999
+  - 115
+  - -10
+  - 1.4999999
+  - 105
+  - -7.5
+  - 1.4999999
+  - 115
+  - -10
+  - 1.4999999
+  - 125
+  - -10
+  - 1.25
+  - 131.25
+  - 5
+  - -1.25
+  - 10
+  - 5
+  - -1.25
+  - 30
+  - 5
+  - -1.25
+  - 50
+  - 13.75
+  - -1.4999998
+  - 15
+  - 13.75
+  - -1.4999998
+  - 25
+  - 13.75
+  - -1.4999998
+  - 35
+  - 13.75
+  - -1.4999998
+  - 45
+  - 13.75
+  - -1.4999998
+  - 55
+  - 13.75
+  - -1.4999998
+  - 65
+  - -5.9375
+  - 1.4999999
+  - 15
+  - -5
+  - 1.25
+  - 27.1875
+  - 3.125
+  - 1.4999999
+  - 15
+  - 3.125
+  - 1.25
+  - 21.25
+  - 0
+  - 1.4999999
+  - 35
+  - 5
+  - 1.25
+  - 27.1875
+  - -5
+  - 1.4999999
+  - 45
+  - -5
+  - 1.4999999
+  - 55
+  - -5
+  - 1.4999999
+  - 65
+  - 5
+  - 1.4999999
+  - 45
+  - 5
+  - 1.4999999
+  - 55
+  - 5
+  - 1.4999999
+  - 65
+  - 7.8125
+  - 1.25
+  - 15
+  - 7.8125
+  - 1.25
+  - 21.25
+  - 9.375
+  - 1.25
+  - 22.5
+  - 7.5
+  - 1.4999999
+  - 35
+  - 8.4375
+  - 1.25
+  - 24.375
+  - 15
+  - 1.4999999
+  - 15
+  - 15
+  - 1.4999999
+  - 25
+  - 15
+  - 1.4999999
+  - 35
+  - 15
+  - 1.4999999
+  - 45
+  - 15
+  - 1.4999999
+  - 55
+  - 15
+  - 1.4999999
+  - 65
+  - 5
+  - -1.25
+  - 70
+  - 5
+  - -1.25
+  - 90
+  - -5
+  - -1.4999998
+  - 125
+  - 5
+  - -1.25
+  - 110
+  - 5
+  - -1.4999998
+  - 125
+  - 13.75
+  - -1.4999998
+  - 75
+  - 13.75
+  - -1.4999998
+  - 85
+  - 13.75
+  - -1.4999998
+  - 95
+  - 13.75
+  - -1.4999998
+  - 105
+  - 13.75
+  - -1.4999998
+  - 115
+  - 12.5
+  - -1.25
+  - 130.625
+  - 13.75
+  - -1.4999998
+  - 125
+  - -5
+  - 1.4999999
+  - 75
+  - -5
+  - 1.4999999
+  - 95
+  - -2.5
+  - 1.4999999
+  - 85
+  - 5
+  - 1.4999999
+  - 75
+  - 5
+  - 1.4999999
+  - 85
+  - 5
+  - 1.4999999
+  - 95
+  - -2.5
+  - 1.4999999
+  - 125
+  - 0
+  - 1.4999999
+  - 105
+  - 0
+  - 1.4999999
+  - 115
+  - 0
+  - 1.25
+  - 131.25
+  - 5
+  - 1.4999999
+  - 125
+  - 15
+  - 1.4999999
+  - 75
+  - 15
+  - 1.4999999
+  - 85
+  - 15
+  - 1.4999999
+  - 95
+  - 7.5
+  - 1.4999999
+  - 105
+  - 7.5
+  - 1.4999999
+  - 115
+  - 7.5
+  - 1.25
+  - 131.25
+  - 15
+  - 1.4999999
+  - 105
+  - 15
+  - 1.4999999
+  - 115
+  - 15
+  - 1.4999999
+  - 125
+  - 15
+  - 1.25
+  - 131.25
+  - -30.9375
+  - 4.375
+  - 25
+  - -28.4375
+  - 4.4999995
+  - 35
+  - -20
+  - 4.4999995
+  - 15
+  - -20
+  - 4.4999995
+  - 35
+  - -28.4375
+  - 4.5625
+  - 15
+  - -25
+  - 4.5625
+  - 25
+  - -30.9375
+  - 4.375
+  - 55
+  - -28.4375
+  - 4.4999995
+  - 65
+  - -25
+  - 4.4999995
+  - 45
+  - -25
+  - 4.4999995
+  - 55
+  - -20
+  - 4.4999995
+  - 65
+  - -10
+  - 4.4999995
+  - 15
+  - -10
+  - 4.4999995
+  - 35
+  - -15
+  - 4.5625
+  - 25
+  - -17.5
+  - 4.4999995
+  - 45
+  - -15
+  - 4.4999995
+  - 55
+  - -10
+  - 4.4999995
+  - 45
+  - -10
+  - 4.4999995
+  - 65
+  - -7.5
+  - 4.4999995
+  - 55
+  - -28.75
+  - 8
+  - 15
+  - -31.25
+  - 8.125
+  - 25
+  - -28.75
+  - 8
+  - 35
+  - -20
+  - 8
+  - 15
+  - -25
+  - 8
+  - 25
+  - -20
+  - 8
+  - 35
+  - -31.25
+  - 8.125
+  - 45
+  - -31.25
+  - 8.125
+  - 55
+  - -31.25
+  - 8.125
+  - 65
+  - -25
+  - 8
+  - 45
+  - -25
+  - 8
+  - 55
+  - -25
+  - 8
+  - 65
+  - -15
+  - 8
+  - 25
+  - -10
+  - 8
+  - 15
+  - -10
+  - 8
+  - 35
+  - -15
+  - 8
+  - 45
+  - -15
+  - 8
+  - 55
+  - -15
+  - 8
+  - 65
+  - -7.5
+  - 8
+  - 55
+  - -30.9375
+  - 4.375
+  - 95
+  - -25
+  - 4.4999995
+  - 75
+  - -25
+  - 4.4999995
+  - 85
+  - -25
+  - 4.4999995
+  - 95
+  - -28.4375
+  - 4.4999995
+  - 105
+  - -30.9375
+  - 4.375
+  - 115
+  - -28.4375
+  - 4.4999995
+  - 125
+  - -25
+  - 4.4999995
+  - 115
+  - -20
+  - 4.4999995
+  - 105
+  - -20
+  - 4.4999995
+  - 125
+  - -17.5
+  - 4.4999995
+  - 75
+  - -15
+  - 4.4999995
+  - 85
+  - -15
+  - 4.4999995
+  - 95
+  - -10
+  - 4.4999995
+  - 75
+  - -7.5
+  - 4.4999995
+  - 95
+  - -15
+  - 4.4999995
+  - 115
+  - -10
+  - 4.4999995
+  - 105
+  - -7.5
+  - 4.4999995
+  - 115
+  - -12.5
+  - 4.4999995
+  - 125
+  - -31.25
+  - 8.125
+  - 75
+  - -28.75
+  - 8
+  - 85
+  - -28.75
+  - 8
+  - 95
+  - -25
+  - 8
+  - 75
+  - -20
+  - 8
+  - 85
+  - -20
+  - 8
+  - 95
+  - -28.75
+  - 8
+  - 105
+  - -28.75
+  - 8
+  - 115
+  - -31.25
+  - 8.125
+  - 125
+  - -31.25
+  - 8.125
+  - 131.25
+  - -20
+  - 8
+  - 105
+  - -20
+  - 8
+  - 115
+  - -25
+  - 8
+  - 125
+  - -25
+  - 8.125
+  - 131.25
+  - -17.5
+  - 8
+  - 75
+  - -10
+  - 8
+  - 75
+  - -10
+  - 8
+  - 85
+  - -10
+  - 8
+  - 95
+  - -15
+  - 8
+  - 125
+  - -15
+  - 8.125
+  - 131.25
+  - -10
+  - 8
+  - 105
+  - -10
+  - 8
+  - 115
+  - -5
+  - 4.0625
+  - 10
+  - 5
+  - 4.4999995
+  - 15
+  - 0
+  - 4.4999995
+  - 35
+  - -2.5
+  - 4.5625
+  - 15
+  - -5
+  - 4.5625
+  - 25
+  - 5
+  - 4.5625
+  - 25
+  - -2.5
+  - 4.4999995
+  - 45
+  - 5
+  - 4.4999995
+  - 45
+  - 0
+  - 4.4999995
+  - 55
+  - 0
+  - 4.4999995
+  - 65
+  - 7.5
+  - 4.4999995
+  - 35
+  - 12.5
+  - 4.4999995
+  - 15
+  - 12.5
+  - 4.4999995
+  - 25
+  - 13.75
+  - 4.4999995
+  - 35
+  - 7.5
+  - 4.4999995
+  - 65
+  - 10
+  - 4.4999995
+  - 55
+  - 13.75
+  - 4.4999995
+  - 45
+  - 13.75
+  - 4.4999995
+  - 65
+  - 16.25
+  - 4.375
+  - 55
+  - -5
+  - 8
+  - 25
+  - 0
+  - 8
+  - 15
+  - 0
+  - 8
+  - 35
+  - 5
+  - 8
+  - 25
+  - -5
+  - 8
+  - 45
+  - -5
+  - 8
+  - 65
+  - 5
+  - 8
+  - 45
+  - 0
+  - 8
+  - 55
+  - 5
+  - 8
+  - 65
+  - 7.5
+  - 8
+  - 15
+  - 7.5
+  - 8
+  - 35
+  - 15
+  - 8
+  - 15
+  - 15
+  - 8
+  - 25
+  - 15
+  - 8
+  - 35
+  - 10
+  - 8
+  - 55
+  - 15
+  - 8
+  - 45
+  - 17.5
+  - 8.125
+  - 55
+  - 15
+  - 8
+  - 65
+  - -5
+  - 4.4999995
+  - 85
+  - 0
+  - 4.4999995
+  - 75
+  - 0
+  - 4.4999995
+  - 95
+  - 5
+  - 4.4999995
+  - 85
+  - -2.5
+  - 4.4999995
+  - 105
+  - -5
+  - 4.4999995
+  - 125
+  - 0
+  - 4.4999995
+  - 115
+  - 5
+  - 4.4999995
+  - 105
+  - 1.25
+  - 4.375
+  - 130.625
+  - 5
+  - 4.4999995
+  - 125
+  - 7.5
+  - 4.4999995
+  - 75
+  - 7.5
+  - 4.4999995
+  - 95
+  - 13.75
+  - 4.4999995
+  - 75
+  - 13.75
+  - 4.4999995
+  - 85
+  - 13.75
+  - 4.4999995
+  - 95
+  - 7.5
+  - 4.4999995
+  - 115
+  - 11.25
+  - 4.375
+  - 130.625
+  - 13.75
+  - 4.4999995
+  - 105
+  - 13.75
+  - 4.4999995
+  - 115
+  - 13.75
+  - 4.4999995
+  - 125
+  - -2.5
+  - 8
+  - 85
+  - 0
+  - 8
+  - 75
+  - 0
+  - 8
+  - 95
+  - 5
+  - 8
+  - 85
+  - -5
+  - 8
+  - 125
+  - 0
+  - 8
+  - 105
+  - 0
+  - 8
+  - 115
+  - 5
+  - 8
+  - 125
+  - 5
+  - 8.125
+  - 131.25
+  - 7.5
+  - 8
+  - 75
+  - 7.5
+  - 8
+  - 95
+  - 15
+  - 8
+  - 75
+  - 15
+  - 8
+  - 85
+  - 15
+  - 8
+  - 95
+  - 7.5
+  - 8
+  - 105
+  - 7.5
+  - 8
+  - 115
+  - 15
+  - 8
+  - 105
+  - 15
+  - 8
+  - 115
+  - 15
+  - 8
+  - 125
+  - 15
+  - 8.125
+  - 131.25
+  hasCustomPoints: 0
 --- !u!1001 &989401390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25830,7 +27770,7 @@ AudioSource:
   m_GameObject: {fileID: 1068394159}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -26165,7 +28105,7 @@ AudioSource:
   m_GameObject: {fileID: 1086800443}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -26387,7 +28327,7 @@ AudioSource:
   m_GameObject: {fileID: 1095178576}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 447e97f44e7d0fd4eb6ddec82c319992, type: 3}
   m_PlayOnAwake: 1
@@ -26799,7 +28739,7 @@ AudioSource:
   m_GameObject: {fileID: 1105464616}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -27129,7 +29069,7 @@ AudioSource:
   m_GameObject: {fileID: 1133001300}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -28327,7 +30267,7 @@ AudioSource:
   m_GameObject: {fileID: 1163921898}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -29365,85 +31305,6 @@ RectTransform:
   m_AnchoredPosition: {x: 115.96, y: 17.14}
   m_SizeDelta: {x: 3000, y: 3000}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1230823970
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1230823973}
-  - component: {fileID: 1230823972}
-  - component: {fileID: 1230823971}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1230823971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230823970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
-  m_SendPointerHoverToParent: 1
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
-  m_ScrollDeltaPerTick: 6
---- !u!114 &1230823972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230823970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1230823973
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230823970}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1236628312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30819,6 +32680,67 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1294022181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.19943
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.1358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_Name
+      value: XR Device Simulator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
 --- !u!1001 &1299323060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30914,6 +32836,10 @@ PrefabInstance:
     - target: {fileID: 3554628145361592643, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781951089628797034, guid: 8522dc02dcda83349a3f81b7fa844d76, type: 3}
+      propertyPath: SortKey
+      value: 2987709090
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31442,7 +33368,7 @@ AudioSource:
   m_GameObject: {fileID: 1348031478}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -31754,7 +33680,7 @@ AudioSource:
   m_GameObject: {fileID: 1368373992}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 447e97f44e7d0fd4eb6ddec82c319992, type: 3}
   m_PlayOnAwake: 1
@@ -32216,7 +34142,7 @@ AudioSource:
   m_GameObject: {fileID: 1381086740}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -33153,7 +35079,7 @@ AudioSource:
   m_GameObject: {fileID: 1420828366}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -33275,7 +35201,7 @@ AudioSource:
   m_GameObject: {fileID: 1434728560}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -34812,6 +36738,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 380741640049452345, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465398736149949670, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4129924989466341174, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -34860,13 +36794,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7329153011714900675, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733182336335084264, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8601686537568609618, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_Name
       value: Runaway_Origin
       objectReference: {fileID: 0}
     - target: {fileID: 8601686537568609618, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805571871746293668, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9102737067035192405, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
       propertyPath: m_Enabled
@@ -34874,7 +36820,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 192946383885204910, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847704149}
+    - targetCorrespondingSourceObject: {fileID: 192946383885204910, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 600185851}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
 --- !u!1 &1499639215 stripped
@@ -34885,6 +36837,11 @@ GameObject:
 --- !u!20 &1499639216 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2855050447507787977, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
+  m_PrefabInstance: {fileID: 1499639214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1499639217 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 192946383885204910, guid: 5a46bdef75985b94e9ea97ae4593c1e8, type: 3}
   m_PrefabInstance: {fileID: 1499639214}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1506054021
@@ -37028,7 +38985,7 @@ AudioSource:
   m_GameObject: {fileID: 1586847329}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -39605,7 +41562,7 @@ AudioSource:
   m_GameObject: {fileID: 1691694239}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -40986,7 +42943,7 @@ AudioSource:
   m_GameObject: {fileID: 1758160753}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d463dfb2936a54a46b6633633c6f9651, type: 3}
   m_PlayOnAwake: 1
@@ -42245,7 +44202,7 @@ AudioSource:
   m_GameObject: {fileID: 1800985989}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d723484a263d1d1479f6b967ef3dab96, type: 3}
   m_PlayOnAwake: 1
@@ -42918,7 +44875,7 @@ AudioSource:
   m_GameObject: {fileID: 1832137710}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 447e97f44e7d0fd4eb6ddec82c319992, type: 3}
   m_PlayOnAwake: 1
@@ -43496,7 +45453,7 @@ AudioSource:
   m_GameObject: {fileID: 1841833583}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -46213,7 +48170,7 @@ AudioSource:
   m_GameObject: {fileID: 1946225613}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -46383,6 +48340,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9870114075f7d7a4c883e03f15e1f945, type: 3}
   m_PrefabInstance: {fileID: 1954737136}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1955241649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955241650}
+  - component: {fileID: 1955241651}
+  m_Layer: 0
+  m_Name: Acoustic Material
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1955241650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955241649}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2109929830}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1955241651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955241649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d733470c3e967144a2c25c362e4040b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAcousticMaterial
+  properties: {fileID: 11400000, guid: 47dd462ca33ffd246971d0e4cb200426, type: 2}
+  hasCustomData: 0
+  customData:
+    absorption:
+      selection: 2147483647
+      points: []
+    transmission:
+      selection: 2147483647
+      points: []
+    scattering:
+      selection: 2147483647
+      points: []
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1955431801
 GameObject:
   m_ObjectHideFlags: 0
@@ -46452,7 +48466,7 @@ AudioSource:
   m_GameObject: {fileID: 1967649333}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -46728,7 +48742,7 @@ AudioSource:
   m_GameObject: {fileID: 1985299806}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8de617fc9cd501b4aa4907e04f8b50c3, type: 3}
   m_PlayOnAwake: 1
@@ -49148,7 +51162,7 @@ AudioSource:
   m_GameObject: {fileID: 2078335709}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 90cf3c633fe04d849899d851da5acf88, type: 3}
   m_PlayOnAwake: 1
@@ -50239,6 +52253,138 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &2109929829
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -692915423507902409, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 3ebc959fe2f9d06418eb9463bf2ba0a9, type: 2}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: clipTable.Array.data[2].maxDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: clipTable.Array.data[2].minDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: clipTable.Array.data[3].minDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[12].intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[12].soundType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[13].intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[13].soundType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[12].detectionRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045388706247165434, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: intensityTable.Array.data[13].detectionRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015284516258738161, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644470755788954777, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1955241650}
+    - targetCorrespondingSourceObject: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 987702364}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+--- !u!4 &2109929830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 905278499894773524, guid: 48a5076b5f1eb8945bf01e20e809c170, type: 3}
+  m_PrefabInstance: {fileID: 2109929829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2110420191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50899,14 +53045,14 @@ SceneRoots:
   - {fileID: 1110660869}
   - {fileID: 829352333}
   - {fileID: 2065131616}
-  - {fileID: 847704149}
-  - {fileID: 600185851}
   - {fileID: 1203666223}
   - {fileID: 1778886838}
   - {fileID: 2066413280}
-  - {fileID: 1230823973}
   - {fileID: 790076087}
   - {fileID: 1678033592}
   - {fileID: 738568273}
   - {fileID: 1521609918}
   - {fileID: 1499639214}
+  - {fileID: 147403802}
+  - {fileID: 2109929829}
+  - {fileID: 1294022181}

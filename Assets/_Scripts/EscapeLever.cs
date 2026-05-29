@@ -6,9 +6,9 @@ public class EscapeLever : MonoBehaviour
     private HingeJoint _hingeJoint;
     private bool _isEscaped = false;
 
-    public float targetAngle = 40f; 
+    public float targetAngle = 40f;
 
-    public UnityEvent onLeverPulled; 
+    public UnityEvent onLeverPulled;
 
     void Start()
     {
@@ -24,9 +24,9 @@ public class EscapeLever : MonoBehaviour
         if (currentAngle >= targetAngle)
         {
             _isEscaped = true;
-            
+
             // 연결된 탈출 함수 실행
-            onLeverPulled.Invoke(); 
+            onLeverPulled.Invoke();
         }
     }
 }

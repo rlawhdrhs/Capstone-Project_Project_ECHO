@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: 2eb2ace7ebd14944a9d76bdc9a67e380
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+labels:
+- FusionPrefab
 AssetOrigin:
   serializedVersion: 1
   productId: 190606
@@ -12,3 +9,8 @@ AssetOrigin:
   packageVersion: 1.0
   assetPath: Assets/PBR_Modular_SciFi_corridor/Models/Corridor_Parts/CP_v3.prefab
   uploadId: 420792
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

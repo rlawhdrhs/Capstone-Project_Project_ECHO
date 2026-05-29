@@ -1,74 +1,111 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 public class ChaserElectricShock : MonoBehaviour
 {
-    [Header("컨트롤러 설정")]
+    [Header("컨트롤러 트랜스폼")]
     public Transform leftControllerTransform;
     public Transform rightControllerTransform;
 
     [Header("스킬 설정")]
-    public float chargeTimeReq = 1.0f; // 기 모으는 시간 (1초)
-    public float armSpreadThreshold = 0.4f; // 팔을 벌려야 하는 거리 차이 (40cm)
+    public float chargeTimeReq = 1.0f;
+    public float armSpreadThreshold = 0.4f;
 
     [Header("공격 판정 설정")]
-    public float shockRadius = 3.0f; // 감전 반경 (3m)
-    public LayerMask runawayLayer;   // 생존자 레이어
-    public float stunDuration = 3.0f; // 기절 시간 (3초)
+    public float shockRadius = 3.0f;
+    public float stunDuration = 3.0f;
 
     private float currentChargeTime = 0f;
     private bool isCharged = false;
     private float initialArmDistance = 0f;
     private float chargeHapticTimer = 0f;
 
+    // New Input System 액션
+    private InputAction leftGripAction;
+    private InputAction rightGripAction;
+
+    [Header("디버그용 순정 테스트")]
+    public GameObject directTestPrefab;
+
+    void Awake()
+    {
+        leftGripAction = new InputAction(binding: "<XRController>{LeftHand}/grip");
+        rightGripAction = new InputAction(binding: "<XRController>{RightHand}/grip");
+    }
+
+    void OnEnable()
+    {
+        leftGripAction.Enable();
+        rightGripAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        leftGripAction.Disable();
+        rightGripAction.Disable();
+    }
+
     void Update()
     {
         HandleElectricShock();
+
+        // =============== [에디터 디버그용 치트키 추가] ===============
+        // 키보드 T 키를 누르면 양팔 벌리기 제스처를 무시하고 무조건 발사 함수를 실행합니다.
+        if (Input.GetKeyDown(KeyCode.T))
+    {
+        Debug.Log("⌨️ [치트키] 키보드 T 입력 감지! 포톤 우회하고 생으로 소환합니다.");
+
+        if (directTestPrefab != null)
+        {
+            // 포톤 RPC 안 거치고 유니티 순정 기능으로 즉시 소환
+            GameObject clone = Instantiate(directTestPrefab, transform.position, Quaternion.identity);
+            clone.transform.localScale = new Vector3(shockRadius * 2f, shockRadius * 2f, shockRadius * 2f);
+            
+            Debug.Log($"🔥 [성공] 하이라키 창에 {clone.name}이 생성되었습니다!");
+        }
+        else
+        {
+            Debug.LogError("❌ [에러] directTestPrefab 칸이 비어있습니다! 인스펙터에서 에셋을 넣어주세요.");
+        }
+    }
+        // ==========================================================
     }
 
     private void HandleElectricShock()
     {
-        // 양손 기기 정보 가져오기
-        InputDevice leftDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-        InputDevice rightDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        bool leftGripPressed = leftGripAction.ReadValue<float>() > 0.1f;
+        bool rightGripPressed = rightGripAction.ReadValue<float>() > 0.1f;
 
-        // 양쪽 그립(중지) 버튼이 둘 다 눌려있는지 확인
-        bool leftGripPressed = leftDevice.TryGetFeatureValue(CommonUsages.grip, out float leftGrip) && leftGrip > 0.1f;
-        bool rightGripPressed = rightDevice.TryGetFeatureValue(CommonUsages.grip, out float rightGrip) && rightGrip > 0.1f;
+        UnityEngine.XR.InputDevice leftDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        UnityEngine.XR.InputDevice rightDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
         if (leftGripPressed && rightGripPressed)
         {
             if (!isCharged)
             {
-                // 1단계: 기 모으기 진행
                 currentChargeTime += Time.deltaTime;
-                
-                // 기 모으는 동안 약한 진동 계속 주기
+
                 chargeHapticTimer -= Time.deltaTime;
                 if (chargeHapticTimer <= 0)
                 {
-                    leftDevice.SendHapticImpulse(0, 0.2f, 0.05f);
-                    rightDevice.SendHapticImpulse(0, 0.2f, 0.05f);
+                    if (leftDevice.isValid) leftDevice.SendHapticImpulse(0, 0.2f, 0.05f);
+                    if (rightDevice.isValid) rightDevice.SendHapticImpulse(0, 0.2f, 0.05f);
                     chargeHapticTimer = 0.05f;
                 }
-
-                Debug.Log($"⚡ 기 모으는 중... ({currentChargeTime:F1}초)");
 
                 if (currentChargeTime >= chargeTimeReq)
                 {
                     isCharged = true;
-                    // 차징 완료 순간의 양손 사이 거리 기록
                     initialArmDistance = Vector3.Distance(leftControllerTransform.position, rightControllerTransform.position);
-                    
-                    // 차징 완료 진동 (쿵!)
-                    leftDevice.SendHapticImpulse(0, 0.7f, 0.2f);
-                    rightDevice.SendHapticImpulse(0, 0.7f, 0.2f);
+
+                    if (leftDevice.isValid) leftDevice.SendHapticImpulse(0, 0.7f, 0.2f);
+                    if (rightDevice.isValid) rightDevice.SendHapticImpulse(0, 0.7f, 0.2f);
                     Debug.Log("★ 전기 충격 차징 완료! 양팔을 쫙 벌리세요!");
                 }
             }
             else
             {
-                // 2단계: 차징 완료 후 팔을 벌리는지 감지
                 float currentDistance = Vector3.Distance(leftControllerTransform.position, rightControllerTransform.position);
                 float spread = currentDistance - initialArmDistance;
 
@@ -80,39 +117,66 @@ public class ChaserElectricShock : MonoBehaviour
         }
         else
         {
-            // 도중에 버튼을 하나라도 떼면 차징 취소
             if (currentChargeTime > 0)
             {
-                Debug.Log("❌ 그립 버튼을 떼서 차징이 취소되었습니다.");
                 currentChargeTime = 0f;
                 isCharged = false;
             }
         }
     }
 
-    private void FireElectricShock(InputDevice leftDevice, InputDevice rightDevice)
+    private void FireElectricShock(UnityEngine.XR.InputDevice leftDevice, UnityEngine.XR.InputDevice rightDevice)
     {
-        Debug.Log("⚡ 전기 충격 방출!!! ⚡");
-        
-        // 강력한 방출 진동 피드백
-        leftDevice.SendHapticImpulse(0, 1.0f, 0.5f);
-        rightDevice.SendHapticImpulse(0, 1.0f, 0.5f);
+        Debug.Log("⚡ [추격자] 전기 충격 방출!");
 
-        // 내 주변 3미터 안의 생존자 찾기
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, shockRadius, runawayLayer);
-        
-        foreach (Collider hit in hitColliders)
+        // 1. 컨트롤러 진동 및 사운드
+        if (leftDevice.isValid) leftDevice.SendHapticImpulse(0, 1.0f, 0.5f);
+        if (rightDevice.isValid) rightDevice.SendHapticImpulse(0, 1.0f, 0.5f);
+
+        if (SoundManager.Instance != null)
         {
-            // 생존자에게 달아둔 RunawayStatus 스크립트 호출
-            RunawayStatus runaway = hit.GetComponentInParent<RunawayStatus>();
-            if (runaway != null)
+            SoundManager.Instance.EmitSound(transform.position, 1.5f, SoundType.ElectricShock);
+        }
+
+        SensorSynchronizer droneSync = null;
+
+        if (PossessionManager.Instance != null && PossessionManager.Instance.currentDrone != null)
+        {
+            droneSync = PossessionManager.Instance.currentDrone;
+        }
+
+        if (droneSync != null && droneSync.electricShockwavePrefab != null)
+        {
+            // 1. 내 화면 즉시 생성
+            GameObject localFX = Instantiate(droneSync.electricShockwavePrefab, transform.position, Quaternion.identity);
+            localFX.transform.localScale = new Vector3(shockRadius * 2f, shockRadius * 2f, shockRadius * 2f);
+            Destroy(localFX, 3.0f);
+
+            // 2. 항상 켜져있는 본체 스크립트를 통해 RPC 발사 (잠입자 화면 스크립트가 켜져있으므로 정상 수신)
+            droneSync.RPC_PlayShockwaveVFX_Global(transform.position, shockRadius);
+            Debug.Log("✨ 항상 켜져있는 본체 스크립트를 통해 VFX RPC 전달 완료!");
+        }
+        else
+        {
+            Debug.LogError("❌ [VFX 에러] 현재 조종 중인 드론에서 LaserDetector_Network를 찾을 수 없습니다!");
+        }
+
+        // 4. 잠입자 스턴 판정 로직
+        if (NetworkManager.Instance != null && NetworkManager.Instance.InfiltratorObject != null)
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, NetworkManager.Instance.InfiltratorObject.transform.position);
+            if (distanceToTarget <= shockRadius)
             {
-                runaway.ApplyStun(stunDuration);
-                Debug.Log("🎯 생존자 감전! 이동 불가!");
+                SoundEmitter_Network infiltratorSound = NetworkManager.Instance.InfiltratorObject.GetComponent<SoundEmitter_Network>();
+                if (infiltratorSound != null)
+                {
+                    infiltratorSound.RPC_RequestStunToMe(stunDuration);
+                    Debug.Log("🎯 잠입자 타격 성공! 스턴 RPC 발사 완료!");
+                }
             }
         }
 
-        // 상태 초기화
+        // 상태 리셋
         currentChargeTime = 0f;
         isCharged = false;
     }

@@ -31,7 +31,14 @@ public class FuseBoxMission : MonoBehaviour
 
     public void LockFuse(SelectEnterEventArgs args)
     {
+        // 1. 들어온 퓨즈의 콜라이더 끄기 (기존 코드)
         Collider fuseCollider = args.interactableObject.transform.GetComponent<Collider>();
         if (fuseCollider != null) fuseCollider.enabled = false;
+        Collider socketCollider = args.interactorObject.transform.GetComponent<Collider>();
+        if (socketCollider != null)
+        {
+            socketCollider.enabled = false;
+            Debug.Log($"[FuseBox] {gameObject.name}의 소켓 콜라이더가 봉인되었습니다. (간섭 방지)");
+        }
     }
 }

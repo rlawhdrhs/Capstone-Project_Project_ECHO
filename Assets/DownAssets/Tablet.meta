@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Recovery/0 (8).unity.meta
+guid: e66e310c9dd8ece4eb2d66175e60398f
+========
 guid: a0ce294051e8fa844b9460fa0fe86226
 folderAsset: yes
+>>>>>>>> origin/develop:Assets/DownAssets/Tablet.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

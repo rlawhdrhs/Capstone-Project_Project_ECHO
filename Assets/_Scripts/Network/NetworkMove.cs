@@ -18,6 +18,8 @@ public struct NetworkInputData : INetworkInput
     //컨트롤러 이벤트
     public bool rightTrigger;
     public bool leftButtonA;
+    public NetworkBool rightButtonB;
+    public NetworkBool rightGripPressed;
     //XR OIGIN  위치 및 아바타 위치
     public Vector3 rootPosition;
     public Quaternion rootRotation;

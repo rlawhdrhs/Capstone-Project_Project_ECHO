@@ -64,10 +64,9 @@ public class LaserDetector_Network : NetworkBehaviour
             targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable_Network>();
         }
 
-        // 3. 레이저 판정 로직 (항상 감지 모드)
+        // 3. 레이저 판정 로직
         if (!Object.HasStateAuthority) return;
 
-        // 🌟 isLaserOn 조건문을 삭제하여, 게임 내내 항상 감지하도록 변경했습니다.
         if (targetPlayer != null && !targetPlayer.isRemoved)
         {
             if (CheckPlayerDetected())

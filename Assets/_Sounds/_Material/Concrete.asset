@@ -59,4 +59,4 @@ MonoBehaviour:
       - frequency: 4000
         data: 0.15
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  preset: 9
+  preset: 0

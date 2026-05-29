@@ -17,7 +17,8 @@ public class PlayerDetectable_Network : NetworkBehaviour
     public float decreaseSpeed = 20f;
 
     [Header("State")]
-    [Networked] public NetworkBool isRemovable { get; set; }
+    [Networked, OnChangedRender(nameof(OnRemovableChanged))]
+    public NetworkBool isRemovable { get; set; }
     [Networked] public NetworkBool isRemoved { get; set; }
     [Networked, OnChangedRender(nameof(OnDetectedChanged))]
     public NetworkBool isDetected { get; set; }
@@ -41,16 +42,13 @@ public class PlayerDetectable_Network : NetworkBehaviour
     // 원래 아바타가 가지고 있던 머티리얼 원본을 기억할 배열
     private Material[][] originalMaterials;
 
-    [Header("Detection Audio")]
-    [Tooltip("감지 소리를 재생할 오디오 소스")]
-    public AudioSource detectionAudioSource;
-    [Tooltip("감지되었을 때 재생할 삐- 소리 클립")]
-    public AudioClip detectionClip;
-    [Tooltip("소리가 너무 자주 중복 재생되는 것을 막기 위한 쿨타임 (초)")]
-    public float soundCooldown = 0.5f;
+    [Header("감지 사운드")]
+    public SoundType detectionSoundType;
+    private SpatialSoundPlayer _activeDetectionPlayer;
 
-    private float _lastSoundPlayTime = -999f; // 마지막 소리 재생 시간 기억
-
+    [Header("제거 사운드")]
+    public AudioClip removableAlertClip;
+    public AudioClip removeActionClip;
     public override void Spawned()
     {
         SetupDetectPoints();
@@ -162,49 +160,45 @@ public class PlayerDetectable_Network : NetworkBehaviour
         }
     }
 
-    private void UpdateColors(Color color)
-    {
-        for (int i = 0; i < instanceMaterials.Length; i++)
-        {
-            if (instanceMaterials[i] != null)
-                instanceMaterials[i].color = color;
-        }
-    }
-
     void OnDetectedChanged()
     {
+        // 내 화면(InputAuthority)이거나 서버일 때만 로컬 UI 상태를 업데이트합니다.
         if (Object.HasInputAuthority || (Runner.IsServer && Object.HasStateAuthority))
         {
-            if (IntruderDetectedUI.Instance != null)
+            if (IntruderStatusUIManager.Instance != null)
             {
-                IntruderDetectedUI.Instance.ShowWarning(isDetected);
+                // ★ 핵심 수정: true 고정이 아니라 현재 변수 상태(isDetected)를 그대로 넘겨줍니다.
+                IntruderStatusUIManager.Instance.SetDetectedStatus(isDetected);
             }
         }
-        if (isDetected && (Time.time - _lastSoundPlayTime >= soundCooldown))
+
+        if (isDetected)
         {
-            PlayDetectionSound();
+            // 감지되었는데 아직 재생 중인 사운드가 없다면 생성
+            if (_activeDetectionPlayer == null && SoundManager.Instance != null)
+            {
+                _activeDetectionPlayer = SoundManager.Instance.EmitLoopingSound(transform.position, detectionSoundType);
+
+                // 중요: 사운드 플레이어가 움직이는 잠입자를 따라다니도록 자식으로 종속시킵니다.
+                if (_activeDetectionPlayer != null)
+                {
+                    _activeDetectionPlayer.transform.SetParent(transform);
+                }
+            }
+        }
+        else
+        {
+            // 감지가 풀리면 루프 사운드 정지
+            StopDetectionSound();
         }
     }
 
-    private void PlayDetectionSound()
+    private void StopDetectionSound()
     {
-        if (detectionAudioSource != null && detectionClip != null)
+        if (_activeDetectionPlayer != null)
         {
-            if (isDetected)
-            {
-                detectionAudioSource.clip = detectionClip;
-                detectionAudioSource.loop = true;
-
-                if (!detectionAudioSource.isPlaying)
-                {
-                    detectionAudioSource.Play();
-                }
-            }
-            else
-            {
-                detectionAudioSource.loop = false;
-                detectionAudioSource.Stop();
-            }
+            Destroy(_activeDetectionPlayer.gameObject);
+            _activeDetectionPlayer = null;
         }
     }
 
@@ -274,6 +268,18 @@ public class PlayerDetectable_Network : NetworkBehaviour
         }
     }
 
+    private void OnRemovableChanged()
+    {
+        if (!Object.HasInputAuthority)
+        {
+            if (isRemovable && SoundManager.Instance != null && removableAlertClip != null)
+            {
+                SoundManager.Instance.Play2DSound(removableAlertClip);
+                Debug.Log("<color=purple>[CHASER] 잠입자 제거 가능! 2D 알림음 재생</color>");
+            }
+        }
+    }
+
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void Rpc_NotifyDetected()
     {
@@ -285,6 +291,11 @@ public class PlayerDetectable_Network : NetworkBehaviour
     public void RequestRemove()
     {
         if (isRemovable && !isRemoved) TryRemoveRpc();
+
+        if (SoundManager.Instance != null && removeActionClip != null)
+        {
+            SoundManager.Instance.Play2DSound(removeActionClip);
+        }
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

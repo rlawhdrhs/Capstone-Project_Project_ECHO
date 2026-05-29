@@ -142,6 +142,8 @@ MonoBehaviour:
   onMissionClear:
     m_PersistentCalls:
       m_Calls: []
+  transmissionSoundType: 7
+  clearSoundType: 8
 --- !u!54 &4183172556154039065
 Rigidbody:
   m_ObjectHideFlags: 0

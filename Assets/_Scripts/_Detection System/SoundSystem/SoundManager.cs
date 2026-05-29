@@ -41,6 +41,9 @@ public class SoundManager : MonoBehaviour
     [Header("Spatial Audio")]
     [SerializeField] private SpatialSoundPlayer spatialSoundPrefab;
 
+    [Header("2D Local UI Audio")]
+    [SerializeField] private AudioSource local2DAudioSource;
+
     private int nextSoundId = 0;
     public List<SoundData> soundEvents = new List<SoundData>();
 
@@ -159,4 +162,37 @@ public class SoundManager : MonoBehaviour
 
         return null;
     }
+
+    public SpatialSoundPlayer EmitLoopingSound(Vector3 position, SoundType soundType)
+    {
+        if (spatialSoundPrefab == null) return null;
+
+        SoundClipEntry entry = GetClipEntry(soundType);
+        if (entry == null || entry.clips == null || entry.clips.Length == 0) return null;
+
+        AudioClip clip = entry.clips[Random.Range(0, entry.clips.Length)];
+        if (clip == null) return null;
+
+        SpatialSoundPlayer player = Instantiate(spatialSoundPrefab, position, Quaternion.identity);
+
+        player.Play_Loop(
+            clip,
+            entry.volume,
+            entry.minDistance,
+            entry.maxDistance,
+            entry.rolloffMode,
+            entry.pitchMin,
+            entry.pitchMax
+        );
+
+        return player;
+    }
+
+    public void Play2DSound(AudioClip clip, float volume = 1f)
+    {
+        if (local2DAudioSource != null && clip != null)
+        {
+            local2DAudioSource.PlayOneShot(clip, volume);
+        }
+    }   
 }

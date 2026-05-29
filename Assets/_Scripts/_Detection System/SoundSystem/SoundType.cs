@@ -8,5 +8,11 @@ public enum SoundType
     AlarmBugBeep,
     DoorOpen,
     DataCollect,
-    DataCollected
+    DataCollected,
+    RobotPossessSound,
+    IntruderReturnSound,
+    DetectSound,
+    RestorePowerSound,
+    ElectricShock,
+    StealthFootstep
 }

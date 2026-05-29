@@ -12,6 +12,9 @@ public class VRRigSynchronizer : NetworkBehaviour
 
     [Header("동기화 보정")]
     public Vector3 centerPositionOffset; // 필요한 경우 몸통 미세조정
+    [Header("IK 손목 회전 보정")]
+    public Vector3 leftHandRotationOffset = new Vector3(0, 0, 0);
+    public Vector3 rightHandRotationOffset = new Vector3(0, 0, 0);
 
     [Networked] public float netMoveX { get; set; }
     [Networked] public float netMoveZ { get; set; }
@@ -102,12 +105,12 @@ public class VRRigSynchronizer : NetworkBehaviour
             if (avatarLeftHand != null)
             {
                 avatarLeftHand.position = data.leftHandPosition;
-                avatarLeftHand.rotation = data.leftHandRotation;
+                avatarLeftHand.rotation = data.leftHandRotation * Quaternion.Euler(leftHandRotationOffset);
             }
             if (avatarRightHand != null)
             {
                 avatarRightHand.position = data.rightHandPosition;
-                avatarRightHand.rotation = data.rightHandRotation;
+                avatarRightHand.rotation = data.rightHandRotation * Quaternion.Euler(rightHandRotationOffset);
             }
 
             // --- 상호작용 로직 ---

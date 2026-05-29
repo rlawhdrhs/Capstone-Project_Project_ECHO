@@ -13,6 +13,11 @@ public class DataMissionInteractor : MonoBehaviour
     [Header("이벤트")]
     public UnityEvent onMissionClear; // 클리어 시 실행할 이벤트
 
+    [Header("사운드 매니저 연동 설정")]
+    public SoundType transmissionSoundType;
+    public SoundType clearSoundType;
+    private SpatialSoundPlayer _activeLoopPlayer;
+
     private float _timer = 0f;
     private bool _isTouching = false;
     private bool _isCleared = false;
@@ -28,6 +33,11 @@ public class DataMissionInteractor : MonoBehaviour
             // 다시 조준했으므로 빗나간 타이머는 리셋
             _outOfFocusTimer = 0f;
 
+            if (_activeLoopPlayer == null && SoundManager.Instance != null)
+            {
+                _activeLoopPlayer = SoundManager.Instance.EmitLoopingSound(transform.position, transmissionSoundType);
+            }
+
             _timer += Time.deltaTime;
             Debug.Log($"데이터 전송 중... {_timer:F1}초");
 
@@ -36,6 +46,18 @@ public class DataMissionInteractor : MonoBehaviour
                 _isCleared = true;
                 _isTouching = false;
                 Debug.Log("<color=yellow>★ [SYSTEM] 미션 클리어! ★</color>");
+
+                StopLoopingSound();
+
+                if (NetworkGameManager.Instance != null)
+                {
+                    NetworkGameManager.Instance.RPC_PlayGlobalSound(transform.position, 2.0f, clearSoundType);
+                }
+                else if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.EmitSound(transform.position, 2.0f, clearSoundType);
+                }
+
                 onMissionClear?.Invoke();
 
                 if (NetworkGameManager.Instance != null)
@@ -44,12 +66,11 @@ public class DataMissionInteractor : MonoBehaviour
                 }
             }
         }
-        else if (_timer > 0f) // 조준을 안 하고 있는데 게이지가 남아있다면?
+        else if (_timer > 0f)
         {
-            // 빗나간 시간을 잽니다.
+            StopLoopingSound();
             _outOfFocusTimer += Time.deltaTime;
 
-            // 만약 빗나간 시간이 유예 시간(0.5초)을 넘어가면 그제서야 초기화!
             if (_outOfFocusTimer >= toleranceTime)
             {
                 _timer = 0f;
@@ -57,5 +78,18 @@ public class DataMissionInteractor : MonoBehaviour
                 Debug.Log("<color=red>조준이 완전히 풀려 데이터 전송이 취소되었습니다.</color>");
             }
         }
+    }
+
+    private void StopLoopingSound()
+    {
+        if (_activeLoopPlayer != null)
+        {
+            Destroy(_activeLoopPlayer.gameObject);
+            _activeLoopPlayer = null;
+        }
+    }
+    private void OnDestroy()
+    {
+        StopLoopingSound();
     }
 }

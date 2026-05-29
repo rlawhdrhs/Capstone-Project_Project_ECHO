@@ -27,11 +27,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/_Game Scene/3.IntruderStartScene.unity
     guid: 046c46ca9fe608d43bef6805fd29d749
   - enabled: 1
-    path: Assets/_Scenes/_Game Scene/3.Main.unity
-    guid: c93b767834f5d094697de8c7115ab0c4
-  - enabled: 0
-    path: Assets/_Scenes/_Game Scene/4.Ending.unity
-    guid: 4d6a034f39a845348bdede65e3778ccd
+    path: Assets/_Scenes/_Game Scene/3.Main_Door.unity
+    guid: a6126bfe3080f024ea0f27e916717c90
   - enabled: 1
     path: Assets/_Scenes/_Game Scene/Endings/Chaser_Lose.unity
     guid: a9eeb54144f220241b75de73e41912be

@@ -116,6 +116,13 @@ public class AlarmBug : MonoBehaviour
             return;
         }
 
+        if (IsQuietWalking())
+        {
+            if (showDebugLog) Debug.Log("[AlarmBug] 잠입자가 다시 숨었습니다. 대기(Idle) 상태로 복귀합니다.");
+            ReturnToIdle();
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, intruder.position);
 
         if (distance > detectionRadius)
@@ -159,6 +166,12 @@ public class AlarmBug : MonoBehaviour
             return;
         }
 
+        if (IsQuietWalking())
+        {
+            if (showDebugLog) Debug.Log("[AlarmBug] 무언가 지나갔으나 조용히 걸어서 감지하지 못했습니다.");
+            return;
+        }
+
         if (currentState == AlarmBugState.Disabled)
         {
             return;
@@ -195,6 +208,17 @@ public class AlarmBug : MonoBehaviour
 
         if (currentState == AlarmBugState.Disabled)
         {
+            return;
+        }
+
+        if (currentState == AlarmBugState.Idle && !IsQuietWalking())
+        {
+            intruder = other.transform;
+            lastIntruderPosition = intruder.position;
+            hasLastPosition = true;
+
+            if (showDebugLog) Debug.Log("[AlarmBug] 범위 안에서 잠입자가 일어난 것을 감지했습니다! 경고 시작.");
+            StartWarning();
             return;
         }
 
@@ -252,7 +276,7 @@ public class AlarmBug : MonoBehaviour
             yield break;
         }
 
-        if (intruder == null)
+        if (intruder == null || IsQuietWalking())
         {
             ReturnToIdle();
             yield break;
@@ -415,6 +439,10 @@ public class AlarmBug : MonoBehaviour
     {
         if (useExternalQuietWalkState)
         {
+            if (StealthDetector.Instance != null)
+            {
+                return StealthDetector.Instance.isStealthMode;
+            }
             return isQuietWalking;
         }
 
@@ -481,16 +509,17 @@ public class AlarmBug : MonoBehaviour
 
         foreach (Renderer r in renderers)
         {
-            if (r == null)
-            {
-                continue;
-            }
+            if (r == null) continue;
 
             foreach (Material mat in r.materials)
             {
                 if (mat != null)
                 {
                     mat.color = targetColor;
+
+                    mat.EnableKeyword("_EMISSION");
+
+                    mat.SetColor("_EmissionColor", targetColor * 2.0f);
                 }
             }
         }
