@@ -1,27 +1,21 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class SoundEmitter : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float stepDistance = 1.5f;
     public float soundLifetime = 0.3f;
-
-    [Header("Audio Clips")]
-    public AudioClip walkClip;
-    public AudioClip runClip;
+    public float footstepYOffset = -1f;
 
     [Header("State")]
     public bool isRunning = false;
 
-    private AudioSource audioSource;
+    [Header("Surface Override")]
+    [SerializeField] private bool useFootstepOverride = false;
+    [SerializeField] private SoundType overrideFootstepType = SoundType.WalkFootstep;
+
     private Vector3 lastPosition;
     private float accumulatedDistance;
-
-    void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     void Start()
     {
@@ -50,22 +44,13 @@ public class SoundEmitter : MonoBehaviour
 
     void EmitFootstep(Vector3 currentPosition)
     {
-        SoundType soundType = isRunning ? SoundType.RunFootstep : SoundType.WalkFootstep;
-        EmitSound(currentPosition, soundType);
-    }
-
-    public void EmitSound(Vector3 position, SoundType soundType)
-    {
-        Vector3 soundPos = position + Vector3.down * 1f;
-
-        PlayAudio(soundType);
-
-        Debug.Log($"소리 생성됨: {soundPos} | 타입: {soundType}");
+        SoundType soundType = GetCurrentFootstepSoundType();
+        Vector3 soundPosition = currentPosition + Vector3.up * footstepYOffset;
 
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.RegisterSound(
-                soundPos,
+            SoundManager.Instance.EmitSound(
+                soundPosition,
                 soundLifetime,
                 soundType
             );
@@ -76,26 +61,44 @@ public class SoundEmitter : MonoBehaviour
         }
     }
 
-    void PlayAudio(SoundType type)
+    private SoundType GetCurrentFootstepSoundType()
     {
-        if (audioSource == null) return;
-
-        AudioClip clip = null;
-
-        switch (type)
+        if (useFootstepOverride)
         {
-            case SoundType.WalkFootstep:
-                clip = walkClip;
-                break;
-
-            case SoundType.RunFootstep:
-                clip = runClip;
-                break;
+            return overrideFootstepType;
         }
 
-        if (clip != null)
+        return isRunning ? SoundType.RunFootstep : SoundType.WalkFootstep;
+    }
+
+    public void SetFootstepOverride(SoundType soundType)
+    {
+        useFootstepOverride = true;
+        overrideFootstepType = soundType;
+
+        Debug.Log($"[SoundEmitter] Footstep override ON: {soundType}");
+    }
+
+    public void ClearFootstepOverride()
+    {
+        useFootstepOverride = false;
+
+        Debug.Log("[SoundEmitter] Footstep override OFF");
+    }
+
+    public void EmitSound(Vector3 position, SoundType soundType)
+    {
+        if (SoundManager.Instance != null)
         {
-            audioSource.PlayOneShot(clip);
+            SoundManager.Instance.EmitSound(
+                position,
+                soundLifetime,
+                soundType
+            );
+        }
+        else
+        {
+            Debug.LogWarning("SoundManager.Instance가 null임");
         }
     }
 }

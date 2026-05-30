@@ -1,16 +1,14 @@
 using Fusion;
 using UnityEngine;
-using static UnityEngine.CullingGroup;
 
 public class PlayerDetectable_Network : NetworkBehaviour
 {
-    private Renderer objectRenderer;
-    private Material instanceMaterial;
+    private Renderer[] objectRenderers;
+    private Material[] instanceMaterials;
 
     [SerializeField] private Color normalColor = Color.cyan;
     [SerializeField] private Color detectedColor = Color.red;
     [SerializeField] private Color removableColor = Color.yellow;
-
 
     [Header("Detection Gauge")]
     [Networked] public float detectionGauge { get; set; }
@@ -21,62 +19,267 @@ public class PlayerDetectable_Network : NetworkBehaviour
     [Header("State")]
     [Networked] public NetworkBool isRemovable { get; set; }
     [Networked] public NetworkBool isRemoved { get; set; }
-    [Networked] public NetworkBool isDetected { get; set; }
+    [Networked, OnChangedRender(nameof(OnDetectedChanged))]
+    public NetworkBool isDetected { get; set; }
+    [Networked] private NetworkBool canEnterRemovable { get; set; }
 
     [Header("Removable Settings")]
-    public float removableDuration = 2f;
-    private float removableTimer = 0f;
+    public float removableDuration = 0.5f;
+    [Networked] private float removableTimer { get; set; }
 
-    private bool canEnterRemovable = true;
+    private TickTimer detectionTimer;
+    private float lastRpcTime; // RPC 트래픽 폭주 방지용
+
+    [Header("Detect Points")]
+    [SerializeField] private Transform detectPointsRoot;
+    private Transform[] detectPoints;
+    public Transform[] DetectPoints => detectPoints;
+
+    [Header("Silhouette")]
+    public Material redSilhouetteMaterial;
+
+    // 원래 아바타가 가지고 있던 머티리얼 원본을 기억할 배열
+    private Material[][] originalMaterials;
+
+    [Header("Detection Audio")]
+    [Tooltip("감지 소리를 재생할 오디오 소스")]
+    public AudioSource detectionAudioSource;
+    [Tooltip("감지되었을 때 재생할 삐- 소리 클립")]
+    public AudioClip detectionClip;
+    [Tooltip("소리가 너무 자주 중복 재생되는 것을 막기 위한 쿨타임 (초)")]
+    public float soundCooldown = 0.5f;
+
+    private float _lastSoundPlayTime = -999f; // 마지막 소리 재생 시간 기억
 
     public override void Spawned()
     {
-        objectRenderer = GetComponent<Renderer>();
-        if (objectRenderer != null)
+        SetupDetectPoints();
+        SetupRenderers();
+        canEnterRemovable = true;
+
+        if (Object.HasInputAuthority)
         {
-            instanceMaterial = objectRenderer.material;
-            UpdateColor(); // 초기 색상 설정
+            if (NetworkGameManager.Instance != null)
+            {
+                NetworkGameManager.Instance.isLocalPlayerInfiltrator = true;
+            }
         }
     }
 
-    void UpdateColor()
+    private void SetupDetectPoints()
     {
-        if (instanceMaterial == null || isRemoved) return;
-        if (isRemovable) instanceMaterial.color = removableColor;
-        else instanceMaterial.color = isDetected ? detectedColor : normalColor;
+        if (detectPointsRoot == null)
+        {
+            Transform found = transform.Find("DetectPoints");
+            if (found != null) detectPointsRoot = found;
+        }
+
+        if (detectPointsRoot != null)
+        {
+            detectPoints = new Transform[detectPointsRoot.childCount];
+            for (int i = 0; i < detectPointsRoot.childCount; i++)
+            {
+                detectPoints[i] = detectPointsRoot.GetChild(i);
+            }
+        }
+    }
+
+    private void SetupRenderers()
+    {
+        objectRenderers = GetComponentsInChildren<Renderer>();
+        if (objectRenderers == null || objectRenderers.Length == 0) return;
+
+        originalMaterials = new Material[objectRenderers.Length][];
+        for (int i = 0; i < objectRenderers.Length; i++)
+        {
+            originalMaterials[i] = objectRenderers[i].materials;
+        }
     }
 
     public override void Render()
     {
-        if (instanceMaterial == null || isRemoved) return;
+        if (objectRenderers == null || isRemoved) return;
 
-        if (isRemovable) instanceMaterial.color = removableColor;
-        else instanceMaterial.color = isDetected ? detectedColor : normalColor;
+        bool isMyAvatar = Object.HasInputAuthority;
+        if (Runner.IsServer && Object.HasStateAuthority) isMyAvatar = true;
+
+        if (isMyAvatar)
+        {
+            // 잠입자 본인 화면
+            EnableRenderers(true);
+            RestoreOriginalMaterials(); // 항상 본모습 유지
+        }
+        else
+        {
+            // 추격자 화면
+            if (isDetected)
+            {
+                EnableRenderers(true);
+                ApplyRedSilhouette(); // 붉은 아우라
+            }
+            else
+            {
+                EnableRenderers(false); // 평소엔 투명
+            }
+        }
+    }
+    private void ApplyRedSilhouette()
+    {
+        if (redSilhouetteMaterial == null) return;
+
+        for (int i = 0; i < objectRenderers.Length; i++)
+        {
+            if (objectRenderers[i] != null)
+            {
+                // 원본 머티리얼 개수와 똑같은 크기의 배열을 만들고, 전부 빨간색으로 채웁니다.
+                Material[] redMats = new Material[originalMaterials[i].Length];
+                for (int j = 0; j < redMats.Length; j++)
+                {
+                    redMats[j] = redSilhouetteMaterial;
+                }
+                objectRenderers[i].materials = redMats;
+            }
+        }
+    }
+    private void RestoreOriginalMaterials()
+    {
+        for (int i = 0; i < objectRenderers.Length; i++)
+        {
+            // 현재 머티리얼이 원본과 다를 때만 덮어씌워서 퍼포먼스 낭비를 줄입니다.
+            if (objectRenderers[i] != null && objectRenderers[i].materials[0] != originalMaterials[i][0])
+            {
+                objectRenderers[i].materials = originalMaterials[i];
+            }
+        }
+    }
+
+    private void EnableRenderers(bool isVisible)
+    {
+        foreach (var r in objectRenderers)
+        {
+            if (r != null && r.enabled != isVisible)
+                r.enabled = isVisible;
+        }
+    }
+
+    private void UpdateColors(Color color)
+    {
+        for (int i = 0; i < instanceMaterials.Length; i++)
+        {
+            if (instanceMaterials[i] != null)
+                instanceMaterials[i].color = color;
+        }
+    }
+
+    void OnDetectedChanged()
+    {
+        if (Object.HasInputAuthority || (Runner.IsServer && Object.HasStateAuthority))
+        {
+            if (IntruderDetectedUI.Instance != null)
+            {
+                IntruderDetectedUI.Instance.ShowWarning(isDetected);
+            }
+        }
+        if (isDetected && (Time.time - _lastSoundPlayTime >= soundCooldown))
+        {
+            PlayDetectionSound();
+        }
+    }
+
+    private void PlayDetectionSound()
+    {
+        if (detectionAudioSource != null && detectionClip != null)
+        {
+            if (isDetected)
+            {
+                detectionAudioSource.clip = detectionClip;
+                detectionAudioSource.loop = true;
+
+                if (!detectionAudioSource.isPlaying)
+                {
+                    detectionAudioSource.Play();
+                }
+            }
+            else
+            {
+                detectionAudioSource.loop = false;
+                detectionAudioSource.Stop();
+            }
+        }
     }
 
     public override void FixedUpdateNetwork()
     {
+        // 권한(State Authority)이 없는 클라이언트는 여기서 리턴되므로 연산하지 않음
         if (isRemoved || !Object.HasStateAuthority) return;
 
-        if (isDetected)
+        // 0.1초 동안 감지 RPC/신호가 안 오면 감지가 풀린 것으로 판정
+        if (isDetected && detectionTimer.Expired(Runner))
         {
-            detectionGauge += increaseSpeed * Runner.DeltaTime;
+            isDetected = false;
         }
-        else
+
+        UpdateGaugeLogic();
+    }
+
+    private void UpdateGaugeLogic()
+    {
+        if (isRemovable)
         {
-            detectionGauge -= decreaseSpeed * Runner.DeltaTime;
+            if (!isDetected)
+            {
+                removableTimer -= Runner.DeltaTime;
+                if (removableTimer <= 0f)
+                {
+                    isRemovable = false;
+                    detectionGauge = maxGauge * 0.7f;
+                }
+            }
+            return;
         }
+
+        if (!isDetected) canEnterRemovable = true;
+
+        if (isDetected) detectionGauge += increaseSpeed * Runner.DeltaTime;
+        else detectionGauge -= decreaseSpeed * Runner.DeltaTime;
 
         detectionGauge = Mathf.Clamp(detectionGauge, 0f, maxGauge);
 
-        if (detectionGauge >= maxGauge)
+        if (detectionGauge >= maxGauge && canEnterRemovable)
         {
             isRemovable = true;
+            canEnterRemovable = false;
+            removableTimer = removableDuration;
         }
-        else if (detectionGauge <= 0f)
+    }
+
+    // --- 수정된 부분: 권한 불일치 해결 ---
+    public void NotifyDetected()
+    {
+        if (Object.HasStateAuthority)
         {
-            isRemovable = false; // 게이지가 다 깎이면 제거 가능 상태 해제
+            // 자신이 권한을 가지고 있으면 즉시 적용
+            isDetected = true;
+            detectionTimer = TickTimer.CreateFromSeconds(Runner, 0.1f);
         }
+        else
+        {
+            // 상대방(추격자)이 나를 봤다면, 나(잠입자)에게 RPC를 보내서 감지되었다고 알려줌
+            // (초당 60번씩 RPC를 보내면 네트워크가 터지므로 0.05초 쿨타임 적용)
+            if (Time.time - lastRpcTime > 0.05f)
+            {
+                lastRpcTime = Time.time;
+                Rpc_NotifyDetected();
+            }
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void Rpc_NotifyDetected()
+    {
+        // 이 함수는 잠입자의 권한을 가진 쪽(주로 클라이언트)에서만 실행됨
+        isDetected = true;
+        detectionTimer = TickTimer.CreateFromSeconds(Runner, 0.1f);
     }
 
     public void RequestRemove()
@@ -88,6 +291,11 @@ public class PlayerDetectable_Network : NetworkBehaviour
     private void TryRemoveRpc()
     {
         isRemoved = true;
+
+        if (NetworkGameManager.Instance != null)
+        {
+            NetworkGameManager.Instance.TriggerChaserWin();
+        }
         Runner.Despawn(Object);
     }
 }

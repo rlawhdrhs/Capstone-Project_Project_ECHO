@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6580323021552722858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70,7 +70,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8796585364296409950}
-  - {fileID: 3527080642066100967}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2267593252180790152
@@ -184,10 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66d2f67b56efd645a3b43ac45eef4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundListener
-  hearingThreshold: 0.2
+  hearingThreshold: 1
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   occlusionMultiplier: 0.6
 --- !u!114 &2645077412922375597
 MonoBehaviour:
@@ -215,13 +214,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7ec35f4542c7c4d9e15e44d763105e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector
-  detectDistance: 10
-  detectAngle: 25
-  originHeight: 0.3
-  heightRange: 0.15
+  detectDistance: 30
+  detectAngle: 30
+  laserOrigin: {fileID: 8796585364296409950}
+  useHeightLimit: 1
+  heightRange: 0.7
   player: {fileID: 0}
-  visionCone: {fileID: 1404452982312253026}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  useKeyboardInput: 1
   toggleKey: 114
+  detectionAudioSource: {fileID: 0}
+  detectionBeepClip: {fileID: 8300000, guid: bd3f3c12315150b4eb4e4d7489f3f89d, type: 3}
+  lockedClip: {fileID: 0}
+  maxBeepInterval: 0.4
+  minBeepInterval: 0.05
+  minGaugeRatioToBeep: 0.1
+  showDebugRay: 1
+  showAngleGuide: 1
 --- !u!114 &51961842520364650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,76 +356,3 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!1001 &3883823012817401623
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6031416209000095634}
-    m_Modifications:
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2146687657042308966, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-      propertyPath: m_Name
-      value: VisionCone
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
---- !u!114 &1404452982312253026 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2781961197350699381, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-  m_PrefabInstance: {fileID: 3883823012817401623}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c15437190ea50408c4ea01160f319e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VisionConeMesh
---- !u!4 &3527080642066100967 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 366103682157528560, guid: 6bb6cd9e966c10d41a7661421faacec5, type: 3}
-  m_PrefabInstance: {fileID: 3883823012817401623}
-  m_PrefabAsset: {fileID: 0}

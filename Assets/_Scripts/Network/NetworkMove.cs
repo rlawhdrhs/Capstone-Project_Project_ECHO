@@ -4,9 +4,33 @@ using Fusion;
 // 네트워크로 주고받을 입력 데이터 상자
 public struct NetworkInputData : INetworkInput
 {
+    //이동 값
+    public float moveX;
     public float moveZ;
     public float turnY;
+    //점프
     public NetworkBool jump;
+    //키보드
+    public bool keyR;
+    public bool keySpace;
+    //마우스 클릭 이벤트
+    public bool leftClick;
+    //컨트롤러 이벤트
+    public bool rightTrigger;
+    public bool leftButtonA;
+    //XR OIGIN  위치 및 아바타 위치
+    public Vector3 rootPosition;
+    public Quaternion rootRotation;
+    public Vector3 headPosition;
+    public Quaternion headRotation;
+    public Vector3 leftHandPosition;
+    public Quaternion leftHandRotation;
+    public Vector3 rightHandPosition;
+    public Quaternion rightHandRotation;
+    //쪼그려 앉기
+    public float crouch;
+    //센서 로봇 조종
+    public NetworkBool isPossessingDrone;
 }
 
 public class NetworkMove : NetworkBehaviour

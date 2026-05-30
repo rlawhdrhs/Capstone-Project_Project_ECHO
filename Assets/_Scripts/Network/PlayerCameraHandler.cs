@@ -3,26 +3,32 @@ using UnityEngine;
 
 public class PlayerCameraHandler : NetworkBehaviour
 {
-    public GameObject playerCamera;
+    [Header("추격자 본체 카메라")]
+    public Camera myLocalCamera;
 
-    // 포톤 퓨전에서 오브젝트가 생성될 때 실행됨
     public override void Spawned()
     {
-        // 내가 조종할 권한이 있는가?
-        if (Object.HasInputAuthority)
+        if (HasInputAuthority)
         {
-            playerCamera.SetActive(true);
+            // 1. 내 카메라 켜기
+            myLocalCamera.gameObject.SetActive(true);
 
+            // 2. 로비/기본 카메라 끄기
             Camera lobbyCam = Camera.main;
-            if (lobbyCam != null && lobbyCam.gameObject != playerCamera)
+            if (lobbyCam != null && lobbyCam.gameObject != myLocalCamera.gameObject)
             {
                 lobbyCam.gameObject.SetActive(false);
+            }
+
+            // 3. 센서 매니저에 내 카메라 등록
+            if (NetworkSensorManager.Instance != null)
+            {
+                NetworkSensorManager.Instance.RegisterChaserCamera(myLocalCamera);
             }
         }
         else
         {
-            // 내 캐릭터가 아니라면 카메라를 비활성화
-            playerCamera.SetActive(false);
+            myLocalCamera.gameObject.SetActive(false);
         }
     }
 }

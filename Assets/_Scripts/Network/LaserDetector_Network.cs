@@ -4,86 +4,137 @@ using UnityEngine;
 public class LaserDetector_Network : NetworkBehaviour
 {
     [Header("Detection Settings")]
-    public float detectDistance = 10f;
-    public float detectAngle = 25f;
+    public float detectDistance = 20f;
+    public float detectAngle = 20f;
 
-    [Header("References")]
-    public PlayerDetectable_Network targetPlayer;
-    public VisionConeMesh visionCone;
+    [Header("VR / Camera Origin")]
+    public Transform laserOrigin;
 
-    [Header("Layer Mask")]
-    public LayerMask obstacleLayer;
+    public bool isSensorRobot = false;
+    [Header("Height Limit")]
+    public bool useHeightLimit = false;
+    public float heightRange = 0.7f;
 
-    [Header("Input")]
-    public KeyCode toggleKey = KeyCode.R;
+    [Header("Obstacle")]
+    public LayerMask obstacleMask;
 
-    [Networked] public NetworkBool isLaserOn { get; set; }
-    private bool lastDetectedState = false;
+    [Networked] public NetworkBool isDetectorActive { get; set; }
+    [Networked] public NetworkBool prevSpace { get; set; }
+
+    [Header("Debug")]
+    public bool showDebugRay = true;
+    public bool showAngleGuide = true;
+
+    private PlayerDetectable_Network targetPlayer;
 
     public override void Spawned()
     {
-        visionCone = GetComponentInChildren<VisionConeMesh>();
-    }
-
-    void Update()
-    {
-        if (Object.HasInputAuthority && Input.GetKeyDown(toggleKey))
+        if (laserOrigin == null)
         {
-            RPC_ToggleLaser();
-        }
-
-        if (visionCone != null)
-        {
-            visionCone.gameObject.SetActive(isLaserOn);
-            if (isLaserOn) visionCone.SetCone(detectAngle, detectDistance, 0f, 1f);
-        }
-    }
-
-    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    public void RPC_ToggleLaser()
-    {
-        isLaserOn = !isLaserOn;
-    }
-
-    public override void FixedUpdateNetwork()
-    {
-
-        if (targetPlayer == null)
-        {
-            if (NetworkManager.Instance.InfiltratorObject != null)
-                targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable_Network>();
-            return;
-        }
-
-        bool currentlyDetected = false;
-
-        if (isLaserOn)
-        {
-            Vector3 origin = transform.position + Vector3.up * 1.2f + transform.forward * 0.5f;
-            Vector3 targetPos = targetPlayer.transform.position + Vector3.up * 0.8f;
-            Vector3 dir = targetPos - origin;
-            float distance = dir.magnitude;
-
-            // 각도/거리 체크
-            if (distance <= detectDistance && Vector3.Angle(transform.forward, dir.normalized) <= detectAngle * 0.5f)
-            {
-                // 장애물 체크 (로그 추가)
-                if (Physics.Raycast(origin, dir.normalized, out RaycastHit hit, distance, obstacleLayer))
-                {
-                    // 장애물 이름 확인용 로그
-                    Debug.Log($"[감지 실패] {hit.collider.name}가 가로막음");
-                }
-                else
-                {
-                    currentlyDetected = true;
-                    Debug.Log("[감지 성공] 잠입자가 레이저에 닿음!");
-                }
-            }
+            Transform foundCameraPoint = transform.Find("CameraPoint");
+            laserOrigin = foundCameraPoint != null ? foundCameraPoint : transform;
         }
 
         if (Object.HasStateAuthority)
         {
-            targetPlayer.isDetected = currentlyDetected;
+            isDetectorActive = !isSensorRobot;
+        }
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        if (!isDetectorActive) return;
+        // 1. 입력 처리 (제거 버튼만 남김)
+        if (GetInput(out NetworkInputData data))
+        {
+            bool isSpacePressedThisFrame = data.keySpace && !prevSpace;
+            if (isSpacePressedThisFrame && Object.HasStateAuthority)
+            {
+                if (targetPlayer != null && targetPlayer.isRemovable)
+                {
+                    targetPlayer.RequestRemove();
+                }
+            }
+            prevSpace = data.keySpace;
+        }
+
+        // 2. 잠입자 타겟 런타임 캐싱
+        if (targetPlayer == null && NetworkManager.Instance.InfiltratorObject != null)
+        {
+            targetPlayer = NetworkManager.Instance.InfiltratorObject.GetComponent<PlayerDetectable_Network>();
+        }
+
+        // 3. 레이저 판정 로직 (항상 감지 모드)
+        if (!Object.HasStateAuthority) return;
+
+        // 🌟 isLaserOn 조건문을 삭제하여, 게임 내내 항상 감지하도록 변경했습니다.
+        if (targetPlayer != null && !targetPlayer.isRemoved)
+        {
+            if (CheckPlayerDetected())
+            {
+                targetPlayer.NotifyDetected();
+            }
+        }
+    }
+
+    private bool CheckPlayerDetected()
+    {
+        Transform[] detectPoints = targetPlayer.DetectPoints;
+        if (detectPoints == null || detectPoints.Length == 0) return false;
+
+        Ray aimRay = GetAimRay();
+        Vector3 origin = aimRay.origin;
+        Vector3 forwardDir = aimRay.direction;
+
+        foreach (Transform point in detectPoints)
+        {
+            if (point == null) continue;
+
+            if (useHeightLimit)
+            {
+                float heightDifference = Mathf.Abs(point.position.y - origin.y);
+                if (heightDifference > heightRange) continue;
+            }
+
+            Vector3 toTarget = point.position - origin;
+            float distanceToTarget = toTarget.magnitude;
+
+            if (distanceToTarget > detectDistance) continue;
+
+            Vector3 dirToTarget = toTarget.normalized;
+            float angle = Vector3.Angle(forwardDir, dirToTarget);
+
+            if (angle > detectAngle * 0.5f) continue;
+
+            bool isBlocked = Physics.Linecast(origin, point.position, obstacleMask);
+            if (isBlocked) continue;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private Ray GetAimRay()
+    {
+        return laserOrigin != null ? new Ray(laserOrigin.position, laserOrigin.forward)
+                                   : new Ray(transform.position, transform.forward);
+    }
+
+    public override void Render()
+    {
+        if (showDebugRay && isDetectorActive)
+        {
+            Ray aimRay = GetAimRay();
+            Debug.DrawRay(aimRay.origin, aimRay.direction * detectDistance, Color.red);
+
+            if (showAngleGuide)
+            {
+                Vector3 leftDir = Quaternion.AngleAxis(-detectAngle * 0.5f, Vector3.up) * aimRay.direction;
+                Vector3 rightDir = Quaternion.AngleAxis(detectAngle * 0.5f, Vector3.up) * aimRay.direction;
+                Debug.DrawRay(aimRay.origin, leftDir * detectDistance, Color.yellow);
+                Debug.DrawRay(aimRay.origin, rightDir * detectDistance, Color.yellow);
+            }
         }
     }
 }

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 25b1d4bc02f78db40b0a06a3e53e8b00
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 230541
+  packageName: Sci-Fi Switch Device
+  packageVersion: 1.0.0
+  assetPath: Assets/Sci-Fi Switch Device/Prefab/Background_bowl.prefab
+  uploadId: 530062

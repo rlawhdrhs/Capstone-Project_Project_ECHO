@@ -8,6 +8,8 @@ public class RemovalTester_Network : NetworkBehaviour
 
     void Update()
     {
+        if (Object == null || !Object.IsValid) return;
+
         if (Object.HasInputAuthority && Input.GetKeyDown(KeyCode.Space))
         {
             _spacePressed = true;

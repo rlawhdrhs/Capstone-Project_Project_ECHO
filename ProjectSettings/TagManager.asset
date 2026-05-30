@@ -5,35 +5,59 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - QDSUISection
+  - QDSUIAccentColor
+  - QDSUISecondaryButton
+  - QDSUIPrimaryButton
+  - QDSUITextSecondaryInvertedColor
+  - QDSUITextInvertedColor
+  - QDSUIToggleButton
+  - QDSUIIcon
+  - QDSUITextSecondaryColor
+  - QDSUIDestructiveButton
+  - QDSUISharedThemeColor
+  - QDSUIBorderlessButton
+  - QDSUIToggleBorderlessButton
+  - QDSUIBackplateGradient
+  - QDSUITooltip
+  - QDSUIBackplate
+  - QDSUIToggleSwitch
+  - PassThroughButton
+  - PassThrough
+  - Locomotion
+  - LocoButton
+  - LocoText
+  - QDSUITextInputField
+  - SamplesInfoPanel
+  - QDSUIToggleCheckboxRadio
+  - Door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Camera
   - Water
   - UI
   - Obstacle
   - Player
   - Wall
   - Cover
+  - Clickable
+  - Hidden
+  - Detected
+  - Door
+  - Outline
+  - localAvatar
+  - Intruder
+  - Chaser
+  - Overlay UI
+  - MissionLight
   - 
+  - ExitDoor
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ButtonI
+  - ButtonC
+  - LeverOnly
   - 
   - 
   - 
