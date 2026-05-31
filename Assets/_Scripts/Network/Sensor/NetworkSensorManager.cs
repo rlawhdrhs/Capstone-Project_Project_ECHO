@@ -68,7 +68,7 @@ public class NetworkSensorManager : NetworkBehaviour
             CharacterController humanCC = humanRig.GetComponent<CharacterController>();
             if (humanCC != null) humanCC.enabled = false; // 물리 즉시 정지
 
-            humanRig.RPC_SetFrozenState(true, humanRig.transform.position); 
+            //humanRig.RPC_SetFrozenState(true, humanRig.transform.position); 
             Debug.Log("추격자 아바타 정상 박제 완료!");
         }
         else

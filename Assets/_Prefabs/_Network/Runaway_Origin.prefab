@@ -68,7 +68,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.08
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -418,11 +418,13 @@ MonoBehaviour:
   avatarLeftHand: {fileID: 0}
   avatarRightHand: {fileID: 0}
   animator: {fileID: 0}
-  centerPositionOffset: {x: 0, y: -0.05, z: -0.15}
-  standingHeight: 1.6
-  crouchingHeight: 1
+  centerPositionOffset: {x: 0, y: 0, z: -0.25}
+  standingHeight: 1.7
+  crouchingHeight: 0.5
   currentCrouch: 0
+  crouchActivationRatio: 0.7
   animationSmoothness: 10
+  crouchRate: -0.23
   isOnlineMode: 0
   avatarDefaultEyeHeight: 1.7
 --- !u!114 &849094274145209468
@@ -550,7 +552,7 @@ MonoBehaviour:
   rightControllerTransform: {fileID: 7944724150614712180}
   chargeTimeReq: 1
   armSpreadThreshold: 0.4
-  shockRadius: 3
+  shockRadius: 7
   stunDuration: 3
   directTestPrefab: {fileID: 5627696518775099638, guid: 390cc74915d4a054bbd897e1885047a4, type: 3}
 --- !u!114 &416274137002540188

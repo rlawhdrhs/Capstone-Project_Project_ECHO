@@ -54,19 +54,14 @@ public class ChaserElectricShock : MonoBehaviour
         // 키보드 T 키를 누르면 양팔 벌리기 제스처를 무시하고 무조건 발사 함수를 실행합니다.
         if (Input.GetKeyDown(KeyCode.T))
     {
-        Debug.Log("⌨️ [치트키] 키보드 T 입력 감지! 포톤 우회하고 생으로 소환합니다.");
 
         if (directTestPrefab != null)
         {
-            // 포톤 RPC 안 거치고 유니티 순정 기능으로 즉시 소환
             GameObject clone = Instantiate(directTestPrefab, transform.position, Quaternion.identity);
             clone.transform.localScale = new Vector3(shockRadius * 2f, shockRadius * 2f, shockRadius * 2f);
-            
-            Debug.Log($"🔥 [성공] 하이라키 창에 {clone.name}이 생성되었습니다!");
         }
         else
         {
-            Debug.LogError("❌ [에러] directTestPrefab 칸이 비어있습니다! 인스펙터에서 에셋을 넣어주세요.");
         }
     }
         // ==========================================================

@@ -49,6 +49,9 @@ public class PlayerDetectable_Network : NetworkBehaviour
     [Header("제거 사운드")]
     public AudioClip removableAlertClip;
     public AudioClip removeActionClip;
+
+    private bool _isSpectatorCached = false;
+    private bool _isLocalPlayerSpectator = false;
     public override void Spawned()
     {
         SetupDetectPoints();
@@ -101,11 +104,23 @@ public class PlayerDetectable_Network : NetworkBehaviour
         bool isMyAvatar = Object.HasInputAuthority;
         if (Runner.IsServer && Object.HasStateAuthority) isMyAvatar = true;
 
+        if (!_isSpectatorCached)
+        {
+            _isLocalPlayerSpectator = FindAnyObjectByType<CinematicSpectatorCamera>() != null;
+
+            if (_isLocalPlayerSpectator) _isSpectatorCached = true;
+        }
+
         if (isMyAvatar)
         {
             // 잠입자 본인 화면
             EnableRenderers(true);
             RestoreOriginalMaterials(); // 항상 본모습 유지
+        }
+        else if (_isLocalPlayerSpectator)
+        {
+            EnableRenderers(true);
+            RestoreOriginalMaterials();
         }
         else
         {
@@ -121,6 +136,7 @@ public class PlayerDetectable_Network : NetworkBehaviour
             }
         }
     }
+
     private void ApplyRedSilhouette()
     {
         if (redSilhouetteMaterial == null) return;

@@ -1,6 +1,4 @@
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class LocalVRRig : MonoBehaviour
 {
@@ -26,22 +24,26 @@ public class LocalVRRig : MonoBehaviour
 
     [Header("아바타 키 설정")]
     public float standingHeight = 1.7f;
-    public float crouchingHeight = 1.0f;
+    public float crouchingHeight = 0.5f;
     public float currentCrouch;
+    private float calibratedStandingHeight = 1.7f;
+    public float crouchActivationRatio = 0.7f;
+    private bool isHeightCalibrated = false;
 
     [Header("애니메이션 보정")]
     public float animationSmoothness = 10f;
     private float currentMoveX;
     private float currentMoveZ;
-
+    public float crouchRate = 0.15f;
     public bool isOnlineMode = false;
 
-    [Header("아바타 캘리브레이션 (키 맞춤)")]
+    [Header("아바타 캘리브레이션")]
     public float avatarDefaultEyeHeight = 1.7f;
-
     private float defaultAvatarHeight;
-
     private CharacterController localCC;
+    private bool isLocalScaleCalibrated = false;
+
+
     void Start()
     {
         if (avatarRoot != null) previousPosition = avatarRoot.position;
@@ -49,7 +51,6 @@ public class LocalVRRig : MonoBehaviour
         if (avatarRoot != null && avatarHead != null)
         {
             defaultAvatarHeight = avatarHead.position.y - avatarRoot.position.y;
-
             if (defaultAvatarHeight < 1.0f) defaultAvatarHeight = avatarDefaultEyeHeight;
         }
         localCC = GetComponent<CharacterController>();
@@ -59,6 +60,18 @@ public class LocalVRRig : MonoBehaviour
     {
         if (hardwareHead == null) return;
 
+        if (!isOnlineMode && !isLocalScaleCalibrated && hardwareHead.localPosition.y > 0.5f)
+        {
+            float currentHmdHeight = hardwareHead.localPosition.y;
+            float scaleRatio = currentHmdHeight / defaultAvatarHeight;
+            if (avatarRoot != null)
+            {
+                avatarRoot.localScale = Vector3.one * Mathf.Clamp(scaleRatio, 0.7f, 1.4f);
+                isLocalScaleCalibrated = true;
+            }
+        }
+
+        // 플레이어 캐릭터 컨트롤러 콜라이더 높이 조절
         if (localCC != null)
         {
             float targetHeight = hardwareHead.localPosition.y;
@@ -68,18 +81,20 @@ public class LocalVRRig : MonoBehaviour
             localCC.center = new Vector3(localCC.center.x, targetHeight / 2f, localCC.center.z);
         }
 
+        // 온라인 모드가 아닐 때(로컬/오프라인 테스트)만 최소한의 트래킹 매핑을 수행합니다.
         if (!isOnlineMode)
         {
             if (avatarRoot != null && avatarHead != null)
             {
-                SynchronizeTransforms();
+                SynchronizeTransformsLocal();
             }
         }
 
         UpdateAnimation();
     }
 
-    void SynchronizeTransforms()
+    // 오프라인 상태에서도 아바타가 깨지지 않도록 회전과 손 위치만 매핑 (스케일 조절 전면 삭제)
+    void SynchronizeTransformsLocal()
     {
         // 1. 몸통 회전
         Vector3 headForward = hardwareHead.forward;
@@ -87,21 +102,12 @@ public class LocalVRRig : MonoBehaviour
         if (headForward.sqrMagnitude > 0.01f)
             avatarRoot.rotation = Quaternion.LookRotation(headForward);
 
-        // 2. 키 측정 및 스케일 적용
-        float currentHmdHeight = hardwareHead.position.y - transform.position.y;
-        if (currentHmdHeight < 0.5f) currentHmdHeight = avatarDefaultEyeHeight;
+        // 2. 위치 동기화
+        Vector3 alignedRootPosition = new Vector3(hardwareHead.position.x, transform.position.y, hardwareHead.position.z);
+        Vector3 dynamicCrouchOffset = avatarRoot.forward * (currentCrouch * crouchRate);
+        avatarRoot.position = alignedRootPosition + avatarRoot.TransformDirection(centerPositionOffset) + dynamicCrouchOffset;
 
-        float scaleRatio = currentHmdHeight / defaultAvatarHeight;
-        scaleRatio = Mathf.Clamp(scaleRatio, 0.5f, 1.5f);
-        avatarRoot.localScale = Vector3.one * scaleRatio;
-
-        Vector3 headOffset = hardwareHead.position - avatarHead.position;
-        avatarRoot.position += headOffset;
-
-        // 추가 오프셋 적용
-        avatarRoot.position += avatarRoot.TransformDirection(centerPositionOffset);
-
-        // 4. 머리 회전 및 손 동기화
+        // 3. 머리 회전 및 양손 IK 타겟 위치 동기화
         avatarHead.rotation = hardwareHead.rotation;
 
         if (avatarLeftHand != null && hardwareLeftHand != null)
@@ -116,7 +122,7 @@ public class LocalVRRig : MonoBehaviour
         }
     }
 
-    void UpdateAnimation() 
+    void UpdateAnimation()
     {
         if (animator == null || avatarRoot == null) return;
 
@@ -143,15 +149,21 @@ public class LocalVRRig : MonoBehaviour
         animator.SetFloat("MoveX", currentMoveX);
         animator.SetFloat("MoveZ", currentMoveZ);
 
-        float currentScale = avatarRoot.localScale.y;
-        float scaledStandingHeight = standingHeight * currentScale;
-        float scaledCrouchingHeight = crouchingHeight * currentScale;
-
-        // 로컬 포지션이 아니라 HMD의 실제 높이 사용
-        //float currentHmdHeight = hardwareHead.position.y - transform.position.y;
         float currentHmdHeight = hardwareHead.localPosition.y;
 
-        currentCrouch = Mathf.InverseLerp(scaledStandingHeight, scaledCrouchingHeight, currentHmdHeight);
-        animator.SetFloat("Crouch", currentCrouch);
+        if (!isHeightCalibrated && currentHmdHeight > 0.5f)
+        {
+            calibratedStandingHeight = currentHmdHeight;
+            isHeightCalibrated = true;
+            Debug.Log($"[VR 캘리브레이션 완료] 플레이어 기준 키: {calibratedStandingHeight}m");
+        }
+
+        float targetCrouchHeight = calibratedStandingHeight * crouchActivationRatio;
+
+        // 내 현재 높이를 기준으로 0~1 사이값 계산
+        currentCrouch = Mathf.InverseLerp(calibratedStandingHeight, targetCrouchHeight, currentHmdHeight);
+
+        // 애니메이터에 안전하게 전달
+        animator.SetFloat("Crouch", Mathf.Clamp01(currentCrouch));
     }
 }

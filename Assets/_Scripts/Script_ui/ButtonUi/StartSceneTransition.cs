@@ -1,27 +1,42 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class StartSceneTransition : MonoBehaviour
 {
-    [Header("Fade")]
-    public Image fadeImage;
-    public float transitionDuration = 3f;
+    [Header("Fade (VR Optimized)")]
+    // VR 환경에서는 UI Image 대신 카메라 바로 앞을 막아서 가려줄 MeshRenderer를 사용합니다.
+    [SerializeField] private MeshRenderer fadeQuadRenderer;
+    [SerializeField] private float transitionDuration = 3f;
 
     [Header("Audio")]
-    public AudioSource[] fadeOutSounds;
-    public AudioSource doorSound;
-    public AudioClip doorClip;
+    [SerializeField] private AudioSource[] fadeOutSounds;
+    [SerializeField] private AudioSource doorSound;
+    [SerializeField] private AudioClip doorClip;
 
     [Header("Move Forward")]
-    public Transform xrOrigin;
-    public Transform moveTarget;
+    [SerializeField] private Transform xrOrigin;
+    [SerializeField] private Transform moveTarget;
 
     [Header("Scene")]
-    public string nextSceneName = "1.Tutorial";
+    [SerializeField] private string nextSceneName = "1.Tutorial";
 
     private bool isTransitioning = false;
+    private Material fadeMaterial;
+
+    private void Start()
+    {
+        if (fadeQuadRenderer != null)
+        {
+            // 런타임에 독립된 머티리얼 인스턴스를 가져옵니다.
+            fadeMaterial = fadeQuadRenderer.material;
+
+            // 시작할 때는 투명하게 설정합니다.
+            Color c = fadeMaterial.color;
+            c.a = 0f;
+            fadeMaterial.color = c;
+        }
+    }
 
     public void StartTransition()
     {
@@ -32,6 +47,13 @@ public class StartSceneTransition : MonoBehaviour
 
     IEnumerator TransitionRoutine()
     {
+        CharacterController characterController = xrOrigin.GetComponent<CharacterController>();
+
+        if (characterController != null)
+        {
+            characterController.enabled = false;
+        }
+
         Vector3 startPos = xrOrigin.position;
         Vector3 targetPos = moveTarget.position;
 
@@ -47,13 +69,16 @@ public class StartSceneTransition : MonoBehaviour
             float t = timer / transitionDuration;
             float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
-            // 앞으로 이동
+            // 목적지로 부드럽게 이동
             xrOrigin.position = Vector3.Lerp(startPos, targetPos, smoothT);
 
-            // 화면 점점 검게
-            Color color = fadeImage.color;
-            color.a = smoothT;
-            fadeImage.color = color;
+            // [변경] VR 페이드 적용: Quad 머티리얼의 알파값 증가 (검은색으로 바꾸기)
+            if (fadeMaterial != null)
+            {
+                Color color = fadeMaterial.color;
+                color.a = smoothT;
+                fadeMaterial.color = color;
+            }
 
             // 주변 사운드 점점 작아짐
             for (int i = 0; i < fadeOutSounds.Length; i++)
@@ -69,9 +94,9 @@ public class StartSceneTransition : MonoBehaviour
             doorSound.PlayOneShot(doorClip);
         }
 
-
         yield return new WaitForSeconds(1.5f);
 
-        SceneManager.LoadScene("3.Main");
+        // 실제 씬 전환 실행
+        //SceneManager.LoadScene(nextSceneName);
     }
 }

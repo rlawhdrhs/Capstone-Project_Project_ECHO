@@ -16,7 +16,7 @@ public class AudioSettingsManager : MonoBehaviour
     private const string BGMVolumeKey = "BGMVolume";
     private const string SFXVolumeKey = "SFXVolume";
 
-    private const float DefaultVolume = 1f;
+    private const float DefaultVolume = 0.5f;
     private const float MinLinearVolume = 0.0001f;
 
     public float MasterVolume { get; private set; }
@@ -85,7 +85,12 @@ public class AudioSettingsManager : MonoBehaviour
         }
 
         float clampedValue = Mathf.Clamp(linearValue, MinLinearVolume, 1f);
-        float volumeDb = Mathf.Log10(clampedValue) * 20f;
+        float volumeDb = Mathf.Log10(clampedValue) * 66.4386f + 20f;
+
+        if (linearValue <= MinLinearVolume)
+        {
+            volumeDb = -80f;
+        }
 
         audioMixer.SetFloat(parameterName, volumeDb);
     }

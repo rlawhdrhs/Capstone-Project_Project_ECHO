@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.InputSystem; //
+using UnityEngine.InputSystem;
 
 public class ExitDoorController : MonoBehaviour
 {
@@ -26,16 +25,15 @@ public class ExitDoorController : MonoBehaviour
     public Transform exitPoint;
     public float moveTime = 3f;
 
-    [Header("하얀 화면 Fade")]
-    public Image whiteFadeImage;
-
-    //[Header("빛나는 벽")]
-    //public GameObject whiteGlowWall;
+    [Header("하얀 화면 Fade (VR Optimized)")]
+    // [변경] UI Image 대신 카메라 앞에 배치할 3D Quad의 MeshRenderer를 사용합니다.
+    public MeshRenderer whiteFadeQuadRenderer;
 
     [Header("엔딩 씬")]
     public string endingSceneName = "EndingScene";
 
     private bool isOpening = false;
+    private Material whiteFadeMaterial; // 런타임 제어용 머티리얼
 
     void Start()
     {
@@ -44,23 +42,15 @@ public class ExitDoorController : MonoBehaviour
         if (whiteLight != null)
             whiteLight.intensity = 0f;
 
-        if (whiteFadeImage != null)
+        // [변경] 시작할 때 하얀 막을 완전히 투명하게(Alpha = 0) 초기화합니다.
+        if (whiteFadeQuadRenderer != null)
         {
-            Color c = whiteFadeImage.color;
+            whiteFadeMaterial = whiteFadeQuadRenderer.material;
+            Color c = whiteFadeMaterial.color;
             c.a = 0f;
-            whiteFadeImage.color = c;
+            whiteFadeMaterial.color = c;
         }
-
-        //if (whiteGlowWall != null)
-        //{
-        //    whiteGlowWall.SetActive(false);
-        //}
     }
-
-    //void OnMouseDown()
-    //{
-    //    TryOpenDoor();
-    //}
 
     void Update()
     {
@@ -112,66 +102,6 @@ public class ExitDoorController : MonoBehaviour
         StartCoroutine(OpenDoorSequence());
     }
 
-
-
-    //IEnumerator OpenDoorSequence()
-    //{
-    //    isOpening = true;
-
-    //    //if (whiteGlowWall != null)
-    //    //{
-    //    //    whiteGlowWall.SetActive(true);
-    //    //}
-
-    //    Vector3 topStart = doorTop.position;
-    //    Vector3 bottomStart = doorBottom.position;
-
-    //    Vector3 topEnd = topStart + topOpenOffset;
-    //    Vector3 bottomEnd = bottomStart + bottomOpenOffset;
-
-    //    float timer = 0f;
-
-    //    while (timer < doorOpenTime)
-    //    {
-    //        timer += Time.deltaTime;
-    //        float t = timer / doorOpenTime;
-
-    //        doorTop.position = Vector3.Lerp(topStart, topEnd, t);
-    //        doorBottom.position = Vector3.Lerp(bottomStart, bottomEnd, t);
-
-    //        if (whiteLight != null)
-    //            whiteLight.intensity = Mathf.Lerp(0f, maxLightIntensity, t);
-
-    //        yield return null;
-    //    }
-
-    //    yield return new WaitForSeconds(0.3f);
-
-    //    Vector3 playerStart = player.position;
-    //    Vector3 playerEnd = exitPoint.position;
-
-    //    timer = 0f;
-
-    //    while (timer < moveTime)
-    //    {
-    //        timer += Time.deltaTime;
-    //        float t = timer / moveTime;
-
-    //        player.position = Vector3.Lerp(playerStart, playerEnd, t);
-
-    //        if (whiteFadeImage != null)
-    //        {
-    //            Color c = whiteFadeImage.color;
-    //            c.a = Mathf.Lerp(0f, 1f, t);
-    //            whiteFadeImage.color = c;
-    //        }
-
-    //        yield return null;
-    //    }
-
-    //    SceneManager.LoadScene(endingSceneName);
-    //}
-
     IEnumerator OpenDoorSequence()
     {
         isOpening = true;
@@ -206,11 +136,12 @@ public class ExitDoorController : MonoBehaviour
 
             player.position = Vector3.Lerp(playerStart, playerEnd, moveT);
 
-            if (whiteFadeImage != null)
+            // [변경] 플레이어가 이동함에 따라 하얀 Quad의 알파값을 올려 화면을 하얗게 채웁니다.
+            if (whiteFadeMaterial != null)
             {
-                Color c = whiteFadeImage.color;
+                Color c = whiteFadeMaterial.color;
                 c.a = Mathf.Lerp(0f, 1f, moveT);
-                whiteFadeImage.color = c;
+                whiteFadeMaterial.color = c;
             }
 
             yield return null;

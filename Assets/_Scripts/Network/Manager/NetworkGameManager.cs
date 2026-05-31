@@ -49,6 +49,15 @@ public class NetworkGameManager : NetworkBehaviour
         }
         OnMissionChangedEvent?.Invoke(CurrentMissionIndex);
         UpdateMissionUI_Local();
+
+        if (!Runner.IsServer && NetworkManager.Instance != null)
+        {
+            if (NetworkManager.Instance.LocalPlayerRole == "Chaser")
+            {
+                Debug.Log("<color=cyan>[NetworkGameManager] 네트워크 준비 완료! 안전하게 추격자 스폰 RPC를 발사합니다.</color>");
+                RPC_RequestChaserSpawn(Runner.LocalPlayer);
+            }
+        }
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
@@ -216,4 +225,21 @@ public class NetworkGameManager : NetworkBehaviour
         }
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_RequestChaserSpawn(PlayerRef player)
+    {
+        Debug.Log($"[서버 수신] 클라이언트({player.PlayerId})의 요청으로 추격자 프리팹을 안전하게 서버 권한으로 스폰합니다.");
+
+        if (NetworkManager.Instance != null)
+        {
+            NetworkObject spawnedChaser = Runner.Spawn(
+                NetworkManager.Instance.chaserPrefab,
+                NetworkManager.Instance.SpawnPoint_chaser,
+                Quaternion.identity,
+                player // 입력 권한 부여
+            );
+
+            NetworkManager.Instance.ChaserObject = spawnedChaser;
+        }
+    }
 }

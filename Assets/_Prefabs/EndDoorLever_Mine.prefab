@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 1398291295115116635}
   - component: {fileID: 335520523962353112}
   - component: {fileID: 6269100791210660625}
+  - component: {fileID: 5780181653522959641}
   m_Layer: 20
   m_Name: switch_handle
   m_TagString: Untagged
@@ -361,6 +362,20 @@ MonoBehaviour:
   onLeverPulled:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5780181653522959641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265145704137196049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e7c5478f706f541ac916fdb865f248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabSafetyPos
+  maxDistanceFromHand: 1
+  maxDistanceFromSpawn: 5
 --- !u!1 &5178230459484865257
 GameObject:
   m_ObjectHideFlags: 0
