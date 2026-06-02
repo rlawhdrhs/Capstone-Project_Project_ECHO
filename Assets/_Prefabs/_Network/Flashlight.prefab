@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlashlightVisibilityController
   flashlightLight: {fileID: 108038271100546340}
   lightConeVFX: {fileID: 1175331865632600}
+  waterMaterial: {fileID: 2100000, guid: d8880d81cb55e9947bf9884abc9f3994, type: 2}
 --- !u!114 &872629884839528725
 MonoBehaviour:
   m_ObjectHideFlags: 0

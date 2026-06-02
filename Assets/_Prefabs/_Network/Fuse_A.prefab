@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6832656865442386522}
   - component: {fileID: 5070298476187283416}
   - component: {fileID: 8499496608851778827}
+  - component: {fileID: 4333344433152223418}
   m_Layer: 26
   m_Name: Fuse_A
   m_TagString: Untagged
@@ -288,6 +289,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabSafetyPos
   maxDistanceFromHand: 5
   maxDistanceFromSpawn: 50
+--- !u!114 &4333344433152223418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314393487505562458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8755a880aa18dd44a9f94bc1909239a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FusionXRIBridge
+  grabDistance: 0.25
 --- !u!1 &7565939955161464125
 GameObject:
   m_ObjectHideFlags: 0

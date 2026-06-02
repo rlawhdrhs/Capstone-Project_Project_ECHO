@@ -49,7 +49,7 @@ Shader "FX/ProceduralWater"
         _GDirectionCD("Wave Direction CD", Vector) = (0.10 ,0.95, 0.55, 0.55)
     }
 
-        SubShader
+    SubShader
     {
         Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
         LOD 350
@@ -356,5 +356,5 @@ Shader "FX/ProceduralWater"
         }
     }
 
-        Fallback "Transparent/Diffuse"
+    Fallback "Transparent/Diffuse"
 }

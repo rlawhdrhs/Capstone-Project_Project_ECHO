@@ -8,6 +8,9 @@ using UnityEngine.InputSystem;
 
 public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
+    public NetworkPrefabRef grabObjectPrefab;
+    public Vector3 SpawnPoint_grabObject = new Vector3(-15, 5f, 20f);
+
     public static NetworkManager Instance;
 
     private InputAction rightAButton;
@@ -131,6 +134,12 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             {
                 Debug.Log("호스트 스폰: 잠입자 프리팹 생성");
                 InfiltratorObject = runner.Spawn(infiltratorPrefab, SpawnPoint_intruder, Quaternion.identity, player);
+
+                if (grabObjectPrefab.IsValid)
+                {
+                    runner.Spawn(grabObjectPrefab, SpawnPoint_grabObject, Quaternion.identity, player);
+                    Debug.Log("<color=yellow>[Fusion] 그랩 오브젝트가 호스트(서버) 소유권으로 정상 스폰되었습니다!</color>");
+                }
             }
             // 일반 클라이언트(추격자, 촬영팀)들은 씬 로드가 끝난 시점에 각자 역할을 서버에 요청하게 됩니다.
         }
@@ -138,25 +147,47 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnSceneLoadDone(NetworkRunner runner)
     {
+        UnityEngine.SceneManagement.Scene targetMainScene = UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(mainSceneBuildIndex);
+
+        if (targetMainScene.isLoaded)
+        {
+            // 2. [추가] 유니티의 활성화된 씬 자체를 메인 씬으로 변경합니다. (이래야 물리 세계가 합쳐집니다)
+            UnityEngine.SceneManagement.SceneManager.SetActiveScene(targetMainScene);
+        }
+        else
+        {
+            Debug.LogError($"[Fusion Fix] 메인 씬(인덱스:{mainSceneBuildIndex})을 찾을 수 없거나 로드되지 않았습니다.");
+        }
+
         if (LocalVRRig.Instance != null)
         {
+            // 3. [수정] 이제 함정 카드가 아닌, 진짜 목적지인 메인 씬으로 VR Rig를 이동시킵니다.
             UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(
                 LocalVRRig.Instance.gameObject,
-                UnityEngine.SceneManagement.SceneManager.GetActiveScene()
+                targetMainScene
             );
-            Debug.Log("<color=lime><b>[물리 대통합] 로컬 VR Rig를 메인 네트워크 물리 씬으로 안전하게 이전했습니다!</b></color>");
+            Debug.Log("<color=lime><b>[물리 대통합] 로컬 VR Rig를 진짜 메인 네트워크 물리 씬으로 안전하게 이전했습니다!</b></color>");
+
+            // XRI 오작동 방지용 손 리프레시 코드 유지
+            if (LocalVRRig.Instance.hardwareLeftHand != null)
+            {
+                LocalVRRig.Instance.hardwareLeftHand.gameObject.SetActive(false);
+                LocalVRRig.Instance.hardwareLeftHand.gameObject.SetActive(true);
+            }
+            if (LocalVRRig.Instance.hardwareRightHand != null)
+            {
+                LocalVRRig.Instance.hardwareRightHand.gameObject.SetActive(false);
+                LocalVRRig.Instance.hardwareRightHand.gameObject.SetActive(true);
+            }
         }
 
         if (!runner.IsServer)
         {
-            if (!runner.IsServer)
+            if (_localPlayerRole == "Spectator")
             {
-                if (_localPlayerRole == "Spectator")
+                if (spectatorCameraPrefab != null)
                 {
-                    if (spectatorCameraPrefab != null)
-                    {
-                        Instantiate(spectatorCameraPrefab, new Vector3(0, 10, 0), Quaternion.identity);
-                    }
+                    Instantiate(spectatorCameraPrefab, new Vector3(0, 10, 0), Quaternion.identity);
                 }
             }
         }
