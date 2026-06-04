@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1238581312646387474}
   - component: {fileID: 2583963921617199739}
   - component: {fileID: 2256859360030485598}
-  - component: {fileID: 7508800665587960872}
   - component: {fileID: 4698330192738099529}
   - component: {fileID: 6324890427316609692}
   - component: {fileID: 5871220420079003137}
+  - component: {fileID: 4616793480829830362}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -61,9 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8026b725cf039d04ea0ace1ef083dfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConnectionManager
-  grabObjectPrefab:
-    RawGuidValue: 822e25ed48c4db44581e7aeea56480f3
-  SpawnPoint_grabObject: {x: -15, y: 5, z: 20}
   mainSceneBuildIndex: 7
   lobbyUI: {fileID: 0}
   infiltratorPrefab:
@@ -71,26 +68,8 @@ MonoBehaviour:
   chaserPrefab:
     RawGuidValue: 66842846585a64f4eb92b56d9963a021
   spectatorCameraPrefab: {fileID: 4178859222831053650, guid: 3a9e101a2d5f91048a297cc75515205c, type: 3}
-  SpawnPoint_intruder: {x: -15, y: 4.3, z: 18}
+  SpawnPoint_intruder: {x: -15, y: 5, z: 18}
   SpawnPoint_chaser: {x: -78, y: 0, z: -40}
---- !u!114 &7508800665587960872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7786264867454982980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
-  SortKey: 648330117
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours: []
-  ForceRemoteRenderTimeframe: 0
 --- !u!114 &4698330192738099529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +114,18 @@ MonoBehaviour:
   ClientPhysicsSimulation: 0
   DeltaTimeMultiplier: 1
   SetUnityFixedTimestep: 0
+--- !u!114 &4616793480829830362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786264867454982980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6080750a33c9d428004642d0e07dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Unity::Fusion.Statistics.FusionStatistics
+  _statsEnabled: 44
+  _canvasAnchor: 1
+  _statsCustomConfig: []

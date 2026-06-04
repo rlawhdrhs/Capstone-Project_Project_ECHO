@@ -8,9 +8,6 @@ using UnityEngine.InputSystem;
 
 public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
-    public NetworkPrefabRef grabObjectPrefab;
-    public Vector3 SpawnPoint_grabObject = new Vector3(-15, 5f, 20f);
-
     public static NetworkManager Instance;
 
     private InputAction rightAButton;
@@ -113,7 +110,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         var startGameArgs = new StartGameArgs()
         {
             GameMode = mode,
-            SessionName = "ProjectECHO_Room",
+            SessionName = "ProjectECHO_Room_",
             SceneManager = sceneManager,
             Scene = SceneRef.FromIndex(mainSceneBuildIndex)
         };
@@ -134,14 +131,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             {
                 Debug.Log("호스트 스폰: 잠입자 프리팹 생성");
                 InfiltratorObject = runner.Spawn(infiltratorPrefab, SpawnPoint_intruder, Quaternion.identity, player);
-
-                if (grabObjectPrefab.IsValid)
-                {
-                    runner.Spawn(grabObjectPrefab, SpawnPoint_grabObject, Quaternion.identity, player);
-                    Debug.Log("<color=yellow>[Fusion] 그랩 오브젝트가 호스트(서버) 소유권으로 정상 스폰되었습니다!</color>");
-                }
             }
-            // 일반 클라이언트(추격자, 촬영팀)들은 씬 로드가 끝난 시점에 각자 역할을 서버에 요청하게 됩니다.
         }
     }
 
@@ -151,7 +141,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         if (targetMainScene.isLoaded)
         {
-            // 2. [추가] 유니티의 활성화된 씬 자체를 메인 씬으로 변경합니다. (이래야 물리 세계가 합쳐집니다)
             UnityEngine.SceneManagement.SceneManager.SetActiveScene(targetMainScene);
         }
         else
@@ -161,7 +150,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         if (LocalVRRig.Instance != null)
         {
-            // 3. [수정] 이제 함정 카드가 아닌, 진짜 목적지인 메인 씬으로 VR Rig를 이동시킵니다.
             UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(
                 LocalVRRig.Instance.gameObject,
                 targetMainScene

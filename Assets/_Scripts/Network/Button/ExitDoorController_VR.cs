@@ -26,9 +26,10 @@ public class ExitDoorController_VR : MonoBehaviour
     public Transform exitPoint;
     public float moveTime = 3f;
 
-    [Header("하얀 화면 Fade")]
-    public Image whiteFadeImage;
-
+    [Header("하얀 화면 Fade (VR Optimized)")]
+    // [변경] UI Image 대신 카메라 앞에 배치할 3D Quad의 MeshRenderer를 사용합니다.
+    public MeshRenderer whiteFadeQuadRenderer;
+    private Material whiteFadeMaterial; // 런타임 제어용 머티리얼
     private bool isOpening = false;
 
     // CharacterController 제어를 위한 변수
@@ -41,11 +42,12 @@ public class ExitDoorController_VR : MonoBehaviour
         if (whiteLight != null)
             whiteLight.intensity = 0f;
 
-        if (whiteFadeImage != null)
+        if (whiteFadeQuadRenderer != null)
         {
-            Color c = whiteFadeImage.color;
+            whiteFadeMaterial = whiteFadeQuadRenderer.material;
+            Color c = whiteFadeMaterial.color;
             c.a = 0f;
-            whiteFadeImage.color = c;
+            whiteFadeMaterial.color = c;
         }
 
         // 플레이어의 CC를 미리 찾아둡니다.
@@ -108,11 +110,11 @@ public class ExitDoorController_VR : MonoBehaviour
 
             player.position = Vector3.Lerp(playerStart, playerEnd, moveT);
 
-            if (whiteFadeImage != null)
+            if(whiteFadeMaterial != null)
             {
-                Color c = whiteFadeImage.color;
+                Color c = whiteFadeMaterial.color;
                 c.a = Mathf.Lerp(0f, 1f, moveT);
-                whiteFadeImage.color = c;
+                whiteFadeMaterial.color = c;
             }
 
             yield return null;

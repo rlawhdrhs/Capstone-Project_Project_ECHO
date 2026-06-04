@@ -2458,7 +2458,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4504702101284027297}
-  - component: {fileID: 3699613321547869966}
   - component: {fileID: 4481659541458636648}
   - component: {fileID: 1788966569660105352}
   - component: {fileID: 4157682429546303588}
@@ -2466,6 +2465,7 @@ GameObject:
   - component: {fileID: 2147550976129407761}
   - component: {fileID: -6644707239407579600}
   - component: {fileID: -200819815504771105}
+  - component: {fileID: 3650022784464332910}
   m_Layer: 7
   m_Name: Intruder_Avatar
   m_TagString: Player
@@ -2489,33 +2489,6 @@ Transform:
   - {fileID: 4640237190147671299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3699613321547869966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7333243311895911484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
-  SortKey: 3685257049
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects:
-  - {fileID: 7869182351770629978}
-  NetworkedBehaviours:
-  - {fileID: 4481659541458636648}
-  - {fileID: 1788966569660105352}
-  - {fileID: 4157682429546303588}
-  - {fileID: 4724282292032873574}
-  - {fileID: 2147550976129407761}
-  - {fileID: -6644707239407579600}
-  - {fileID: -200819815504771105}
-  - {fileID: 1196764929142873321}
-  ForceRemoteRenderTimeframe: 0
 --- !u!114 &4481659541458636648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2663,6 +2636,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960cb6db62eced6418a9f40009677cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNetworkSync
+--- !u!114 &3650022784464332910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333243311895911484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 996266257
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects:
+  - {fileID: 7869182351770629978}
+  NetworkedBehaviours:
+  - {fileID: 4481659541458636648}
+  - {fileID: 1788966569660105352}
+  - {fileID: 4157682429546303588}
+  - {fileID: 4724282292032873574}
+  - {fileID: 2147550976129407761}
+  - {fileID: -6644707239407579600}
+  - {fileID: -200819815504771105}
+  - {fileID: 1196764929142873321}
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &7622729119995212620
 GameObject:
   m_ObjectHideFlags: 0
